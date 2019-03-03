@@ -1,0 +1,50 @@
+trigger:
+- master
+- rel/*
+
+name: 2.2.0.$(Build.BuildId)
+
+pool:
+  vmImage: windows-2019
+
+variables:
+  BuildPlatform: 'Any CPU'
+  BuildConfiguration: 'Release'
+
+steps:
+- task: NuGetToolInstaller@0
+  displayName: Use NuGet 4.9.3
+  inputs:
+    versionSpec: 4.9.3
+
+- task: NuGetCommand@2
+  displayName: 'NuGet restore'
+  inputs:
+    feedsToUse: config
+    nugetConfigPath: build/NuGet.config
+
+- task: MSBuild@1
+  displayName: 'Build solution AP.MobileToolkit.sln'
+  inputs:
+    platform: '$(BuildPlatform)'
+    configuration: '$(BuildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: Run Tests
+  inputs:
+    command: test
+    projects: 'tests/**/*.csproj'
+    arguments: '-c $(BuildConfiguration) --collect:"Code Coverage" -s $(System.DefaultWorkingDirectory)/CodeCoverage.runsettings --no-build'
+
+- powershell: ./ 'build/Sign-Packages.ps1'
+  displayName: 'Authenticode Sign Artifacts'
+  condition: and(succeeded(), eq(variables['system.pullrequest.isfork'], false))
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Package Artifacts'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: NuGet
+  condition: and(succeeded(), eq(variables['system.pullrequest.isfork'], false))
+
+

@@ -1,0 +1,90 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras" ToolsVersion="16.0">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid90;uap10.0.17134</TargetFrameworks>
+    <Description>Provides common tools, and extensions for developing great Xamarin Forms Applications.</Description>
+  </PropertyGroup>
+
+<ItemGroup>
+    <Compile Remove="**/Platform/**/*.cs" />
+    <None Include="**/Platform/**/*.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
+    <None Remove="**/Platform/Droid/**/*.cs" />
+    <Compile Include="**/Platform/Droid/**/*.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
+    <None Remove="**/Platform/iOS/**/*.cs" />
+    <Compile Include="**/Platform/iOS/**/*.cs" />
+    <BundleResource Include="Platform/iOS/Resources/*.png" Link="Resources/%(Filename)%(Extension)" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.Mac')) ">
+    <None Remove="**/Platform/macOS/**/*.cs" />
+    <Compile Include="**/Platform/macOS/**/*.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('uap10.0')) ">
+    <None Remove="**/Platform/UWP/**/*.cs" />
+    <Compile Include="**/Platform/UWP/**/*.cs" />
+    <PackageReference Include="Win2D.uwp" Version="1.23.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
+    <PackageReference Include="System.Reflection.Primitives" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
+    <PackageReference Include="Prism.Forms" Version="7.2.0.1038-pre" />
+    <PackageReference Include="Prism.Plugin.Logging.Abstractions" Version="1.4.0.316-pre" />
+    <PackageReference Include="ReactiveUI" Version="9.11.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.4.0" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
+    <PackageReference Include="Xamarin.Forms" Version="3.5.0.169047" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-18618-05" PrivateAssets="all">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../AP.CrossPlatform.Core/AP.CrossPlatform.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ResxFiles Remove="Resources\ToolkitResources.resx" />
+    <Compile Update="Resources\ToolkitResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ToolkitResources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="Resources\ToolkitResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ToolkitResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Controls\BadgeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Controls\DatePickerCell.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Controls\MaterialDatePicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Controls\MaterialEntry.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Controls\MaterialPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Controls\MaterialTimePicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+
+</Project>
