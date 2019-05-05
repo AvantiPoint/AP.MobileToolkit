@@ -2,6 +2,7 @@
 using Xamarin.Forms.Internals;
 
 [assembly: Preserve(AllMembers = true)]
+[assembly: XmlnsPrefix("http://avantipoint.com/schemas/xaml", "ap")]
 [assembly: XmlnsDefinition("http://avantipoint.com/schemas/xaml", "AP.MobileToolkit.Behaviors")]
 [assembly: XmlnsDefinition("http://avantipoint.com/schemas/xaml", "AP.MobileToolkit.Controls")]
 [assembly: XmlnsDefinition("http://avantipoint.com/schemas/xaml", "AP.MobileToolkit.Converters")]

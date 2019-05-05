@@ -40,10 +40,10 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
     <PackageReference Include="Prism.Forms" Version="7.2.0.1038-pre" />
     <PackageReference Include="Prism.Plugin.Logging.Abstractions" Version="1.4.0.316-pre" />
-    <PackageReference Include="ReactiveUI" Version="9.11.1" />
+    <PackageReference Include="ReactiveUI" Version="9.13.1" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.4.0" />
     <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
-    <PackageReference Include="Xamarin.Forms" Version="3.5.0.169047" />
+    <PackageReference Include="Xamarin.Forms" Version="3.6.0.344457" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-18618-05" PrivateAssets="all">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
