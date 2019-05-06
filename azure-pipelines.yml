@@ -43,8 +43,15 @@ stages:
         projects: 'tests/**/*.csproj'
         arguments: '-c $(BuildConfiguration) --collect:"Code Coverage" -s $(System.DefaultWorkingDirectory)/CodeCoverage.runsettings --no-build'
 
-    - powershell: ./ 'build/Sign-Packages.ps1'
+    - powershell: Sign-Packages.ps1
       displayName: 'Authenticode Sign Artifacts'
+      workingDirectory: build
+      env:
+        SignClientUser: $(SignClientUser)
+        SignClientSecret: $(SignClientSecret)
+        SignClientClientId: $(SignClientClientId)
+        SignClientTenantId: $(SignClientTenantId)
+        SignServiceResourceId: $(SignServiceResourceId)
       condition: and(succeeded(), eq(variables['system.pullrequest.isfork'], false))
 
     - task: PublishPipelineArtifact@0
