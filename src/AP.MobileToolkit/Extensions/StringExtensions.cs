@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -9,9 +8,7 @@ namespace AP.MobileToolkit.Extensions
     {
         public static string SanitizeViewModelTypeName(this Type type)
         {
-            var name = type.Name;
-            name = Regex.Replace(name, "ViewModel$", "");
-            name = Regex.Replace(name, "Page$", "");
+            var name = Regex.Replace(type.Name, "(PageViewModel|ViewModel)$", "");
 
             if (type.Name == name) return name;
 
