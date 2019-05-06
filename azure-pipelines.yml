@@ -4,9 +4,6 @@ trigger:
 
 name: 3.0.0.$(Build.BuildId)
 
-pool:
-  vmImage: windows-2019
-
 variables:
 - name: BuildPlatform
   value: 'Any CPU'
