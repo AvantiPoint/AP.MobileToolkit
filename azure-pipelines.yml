@@ -2,7 +2,7 @@ trigger:
 - master
 - rel/*
 
-name: 2.2.0.$(Build.BuildId)
+name: 3.0.0.$(Build.BuildId)
 
 pool:
   vmImage: windows-2019
@@ -11,40 +11,77 @@ variables:
   BuildPlatform: 'Any CPU'
   BuildConfiguration: 'Release'
 
-steps:
-- task: NuGetToolInstaller@0
-  displayName: Use NuGet 4.9.3
-  inputs:
-    versionSpec: 4.9.3
+stages:
+- stage: Build
+  jobs:
+  - job: Build
+    displayName: Build Toolkit
+    pool:
+      vmImage: windows-2019
+    steps:
+    - task: NuGetToolInstaller@0
+      displayName: Use NuGet 4.9.4
+      inputs:
+        versionSpec: 4.9.4
 
-- task: NuGetCommand@2
-  displayName: 'NuGet restore'
-  inputs:
-    feedsToUse: config
-    nugetConfigPath: build/NuGet.config
+    - task: NuGetCommand@2
+      displayName: 'NuGet restore'
+      inputs:
+        feedsToUse: config
+        nugetConfigPath: build/NuGet.config
 
-- task: MSBuild@1
-  displayName: 'Build solution AP.MobileToolkit.sln'
-  inputs:
-    platform: '$(BuildPlatform)'
-    configuration: '$(BuildConfiguration)'
+    - task: MSBuild@1
+      displayName: 'Build solution AP.MobileToolkit.sln'
+      inputs:
+        platform: '$(BuildPlatform)'
+        configuration: '$(BuildConfiguration)'
 
-- task: DotNetCoreCLI@2
-  displayName: Run Tests
-  inputs:
-    command: test
-    projects: 'tests/**/*.csproj'
-    arguments: '-c $(BuildConfiguration) --collect:"Code Coverage" -s $(System.DefaultWorkingDirectory)/CodeCoverage.runsettings --no-build'
+    - task: DotNetCoreCLI@2
+      displayName: Run Tests
+      inputs:
+        command: test
+        projects: 'tests/**/*.csproj'
+        arguments: '-c $(BuildConfiguration) --collect:"Code Coverage" -s $(System.DefaultWorkingDirectory)/CodeCoverage.runsettings --no-build'
 
-- powershell: ./ 'build/Sign-Packages.ps1'
-  displayName: 'Authenticode Sign Artifacts'
+    - powershell: ./ 'build/Sign-Packages.ps1'
+      displayName: 'Authenticode Sign Artifacts'
+      condition: and(succeeded(), eq(variables['system.pullrequest.isfork'], false))
+
+    - task: PublishPipelineArtifact@0
+      displayName: 'Publish Package Artifacts'
+      inputs:
+        artifactName: NuGet
+        targetPath: $(Build.ArtifactStagingDirectory)
+
+- stage: Deploy
+  displayName: Deploy to MyGet.org
   condition: and(succeeded(), eq(variables['system.pullrequest.isfork'], false))
-
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Package Artifacts'
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: NuGet
-  condition: and(succeeded(), eq(variables['system.pullrequest.isfork'], false))
-
-
+  jobs:
+  - deployment: myget
+    displayName: MyGet.org
+    environment: MyGet
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: NuGetCommand@2
+            displayName: 'NuGet push'
+            inputs:
+                command: push
+                packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg'
+                nuGetFeedType: external
+                publishFeedCredentials: 'DanSiegel-MyGet'
+  - deployment: nuget
+    displayName: NuGet.org
+    environment: NuGet
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: NuGetCommand@2
+            displayName: 'NuGet push'
+            inputs:
+                command: push
+                packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg;!$(Pipeline.Workspace)/**/*.symbols.nupkg;!$(Pipeline.Workspace)/**/*-ci*'
+                nuGetFeedType: external
+                publishFeedCredentials: 'NuGet'
