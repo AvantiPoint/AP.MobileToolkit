@@ -8,6 +8,10 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Dan Siegel</Authors>
     <Company>AvantiPoint</Company>
+    <PackageIconUrl>https://raw.githubusercontent.com/AvantiPoint/AP.MobileToolkit/master/avantipoint-icon.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/AvantiPoint/AP.MobileToolkit</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/AvantiPoint/AP.MobileToolkit</RepositoryUrl>
     <PackageOutputPath>$(MSBuildThisFileDirectory)Artifacts</PackageOutputPath>
     <PackageOutputPath Condition=" '$(BUILD_ARTIFACTSTAGINGDIRECTORY)' != '' ">$(BUILD_ARTIFACTSTAGINGDIRECTORY)</PackageOutputPath>
     <IsTestProject>$(MSBuildProjectName.Contains('Test'))</IsTestProject>
