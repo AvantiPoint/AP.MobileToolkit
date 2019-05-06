@@ -1,6 +1,6 @@
 ﻿using Prism.Events;
 
-namespace AP.MobileToolkit.Events
+namespace AP.CrossPlatform.Auth.Events
 {
     public class LoginEvent : PubSubEvent
     {

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace AP.MobileToolkit.Authentication
+namespace AP.CrossPlatform.Auth
 {
     public interface IUser : IDictionary<string, string>
     {

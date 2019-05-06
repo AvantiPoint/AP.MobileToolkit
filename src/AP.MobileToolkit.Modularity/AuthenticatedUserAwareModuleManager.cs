@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using AP.MobileToolkit.Authentication;
-using AP.MobileToolkit.Events;
+using AP.CrossPlatform.Auth;
+using AP.CrossPlatform.Auth.Events;
 using Prism.Events;
 using Prism.Modularity;
 

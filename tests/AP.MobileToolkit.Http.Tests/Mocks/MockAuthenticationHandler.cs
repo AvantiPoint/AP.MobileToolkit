@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using AP.MobileToolkit.Http;
 
-namespace AP.MobileToolkit.Tests.Mocks
+namespace AP.MobileToolkit.Http.Tests.Mocks
 {
     public class MockAuthenticationHandler : IAuthenticationHandler
     {

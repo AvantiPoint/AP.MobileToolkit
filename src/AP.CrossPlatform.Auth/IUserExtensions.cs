@@ -1,10 +1,9 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
 
-namespace AP.MobileToolkit.Authentication
+namespace AP.CrossPlatform.Auth
 {
     public static class IUserExtensions
     {

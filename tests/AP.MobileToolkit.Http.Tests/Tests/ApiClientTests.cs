@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AP.MobileToolkit.Http;
+﻿using AP.MobileToolkit.Http.Tests.Mocks;
 using AP.MobileToolkit.Tests.Mocks;
+using AP.MobileToolkit.Tests.Tests;
 using MockHttpServer;
+using System;
+using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AP.MobileToolkit.Tests.Tests.Http
+namespace AP.MobileToolkit.Http.Tests
 {
-    public class ApiClientFixture : TestBase
+    public class ApiClientTests : TestBase
     {
-        public ApiClientFixture(ITestOutputHelper testOutputHelper) 
+        public ApiClientTests(ITestOutputHelper testOutputHelper) 
             : base(testOutputHelper)
         {
         }

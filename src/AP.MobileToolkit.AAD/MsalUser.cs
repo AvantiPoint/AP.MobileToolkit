@@ -1,4 +1,4 @@
-﻿using AP.MobileToolkit.Authentication;
+﻿using AP.CrossPlatform.Auth;
 using Microsoft.Identity.Client;
 
 namespace AP.MobileToolkit.AAD

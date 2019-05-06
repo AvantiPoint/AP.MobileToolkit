@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using AP.MobileToolkit.Authentication;
+using AP.MobileToolkit.Tests.Tests;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace AP.MobileToolkit.Tests.Tests.Authentication
+namespace AP.CrossPlatform.Auth.Tests
 {
-    public class IUserFixture : TestBase
+    public class IUserTests : TestBase
     {
-        public IUserFixture(ITestOutputHelper testOutputHelper) 
+        public IUserTests(ITestOutputHelper testOutputHelper) 
             : base(testOutputHelper)
         {
         }

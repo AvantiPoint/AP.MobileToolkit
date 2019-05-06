@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 
-namespace AP.MobileToolkit.Authentication
+namespace AP.CrossPlatform.Auth
 {
     public class JwtUser : Dictionary<string, string>, IUser
     {

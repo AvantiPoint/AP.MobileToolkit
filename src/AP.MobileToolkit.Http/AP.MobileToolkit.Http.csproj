@@ -1,24 +1,20 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras" ToolsVersion="16.0">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;MonoAndroid90</TargetFrameworks>
-    <Description>Provides a basic set of abstractions around making Azure Active Directory easy to use</Description>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Prism.Plugin.Logging.Abstractions" Version="1.4.0.316-pre" />
-    <PackageReference Include="Microsoft.Identity.Client" Version="3.0.8" />
+    <PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.1.0" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-18618-05" PrivateAssets="all">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
-    <PackageReference Include="Plugin.CurrentActivity" Version="2.1.0.4" />
-  </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\AP.CrossPlatform.Auth\AP.CrossPlatform.Auth.csproj" />
+    <ProjectReference Include="..\AP.CrossPlatform.Core\AP.CrossPlatform.Core.csproj" />
   </ItemGroup>
 
 </Project>

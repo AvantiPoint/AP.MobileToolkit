@@ -3,7 +3,12 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <IsPackable>false</IsPackable>
+    <DefineConstants>$(DefineConstants);DISABLE_FORMS_INIT</DefineConstants>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="../AP.MobileToolkit.Tests/Tests/TestBase.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.0.1" />
@@ -16,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../../src/AP.CrossPlatform.Core/AP.CrossPlatform.Core.csproj" />
+    <ProjectReference Include="..\..\src\AP.CrossPlatform.Auth\AP.CrossPlatform.Auth.csproj" />
   </ItemGroup>
 
 </Project>

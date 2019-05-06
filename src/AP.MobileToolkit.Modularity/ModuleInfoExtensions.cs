@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using AP.MobileToolkit.Resources;
+using AP.MobileToolkit.Modularity.Properties;
 using Prism.Modularity;
 
 namespace AP.MobileToolkit.Modularity
@@ -37,7 +37,7 @@ namespace AP.MobileToolkit.Modularity
                 var dependentModule = moduleCatalog.Modules.FirstOrDefault(m => m.ModuleName == name);
 
                 yield return dependentModule ?? 
-                    throw new ModuleNotFoundException(name, string.Format(ToolkitResources.ModuleNotFoundErrorMessage, name));
+                    throw new ModuleNotFoundException(name, string.Format(Resources.ModuleNotFoundErrorMessage, name));
             }
         }
     }

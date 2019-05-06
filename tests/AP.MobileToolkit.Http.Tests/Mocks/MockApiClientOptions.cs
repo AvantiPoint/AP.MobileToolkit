@@ -1,6 +1,6 @@
 ﻿using AP.MobileToolkit.Http;
 
-namespace AP.MobileToolkit.Tests.Mocks
+namespace AP.MobileToolkit.Http.Tests.Mocks
 {
     public class MockApiClientOptions : IApiClientOptions
     {
