@@ -1,4 +1,5 @@
-﻿using AP.MobileToolkit.Tests.Mocks;
+﻿using AP.MobileToolkit.Resources;
+using AP.MobileToolkit.Tests.Mocks;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -102,8 +103,10 @@ namespace AP.MobileToolkit.Tests.Tests.Mvvm
                 while (vm.IsBusy) { }
             });
 
-            Assert.Equal(nameof(Exception), dialogService.Title);
-            Assert.Equal("bad", dialogService.Message);
+            Assert.Equal(ToolkitResources.Error, dialogService.Title);
+            var dialogMessage = string.Format(ToolkitResources.AlertErrorMessageTemplate, nameof(Exception), vm.CorrelationId);
+            Assert.NotNull(vm.CorrelationId);
+            Assert.Contains(dialogMessage, dialogService.Message);
         }
 
         [Fact]

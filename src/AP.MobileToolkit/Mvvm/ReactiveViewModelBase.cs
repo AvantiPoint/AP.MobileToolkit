@@ -26,18 +26,20 @@ namespace AP.MobileToolkit.Mvvm
             _pageDialogService = pageDialogService;
             _logger = logger;
 
-            Title = Regex.Replace(GetType().Name, "ViewModel", "");
+            Title = GetType().SanitizeViewModelTypeName();
             NavigateCommand = ReactiveCommand.CreateFromTask<string>(OnNavigateCommandExecuted, 
                 this.WhenAnyObservable(x => x.NavigateCommand.IsExecuting)
                             .Select(isExecuting => !isExecuting)
                             .StartWith(true));
-            _isBusy = GetIsBusyProperty();
-            _isNotBusy = this.WhenAnyValue(x => x.IsBusy)  
-                             .Select(x => !IsBusy)
-                             .ToProperty(this, x => x.IsNotBusy, true);
+            _isBusyHelper = GetIsBusyProperty();
+            _isNotBusyHelper = this.WhenAnyValue(x => x.IsBusy)  
+                                   .Select(x => !IsBusy)
+                                   .ToProperty(this, x => x.IsNotBusy, true);
 
             IsActiveChangedCommand = ReactiveCommand.Create(OnIsActiveChanged);
-            this.WhenAnyValue(x => x.IsActive).InvokeCommand(IsActiveChangedCommand);
+            this.WhenAnyValue(x => x.IsActive)
+                .Select(x => Unit.Default)
+                .InvokeCommand(IsActiveChangedCommand);
         }
 
         protected virtual ObservableAsPropertyHelper<bool> GetIsBusyProperty()
@@ -60,13 +62,13 @@ namespace AP.MobileToolkit.Mvvm
             set => this.RaiseAndSetIfChanged(ref _subtitle, value);
         }
 
-        protected ObservableAsPropertyHelper<bool> _isBusy { get; }
-        public bool IsBusy => _isBusy.Value;
+        protected ObservableAsPropertyHelper<bool> _isBusyHelper;
+        public bool IsBusy => _isBusyHelper?.Value ?? false;
 
-        private ObservableAsPropertyHelper<bool> _isNotBusy { get; }
-        public bool IsNotBusy => _isNotBusy.Value;
+        private ObservableAsPropertyHelper<bool> _isNotBusyHelper;
+        public bool IsNotBusy => _isNotBusyHelper.Value;
 
-        public ReactiveCommand<string, Unit> NavigateCommand { get; }
+        public ReactiveCommand<string, Unit> NavigateCommand { get; private set; }
 
         protected virtual async Task OnNavigateCommandExecuted(string uri)
         {
@@ -119,7 +121,7 @@ namespace AP.MobileToolkit.Mvvm
 
         public event EventHandler IsActiveChanged;
 
-        private ReactiveCommand<Unit, Unit> IsActiveChangedCommand { get; }
+        private ReactiveCommand<Unit, Unit> IsActiveChangedCommand;
 
         private void OnIsActiveChanged()
         {
@@ -161,7 +163,34 @@ namespace AP.MobileToolkit.Mvvm
 
         protected virtual void Destroy() { }
 
-        void IDestructible.Destroy() => Destroy();
+        void IDestructible.Destroy()
+        {
+            if(NavigateCommand != null)
+            {
+                NavigateCommand.Dispose();
+                NavigateCommand = null;
+            }
+
+            if(IsActiveChangedCommand != null)
+            {
+                IsActiveChangedCommand.Dispose();
+                IsActiveChangedCommand = null;
+            }
+
+            if (_isBusyHelper != null)
+            {
+                _isBusyHelper.Dispose();
+                _isBusyHelper = null;
+            }
+
+            if (_isNotBusyHelper != null)
+            {
+                _isNotBusyHelper.Dispose();
+                _isNotBusyHelper = null;
+            }
+
+            Destroy();
+        }
 
         #endregion IDestructible
 

@@ -24,7 +24,7 @@ namespace AP.MobileToolkit.Mvvm
             NavigationService = navigationService;
             PageDialogService = pageDialogService;
             Logger = logger;
-            Title = Regex.Replace(GetType().Name, "ViewModel$", "");
+            Title = GetType().SanitizeViewModelTypeName();
             NavigateCommand = new DelegateCommand<string>(OnNavigateCommandExecuted, s => IsNotBusy).ObservesProperty(() => IsNotBusy);
         }
 
@@ -97,18 +97,14 @@ namespace AP.MobileToolkit.Mvvm
             try
             {
                 var result = await NavigationService.NavigateAsync(uri, parameters);
-                if(result.Exception != null)
+                if (result.Exception != null)
                 {
-                    Logger.Info("Navigation Error", parameters.ToErrorParameters(uri, result.Exception));
-                    Logger.Report(result.Exception, parameters.ToErrorParameters(uri));
-                    await DisplayAlertForException(result.Exception);
+                    await HandleNavigationException(uri, parameters, result.Exception);
                 }
             }
             catch (Exception ex)
             {
-                Logger.Info("Navigation Error", parameters.ToErrorParameters(uri, ex));
-                Logger.Report(ex, parameters.ToErrorParameters(uri));
-                await DisplayAlertForException(ex);
+                await HandleNavigationException(uri, parameters, ex);
             }
             finally
             {
@@ -116,9 +112,21 @@ namespace AP.MobileToolkit.Mvvm
             }
         }
 
-        protected virtual async Task DisplayAlertForException(Exception ex)
+        protected virtual async Task HandleNavigationException(string uri, INavigationParameters parameters, Exception ex)
         {
-            await PageDialogService.DisplayAlertAsync(ex.GetType().Name, ex.Message, ToolkitResources.Ok);
+            var correlationId = Guid.NewGuid().ToString();
+            var errorParameters = parameters.ToErrorParameters(uri);
+            errorParameters.Add("CorrelationId", correlationId);
+            Logger.Report(ex, errorParameters);
+            await DisplayAlertForException(ex, correlationId);
+        }
+
+        protected virtual async Task DisplayAlertForException(Exception ex, string correlationId)
+        {
+            await PageDialogService.DisplayAlertAsync(
+                            ToolkitResources.Error,
+                            string.Format(ToolkitResources.AlertErrorMessageTemplate, ex.GetType().Name, correlationId),
+                            ToolkitResources.Ok);
         }
 
         #region IActiveAware
