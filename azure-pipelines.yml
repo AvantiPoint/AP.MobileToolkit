@@ -46,8 +46,7 @@ stages:
     - task: PowerShell@2
       displayName: 'Authenticode Sign Artifacts'
       inputs:
-        filePath: 'Sign-Packages.ps1'
-        workingDirectory: 'build'
+        filePath: 'build\Sign-Packages.ps1'
       env:
         SignClientUser: $(SignClientUser)
         SignClientSecret: $(SignClientSecret)
