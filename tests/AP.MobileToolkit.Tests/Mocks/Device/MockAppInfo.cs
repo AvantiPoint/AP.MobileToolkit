@@ -1,5 +1,5 @@
 ﻿using System;
-using AP.MobileToolkit.Device;
+using Xamarin.Essentials.Interfaces;
 
 namespace AP.MobileToolkit.Tests.Mocks
 {

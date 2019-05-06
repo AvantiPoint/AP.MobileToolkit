@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using AP.MobileToolkit.Device;
 using Prism.Logging;
+using Xamarin.Essentials.Interfaces;
 
 namespace AP.MobileToolkit.Http
 {
