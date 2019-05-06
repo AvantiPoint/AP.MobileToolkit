@@ -8,8 +8,11 @@ pool:
   vmImage: windows-2019
 
 variables:
-  BuildPlatform: 'Any CPU'
-  BuildConfiguration: 'Release'
+- name: BuildPlatform
+  value: 'Any CPU'
+- name: BuildConfiguration
+  value: 'Release'
+- group: CodeSigning
 
 stages:
 - stage: Build
