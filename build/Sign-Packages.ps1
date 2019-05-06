@@ -11,6 +11,7 @@ dotnet tool install --tool-path . SignClient
 # Setup Variables we need to pass into the sign client tool
 
 $appSettings = "$currentDirectory\appsettings.json"
+$fileList = "$currentDirectory\filelist.txt"
 
 $azureAd = @{
     SignClient = @{
@@ -33,7 +34,7 @@ $nupkgs = Get-ChildItem $env:BUILD_ARTIFACTSTAGINGDIRECTORY\*.nupkg -recurse | S
 foreach ($nupkg in $nupkgs){
     Write-Host "Submitting $nupkg for signing"
 
-    .\SignClient 'sign' -c $appSettings -i $nupkg -r $env:SignClientUser -s $env:SignClientSecret -n 'AP.MobileToolkit' -d 'AP.MobileToolkit' -u 'https://avantipoint.visualstudio.com/Cross%20Platform/_git/AP.MobileToolkit'
+    .\SignClient 'sign' -c $appSettings -i $nupkg -f $fileList -r $env:SignClientUser -s $env:SignClientSecret -n 'AP.MobileToolkit' -d 'AP.MobileToolkit' -u 'https://github.com/avantipoint/AP.MobileToolkit' 
 
     Write-Host "Finished signing $nupkg"
 }
