@@ -43,9 +43,11 @@ stages:
         projects: 'tests/**/*.csproj'
         arguments: '-c $(BuildConfiguration) --collect:"Code Coverage" -s $(System.DefaultWorkingDirectory)/CodeCoverage.runsettings --no-build'
 
-    - powershell: Sign-Packages.ps1
+    - task: PowerShell@2
       displayName: 'Authenticode Sign Artifacts'
-      workingDirectory: build
+      inputs:
+        filePath: 'Sign-Packages.ps1'
+        workingDirectory: 'build'
       env:
         SignClientUser: $(SignClientUser)
         SignClientSecret: $(SignClientSecret)
@@ -61,7 +63,7 @@ stages:
         targetPath: $(Build.ArtifactStagingDirectory)
 
 - stage: Deploy
-  displayName: Deploy to MyGet.org
+  displayName: Deploy NuGet Packages
   condition: and(succeeded(), eq(variables['system.pullrequest.isfork'], false))
   jobs:
   - deployment: myget
