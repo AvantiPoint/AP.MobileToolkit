@@ -3,37 +3,46 @@ using Prism.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+#if __ANDROID__
+using Plugin.CurrentActivity;
+#endif
 
 namespace AP.MobileToolkit.AAD
 {
-    public class AuthenticationService : IAuthenticationService
+    public sealed class AuthenticationService : IAuthenticationService
     {
-        private UIParent UiParent { get; }
-
         private IPublicClientApplication AuthClient { get; }
 
         private IAuthenticationOptions Options { get; }
 
         private ILogger Logger { get; }
 
-        public AuthenticationService(IAuthenticationOptions authenticationOptions, ILogger logger, IPublicClientApplication publicClientApplication, UIParent parent)
+#if __ANDROID__
+        private ICurrentActivity CurrentActivity { get; }
+
+        public AuthenticationService(IAuthenticationOptions authenticationOptions, ILogger logger, IPublicClientApplication publicClientApplication)
         {
             Options = authenticationOptions;
             Logger = logger;
             AuthClient = publicClientApplication;
-            UiParent = parent;
         }
+#else
+        public AuthenticationService(IAuthenticationOptions authenticationOptions, ILogger logger, IPublicClientApplication publicClientApplication)
+        {
+            Options = authenticationOptions;
+            Logger = logger;
+            AuthClient = publicClientApplication;
+        }
+#endif
 
         public Task<IEnumerable<IAccount>> GetAccountsAsync() => AuthClient.GetAccountsAsync();
 
-        public virtual Task<AuthenticationResult> LoginAsync() => LoginAsync(Options.DefaultPolicy);
+        public Task<AuthenticationResult> LoginAsync() => LoginAsync(Options.DefaultPolicy);
 
-        public virtual async Task<AuthenticationResult> LoginAsync(string policy)
+        public async Task<AuthenticationResult> LoginAsync(string policy)
         {
-            AuthenticationResult result = null;
-
+            AuthenticationResult result;
             try
             {
                 result = await SilentLoginAsync(policy);
@@ -41,16 +50,25 @@ namespace AP.MobileToolkit.AAD
                 if (result != null)
                     return result;
 
-                result = await AuthClient.AcquireTokenAsync(Options.Scopes, string.Empty, UIBehavior.Consent, string.Empty, Array.Empty<string>(), GetAuthority(policy), UiParent);
-                SetResult(result);
+                result = await AuthClient.AcquireTokenInteractive(Options.Scopes)
+                                         .WithB2CAuthority(Options.GetB2CAuthority(policy))
+                                         .WithUseEmbeddedWebView(true)
+#if __ANDROID__
+                                         .WithParentActivityOrWindow(CurrentActivity.Activity)
+#endif
+                                         .ExecuteAsync();
+            }
+            catch(MsalException msal)
+            {
+                if (msal.ErrorCode != MsalError.AuthenticationCanceledError && msal.ErrorCode != MsalError.PasswordRequiredForManagedUserError)
+                {
+                    LogException(msal, "LoginAsync", policy);
+                }
+
+                throw;
             }
             catch (Exception ex)
             {
-                if (ex is MsalException msal && msal.ErrorCode == MsalClientException.AuthenticationCanceledError)
-                {
-                    // The user cancelled the requested login.
-                    throw msal;
-                }
                 LogException(ex, "LoginAsync", policy);
                 throw;
             }
@@ -58,33 +76,30 @@ namespace AP.MobileToolkit.AAD
             return result;
         }
 
-        public virtual Task<AuthenticationResult> SilentLoginAsync() => SilentLoginAsync(Options.DefaultPolicy);
+        public Task<AuthenticationResult> SilentLoginAsync() => SilentLoginAsync(Options.DefaultPolicy);
 
-        public virtual async Task<AuthenticationResult> SilentLoginAsync(string policy)
+        public async Task<AuthenticationResult> SilentLoginAsync(string policy)
         {
             AuthenticationResult result = null;
 
             try
             {
                 var accounts = await AuthClient.GetAccountsAsync();
-                result = await AuthClient.AcquireTokenSilentAsync(Options.Scopes, accounts.FirstOrDefault(), GetAuthority(policy), false);
+
+                result = await AuthClient.AcquireTokenSilent(Options.Scopes, accounts.FirstOrDefault())
+                                         .WithB2CAuthority(Options.GetB2CAuthority(policy))
+                                         .WithForceRefresh(true)
+                                         .ExecuteAsync();
             }
             catch (Exception ex)
             {
-                if (ex is MsalException msal && msal.ErrorCode == MsalClientException.AuthenticationCanceledError)
-                {
-                    // The user cancelled the requested login.
-                    throw msal;
-                }
                 LogException(ex, "SilentLoginAsync", policy);
             }
 
             return result;
         }
 
-        private string GetAuthority(string policy) => $"https://login.microsoftonline.com/tfp/{Options.Tenant}/{policy}";
-
-        public virtual async Task<bool> IsLoggedInAsync()
+        public async Task<bool> IsLoggedInAsync()
         {
             var result = await SilentLoginAsync();
 
@@ -102,9 +117,7 @@ namespace AP.MobileToolkit.AAD
         public Task<IAccount> GetAccountAsync(string identifier) => 
             AuthClient.GetAccountAsync(identifier);
 
-        protected virtual void SetResult(AuthenticationResult result) { }
-
-        protected void LogException(Exception ex, string callingMethod, string policy)
+        private void LogException(Exception ex, string callingMethod, string policy)
         {
             if(ex is MsalException msal)
             {
@@ -125,15 +138,6 @@ namespace AP.MobileToolkit.AAD
                 });
                 Console.WriteLine($"*** UNIDENTIFIED ERROR:\n {ex}");
             }
-        }
-
-        protected string Base64UrlDecode(string s)
-        {
-            s = s.Replace('-', '+').Replace('_', '/');
-            s = s.PadRight(s.Length + (4 - s.Length % 4) % 4, '=');
-            var byteArray = Convert.FromBase64String(s);
-            var decoded = Encoding.UTF8.GetString(byteArray, 0, byteArray.Count());
-            return decoded;
         }
     }
 }

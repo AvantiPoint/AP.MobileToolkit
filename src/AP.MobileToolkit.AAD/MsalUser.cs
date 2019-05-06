@@ -1,8 +1,5 @@
 ﻿using AP.MobileToolkit.Authentication;
 using Microsoft.Identity.Client;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AP.MobileToolkit.AAD
 {
