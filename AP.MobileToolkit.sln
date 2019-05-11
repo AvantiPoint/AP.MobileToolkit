@@ -31,15 +31,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{365F21D0
 		build\Sign-Packages.ps1 = build\Sign-Packages.ps1
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AP.CrossPlatform.Auth", "src\AP.CrossPlatform.Auth\AP.CrossPlatform.Auth.csproj", "{5A20FBF4-A482-43D8-9CE3-D7214B851114}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AP.CrossPlatform.Auth", "src\AP.CrossPlatform.Auth\AP.CrossPlatform.Auth.csproj", "{5A20FBF4-A482-43D8-9CE3-D7214B851114}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AP.MobileToolkit.Http", "src\AP.MobileToolkit.Http\AP.MobileToolkit.Http.csproj", "{8F88CB38-3D32-4EED-B1E7-A2237C70D1CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AP.MobileToolkit.Http", "src\AP.MobileToolkit.Http\AP.MobileToolkit.Http.csproj", "{8F88CB38-3D32-4EED-B1E7-A2237C70D1CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AP.MobileToolkit.Modularity", "src\AP.MobileToolkit.Modularity\AP.MobileToolkit.Modularity.csproj", "{71D87134-1A7D-491F-81C1-93F2454A8962}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AP.MobileToolkit.Modularity", "src\AP.MobileToolkit.Modularity\AP.MobileToolkit.Modularity.csproj", "{71D87134-1A7D-491F-81C1-93F2454A8962}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AP.MobileToolkit.Http.Tests", "tests\AP.MobileToolkit.Http.Tests\AP.MobileToolkit.Http.Tests.csproj", "{BF428E02-E173-4E54-A520-6C8B0F07CD3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AP.MobileToolkit.Http.Tests", "tests\AP.MobileToolkit.Http.Tests\AP.MobileToolkit.Http.Tests.csproj", "{BF428E02-E173-4E54-A520-6C8B0F07CD3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AP.CrossPlatform.Auth.Tests", "tests\AP.CrossPlatform.Auth.Tests\AP.CrossPlatform.Auth.Tests.csproj", "{1F57E4A6-05AE-4FCD-93D6-DEC35EC5A898}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AP.CrossPlatform.Auth.Tests", "tests\AP.CrossPlatform.Auth.Tests\AP.CrossPlatform.Auth.Tests.csproj", "{1F57E4A6-05AE-4FCD-93D6-DEC35EC5A898}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

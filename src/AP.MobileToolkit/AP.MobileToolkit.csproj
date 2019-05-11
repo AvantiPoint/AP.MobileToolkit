@@ -37,9 +37,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Prism.Forms" Version="7.2.0.1038-pre" />
-    <PackageReference Include="Prism.Plugin.Logging.Abstractions" Version="1.4.0.316-pre" />
-    <PackageReference Include="ReactiveUI" Version="9.13.1" />
+    <PackageReference Include="Prism.Forms" Version="7.2.0.1233-pre" />
+    <PackageReference Include="Prism.Plugin.Logging.Abstractions" Version="1.4.0.342-pre" />
+    <PackageReference Include="ReactiveUI" Version="9.14.1" />
     <PackageReference Include="NCrontab" Version="3.3.1" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.4.0" />
     <PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.1.0" />
@@ -54,7 +54,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <_ResxFiles Remove="Resources\ToolkitResources.resx" />
     <Compile Update="Resources\ToolkitResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -64,27 +63,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ToolkitResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Controls\BadgeView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Update="Controls\DatePickerCell.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Update="Controls\MaterialDatePicker.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Update="Controls\MaterialEntry.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Update="Controls\MaterialPicker.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Update="Controls\MaterialTimePicker.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
   </ItemGroup>
 
 </Project>

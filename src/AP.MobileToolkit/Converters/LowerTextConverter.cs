@@ -6,14 +6,6 @@ namespace AP.MobileToolkit.Converters
 {
     public class LowerTextConverter : IValueConverter
     {
-        /// <summary>
-        /// Init this instance.
-        /// </summary>
-        public static void Init()
-        {
-            var time = DateTime.UtcNow;
-        }
-
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value == null)

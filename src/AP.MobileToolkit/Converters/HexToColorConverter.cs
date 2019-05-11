@@ -10,14 +10,6 @@ namespace AP.MobileToolkit.Converters
     /// </summary>
     public class HexToColorConverter : IValueConverter
     {
-        /// <summary>
-        /// Init this instance.
-        /// </summary>
-        public static void Init()
-        {
-            var time = DateTime.UtcNow;
-        }
-
         static readonly Color defaultColor = Color.FromHex("#3498db");
 
         /// <param name="value">To be added.</param>

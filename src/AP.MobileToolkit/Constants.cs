@@ -1,5 +1,4 @@
-﻿using System;
-namespace AP.MobileToolkit
+﻿namespace AP.MobileToolkit
 {
     internal static class Constants
     {
