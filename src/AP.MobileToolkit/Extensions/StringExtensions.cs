@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Text;
 using System.Text.RegularExpressions;
+using Humanizer;
 
 namespace AP.MobileToolkit.Extensions
 {
@@ -10,20 +10,7 @@ namespace AP.MobileToolkit.Extensions
         {
             var name = Regex.Replace(type.Name, "(PageViewModel|ViewModel)$", "");
 
-            if (type.Name == name) return name;
-
-            var builder = new StringBuilder();
-            foreach(char c in name)
-            {
-                if(char.IsUpper(c) && builder.Length > 0)
-                {
-                    builder.Append(" ");
-                }
-
-                builder.Append(c);
-            }
-
-            return builder.ToString();
+            return name.Humanize(LetterCasing.Title);
         }
     }
 }
