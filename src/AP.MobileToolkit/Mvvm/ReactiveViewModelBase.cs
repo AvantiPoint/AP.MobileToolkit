@@ -105,7 +105,7 @@ namespace AP.MobileToolkit.Mvvm
         {
             await _pageDialogService.DisplayAlertAsync(
                             ToolkitResources.Error, 
-                            string.Format(ToolkitResources.AlertErrorMessageTemplate, ex.GetType().Name, correlationId), 
+                            string.Format(ToolkitResources.AlertErrorMessageTemplate, ex.ToErrorMessage(), correlationId), 
                             ToolkitResources.Ok);
         }
 

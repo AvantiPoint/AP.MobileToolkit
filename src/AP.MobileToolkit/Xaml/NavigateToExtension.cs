@@ -19,13 +19,12 @@ namespace AP.MobileToolkit.Xaml
             if(result.Exception != null)
             {
                 var correlationId = Guid.NewGuid().ToString();
-                var errorParameters = parameters.ToErrorParameters(Name);
-                errorParameters.Add("CorrelationId", correlationId);
+                var errorParameters = parameters.ToErrorParameters(Name, ("CorrelationId", correlationId));
                 GetService<ILogger>().Report(result.Exception, errorParameters);
 
                 await GetService<IPageDialogService>().DisplayAlertAsync(
                     ToolkitResources.Error,
-                    string.Format(ToolkitResources.AlertErrorMessageTemplate, result.Exception.GetType().Name, correlationId),
+                    string.Format(ToolkitResources.AlertErrorMessageTemplate, result.Exception.ToErrorMessage(), correlationId),
                     ToolkitResources.Ok);
             }
         }
