@@ -9,12 +9,11 @@ using ReactiveUI;
 using System;
 using System.Reactive;
 using System.Reactive.Linq;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace AP.MobileToolkit.Mvvm
 {
-    public abstract class ReactiveViewModelBase : ReactiveObject, IActiveAware, INavigationAware, IDestructible, IConfirmNavigation, IConfirmNavigationAsync, IApplicationLifecycleAware, IPageLifecycleAware
+    public abstract class ReactiveViewModelBase : ReactiveObject, IActiveAware, IInitialize, IInitializeAsync, INavigatedAware, IDestructible, IConfirmNavigation, IConfirmNavigationAsync, IApplicationLifecycleAware, IPageLifecycleAware
     {
         protected INavigationService _navigationService { get; }
         protected IPageDialogService _pageDialogService { get; }
@@ -143,21 +142,29 @@ namespace AP.MobileToolkit.Mvvm
 
         #endregion IActiveAware
 
-        #region INavigationAware
+        #region IInitialize
 
-        protected virtual void OnNavigatingTo(INavigationParameters parameters) { }
+        protected virtual void Initialize(INavigationParameters parameters) { }
+
+        protected virtual Task InitializeAsync(INavigationParameters parameters) => Task.CompletedTask;
+
+        void IInitialize.Initialize(INavigationParameters parameters) => Initialize(parameters);
+
+        Task IInitializeAsync.InitializeAsync(INavigationParameters parameters) => InitializeAsync(parameters);
+
+        #endregion IInitialize
+
+        #region INavigatedAware
 
         protected virtual void OnNavigatedTo(INavigationParameters parameters) { }
 
         protected virtual void OnNavigatedFrom(INavigationParameters parameters) { }
 
-        void INavigatingAware.OnNavigatingTo(INavigationParameters parameters) => OnNavigatingTo(parameters);
-
         void INavigatedAware.OnNavigatedTo(INavigationParameters parameters) => OnNavigatedTo(parameters);
 
         void INavigatedAware.OnNavigatedFrom(INavigationParameters parameters) => OnNavigatedFrom(parameters);
 
-        #endregion INavigationAware
+        #endregion INavigatedAware
 
         #region IDestructible
 

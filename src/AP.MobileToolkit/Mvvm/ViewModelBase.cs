@@ -13,9 +13,9 @@ using Prism.Services;
 
 namespace AP.MobileToolkit.Mvvm
 {
-    public abstract class ViewModelBase : ObservableObject, IActiveAware, INavigationAware, IDestructible, IConfirmNavigation, IConfirmNavigationAsync, IApplicationLifecycleAware, IPageLifecycleAware
+    public abstract class ViewModelBase : ObservableObject, IActiveAware, IInitialize, IInitializeAsync, INavigatedAware, IDestructible, IConfirmNavigation, IConfirmNavigationAsync, IApplicationLifecycleAware, IPageLifecycleAware
     {
-        protected INavigationService NavigationService { get; }
+        protected INavigationService NavigationService { get; private set; }
         protected IPageDialogService PageDialogService { get; }
         protected ILogger Logger { get; }
 
@@ -81,7 +81,7 @@ namespace AP.MobileToolkit.Mvvm
 
         private void OnIsNotBusyChanged() => IsBusy = !IsNotBusy;
 
-        public DelegateCommand<string> NavigateCommand { get; }
+        public DelegateCommand<string> NavigateCommand { get; private set; }
 
         protected virtual async void OnNavigateCommandExecuted(string uri)
         {
@@ -160,21 +160,40 @@ namespace AP.MobileToolkit.Mvvm
 
         #endregion IActiveAware
 
-        #region INavigationAware
+        #region IInitialize
 
-        public virtual void OnNavigatingTo(INavigationParameters parameters) { }
+        protected virtual void Initialize(INavigationParameters parameters) { }
 
-        public virtual void OnNavigatedTo(INavigationParameters parameters) { }
+        protected virtual Task InitializeAsync(INavigationParameters parameters) => Task.CompletedTask;
 
-        public virtual void OnNavigatedFrom(INavigationParameters parameters) { }
+        void IInitialize.Initialize(INavigationParameters parameters) => Initialize(parameters);
 
-        #endregion INavigationAware
+        Task IInitializeAsync.InitializeAsync(INavigationParameters parameters) => InitializeAsync(parameters);
+
+        #endregion IInitialize
+
+        #region INavigatedAware
+
+        protected virtual void OnNavigatedTo(INavigationParameters parameters) { }
+
+        protected virtual void OnNavigatedFrom(INavigationParameters parameters) { }
+
+        void INavigatedAware.OnNavigatedTo(INavigationParameters parameters) => OnNavigatedTo(parameters);
+
+        void INavigatedAware.OnNavigatedFrom(INavigationParameters parameters) => OnNavigatedFrom(parameters);
+
+        #endregion INavigatedAware
 
         #region IDestructible
 
         protected virtual void Destroy() { }
 
-        void IDestructible.Destroy() => Destroy();
+        void IDestructible.Destroy()
+        {
+            Destroy();
+            NavigateCommand = null;
+            NavigationService = null;
+        }
 
         #endregion IDestructible
 
