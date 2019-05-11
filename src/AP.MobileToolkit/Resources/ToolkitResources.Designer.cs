@@ -70,7 +70,16 @@ namespace AP.MobileToolkit.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An unexpected &apos;{0}&apos; occurred. Correlation Id: {1}.
+        ///   Looks up a localized string similar to Address.
+        /// </summary>
+        public static string Address {
+            get {
+                return ResourceManager.GetString("Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unexpected error &apos;{0}&apos; occurred. Correlation Id: {1}.
         /// </summary>
         public static string AlertErrorMessageTemplate {
             get {
@@ -97,11 +106,20 @@ namespace AP.MobileToolkit.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A duplicated module with name {0} has been found in the catalog..
+        ///   Looks up a localized string similar to City.
         /// </summary>
-        public static string DuplicateModuleErrorMessage {
+        public static string City {
             get {
-                return ResourceManager.GetString("DuplicateModuleErrorMessage", resourceCulture);
+                return ResourceManager.GetString("City", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
             }
         }
         
@@ -111,6 +129,24 @@ namespace AP.MobileToolkit.Resources {
         public static string Error {
             get {
                 return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First Name.
+        /// </summary>
+        public static string FirstName {
+            get {
+                return ResourceManager.GetString("FirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Name.
+        /// </summary>
+        public static string LastName {
+            get {
+                return ResourceManager.GetString("LastName", resourceCulture);
             }
         }
         
@@ -138,6 +174,33 @@ namespace AP.MobileToolkit.Resources {
         public static string Ok {
             get {
                 return ResourceManager.GetString("Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to State.
+        /// </summary>
+        public static string State {
+            get {
+                return ResourceManager.GetString("State", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Success.
+        /// </summary>
+        public static string Success {
+            get {
+                return ResourceManager.GetString("Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zip.
+        /// </summary>
+        public static string Zip {
+            get {
+                return ResourceManager.GetString("Zip", resourceCulture);
             }
         }
     }

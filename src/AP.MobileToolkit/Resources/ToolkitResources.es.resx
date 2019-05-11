@@ -118,52 +118,51 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add" xml:space="preserve">
-    <value>Add</value>
-  </data>
-  <data name="Address" xml:space="preserve">
-    <value>Address</value>
-  </data>
-  <data name="AlertErrorMessageTemplate" xml:space="preserve">
-    <value>An unexpected error '{0}' occurred. Correlation Id: {1}</value>
+    <value>Añadir</value>
   </data>
   <data name="Back" xml:space="preserve">
-    <value>Back</value>
+    <value>Regresa</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="City" xml:space="preserve">
-    <value>City</value>
-  </data>
-  <data name="Email" xml:space="preserve">
-    <value>Email</value>
+    <value>Cancelar</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>
-  <data name="FirstName" xml:space="preserve">
-    <value>First Name</value>
-  </data>
-  <data name="LastName" xml:space="preserve">
-    <value>Last Name</value>
-  </data>
   <data name="Login" xml:space="preserve">
-    <value>Login</value>
+    <value>Iniciar Sesión</value>
   </data>
   <data name="Next" xml:space="preserve">
-    <value>Next</value>
+    <value>Siguiente</value>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>Ok</value>
-    <comment>Used for Acknowledgement and for dismissal buttons like for an Alert Dialog.</comment>
+    <value>De Acuerdo</value>
+  </data>
+  <data name="AlertErrorMessageTemplate" xml:space="preserve">
+    <value>Se produjo un error inesperado '{0}'. ID de correlación: {1}</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Ciudad</value>
   </data>
   <data name="State" xml:space="preserve">
-    <value>State</value>
+    <value>Estatal</value>
   </data>
   <data name="Success" xml:space="preserve">
-    <value>Success</value>
+    <value>Triunfo</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Nombre de Pila</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Dirección</value>
   </data>
   <data name="Zip" xml:space="preserve">
-    <value>Zip</value>
+    <value>Código Postal</value>
   </data>
 </root>
