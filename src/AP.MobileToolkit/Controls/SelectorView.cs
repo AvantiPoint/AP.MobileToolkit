@@ -1,11 +1,9 @@
-﻿using AP.CrossPlatform;
-using AP.CrossPlatform.Collections;
-using System;
-using System.Collections;
-using System.Collections.Specialized;
+﻿using System.Collections;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using AP.CrossPlatform;
+using AP.CrossPlatform.Collections;
 using Xamarin.Forms;
 
 namespace AP.MobileToolkit.Controls
@@ -34,21 +32,21 @@ namespace AP.MobileToolkit.Controls
 
         private void OnItemTapped(object item)
         {
-            if(item is ISelectable selectable)
+            if (item is ISelectable selectable)
             {
                 var index = Children.IndexOf(Children.FirstOrDefault(v => v.BindingContext == item));
                 selectable.IsSelected = !selectable.IsSelected;
                 Children[index] = ViewFor(selectable);
 
-                if(selectable.IsSelected)
+                if (selectable.IsSelected)
                 {
-                    if(AllowMultiple)
+                    if (AllowMultiple)
                     {
                         SelectedItems.Add(selectable);
                     }
                     else
                     {
-                        if(SelectedItem is ISelectable currentlySelected)
+                        if (SelectedItem is ISelectable currentlySelected)
                         {
                             currentlySelected.IsSelected = false;
                             var currentlySelectedIndex = Children.IndexOf(Children.FirstOrDefault(v => v.BindingContext == currentlySelected));
@@ -59,7 +57,7 @@ namespace AP.MobileToolkit.Controls
                 }
                 else
                 {
-                    if(AllowMultiple)
+                    if (AllowMultiple)
                     {
                         SelectedItems.Remove(item);
                     }
@@ -93,12 +91,12 @@ namespace AP.MobileToolkit.Controls
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
-            switch(propertyName)
+            switch (propertyName)
             {
                 case nameof(ItemsSource):
-                    if(ItemsSource.Cast<object>().Any(i => i is ISelectable selectable))
+                    if (ItemsSource.Cast<object>().Any(i => i is ISelectable selectable))
                     {
-                        if(AllowMultiple)
+                        if (AllowMultiple)
                         {
                             HandleAllowMultiple();
                         }
@@ -113,7 +111,7 @@ namespace AP.MobileToolkit.Controls
 
         private void HandleAllowMultiple()
         {
-            if(SelectedItems == null)
+            if (SelectedItems == null)
             {
                 SelectedItems = new ObservableRangeCollection();
             }
@@ -138,7 +136,7 @@ namespace AP.MobileToolkit.Controls
         {
             var selected = ItemsSource.Cast<object>().Where(i => i is ISelectable selectable && selectable.IsSelected).Cast<ISelectable>();
 
-            foreach(var item in selected)
+            foreach (var item in selected)
             {
                 if (SelectedItem == null)
                     SelectedItem = item;

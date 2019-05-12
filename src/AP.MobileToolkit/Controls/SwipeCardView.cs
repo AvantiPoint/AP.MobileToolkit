@@ -44,7 +44,7 @@ namespace AP.MobileToolkit.Controls
             BindableProperty.Create(
                 nameof(SwipedCommandParameter),
                 typeof(object),
-                    typeof(SwipeCardView));
+                typeof(SwipeCardView));
 
         public static readonly BindableProperty DraggingCommandProperty =
             BindableProperty.Create(
@@ -118,7 +118,6 @@ namespace AP.MobileToolkit.Controls
         private const uint InvokeSwipeDefaultTouchDifference = 10;
         private const uint InvokeSwipeDefaultTouchDelay = 1;
         private const uint InvokeSwipeDefaultEndDelay = 200;
-
 
         private readonly View[] _cards = new View[NumCards];
 
@@ -386,7 +385,8 @@ namespace AP.MobileToolkit.Controls
             if (topCard.IsVisible)
             {
                 // Move the card
-                if (differenceX > 0 && SupportedDraggingDirections.IsRight() || differenceX < 0 && SupportedDraggingDirections.IsLeft())
+                if ((differenceX > 0 && SupportedDraggingDirections.IsRight())
+                    || (differenceX < 0 && SupportedDraggingDirections.IsLeft()))
                 {
                     topCard.TranslationX = differenceX;
 
@@ -395,7 +395,8 @@ namespace AP.MobileToolkit.Controls
                     topCard.Rotation = rotationAngle;
                 }
 
-                if (differenceY > 0 && SupportedDraggingDirections.IsDown() || differenceY < 0 && SupportedDraggingDirections.IsUp())
+                if ((differenceY > 0 && SupportedDraggingDirections.IsDown())
+                    || (differenceY < 0 && SupportedDraggingDirections.IsUp()))
                 {
                     topCard.TranslationY = differenceY;
                 }
@@ -461,11 +462,11 @@ namespace AP.MobileToolkit.Controls
                 // Move the top card off the screen
                 if (direction.IsLeft() || direction.IsRight())
                 {
-                    await topCard.TranslateTo(_cardDistanceX > 0 ? Width : - Width, 0, AnimationLength / 2, Easing.SpringOut);
+                    await topCard.TranslateTo(_cardDistanceX > 0 ? Width : -Width, 0, AnimationLength / 2, Easing.SpringOut);
                 }
                 else
                 {
-                    await topCard.TranslateTo(0, _cardDistanceY > 0 ? Height : - Height, AnimationLength / 2, Easing.SpringOut);
+                    await topCard.TranslateTo(0, _cardDistanceY > 0 ? Height : -Height, AnimationLength / 2, Easing.SpringOut);
                 }
 
                 topCard.IsVisible = false;
@@ -477,9 +478,10 @@ namespace AP.MobileToolkit.Controls
             else
             {
                 // Move the top card back to the center
-                // Not awaiting on purpose to allow TranslateTo, RotateTo and ScaleTo to happen simultaneously 
-                topCard.TranslateTo((-topCard.X), -topCard.Y, AnimationLength, Easing.SpringOut);
-                 topCard.RotateTo(0, AnimationLength, Easing.SpringOut);
+                // Not awaiting on purpose to allow TranslateTo, RotateTo and ScaleTo to happen simultaneously
+                Task.WaitAll(
+                    topCard.TranslateTo(-topCard.X, -topCard.Y, AnimationLength, Easing.SpringOut),
+                    topCard.RotateTo(0, AnimationLength, Easing.SpringOut));
 
                 // Scale the back card down
                 var prevCard = _cards[PrevCardIndex(_topCardIndex)];
@@ -502,7 +504,7 @@ namespace AP.MobileToolkit.Controls
             var topCard = _cards[_topCardIndex];
             _topCardIndex = NextCardIndex(_topCardIndex);
 
-            // If there are more cards to show, show the next card in to place of 
+            // If there are more cards to show, show the next card in to place of
             // the card that was swiped off the screen
             if (_itemIndex < ItemsSource.Count)
             {
@@ -576,8 +578,11 @@ namespace AP.MobileToolkit.Controls
         /// <param name="swipeCardDirection">Direction of the movement. Currently supported Left and Right.</param>
         public async Task InvokeSwipe(SwipeCardDirection swipeCardDirection)
         {
-            await InvokeSwipe(swipeCardDirection, InvokeSwipeDefaultNumberOfTouches,
-                InvokeSwipeDefaultTouchDifference, TimeSpan.FromMilliseconds(InvokeSwipeDefaultTouchDelay),
+            await InvokeSwipe(
+                swipeCardDirection,
+                InvokeSwipeDefaultNumberOfTouches,
+                InvokeSwipeDefaultTouchDifference,
+                TimeSpan.FromMilliseconds(InvokeSwipeDefaultTouchDelay),
                 TimeSpan.FromMilliseconds(InvokeSwipeDefaultEndDelay));
         }
 
@@ -637,14 +642,17 @@ namespace AP.MobileToolkit.Controls
         {
             return (self & SwipeCardDirection.Left) == SwipeCardDirection.Left;
         }
+
         public static bool IsRight(this SwipeCardDirection self)
         {
             return (self & SwipeCardDirection.Right) == SwipeCardDirection.Right;
         }
+
         public static bool IsUp(this SwipeCardDirection self)
         {
             return (self & SwipeCardDirection.Up) == SwipeCardDirection.Up;
         }
+
         public static bool IsDown(this SwipeCardDirection self)
         {
             return (self & SwipeCardDirection.Down) == SwipeCardDirection.Down;

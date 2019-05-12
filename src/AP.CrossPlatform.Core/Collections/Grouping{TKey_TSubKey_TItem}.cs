@@ -24,11 +24,11 @@ namespace AP.CrossPlatform.Collections
         /// <param name="key">Key.</param>
         /// <param name="subkey">Subkey</param>
         /// <param name="items">Items.</param>
-        public Grouping( TKey key, TSubKey subkey, IEnumerable<TItem> items )
+        public Grouping(TKey key, TSubKey subkey, IEnumerable<TItem> items)
         {
             Key = key;
             SubKey = subkey;
-            AddRange( items );
+            AddRange(items);
         }
     }
 }

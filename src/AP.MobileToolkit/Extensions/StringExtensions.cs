@@ -8,7 +8,7 @@ namespace AP.MobileToolkit.Extensions
     {
         public static string SanitizeViewModelTypeName(this Type type)
         {
-            var name = Regex.Replace(type.Name, "(PageViewModel|ViewModel)$", "");
+            var name = Regex.Replace(type.Name, "(PageViewModel|ViewModel)$", string.Empty);
 
             return name.Humanize(LetterCasing.Title);
         }

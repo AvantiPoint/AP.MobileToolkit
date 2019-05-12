@@ -1,4 +1,5 @@
 using System;
+
 namespace AP.CrossPlatform
 {
     /// <summary>
@@ -11,7 +12,7 @@ namespace AP.CrossPlatform
         /// Initializes a new instance of the <see cref="EventArgs"/> class.
         /// </summary>
         /// <param name="value">Value of the argument</param>
-        public EventArgs( T value )
+        public EventArgs(T value)
         {
             Value = value;
         }

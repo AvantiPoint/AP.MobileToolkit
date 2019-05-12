@@ -20,16 +20,21 @@ namespace AP.CrossPlatform.Http
         /// <param name="queryObject">Query object.</param>
         public static string AddQueryStringParameters(this string uri, object queryObject)
         {
-            if (queryObject == null) return uri;
+            if (queryObject == null)
+            {
+                return uri;
+            }
 
-            Regex.Replace(uri, @"\/$", "");
+            Regex.Replace(uri, @"\/$", string.Empty);
 
+#pragma warning disable SA1515 // Justification Commenting complex Linq Query
             var prop = queryObject.GetType().GetRuntimeProperties()
                        // Only check Properties with the JsonPropertyAttribute
                        .Where(p => p.GetCustomAttributes().Any(attr => attr.GetType() == typeof(JsonPropertyAttribute)))
                        // Only get Properties that aren't Null. And IF they are a string make sure it isn't an empty string or white space.
                        .Where(p => p.GetValue(queryObject, null) != null || (p.GetType() == typeof(string) && !string.IsNullOrWhiteSpace(p.GetValue(queryObject, null).ToString())))
                        .Select(p => $"{p.GetCustomAttribute<JsonPropertyAttribute>().PropertyName}={UrlEncode(p.GetValue(queryObject, null).ToString())}");
+#pragma warning disable SA1515
 
             return $"{uri}/?{string.Join("&", prop)}";
         }

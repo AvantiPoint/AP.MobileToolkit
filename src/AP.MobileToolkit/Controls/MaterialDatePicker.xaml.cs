@@ -9,76 +9,85 @@ namespace AP.MobileToolkit.Controls
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MaterialDatePicker
     {
-        public static BindableProperty CustomDateFormatProperty = BindableProperty.Create(nameof(CustomDateFormat), typeof(string), typeof(MaterialDatePicker), defaultBindingMode: BindingMode.TwoWay);
-        public string CustomDateFormat
-        {
-            get => (string)GetValue(CustomDateFormatProperty);
-            set => SetValue(CustomDateFormatProperty, value);
-        }
-        private const string _defaultDateFormat = "dddd, MMMM d, yyyy";
+        public static readonly BindableProperty CustomDateFormatProperty =
+            BindableProperty.Create(nameof(CustomDateFormat), typeof(string), typeof(MaterialDatePicker), defaultBindingMode: BindingMode.TwoWay);
 
-        public static BindableProperty DateProperty = BindableProperty.Create(nameof(Date), typeof(DateTime?), typeof(MaterialDatePicker), defaultBindingMode: BindingMode.TwoWay, propertyChanged: (b, o, n) => {
-            var matDatePicker = (MaterialDatePicker)b;
-            matDatePicker.Picker.Date = (DateTime)n;
-        });
+        public static readonly BindableProperty DateProperty =
+            BindableProperty.Create(nameof(Date), typeof(DateTime?), typeof(MaterialDatePicker), defaultBindingMode: BindingMode.TwoWay, propertyChanged: (b, o, n) =>
+            {
+                var matDatePicker = (MaterialDatePicker)b;
+                matDatePicker.Picker.Date = (DateTime)n;
+            });
 
-        public static BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialDatePicker), defaultBindingMode: BindingMode.TwoWay);
+        public static readonly BindableProperty TextProperty =
+            BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialDatePicker), defaultBindingMode: BindingMode.TwoWay);
 
-        public static BindableProperty PlaceholderProperty = BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(MaterialDatePicker), defaultBindingMode: BindingMode.TwoWay, propertyChanged: (bindable, oldVal, newval) =>
-        {
-            var matDatePicker = (MaterialDatePicker)bindable;
-            matDatePicker.EntryField.Placeholder = (string)newval;
-            matDatePicker.HiddenLabel.Text = (string)newval;
-        });
+        public static readonly BindableProperty PlaceholderProperty =
+            BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(MaterialDatePicker), defaultBindingMode: BindingMode.TwoWay, propertyChanged: (bindable, oldVal, newval) =>
+            {
+                var matDatePicker = (MaterialDatePicker)bindable;
+                matDatePicker.EntryField.Placeholder = (string)newval;
+                matDatePicker.HiddenLabel.Text = (string)newval;
+            });
 
-        public static BindableProperty IsPasswordProperty = 
+        public static readonly BindableProperty IsPasswordProperty =
             BindableProperty.Create(nameof(IsPassword), typeof(bool), typeof(MaterialDatePicker), defaultValue: false, propertyChanged: (bindable, oldVal, newVal) =>
             {
                 var matEntry = (MaterialDatePicker)bindable;
                 matEntry.EntryField.IsPassword = (bool)newVal;
             });
 
-        public static BindableProperty KeyboardProperty = 
+        public static readonly BindableProperty KeyboardProperty =
             BindableProperty.Create(nameof(Keyboard), typeof(Keyboard), typeof(MaterialDatePicker), defaultValue: Keyboard.Default, propertyChanged: (bindable, oldVal, newVal) =>
             {
                 var matEntry = (MaterialDatePicker)bindable;
                 matEntry.EntryField.Keyboard = (Keyboard)newVal;
             });
 
-        public static BindableProperty AccentColorProperty = 
+        public static readonly BindableProperty AccentColorProperty =
             BindableProperty.Create(nameof(AccentColor), typeof(Color), typeof(MaterialDatePicker), defaultValue: Color.Accent);
 
-        public static BindableProperty InvalidColorProperty = 
+        public static readonly BindableProperty InvalidColorProperty =
             BindableProperty.Create(nameof(InvalidColor), typeof(Color), typeof(MaterialEntry), Color.Red, propertyChanged: (bindable, oldVal, newVal) =>
             {
                 var matEntry = (MaterialDatePicker)bindable;
                 matEntry.UpdateValidation();
             });
 
-        public static BindableProperty DefaultColorProperty = 
+        public static readonly BindableProperty DefaultColorProperty =
             BindableProperty.Create(nameof(DefaultColor), typeof(Color), typeof(MaterialEntry), Color.Gray, propertyChanged: (bindable, oldVal, newVal) =>
             {
                 var matEntry = (MaterialDatePicker)bindable;
                 matEntry.UpdateValidation();
             });
 
-        public static BindableProperty IsValidProperty = 
+        public static readonly BindableProperty IsValidProperty =
             BindableProperty.Create(nameof(IsValid), typeof(bool), typeof(MaterialEntry), true, propertyChanged: (bindable, oldVal, newVal) =>
             {
                 var matEntry = (MaterialDatePicker)bindable;
                 matEntry.UpdateValidation();
             });
 
+        private const string _defaultDateFormat = "dddd, MMMM d, yyyy";
+
+        public string CustomDateFormat
+        {
+            get => (string)GetValue(CustomDateFormatProperty);
+            set => SetValue(CustomDateFormatProperty, value);
+        }
+
         public bool IsValid
         {
             get => (bool)GetValue(IsValidProperty);
             set => SetValue(IsValidProperty, value);
         }
+
         public Color DefaultColor
         {
             get => (Color)GetValue(DefaultColorProperty);
             set => SetValue(DefaultColorProperty, value);
         }
+
         public Color InvalidColor
         {
             get => (Color)GetValue(InvalidColorProperty);
@@ -90,11 +99,13 @@ namespace AP.MobileToolkit.Controls
             get => (DateTime?)GetValue(DateProperty);
             set => SetValue(DateProperty, value);
         }
+
         public Color AccentColor
         {
             get => (Color)GetValue(AccentColorProperty);
             set => SetValue(AccentColorProperty, value);
         }
+
         public Keyboard Keyboard
         {
             get => (Keyboard)GetValue(KeyboardProperty);
@@ -132,6 +143,7 @@ namespace AP.MobileToolkit.Controls
                     Picker.Focus();
                 });
             };
+
             Picker.Focused += async (s, a) =>
             {
                 HiddenBottomBorder.BackgroundColor = AccentColor;
@@ -141,10 +153,10 @@ namespace AP.MobileToolkit.Controls
                 {
                     // animate both at the same time
                     await Task.WhenAll(
-                    HiddenBottomBorder.LayoutTo(new Rectangle(BottomBorder.X, BottomBorder.Y, BottomBorder.Width, BottomBorder.Height), 200),
-                    HiddenLabel.FadeTo(1, 60),
-                    HiddenLabel.TranslateTo(HiddenLabel.TranslationX, EntryField.Y - EntryField.Height + 4, 200, Easing.BounceIn)
-                 );
+                        HiddenBottomBorder.LayoutTo(new Rectangle(BottomBorder.X, BottomBorder.Y, BottomBorder.Width, BottomBorder.Height), 200),
+                        HiddenLabel.FadeTo(1, 60),
+                        HiddenLabel.TranslateTo(HiddenLabel.TranslationX, EntryField.Y - EntryField.Height + 4, 200, Easing.BounceIn));
+
                     EntryField.Placeholder = null;
                 }
                 else
@@ -152,6 +164,7 @@ namespace AP.MobileToolkit.Controls
                     await HiddenBottomBorder.LayoutTo(new Rectangle(BottomBorder.X, BottomBorder.Y, BottomBorder.Width, BottomBorder.Height), 200);
                 }
             };
+
             Picker.Unfocused += async (s, a) =>
             {
                 if (IsValid)
@@ -161,10 +174,10 @@ namespace AP.MobileToolkit.Controls
                 {
                     // animate both at the same time
                     await Task.WhenAll(
-                    HiddenBottomBorder.LayoutTo(new Rectangle(BottomBorder.X, BottomBorder.Y, 0, BottomBorder.Height), 200),
-                    HiddenLabel.FadeTo(0, 180),
-                    HiddenLabel.TranslateTo(HiddenLabel.TranslationX, EntryField.Y, 200, Easing.BounceIn)
-                 );
+                        HiddenBottomBorder.LayoutTo(new Rectangle(BottomBorder.X, BottomBorder.Y, 0, BottomBorder.Height), 200),
+                        HiddenLabel.FadeTo(0, 180),
+                        HiddenLabel.TranslateTo(HiddenLabel.TranslationX, EntryField.Y, 200, Easing.BounceIn));
+
                     EntryField.Placeholder = Placeholder;
                 }
                 else
@@ -183,7 +196,6 @@ namespace AP.MobileToolkit.Controls
             EntryField.Text = e.NewDate.ToString(CustomDateFormat, CultureInfo.CurrentCulture);
             Date = e.NewDate;
         }
-
 
         /// <summary>
         /// Updates view based on validation state

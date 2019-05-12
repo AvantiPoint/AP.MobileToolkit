@@ -10,7 +10,7 @@ namespace AP.MobileToolkit.Modularity
 
         public ModuleRoleAttribute(params string[] roles) => Roles = roles;
 
-        public bool SupportsRole(string role) => 
+        public bool SupportsRole(string role) =>
             Roles.Any(r => r.Equals(role, StringComparison.InvariantCultureIgnoreCase));
     }
 }

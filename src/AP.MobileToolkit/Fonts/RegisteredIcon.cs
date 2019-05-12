@@ -28,7 +28,7 @@ namespace AP.MobileToolkit.Fonts
 
         private static string SanitizeName(string name)
         {
-            string output = "";
+            string output = string.Empty;
             for (var i = 0; i < name.Length; i++)
             {
                 var c = name[i];

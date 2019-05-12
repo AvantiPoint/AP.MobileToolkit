@@ -20,12 +20,10 @@ namespace AP.MobileToolkit.Controls
         protected override void OnChildAdded(Element child)
         {
             base.OnChildAdded(child);
-
         }
 
         private void SetContent()
         {
-
         }
     }
 

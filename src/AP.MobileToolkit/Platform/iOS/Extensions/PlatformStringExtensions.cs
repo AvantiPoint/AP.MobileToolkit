@@ -3,7 +3,9 @@ using CoreGraphics;
 using Foundation;
 using UIKit;
 
+#pragma warning disable SA1300
 namespace AP.MobileToolkit.Platform.iOS.Extensions
+#pragma warning restore SA1300
 {
     /// <summary>
     /// Class StringExtensions.
@@ -17,9 +19,9 @@ namespace AP.MobileToolkit.Platform.iOS.Extensions
         /// <param name="font">The font.</param>
         /// <param name="width">The width.</param>
         /// <returns>nfloat.</returns>
-        public static nfloat StringHeight( this string text, UIFont font, nfloat width )
+        public static nfloat StringHeight(this string text, UIFont font, nfloat width)
         {
-            return text.StringRect( font, width ).Height;
+            return text.StringRect(font, width).Height;
         }
 
         /// <summary>
@@ -27,9 +29,9 @@ namespace AP.MobileToolkit.Platform.iOS.Extensions
         /// </summary>
         /// <param name="text">The text.</param>
         /// <returns>NSString.</returns>
-        public static NSString ToNativeString( this string text )
+        public static NSString ToNativeString(this string text)
         {
-            return new NSString( text );
+            return new NSString(text);
         }
 
         /// <summary>
@@ -39,13 +41,13 @@ namespace AP.MobileToolkit.Platform.iOS.Extensions
         /// <param name="font">The font.</param>
         /// <param name="width">The width.</param>
         /// <returns>CGRect.</returns>
-        public static CGRect StringRect( this string text, UIFont font, nfloat width )
+        public static CGRect StringRect(this string text, UIFont font, nfloat width)
         {
             return text.ToNativeString().GetBoundingRect(
-                new CGSize( width, nfloat.MaxValue ),
-                NSStringDrawingOptions.OneShot,//.UsesFontLeading | NSStringDrawingOptions.UsesLineFragmentOrigin,
+                new CGSize(width, nfloat.MaxValue),
+                NSStringDrawingOptions.OneShot, // .UsesFontLeading | NSStringDrawingOptions.UsesLineFragmentOrigin,
                 new UIStringAttributes { Font = font },
-                null );
+                null);
         }
 
         /// <summary>
@@ -54,10 +56,9 @@ namespace AP.MobileToolkit.Platform.iOS.Extensions
         /// <param name="text">The text.</param>
         /// <param name="font">The font.</param>
         /// <returns>CGSize.</returns>
-        public static CGSize StringSize( this string text, UIFont font )
+        public static CGSize StringSize(this string text, UIFont font)
         {
-            return text.ToNativeString().GetSizeUsingAttributes( new UIStringAttributes { Font = font } );
+            return text.ToNativeString().GetSizeUsingAttributes(new UIStringAttributes { Font = font });
         }
     }
-
 }

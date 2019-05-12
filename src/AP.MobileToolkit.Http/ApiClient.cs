@@ -10,9 +10,10 @@ namespace AP.MobileToolkit.Http
     public class ApiClient : ApiClientBase
     {
         protected IAppInfo AppInfo { get; }
+
         protected IDeviceInfo DeviceInfo { get; }
 
-        public ApiClient(IApiClientOptions options, IAuthenticationHandler authenticationHandler, ILogger logger, IAppInfo appInfo, IDeviceInfo deviceInfo) 
+        public ApiClient(IApiClientOptions options, IAuthenticationHandler authenticationHandler, ILogger logger, IAppInfo appInfo, IDeviceInfo deviceInfo)
             : base(options, authenticationHandler, logger)
         {
             AppInfo = appInfo;
@@ -36,7 +37,7 @@ namespace AP.MobileToolkit.Http
             Client.DefaultRequestHeaders.Add("X-DevicePlatform", $"{DeviceInfo.Platform}");
             Client.DefaultRequestHeaders.Add("X-DeviceIdiom", $"{DeviceInfo.Idiom}");
 
-            if(!string.IsNullOrWhiteSpace(InstallId))
+            if (!string.IsNullOrWhiteSpace(InstallId))
             {
                 Client.DefaultRequestHeaders.Add("X-ClientId", InstallId);
             }

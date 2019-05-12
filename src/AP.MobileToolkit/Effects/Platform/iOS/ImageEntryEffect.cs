@@ -12,14 +12,16 @@ using Xamarin.Forms.Platform.iOS;
 
 [assembly: ResolutionGroupName(Constants.ResolutionGroupName)]
 [assembly: ExportEffect(typeof(AP.MobileToolkit.Effects.Platform.iOS.ImageEntryEffect), nameof(AP.MobileToolkit.Effects.Platform.iOS.ImageEntryEffect))]
+#pragma warning disable SA1300
 namespace AP.MobileToolkit.Effects.Platform.iOS
+#pragma warning restore SA1300
 {
     internal class ImageEntryEffect : PlatformEffect<Effects.ImageEntryEffect, Entry, UITextField>
     {
         protected override async void OnAttached()
         {
             ImageSource source = null;
-            if(!string.IsNullOrWhiteSpace(Effect.Icon) && IconFontRegistry.Instance.TryFindIconForKey(Effect.Icon, out var _))
+            if (!string.IsNullOrWhiteSpace(Effect.Icon) && IconFontRegistry.Instance.TryFindIconForKey(Effect.Icon, out var _))
             {
                 source = new IconImageSource
                 {
@@ -28,7 +30,7 @@ namespace AP.MobileToolkit.Effects.Platform.iOS
                     Size = Effect.ImageWidth
                 };
             }
-            else if(Effect.ImageSource != null)
+            else if (Effect.ImageSource != null)
             {
                 source = Effect.ImageSource;
             }
@@ -39,7 +41,7 @@ namespace AP.MobileToolkit.Effects.Platform.iOS
 
             var handler = Xamarin.Forms.Internals.Registrar.Registered.GetHandlerForObject<IImageSourceHandler>(source);
 
-            if(handler != null)
+            if (handler != null)
                 SetImage(await handler.LoadImageAsync(source));
         }
 
@@ -54,9 +56,9 @@ namespace AP.MobileToolkit.Effects.Platform.iOS
 
         private void SetImage(UIImage image)
         {
-            var textField = this.Control;
+            var textField = Control;
 
-            switch(Effect.Alignment)
+            switch (Effect.Alignment)
             {
                 case ImageAlignment.Left:
                     textField.LeftViewMode = UITextFieldViewMode.Always;

@@ -23,7 +23,7 @@ namespace AP.MobileToolkit.Xaml
             return ImageSource.FromStream(() => assembly.GetManifestResourceStream(resourceName));
         }
 
-        internal string GetResourceName(Assembly assembly) => 
+        internal string GetResourceName(Assembly assembly) =>
             assembly.GetManifestResourceNames().FirstOrDefault(n => n.EndsWith(Name, StringComparison.OrdinalIgnoreCase));
     }
 }

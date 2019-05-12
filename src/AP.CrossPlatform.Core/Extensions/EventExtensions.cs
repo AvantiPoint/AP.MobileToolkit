@@ -14,9 +14,9 @@ namespace AP.CrossPlatform.Extensions
         /// <param name="sender">Sender object.</param>
         /// <param name="value">Argument value.</param>
         /// <typeparam name="T">The value type.</typeparam>
-        public static void Invoke<T>( this EventHandler<EventArgs<T>> handler, object sender, T value )
+        public static void Invoke<T>(this EventHandler<EventArgs<T>> handler, object sender, T value)
         {
-            handler?.Invoke( sender, new EventArgs<T>( value ) );
+            handler?.Invoke(sender, new EventArgs<T>(value));
         }
 
         /// <summary>
@@ -27,12 +27,16 @@ namespace AP.CrossPlatform.Extensions
         /// <param name="sender">The sender.</param>
         /// <param name="args">The arguments.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        public static bool TryInvoke<T>( this EventHandler<T> handler, object sender, T args ) where T : EventArgs
+        public static bool TryInvoke<T>(this EventHandler<T> handler, object sender, T args)
+            where T : EventArgs
         {
             var handle = handler;
-            if( handle == null ) return false;
+            if (handle == null)
+            {
+                return false;
+            }
 
-            handle( sender, args );
+            handle(sender, args);
             return true;
         }
     }

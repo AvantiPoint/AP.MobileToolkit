@@ -9,11 +9,9 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
 {
     public class BorderlessEditorRenderer : EditorRenderer
     {
-        public static void Init() { }
-
-        public BorderlessEditorRenderer(Context context) : base(context)
+        public BorderlessEditorRenderer(Context context)
+            : base(context)
         {
-
         }
 
         protected override void OnElementChanged(ElementChangedEventArgs<Editor> e)

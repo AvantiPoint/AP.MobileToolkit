@@ -15,7 +15,7 @@ namespace AP.MobileToolkit.Extensions
         /// <param name="bindable">Bindable.</param>
         /// <param name="property">Property.</param>
         /// <typeparam name="T">The 1st type parameter.</typeparam>
-        public static T GetValue<T>( this BindableObject bindable, BindableProperty property ) =>
-            ( T )bindable.GetValue( property );
+        public static T GetValue<T>(this BindableObject bindable, BindableProperty property) =>
+            (T)bindable.GetValue(property);
     }
 }

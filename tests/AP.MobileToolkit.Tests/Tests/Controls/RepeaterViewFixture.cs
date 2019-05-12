@@ -10,7 +10,7 @@ namespace AP.MobileToolkit.Tests.Tests.Controls
 {
     public class RepeaterViewFixture : TestBase
     {
-        public RepeaterViewFixture(ITestOutputHelper testOutputHelper) 
+        public RepeaterViewFixture(ITestOutputHelper testOutputHelper)
             : base(testOutputHelper)
         {
         }
@@ -56,7 +56,7 @@ namespace AP.MobileToolkit.Tests.Tests.Controls
                 ItemsSource = items
             };
 
-            for(var i = 0; i < items.Count(); i++)
+            for (var i = 0; i < items.Count(); i++)
             {
                 var child = repeaterView.Children[i];
                 var context = items[i];
@@ -86,7 +86,7 @@ namespace AP.MobileToolkit.Tests.Tests.Controls
                 Assert.NotNull(child);
                 Assert.NotNull(context);
 
-                if(context.IsSelected)
+                if (context.IsSelected)
                 {
                     Assert.IsType<IsSelectedViewMock>(child);
                 }

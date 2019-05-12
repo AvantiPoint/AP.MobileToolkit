@@ -67,14 +67,17 @@ namespace AP.MobileToolkit.Behaviors
 
         private void OnCompleted(object sender, EventArgs e)
         {
-            if(Model == null) return;
+            if (Model == null)
+            {
+                return;
+            }
 
-            if(CheckModelValiditity)
+            if (CheckModelValiditity)
             {
                 Model.CheckModelState();
             }
 
-            if(Model.IsValid && (Command?.CanExecute(CommandParameter) ?? false))
+            if (Model.IsValid && (Command?.CanExecute(CommandParameter) ?? false))
             {
                 AssociatedObject.Unfocus();
                 Command.Execute(CommandParameter);

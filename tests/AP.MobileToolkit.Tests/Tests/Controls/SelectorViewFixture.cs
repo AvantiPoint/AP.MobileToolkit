@@ -10,7 +10,7 @@ namespace AP.MobileToolkit.Tests.Tests.Controls
 {
     public class SelectorViewFixture : TestBase
     {
-        public SelectorViewFixture(ITestOutputHelper testOutputHelper) 
+        public SelectorViewFixture(ITestOutputHelper testOutputHelper)
             : base(testOutputHelper)
         {
         }
@@ -25,7 +25,7 @@ namespace AP.MobileToolkit.Tests.Tests.Controls
 
             foreach (var child in view.Children)
             {
-                _testOutputHelper.WriteLine($"Selectable Item: {((SelectableMock)child.BindingContext).Name}");
+                TestOutputHelper.WriteLine($"Selectable Item: {((SelectableMock)child.BindingContext).Name}");
 
                 Assert.NotEmpty(child.GestureRecognizers);
                 var tappedGesture = (TapGestureRecognizer)child.GestureRecognizers.FirstOrDefault(g => g is TapGestureRecognizer);

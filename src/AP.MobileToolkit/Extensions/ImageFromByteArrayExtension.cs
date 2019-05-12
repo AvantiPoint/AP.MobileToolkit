@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using AP.CrossPlatform;
 using AP.CrossPlatform.Extensions;
 using Xamarin.Forms;
@@ -12,7 +12,7 @@ namespace AP.MobileToolkit.Extensions
     /// <summary>
     /// Image from byte array extension.
     /// </summary>
-    [ContentProperty( nameof( Image ) )]
+    [ContentProperty(nameof(Image))]
     public class ImageFromByteArrayExtension : IMarkupExtension
     {
         const string defaultImageUri = "http://wpsites.org/wp-content/uploads/2016/05/broken-image-fix.png";
@@ -23,32 +23,33 @@ namespace AP.MobileToolkit.Extensions
         /// <value>The image data.</value>
         public byte[] ImageData { get; set; }
 
-        private ImageSource defaultImage
-        {
-            get { return AsyncHelpers.RunSync( GetDefaultImageAsync ); }
-        }
+        private ImageSource DefaultImage => AsyncHelpers.RunSync(GetDefaultImageAsync);
 
         /// <inheritDoc />
-        public object ProvideValue( IServiceProvider serviceProvider )
+        public object ProvideValue(IServiceProvider serviceProvider)
         {
             var stream = ImageData.ToStream();
-            return stream == null ? defaultImage : ImageSource.FromStream( () => stream );
+            return stream == null ? DefaultImage : ImageSource.FromStream(() => stream);
         }
 
         /// <inheritDoc />
         public async Task<ImageSource> GetDefaultImageAsync()
         {
-            using ( var client = new HttpClient() )
+            using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue
                 {
-                    MaxAge = TimeSpan.FromDays( 180 )
+                    MaxAge = TimeSpan.FromDays(180)
                 };
 
-                var responseMessage = await client.GetAsync( defaultImageUri );
-                if ( !responseMessage.IsSuccessStatusCode ) return null;
+                var responseMessage = await client.GetAsync(defaultImageUri);
+                if (!responseMessage.IsSuccessStatusCode)
+                {
+                    return null;
+                }
+
                 var stream = await responseMessage.Content.ReadAsStreamAsync();
-                return ImageSource.FromStream( () => stream );
+                return ImageSource.FromStream(() => stream);
             }
         }
     }

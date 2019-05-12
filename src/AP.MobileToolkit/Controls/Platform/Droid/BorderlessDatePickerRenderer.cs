@@ -9,11 +9,9 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
 {
     public class BorderlessDatePickerRenderer : DatePickerRenderer
     {
-        public static void Init() { }
-
-        public BorderlessDatePickerRenderer(Context context): base(context)
+        public BorderlessDatePickerRenderer(Context context)
+            : base(context)
         {
-
         }
 
         protected override void OnElementChanged(ElementChangedEventArgs<DatePicker> e)

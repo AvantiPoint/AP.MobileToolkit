@@ -14,7 +14,7 @@ namespace AP.CrossPlatform.Extensions
         /// <returns>The result.</returns>
         /// <param name="task">Task.</param>
         /// <typeparam name="TResult">The 1st type parameter.</typeparam>
-        public static TResult GetResult<TResult>( this Task<TResult> task )
+        public static TResult GetResult<TResult>(this Task<TResult> task)
         {
             var awaiter = task.GetAwaiter();
             return awaiter.GetResult();
@@ -27,15 +27,15 @@ namespace AP.CrossPlatform.Extensions
         /// <param name="task">Task.</param>
         /// <param name="timeoutInMilliseconds">Timeout duration in Milliseconds.</param>
         /// <typeparam name="T">The 1st type parameter.</typeparam>
-        public async static Task<T> WithTimeout<T>( this Task<T> task, int timeoutInMilliseconds )
+        public static async Task<T> WithTimeout<T>(this Task<T> task, int timeoutInMilliseconds)
         {
-            var retTask = await Task.WhenAny( task, Task.Delay( timeoutInMilliseconds ) )
-                .ConfigureAwait( false );
+            var retTask = await Task.WhenAny(task, Task.Delay(timeoutInMilliseconds))
+                .ConfigureAwait(false);
 
-            if ( retTask is Task<T> )
+            if (retTask is Task<T>)
                 return task.Result;
 
-            return default( T );
+            return default(T);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace AP.CrossPlatform.Extensions
         /// <param name="task">Task.</param>
         /// <param name="timeout">Timeout Duration.</param>
         /// <typeparam name="T">The 1st type parameter.</typeparam>
-        public static Task<T> WithTimeout<T>( this Task<T> task, TimeSpan timeout ) =>
-            WithTimeout( task, ( int )timeout.TotalMilliseconds );
+        public static Task<T> WithTimeout<T>(this Task<T> task, TimeSpan timeout) =>
+            WithTimeout(task, (int)timeout.TotalMilliseconds);
     }
 }

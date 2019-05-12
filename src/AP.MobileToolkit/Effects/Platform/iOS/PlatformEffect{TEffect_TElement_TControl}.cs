@@ -3,7 +3,9 @@ using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
+#pragma warning disable SA1300
 namespace AP.MobileToolkit.Effects.Platform.iOS
+#pragma warning restore SA1300
 {
     public abstract class PlatformEffect<TEffect, TElement, TControl> : PlatformEffect
         where TEffect : RoutingEffect

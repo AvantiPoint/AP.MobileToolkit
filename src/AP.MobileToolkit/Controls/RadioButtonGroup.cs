@@ -15,7 +15,6 @@ namespace AP.MobileToolkit.Controls
     /// </summary>
     public class RadioGroup : StackLayout
     {
-
         /// <summary>
         /// The items
         /// </summary>
@@ -32,19 +31,19 @@ namespace AP.MobileToolkit.Controls
         /// <summary>
         /// The items source property
         /// </summary>
-        public static BindableProperty ItemsSourceProperty =
+        public static readonly BindableProperty ItemsSourceProperty =
             BindableProperty.Create(nameof(ItemsSource), typeof(IEnumerable), typeof(RadioGroup), default(IEnumerable), propertyChanged: OnItemsSourceChanged);
 
         /// <summary>
         /// The selected index property
         /// </summary>
-        public static BindableProperty SelectedIndexProperty =
+        public static readonly BindableProperty SelectedIndexProperty =
             BindableProperty.Create(nameof(SelectedIndex), typeof(int), typeof(RadioGroup), -1, BindingMode.TwoWay, propertyChanged: OnSelectedIndexChanged);
 
         /// <summary>
         /// The selected item property.
         /// </summary>
-        public static BindableProperty SelectedItemProperty =
+        public static readonly BindableProperty SelectedItemProperty =
             BindableProperty.Create(nameof(SelectedItem), typeof(object), typeof(RadioGroup), null);
 
         /// <summary>
@@ -64,6 +63,60 @@ namespace AP.MobileToolkit.Controls
         /// </summary>
         public static readonly BindableProperty FontNameProperty =
             BindableProperty.Create(nameof(FontName), typeof(string), typeof(RadioGroup), string.Empty);
+
+        private static void OnSelectedIndexChanged(BindableObject bindable, object oldvalue, object newvalue)
+        {
+            if ((int)newvalue == -1)
+            {
+                return;
+            }
+
+            if (!(bindable is RadioGroup bindableRadioGroup))
+            {
+                return;
+            }
+
+            foreach (var button in bindableRadioGroup.Items.Where(button => button.Id == bindableRadioGroup.SelectedIndex))
+            {
+                button.Checked = true;
+            }
+
+            bindableRadioGroup.SelectedItem = bindableRadioGroup.ItemsSource
+                                                                .Cast<object>()
+                                                                .ElementAt(bindableRadioGroup.SelectedIndex);
+        }
+
+        private static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var radButtons = bindable as RadioGroup;
+
+            foreach (var item in radButtons.Items)
+            {
+                item.CheckedChanged -= radButtons.OnCheckedChanged;
+            }
+
+            radButtons.Children.Clear();
+
+            var radIndex = 0;
+
+            foreach (var item in radButtons.ItemsSource)
+            {
+                var button = new CustomRadioButton
+                {
+                    Text = item.ToString(),
+                    Id = radIndex++,
+                    TextColor = radButtons.TextColor,
+                    FontSize = Xamarin.Forms.Device.GetNamedSize(NamedSize.Small, radButtons),
+                    FontName = radButtons.FontName
+                };
+
+                button.CheckedChanged += radButtons.OnCheckedChanged;
+
+                radButtons.Items.Add(button);
+
+                radButtons.Children.Add(button);
+            }
+        }
 
         /// <summary>
         /// Gets or sets the items source.
@@ -137,7 +190,6 @@ namespace AP.MobileToolkit.Controls
                 return;
             }
 
-
             if (!(sender is CustomRadioButton selectedItem))
             {
                 return;
@@ -157,62 +209,6 @@ namespace AP.MobileToolkit.Controls
                         CheckedChanged.Invoke(sender, item.Id);
                     }
                 }
-            }
-        }
-
-        private static void OnSelectedIndexChanged(BindableObject bindable, object oldvalue, object newvalue)
-        {
-            if ((int)newvalue == -1)
-            {
-                return;
-            }
-
-
-            if (!(bindable is RadioGroup bindableRadioGroup))
-            {
-                return;
-            }
-
-            foreach (var button in bindableRadioGroup.Items.Where(button => button.Id == bindableRadioGroup.SelectedIndex))
-            {
-                button.Checked = true;
-            }
-
-            bindableRadioGroup.SelectedItem = bindableRadioGroup.ItemsSource
-                                                                .Cast<object>()
-                                                                .ElementAt(bindableRadioGroup.SelectedIndex);
-        }
-
-        private static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            var radButtons = bindable as RadioGroup;
-
-
-            foreach (var item in radButtons.Items)
-            {
-                item.CheckedChanged -= radButtons.OnCheckedChanged;
-            }
-
-            radButtons.Children.Clear();
-
-            var radIndex = 0;
-
-            foreach (var item in radButtons.ItemsSource)
-            {
-                var button = new CustomRadioButton
-                {
-                    Text = item.ToString(),
-                    Id = radIndex++,
-                    TextColor = radButtons.TextColor,
-                    FontSize = Xamarin.Forms.Device.GetNamedSize(NamedSize.Small, radButtons),
-                    FontName = radButtons.FontName
-                };
-
-                button.CheckedChanged += radButtons.OnCheckedChanged;
-
-                radButtons.Items.Add(button);
-
-                radButtons.Children.Add(button);
             }
         }
     }

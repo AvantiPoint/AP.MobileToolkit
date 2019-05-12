@@ -4,6 +4,5 @@ namespace AP.CrossPlatform.Collections
 {
     public class ObservableErrorCollection : ObservableRangeCollection<ValidationError>
     {
-
     }
 }

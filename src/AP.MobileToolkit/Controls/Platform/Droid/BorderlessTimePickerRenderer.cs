@@ -9,11 +9,9 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
 {
     public class BorderlessTimePickerRenderer : TimePickerRenderer
     {
-        public static void Init() { }
-
-        public BorderlessTimePickerRenderer(Context context) : base(context)
+        public BorderlessTimePickerRenderer(Context context)
+            : base(context)
         {
-
         }
 
         protected override void OnElementChanged(ElementChangedEventArgs<TimePicker> e)

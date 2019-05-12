@@ -9,16 +9,21 @@ namespace AP.MobileToolkit.Controls
     public partial class MaterialEntry : ContentView
     {
         #region Events
+
         public event EventHandler<FocusEventArgs> EntryFocused;
+
         public event EventHandler<FocusEventArgs> EntryUnfocused;
+
         public event EventHandler<TextChangedEventArgs> TextChanged;
+
         #endregion
 
         #region Bindable Properties
-        public static BindableProperty TextProperty = 
+
+        public static readonly BindableProperty TextProperty =
             BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialEntry), defaultBindingMode: BindingMode.TwoWay);
 
-        public static BindableProperty PlaceholderProperty = 
+        public static readonly BindableProperty PlaceholderProperty =
             BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(MaterialEntry), defaultBindingMode: BindingMode.TwoWay, propertyChanged: (bindable, oldVal, newval) =>
             {
                 var matEntry = (MaterialEntry)bindable;
@@ -26,43 +31,44 @@ namespace AP.MobileToolkit.Controls
                 matEntry.HiddenLabel.Text = (string)newval;
             });
 
-        public static BindableProperty IsPasswordProperty = 
+        public static readonly BindableProperty IsPasswordProperty =
             BindableProperty.Create(nameof(IsPassword), typeof(bool), typeof(MaterialEntry), defaultValue: false, propertyChanged: (bindable, oldVal, newVal) =>
             {
                 var matEntry = (MaterialEntry)bindable;
                 matEntry.EntryField.IsPassword = (bool)newVal;
             });
 
-        public static BindableProperty KeyboardProperty = 
+        public static readonly BindableProperty KeyboardProperty =
             BindableProperty.Create(nameof(Keyboard), typeof(Keyboard), typeof(MaterialEntry), defaultValue: Keyboard.Default, propertyChanged: (bindable, oldVal, newVal) =>
             {
                 var matEntry = (MaterialEntry)bindable;
                 matEntry.EntryField.Keyboard = (Keyboard)newVal;
             });
 
-        public static BindableProperty AccentColorProperty = 
+        public static readonly BindableProperty AccentColorProperty =
             BindableProperty.Create(nameof(AccentColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.Accent);
 
-        public static BindableProperty InvalidColorProperty = 
+        public static readonly BindableProperty InvalidColorProperty =
             BindableProperty.Create(nameof(InvalidColor), typeof(Color), typeof(MaterialEntry), Color.Red, propertyChanged: (bindable, oldVal, newVal) =>
             {
                 var matEntry = (MaterialEntry)bindable;
                 matEntry.UpdateValidation();
             });
 
-        public static BindableProperty DefaultColorProperty = 
+        public static readonly BindableProperty DefaultColorProperty =
             BindableProperty.Create(nameof(DefaultColor), typeof(Color), typeof(MaterialEntry), Color.Gray, propertyChanged: (bindable, oldVal, newVal) =>
             {
                 var matEntry = (MaterialEntry)bindable;
                 matEntry.UpdateValidation();
             });
 
-        public static BindableProperty IsValidProperty = 
+        public static readonly BindableProperty IsValidProperty =
             BindableProperty.Create(nameof(IsValid), typeof(bool), typeof(MaterialEntry), true, propertyChanged: (bindable, oldVal, newVal) =>
             {
                 var matEntry = (MaterialEntry)bindable;
                 matEntry.UpdateValidation();
             });
+
         #endregion
 
         #region Public Properties
@@ -72,11 +78,13 @@ namespace AP.MobileToolkit.Controls
             get => (bool)GetValue(IsValidProperty);
             set => SetValue(IsValidProperty, value);
         }
+
         public Color DefaultColor
         {
             get => (Color)GetValue(DefaultColorProperty);
             set => SetValue(DefaultColorProperty, value);
         }
+
         public Color InvalidColor
         {
             get => (Color)GetValue(InvalidColorProperty);
@@ -88,6 +96,7 @@ namespace AP.MobileToolkit.Controls
             get => (Color)GetValue(AccentColorProperty);
             set => SetValue(AccentColorProperty, value);
         }
+
         public Keyboard Keyboard
         {
             get => (Keyboard)GetValue(KeyboardProperty);
@@ -105,6 +114,7 @@ namespace AP.MobileToolkit.Controls
             get => (string)GetValue(TextProperty);
             set => SetValue(TextProperty, value);
         }
+
         public string Placeholder
         {
             get => (string)GetValue(PlaceholderProperty);
@@ -127,7 +137,6 @@ namespace AP.MobileToolkit.Controls
             {
                 EntryFocused?.Invoke(this, a);
                 await CalculateLayoutFocused();
-
             };
             EntryField.Unfocused += async (s, a) =>
             {
@@ -136,7 +145,7 @@ namespace AP.MobileToolkit.Controls
             };
             EntryField.PropertyChanged += async (sender, args) =>
             {
-                if (args.PropertyName == nameof(EntryField.Text) && !EntryField.IsFocused && !String.IsNullOrEmpty(EntryField.Text))
+                if (args.PropertyName == nameof(EntryField.Text) && !EntryField.IsFocused && !string.IsNullOrEmpty(EntryField.Text))
                 {
                     await CalculateLayoutUnfocused();
                 }
@@ -162,8 +171,8 @@ namespace AP.MobileToolkit.Controls
                 await Task.WhenAll(
                     HiddenBottomBorder.LayoutTo(new Rectangle(BottomBorder.X, BottomBorder.Y, 0, BottomBorder.Height), 200),
                     HiddenLabel.FadeTo(0, 180),
-                    HiddenLabel.TranslateTo(HiddenLabel.TranslationX, EntryField.Y, 200, Easing.BounceIn)
-                );
+                    HiddenLabel.TranslateTo(HiddenLabel.TranslationX, EntryField.Y, 200, Easing.BounceIn));
+
                 EntryField.Placeholder = Placeholder;
             }
             else
@@ -187,8 +196,8 @@ namespace AP.MobileToolkit.Controls
                 await Task.WhenAll(
                     HiddenBottomBorder.LayoutTo(new Rectangle(BottomBorder.X, BottomBorder.Y, BottomBorder.Width, BottomBorder.Height), 200),
                     HiddenLabel.FadeTo(1, 60),
-                    HiddenLabel.TranslateTo(HiddenLabel.TranslationX, EntryField.Y - EntryField.Height + 4, 200, Easing.BounceIn)
-                );
+                    HiddenLabel.TranslateTo(HiddenLabel.TranslationX, EntryField.Y - EntryField.Height + 4, 200, Easing.BounceIn));
+
                 EntryField.Placeholder = null;
             }
             else
@@ -204,7 +213,6 @@ namespace AP.MobileToolkit.Controls
         {
             if (IsValid)
             {
-
                 BottomBorder.BackgroundColor = DefaultColor;
                 HiddenBottomBorder.BackgroundColor = AccentColor;
                 if (IsFocused)

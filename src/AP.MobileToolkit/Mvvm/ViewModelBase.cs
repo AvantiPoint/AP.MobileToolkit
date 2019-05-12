@@ -16,7 +16,9 @@ namespace AP.MobileToolkit.Mvvm
     public abstract class ViewModelBase : ObservableObject, IActiveAware, IInitialize, IInitializeAsync, INavigatedAware, IDestructible, IConfirmNavigation, IConfirmNavigationAsync, IApplicationLifecycleAware, IPageLifecycleAware
     {
         protected INavigationService NavigationService { get; private set; }
+
         protected IPageDialogService PageDialogService { get; }
+
         protected ILogger Logger { get; }
 
         public ViewModelBase(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
@@ -29,6 +31,7 @@ namespace AP.MobileToolkit.Mvvm
         }
 
         private string _title;
+
         public string Title
         {
             get => _title;
@@ -36,6 +39,7 @@ namespace AP.MobileToolkit.Mvvm
         }
 
         private string _subtitle;
+
         public string Subtitle
         {
             get => _subtitle;
@@ -43,6 +47,7 @@ namespace AP.MobileToolkit.Mvvm
         }
 
         private bool _isBusy = false;
+
         public bool IsBusy
         {
             get => _isBusy;
@@ -50,6 +55,7 @@ namespace AP.MobileToolkit.Mvvm
         }
 
         private bool _isNotBusy = true;
+
         public bool IsNotBusy
         {
             get => _isNotBusy;
@@ -57,24 +63,11 @@ namespace AP.MobileToolkit.Mvvm
         }
 
         private bool _canLoadMore;
+
         public bool CanLoadMore
         {
             get => _canLoadMore;
             set => SetProperty(ref _canLoadMore, value);
-        }
-
-        private string _header;
-        public string Header
-        {
-            get => _header;
-            set => SetProperty(ref _header, value);
-        }
-
-        private string _footer;
-        public string Footer
-        {
-            get => _footer;
-            set => SetProperty(ref _footer, value);
         }
 
         private void OnIsBusyChanged() => IsNotBusy = !IsBusy;
@@ -132,6 +125,7 @@ namespace AP.MobileToolkit.Mvvm
         #region IActiveAware
 
         private bool _isActive;
+
         public bool IsActive
         {
             get => _isActive;
@@ -154,15 +148,21 @@ namespace AP.MobileToolkit.Mvvm
             }
         }
 
-        protected virtual void OnIsActive() { }
+        protected virtual void OnIsActive()
+        {
+        }
 
-        protected virtual void OnIsNotActive() { }
+        protected virtual void OnIsNotActive()
+        {
+        }
 
         #endregion IActiveAware
 
         #region IInitialize
 
-        protected virtual void Initialize(INavigationParameters parameters) { }
+        protected virtual void Initialize(INavigationParameters parameters)
+        {
+        }
 
         protected virtual Task InitializeAsync(INavigationParameters parameters) => Task.CompletedTask;
 
@@ -174,9 +174,13 @@ namespace AP.MobileToolkit.Mvvm
 
         #region INavigatedAware
 
-        protected virtual void OnNavigatedTo(INavigationParameters parameters) { }
+        protected virtual void OnNavigatedTo(INavigationParameters parameters)
+        {
+        }
 
-        protected virtual void OnNavigatedFrom(INavigationParameters parameters) { }
+        protected virtual void OnNavigatedFrom(INavigationParameters parameters)
+        {
+        }
 
         void INavigatedAware.OnNavigatedTo(INavigationParameters parameters) => OnNavigatedTo(parameters);
 
@@ -186,7 +190,9 @@ namespace AP.MobileToolkit.Mvvm
 
         #region IDestructible
 
-        protected virtual void Destroy() { }
+        protected virtual void Destroy()
+        {
+        }
 
         void IDestructible.Destroy()
         {
@@ -212,9 +218,13 @@ namespace AP.MobileToolkit.Mvvm
 
         #region IApplicationLifecycleAware
 
-        protected virtual void OnResume() { }
+        protected virtual void OnResume()
+        {
+        }
 
-        protected virtual void OnSleep() { }
+        protected virtual void OnSleep()
+        {
+        }
 
         void IApplicationLifecycleAware.OnResume() => OnResume();
 
@@ -224,9 +234,13 @@ namespace AP.MobileToolkit.Mvvm
 
         #region IPageLifecycleAware
 
-        protected virtual void OnAppearing() { }
+        protected virtual void OnAppearing()
+        {
+        }
 
-        protected virtual void OnDisappearing() { }
+        protected virtual void OnDisappearing()
+        {
+        }
 
         void IPageLifecycleAware.OnAppearing() => OnAppearing();
 

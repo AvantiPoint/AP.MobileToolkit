@@ -9,7 +9,9 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(CheckBox), typeof(CheckBoxRenderer))]
+#pragma warning disable SA1300
 namespace AP.MobileToolkit.Controls.Platform.iOS
+#pragma warning restore SA1300
 {
     /// <summary>
     /// The check box renderer for iOS.
@@ -26,12 +28,15 @@ namespace AP.MobileToolkit.Controls.Platform.iOS
         {
             base.OnElementChanged(e);
 
-            if(Element == null) return;
+            if (Element == null)
+            {
+                return;
+            }
 
             BackgroundColor = Element.BackgroundColor.ToUIColor();
-            if(e.NewElement != null)
+            if (e.NewElement != null)
             {
-                if(Control == null)
+                if (Control == null)
                 {
                     var checkBox = new CheckBoxView(Bounds);
                     checkBox.TouchUpInside += (s, args) => Element.Checked = Control.Checked;
@@ -57,7 +62,7 @@ namespace AP.MobileToolkit.Controls.Platform.iOS
         /// </summary>
         private void ResizeText()
         {
-            if(Element == null)
+            if (Element == null)
                 return;
 
             var text = Element.Checked ? string.IsNullOrEmpty(Element.CheckedText) ? Element.DefaultText : Element.CheckedText :
@@ -75,7 +80,7 @@ namespace AP.MobileToolkit.Controls.Platform.iOS
 
             var supportedLines = Math.Round(bounds.Height / minHeight, MidpointRounding.ToEven);
 
-            if(supportedLines != requiredLines)
+            if (supportedLines != requiredLines)
             {
                 bounds.Height += (float)(minHeight * (requiredLines - supportedLines));
                 Control.Bounds = bounds;
@@ -98,18 +103,18 @@ namespace AP.MobileToolkit.Controls.Platform.iOS
         /// </summary>
         private void UpdateFont()
         {
-            if(!string.IsNullOrEmpty(Element.FontName))
+            if (!string.IsNullOrEmpty(Element.FontName))
             {
                 var font = UIFont.FromName(Element.FontName, (Element.FontSize > 0) ? (float)Element.FontSize : 12.0f);
-                if(font != null)
+                if (font != null)
                 {
                     Control.Font = font;
                 }
             }
-            else if(Element.FontSize > 0)
+            else if (Element.FontSize > 0)
             {
                 var font = UIFont.FromName(Control.Font.Name, (float)Element.FontSize);
-                if(font != null)
+                if (font != null)
                 {
                     Control.Font = font;
                 }
@@ -131,7 +136,7 @@ namespace AP.MobileToolkit.Controls.Platform.iOS
         {
             base.OnElementPropertyChanged(sender, e);
 
-            switch(e.PropertyName)
+            switch (e.PropertyName)
             {
                 case "Checked":
                     Control.Checked = Element.Checked;

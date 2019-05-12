@@ -1,7 +1,7 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras" ToolsVersion="16.0">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid90;uap10.0.17134</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid81;uap10.0.17134</TargetFrameworks>
     <Description>Provides common tools, and extensions for developing great Xamarin Forms Applications.</Description>
   </PropertyGroup>
 

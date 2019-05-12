@@ -6,7 +6,7 @@ namespace AP.MobileToolkit.Controls
     {
         public ImageEntry()
         {
-            this.HeightRequest = 50;
+            HeightRequest = 50;
         }
 
         public static readonly BindableProperty ImageProperty =

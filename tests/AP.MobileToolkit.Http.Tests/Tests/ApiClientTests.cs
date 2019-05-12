@@ -1,9 +1,9 @@
-﻿using AP.MobileToolkit.Http.Tests.Mocks;
+﻿using System;
+using System.Threading.Tasks;
+using AP.MobileToolkit.Http.Tests.Mocks;
 using AP.MobileToolkit.Tests.Mocks;
 using AP.MobileToolkit.Tests.Tests;
 using MockHttpServer;
-using System;
-using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -11,7 +11,7 @@ namespace AP.MobileToolkit.Http.Tests
 {
     public class ApiClientTests : TestBase
     {
-        public ApiClientTests(ITestOutputHelper testOutputHelper) 
+        public ApiClientTests(ITestOutputHelper testOutputHelper)
             : base(testOutputHelper)
         {
         }
@@ -19,10 +19,10 @@ namespace AP.MobileToolkit.Http.Tests
         [Fact]
         public async Task AllowAnnonymousDoesNotInvokeAuthHandler()
         {
-            using (new MockServer(MockApiClientOptions.TestPort, "", (req, rsp, prm) =>
-             {
-                 Assert.DoesNotContain("Authorization", req.Headers.AllKeys);
-             }))
+            using (new MockServer(MockApiClientOptions.TestPort, string.Empty, (req, rsp, prm) =>
+            {
+                Assert.DoesNotContain("Authorization", req.Headers.AllKeys);
+            }))
             {
                 var authHandler = new MockAuthenticationHandler();
                 var client = CreateClient(authHandler);
@@ -38,10 +38,10 @@ namespace AP.MobileToolkit.Http.Tests
         [Fact]
         public async Task AuthenticatedCallInvokesAuthHandler()
         {
-            using (new MockServer(MockApiClientOptions.TestPort, "", (req, rsp, prm) =>
+            using (new MockServer(MockApiClientOptions.TestPort, string.Empty, (req, rsp, prm) =>
             {
                 foreach (var key in req.Headers.AllKeys)
-                    _testOutputHelper.WriteLine(key);
+                    TestOutputHelper.WriteLine(key);
                 Assert.Contains("Authorization", req.Headers.AllKeys);
             }))
             {
@@ -65,9 +65,9 @@ namespace AP.MobileToolkit.Http.Tests
         public async Task RetriesBadRequest(int statusCode)
         {
             int count = 0;
-            using(new MockServer(MockApiClientOptions.TestPort, "", (req, rsp, prm) =>
+            using (new MockServer(MockApiClientOptions.TestPort, string.Empty, (req, rsp, prm) =>
             {
-                if(count++ < 2)
+                if (count++ < 2)
                 {
                     rsp.StatusCode = statusCode;
                 }
@@ -87,12 +87,12 @@ namespace AP.MobileToolkit.Http.Tests
         [Fact]
         public async Task IncludesExpectedHeaders()
         {
-            using(new MockServer(MockApiClientOptions.TestPort, "", (req, rsp, prm) =>
+            using (new MockServer(MockApiClientOptions.TestPort, string.Empty, (req, rsp, prm) =>
             {
                 var appInfo = new MockAppInfo();
                 var deviceInfo = new MockDeviceInfo();
                 foreach (var key in req.Headers.AllKeys)
-                    _testOutputHelper.WriteLine($"{key}: {req.Headers.Get(key)}");
+                    TestOutputHelper.WriteLine($"{key}: {req.Headers.Get(key)}");
                 Assert.Contains("Authorization", req.Headers.AllKeys);
                 Assert.Equal($"BEARER {MockAuthenticationHandler.Token}", req.Headers.Get("Authorization"));
 
@@ -127,7 +127,7 @@ namespace AP.MobileToolkit.Http.Tests
         [Fact]
         public async Task ServiceSendsRequestWithGetVerb()
         {
-            using (new MockServer(MockApiClientOptions.TestPort, "", (req, rsp, prm) =>
+            using (new MockServer(MockApiClientOptions.TestPort, string.Empty, (req, rsp, prm) =>
             {
                 Assert.Equal("GET", req.HttpMethod);
             }))
@@ -141,7 +141,7 @@ namespace AP.MobileToolkit.Http.Tests
         [Fact]
         public async Task ServiceSendsRequestWithDeleteVerb()
         {
-            using (new MockServer(MockApiClientOptions.TestPort, "", (req, rsp, prm) =>
+            using (new MockServer(MockApiClientOptions.TestPort, string.Empty, (req, rsp, prm) =>
             {
                 Assert.Equal("DELETE", req.HttpMethod);
             }))
@@ -152,9 +152,9 @@ namespace AP.MobileToolkit.Http.Tests
             }
         }
 
-        //[Fact]
-        //public async Task ServiceSendsRequestWithPatchVerb()
-        //{
+        // [Fact]
+        // public async Task ServiceSendsRequestWithPatchVerb()
+        // {
         //    using (new MockServer(MockApiClientOptions.TestPort, "", (req, rsp, prm) =>
         //    {
         //        Assert.Equal("PATCH", req.HttpMethod);
@@ -164,12 +164,12 @@ namespace AP.MobileToolkit.Http.Tests
         //        var service = new MockApiService(client);
         //        await service.MockGet();
         //    }
-        //}
+        // }
 
         [Fact]
         public async Task ServiceSendsRequestWithPostVerb()
         {
-            using (new MockServer(MockApiClientOptions.TestPort, "", (req, rsp, prm) =>
+            using (new MockServer(MockApiClientOptions.TestPort, string.Empty, (req, rsp, prm) =>
             {
                 Assert.Equal("POST", req.HttpMethod);
             }))
@@ -183,7 +183,7 @@ namespace AP.MobileToolkit.Http.Tests
         [Fact]
         public async Task ServiceSendsRequestWithPutVerb()
         {
-            using (new MockServer(MockApiClientOptions.TestPort, "", (req, rsp, prm) =>
+            using (new MockServer(MockApiClientOptions.TestPort, string.Empty, (req, rsp, prm) =>
             {
                 Assert.Equal("PUT", req.HttpMethod);
             }))
@@ -213,7 +213,7 @@ namespace AP.MobileToolkit.Http.Tests
             if (authenticationHandler == null)
                 authenticationHandler = new MockAuthenticationHandler();
 
-            return new ApiClient(new MockApiClientOptions(), authenticationHandler, new XunitLogger(_testOutputHelper), new MockAppInfo(), new MockDeviceInfo());
+            return new ApiClient(new MockApiClientOptions(), authenticationHandler, new XunitLogger(TestOutputHelper), new MockAppInfo(), new MockDeviceInfo());
         }
     }
 }

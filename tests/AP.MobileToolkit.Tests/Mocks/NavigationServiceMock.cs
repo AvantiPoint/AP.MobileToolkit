@@ -35,7 +35,9 @@ namespace AP.MobileToolkit.Tests.Mocks
         {
             await Task.Run(() =>
             {
-                while (Delay) { }
+                while (Delay)
+                {
+                }
             });
 
             if (name == "good")

@@ -12,7 +12,7 @@ namespace AP.MobileToolkit.Fonts
 
         public static void Register(params IconFont[] fonts)
         {
-            foreach(var font in fonts)
+            foreach (var font in fonts)
             {
                 if (Instance.RegisteredFonts.Any(x => x.Prefix.Equals(font.Prefix, StringComparison.InvariantCultureIgnoreCase)))
                     throw new InvalidOperationException($"A font with the prefix '{font.Prefix}' has already been registered");

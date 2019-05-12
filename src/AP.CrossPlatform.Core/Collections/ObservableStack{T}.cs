@@ -20,20 +20,24 @@ namespace AP.CrossPlatform.Collections
         /// Initializes a new instance of the <see cref="T:AP.CrossPlatform.Collections.ObservableStack`1"/> class.
         /// </summary>
         /// <param name="collection">Collection.</param>
-        public ObservableStack( IEnumerable<T> collection )
+        public ObservableStack(IEnumerable<T> collection)
         {
-            foreach ( var item in collection )
-                base.Push( item );
+            foreach (var item in collection)
+            {
+                base.Push(item);
+            }
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:AP.CrossPlatform.Collections.ObservableStack`1"/> class.
         /// </summary>
         /// <param name="list">List.</param>
-        public ObservableStack( List<T> list )
+        public ObservableStack(List<T> list)
         {
-            foreach ( var item in list )
-                base.Push( item );
+            foreach (var item in list)
+            {
+                base.Push(item);
+            }
         }
 
         /// <summary>
@@ -42,7 +46,7 @@ namespace AP.CrossPlatform.Collections
         public new virtual void Clear()
         {
             base.Clear();
-            this.OnCollectionChanged( new NotifyCollectionChangedEventArgs( NotifyCollectionChangedAction.Reset ) );
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
         }
 
         /// <summary>
@@ -52,7 +56,7 @@ namespace AP.CrossPlatform.Collections
         public new virtual T Pop()
         {
             var item = base.Pop();
-            this.OnCollectionChanged( new NotifyCollectionChangedEventArgs( NotifyCollectionChangedAction.Remove, item ) );
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, item));
             return item;
         }
 
@@ -61,10 +65,10 @@ namespace AP.CrossPlatform.Collections
         /// </summary>
         /// <returns>The push.</returns>
         /// <param name="item">Item.</param>
-        public new virtual void Push( T item )
+        public new virtual void Push(T item)
         {
-            base.Push( item );
-            this.OnCollectionChanged( new NotifyCollectionChangedEventArgs( NotifyCollectionChangedAction.Add, item ) );
+            base.Push(item);
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, item));
         }
 
         /// <summary>
@@ -76,18 +80,18 @@ namespace AP.CrossPlatform.Collections
         /// On the collection changed.
         /// </summary>
         /// <param name="e">E.</param>
-        protected virtual void OnCollectionChanged( NotifyCollectionChangedEventArgs e )
+        protected virtual void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
         {
-            this.RaiseCollectionChanged( e );
+            RaiseCollectionChanged(e);
         }
 
         /// <summary>
         /// On the property changed.
         /// </summary>
         /// <param name="e">E.</param>
-        protected virtual void OnPropertyChanged( PropertyChangedEventArgs e )
+        protected virtual void OnPropertyChanged(PropertyChangedEventArgs e)
         {
-            this.RaisePropertyChanged( e );
+            RaisePropertyChanged(e);
         }
 
         /// <summary>
@@ -95,20 +99,20 @@ namespace AP.CrossPlatform.Collections
         /// </summary>
         protected virtual event PropertyChangedEventHandler PropertyChanged;
 
-        private void RaiseCollectionChanged( NotifyCollectionChangedEventArgs e )
+        private void RaiseCollectionChanged(NotifyCollectionChangedEventArgs e)
         {
-            this.CollectionChanged?.Invoke( this, e );
+            CollectionChanged?.Invoke(this, e);
         }
 
-        private void RaisePropertyChanged( PropertyChangedEventArgs e )
+        private void RaisePropertyChanged(PropertyChangedEventArgs e)
         {
-            this.PropertyChanged?.Invoke( this, e );
+            PropertyChanged?.Invoke(this, e);
         }
 
         event PropertyChangedEventHandler INotifyPropertyChanged.PropertyChanged
         {
-            add { this.PropertyChanged += value; }
-            remove { this.PropertyChanged -= value; }
+            add => PropertyChanged += value;
+            remove => PropertyChanged -= value;
         }
     }
 }

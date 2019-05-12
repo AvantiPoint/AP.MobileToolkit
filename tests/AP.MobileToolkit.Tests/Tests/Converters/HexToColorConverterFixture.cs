@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using AP.MobileToolkit.Converters;
 using Xamarin.Forms;
 using Xunit;
@@ -11,7 +8,7 @@ namespace AP.MobileToolkit.Tests.Tests.Converters
 {
     public class HexToColorConverterFixture : ConverterBaseFixture
     {
-        public HexToColorConverterFixture(ITestOutputHelper testOutputHelper) 
+        public HexToColorConverterFixture(ITestOutputHelper testOutputHelper)
             : base(testOutputHelper)
         {
         }

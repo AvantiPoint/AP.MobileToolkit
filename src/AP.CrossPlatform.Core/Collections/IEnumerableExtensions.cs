@@ -31,7 +31,7 @@ namespace AP.CrossPlatform.Collections
         /// <param name="action">The action to perform.</param>
         public static IEnumerable<T> ForEach<T>(this IEnumerable<T> collection, Action<T> action)
         {
-            foreach(var item in collection)
+            foreach (var item in collection)
             {
                 action(item);
                 yield return item;
@@ -45,8 +45,10 @@ namespace AP.CrossPlatform.Collections
         /// <param name="action">Action.</param>
         public static void ForEach(this IEnumerable collection, Action<object> action)
         {
-            foreach(var item in collection)
+            foreach (var item in collection)
+            {
                 action(item);
+            }
         }
 
         /// <summary>
@@ -56,7 +58,6 @@ namespace AP.CrossPlatform.Collections
         /// <param name="collection">Collection.</param>
         public static int Count(this IEnumerable collection) =>
             collection == null ? 0 : collection.Cast<object>().Count();
-
 
         /// <summary>
         /// Returns the index of the specified object in the collection.
@@ -71,9 +72,9 @@ namespace AP.CrossPlatform.Collections
             var enumerator = collection.GetEnumerator();
             enumerator.Reset();
             int i = 0;
-            while(enumerator.MoveNext())
+            while (enumerator.MoveNext())
             {
-                if(enumerator.Current == obj)
+                if (enumerator.Current == obj)
                 {
                     index = i;
                     break;
@@ -96,7 +97,10 @@ namespace AP.CrossPlatform.Collections
         {
             int index = collection.IndexOf(element) - 1;
 
-            if(index < 0) return collection.FirstOrDefault();
+            if (index < 0)
+            {
+                return collection.FirstOrDefault();
+            }
 
             return collection.ElementAt(index);
         }
@@ -112,7 +116,10 @@ namespace AP.CrossPlatform.Collections
         {
             int index = collection.IndexOf(element) + 1;
 
-            if(index >= collection.Count()) return collection.LastOrDefault();
+            if (index >= collection.Count())
+            {
+                return collection.LastOrDefault();
+            }
 
             return collection.ElementAt(index);
         }
@@ -163,8 +170,10 @@ namespace AP.CrossPlatform.Collections
         /// <param name="item">The item.</param>
         public static void AddIfNotExists<T>(this IList<T> list, T item)
         {
-            if(!list.Contains(item))
+            if (!list.Contains(item))
+            {
                 list.Add(item);
+            }
         }
 
         /// <summary>
@@ -177,14 +186,16 @@ namespace AP.CrossPlatform.Collections
         public static string Join<T>(this IEnumerable<T> values, string seperator)
         {
             var sb = new StringBuilder();
-            foreach(var value in values)
+            foreach (var value in values)
             {
-                if(sb.Length > 0)
+                if (sb.Length > 0)
+                {
                     sb.Append(seperator);
+                }
+
                 sb.Append(value);
             }
             return sb.ToString();
         }
     }
 }
-

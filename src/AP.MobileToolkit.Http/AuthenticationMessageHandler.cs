@@ -11,18 +11,17 @@ namespace AP.MobileToolkit.Http
 {
     internal class AuthenticationMessageHandler : DelegatingHandler
     {
-        private IAuthenticationHandler _authenticationHandler { get; }
+        private IAuthenticationHandler AuthenticationHandler { get; }
 
         public AuthenticationMessageHandler(IAuthenticationHandler authenticationHandler)
             : this(authenticationHandler, new HttpClientHandler())
         {
-            
         }
 
         public AuthenticationMessageHandler(IAuthenticationHandler authenticationHandler, HttpClientHandler internalHandler)
             : base(internalHandler)
         {
-            _authenticationHandler = authenticationHandler;
+            AuthenticationHandler = authenticationHandler;
         }
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
@@ -35,7 +34,7 @@ namespace AP.MobileToolkit.Http
 
             if (callingMethod.GetCustomAttribute<AllowAnonymousAttribute>() == null)
             {
-                var token = await _authenticationHandler.GetTokenAsync().ConfigureAwait(false);
+                var token = await AuthenticationHandler.GetTokenAsync().ConfigureAwait(false);
                 request.Headers.Authorization = new AuthenticationHeaderValue("BEARER", token);
             }
 

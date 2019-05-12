@@ -1,9 +1,9 @@
-//using Plugin.Iconize;
-//using Plugin.Iconize.UWP;
-//using Xamarin.Forms;
+// using Plugin.Iconize;
+// using Plugin.Iconize.UWP;
+// using Xamarin.Forms;
 
-//namespace AP.MobileToolkit.Effects.Platform.UWP
-//{
+// namespace AP.MobileToolkit.Effects.Platform.UWP
+// {
 //    public class ImageEntryEffect : PlatformEffect<Effects.ImageEntryEffect, Entry, TextBox>
 //    {
 //        protected override async void OnAttached()
@@ -20,9 +20,9 @@
 //                //var image = await handler.LoadImageAsync(Effect.ImageSource);
 //            }
 //        }
-
+//
 //        protected override void OnDetached()
 //        {
 //        }
 //    }
-//}
+// }

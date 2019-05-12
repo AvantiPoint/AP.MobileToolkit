@@ -3,6 +3,7 @@
     public interface IApiClientOptions
     {
         string InstallId { get; }
+
         string BaseUri { get; }
     }
 }

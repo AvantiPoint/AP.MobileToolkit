@@ -10,20 +10,20 @@ namespace AP.CrossPlatform.Core.Tests.Mocks
 
         public string Name
         {
-            get { return _name; }
-            set { SetProperty( ref _name, value ); }
+            get => _name;
+            set => SetProperty(ref _name, value);
         }
 
         public string Group
         {
-            get { return _group; }
-            set { SetProperty( ref _group, value, onChanged: () => GroupChanged++ ); }
+            get => _group;
+            set => SetProperty(ref _group, value, onChanged: () => GroupChanged++);
         }
 
         public GroupMock SubGroup
         {
-            get { return _subGroup; }
-            set { SetProperty( ref _subGroup, value ); } 
+            get => _subGroup;
+            set => SetProperty(ref _subGroup, value);
         }
 
         public int GroupChanged { get; private set; }

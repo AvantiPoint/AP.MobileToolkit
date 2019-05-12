@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -21,7 +19,7 @@ namespace AP.MobileToolkit.Http
 
                 throw new ApiClientException(TryGetErrorMessage(content), message);
             }
-            catch(ApiClientException)
+            catch (ApiClientException)
             {
                 throw;
             }
@@ -49,7 +47,7 @@ namespace AP.MobileToolkit.Http
         {
             try
             {
-                var errorType = new { Error = "" };
+                var errorType = new { Error = string.Empty };
                 return JsonConvert.DeserializeAnonymousType(rawContent, errorType).Error;
             }
             catch

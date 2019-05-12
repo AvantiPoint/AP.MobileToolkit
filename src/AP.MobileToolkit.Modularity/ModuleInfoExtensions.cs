@@ -20,7 +20,7 @@ namespace AP.MobileToolkit.Modularity
 
         public static bool HasRole(this IModuleInfo moduleInfo, string role)
         {
-            if(moduleInfo.HasAttribute(out ModuleRoleAttribute moduleRoleAttribute))
+            if (moduleInfo.HasAttribute(out ModuleRoleAttribute moduleRoleAttribute))
             {
                 return moduleRoleAttribute.SupportsRole(role);
             }
@@ -31,12 +31,12 @@ namespace AP.MobileToolkit.Modularity
         public static IEnumerable<IModuleInfo> GetDependentModules(this IModuleInfo moduleInfo, IModuleCatalog moduleCatalog)
         {
             var moduleType = Type.GetType(moduleInfo.ModuleType);
-            
-            foreach(var name in moduleInfo.DependsOn)
+
+            foreach (var name in moduleInfo.DependsOn)
             {
                 var dependentModule = moduleCatalog.Modules.FirstOrDefault(m => m.ModuleName == name);
 
-                yield return dependentModule ?? 
+                yield return dependentModule ??
                     throw new ModuleNotFoundException(name, string.Format(Resources.ModuleNotFoundErrorMessage, name));
             }
         }

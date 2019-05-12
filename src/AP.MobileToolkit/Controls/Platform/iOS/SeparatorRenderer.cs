@@ -5,7 +5,9 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(Separator), typeof(SeparatorRenderer))]
+#pragma warning disable SA1300
 namespace AP.MobileToolkit.Controls.Platform.iOS
+#pragma warning restore SA1300
 {
     /// <summary>
     /// Class SeparatorRenderer.
@@ -20,9 +22,9 @@ namespace AP.MobileToolkit.Controls.Platform.iOS
         {
             base.OnElementChanged(e);
 
-            if(e.NewElement != null)
+            if (e.NewElement != null)
             {
-                if(Control == null)
+                if (Control == null)
                 {
                     BackgroundColor = Color.Transparent.ToUIColor();
                     SetNativeControl(new UISeparator(Bounds));
@@ -48,7 +50,7 @@ namespace AP.MobileToolkit.Controls.Platform.iOS
         /// </summary>
         private void SetProperties()
         {
-            if(Control == null || Element == null)
+            if (Control == null || Element == null)
                 return;
 
             var separator = Control;

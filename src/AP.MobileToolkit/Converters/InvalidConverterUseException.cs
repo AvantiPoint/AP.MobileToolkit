@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AP.MobileToolkit.Converters
 {
@@ -9,7 +7,6 @@ namespace AP.MobileToolkit.Converters
         public InvalidConverterUseException(string message)
             : base(message)
         {
-
         }
     }
 }

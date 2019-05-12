@@ -1,9 +1,8 @@
-﻿using Prism.Navigation;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json;
 using System.Linq;
+using Newtonsoft.Json;
+using Prism.Navigation;
 
 namespace AP.MobileToolkit.Extensions
 {
@@ -13,18 +12,18 @@ namespace AP.MobileToolkit.Extensions
         {
             var dict = new Dictionary<string, string>();
 
-            if(navigationParameters != null)
+            if (navigationParameters != null)
             {
                 dict.Add("navigationParameters", JsonConvert.SerializeObject(navigationParameters));
             }
 
             dict.Add("uri", uri);
 
-            if(extraParameters.Any())
+            if (extraParameters.Any())
             {
-                foreach(var (key, value) in extraParameters)
+                foreach (var (key, value) in extraParameters)
                 {
-                    if(value is string str)
+                    if (value is string str)
                     {
                         dict.Add(key, str);
                     }

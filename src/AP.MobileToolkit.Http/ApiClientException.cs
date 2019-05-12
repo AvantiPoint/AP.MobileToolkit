@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Net.Http;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace AP.MobileToolkit.Http
 {
@@ -15,7 +13,6 @@ namespace AP.MobileToolkit.Http
         public ApiClientException(string message, HttpResponseMessage httpResponse)
             : this(message, httpResponse, null)
         {
-
         }
 
         public ApiClientException(string message, HttpResponseMessage httpResponse, Exception innerException)

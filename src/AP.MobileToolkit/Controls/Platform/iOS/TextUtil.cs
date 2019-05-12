@@ -1,7 +1,9 @@
-﻿using Foundation;
-using System;
+﻿using System;
+using Foundation;
 
+#pragma warning disable SA1300
 namespace AP.MobileToolkit.Controls.Platform.iOS
+#pragma warning restore SA1300
 {
     internal static class TextUtil
     {
@@ -15,12 +17,15 @@ namespace AP.MobileToolkit.Controls.Platform.iOS
                 {
                     NSAttributedString attributedString = null;
 
-                    attributedString = new NSAttributedString(htmlData, 
+                    attributedString = new NSAttributedString(
+                        htmlData,
                         new NSAttributedStringDocumentAttributes
                         {
                             DocumentType = NSDocumentType.HTML,
                             StringEncoding = NSStringEncoding.UTF8
-                        }, ref error);
+                        },
+                        ref error);
+
                     return attributedString;
                 }
                 return null;
@@ -30,7 +35,6 @@ namespace AP.MobileToolkit.Controls.Platform.iOS
                 Console.WriteLine(ex);
                 return null;
             }
-
         }
     }
 }

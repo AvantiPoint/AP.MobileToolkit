@@ -12,11 +12,11 @@ namespace AP.CrossPlatform.Http
     /// </summary>
     public static class HttpClientExtensions
     {
-        static readonly HttpMethod patch_method = new HttpMethod( "PATCH" );
+        private static readonly HttpMethod PatchMethod = new HttpMethod("PATCH");
 
         private class ErrorResult
         {
-            [JsonProperty( "message" )]
+            [JsonProperty("message")]
             public string Message { get; set; }
         }
 
@@ -28,30 +28,28 @@ namespace AP.CrossPlatform.Http
         /// <param name="requestUri">Request URI.</param>
         /// <param name="requestObject">Request object.</param>
         /// <param name="cancellationToken">Cancellation token.</param>
-        public static async Task<JObject> GetJObjectAsync( this HttpClient client, string requestUri, object requestObject = null, CancellationToken cancellationToken = default( CancellationToken ) )
+        public static async Task<JObject> GetJObjectAsync(this HttpClient client, string requestUri, object requestObject = null, CancellationToken cancellationToken = default)
         {
             try
             {
                 var defaultResponse = "{\"message\":\"An unknown error has occured. Please try again. If this problem persists, please contact the closest Code Monkey.\"}";
-                var response = await client.GetAsync( requestUri.AddQueryStringParameters( requestObject ), cancellationToken ).ConfigureAwait(false);
+                var response = await client.GetAsync(requestUri.AddQueryStringParameters(requestObject), cancellationToken).ConfigureAwait(false);
                 string result = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                if ( !response.IsSuccessStatusCode )
+                if (!response.IsSuccessStatusCode)
                 {
-                    return JObject.FromObject( new ErrorResult() { Message = $"{response.StatusCode} {result}" } );
-                    //result = $"{{\"message\":\"{response.StatusCode} {result}\"}}";
-                    //StaticLogger.WarningLogger( $"Code {response.StatusCode}: {result}" );
+                    return JObject.FromObject(new ErrorResult() { Message = $"{response.StatusCode} {result}" });
                 }
 
-                //var result = await client.GetStringAsync( requestUri.AddQueryStringParameters( requestObject ) );
-                //StaticLogger.DebugLogger?.Invoke( $"Result: {result}" );
-                if ( string.IsNullOrWhiteSpace( result ) ) result = defaultResponse;
-                return JObject.Parse( result );
+                if (string.IsNullOrWhiteSpace(result))
+                {
+                    result = defaultResponse;
+                }
+
+                return JObject.Parse(result);
             }
-            catch ( Exception e )
+            catch (Exception e)
             {
-                //StaticLogger.ExceptionLogger?.Invoke( e );
-                //return null;
-                return JObject.FromObject( new ErrorResult { Message = e.ToString() } );
+                return JObject.FromObject(new ErrorResult { Message = e.ToString() });
             }
         }
 
@@ -64,12 +62,11 @@ namespace AP.CrossPlatform.Http
         /// <param name="requestObject">Request object.</param>
         /// <param name="cancellationToken">Cancellation token.</param>
         /// <typeparam name="T">The 1st type parameter.</typeparam>
-        public static async Task<T> GetAsync<T>(this HttpClient client, string requestUri, object requestObject = null, CancellationToken cancellationToken = default(CancellationToken))
+        public static async Task<T> GetAsync<T>(this HttpClient client, string requestUri, object requestObject = null, CancellationToken cancellationToken = default)
         {
-            //var result = await client.GetStringAsync( requestUri.AddQueryStringParameters( requestObject ) );
-            var response = await client.GetAsync( requestUri.AddQueryStringParameters( requestObject ), cancellationToken ).ConfigureAwait(false);
+            var response = await client.GetAsync(requestUri.AddQueryStringParameters(requestObject), cancellationToken).ConfigureAwait(false);
 
-            return JsonConvert.DeserializeObject<T>( await response.Content.ReadAsStringAsync() );
+            return JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync());
         }
 
         /// <summary>
@@ -82,7 +79,7 @@ namespace AP.CrossPlatform.Http
         /// <param name="requestObject">Request object.</param>
         /// <param name="cancellationToken">Cancellation token.</param>
         /// <typeparam name="T">The 1st type parameter.</typeparam>
-        public static async Task<T> GetAsync<T>(this HttpClient client, string requestUri, T failedResponse, object requestObject = null, CancellationToken cancellationToken = default(CancellationToken))
+        public static async Task<T> GetAsync<T>(this HttpClient client, string requestUri, T failedResponse, object requestObject = null, CancellationToken cancellationToken = default)
         {
             var result = await client.GetAsync(requestUri.AddQueryStringParameters(requestObject), cancellationToken).ConfigureAwait(false);
             if (!result.IsSuccessStatusCode)
@@ -91,13 +88,10 @@ namespace AP.CrossPlatform.Http
             try
             {
                 var jsonString = await result.Content.ReadAsStringAsync();
-                //StaticLogger.DebugLogger?.Invoke( jsonString );
-
-                return JsonConvert.DeserializeObject<T>( jsonString );
+                return JsonConvert.DeserializeObject<T>(jsonString);
             }
             catch
             {
-                //StaticLogger.ExceptionLogger?.Invoke( e );
                 return failedResponse;
             }
         }
@@ -112,7 +106,7 @@ namespace AP.CrossPlatform.Http
         /// <param name="requestObject">Request object.</param>
         /// <param name="cancellationToken">Cancellation token.</param>
         /// <typeparam name="T">The 1st type parameter.</typeparam>
-        public static async Task<T> GetResultAsync<T>( this HttpClient client, string resultKey, string requestUri, object requestObject = null, CancellationToken cancellationToken = default( CancellationToken ) )
+        public static async Task<T> GetResultAsync<T>(this HttpClient client, string resultKey, string requestUri, object requestObject = null, CancellationToken cancellationToken = default)
         {
             try
             {
@@ -120,8 +114,7 @@ namespace AP.CrossPlatform.Http
             }
             catch
             {
-                //StaticLogger.ExceptionLogger?.Invoke( e );
-                return default(T);
+                return default;
             }
         }
 
@@ -134,17 +127,15 @@ namespace AP.CrossPlatform.Http
         /// <param name="requestUri">Request URI.</param>
         /// <param name="requestObject">Request object.</param>
         /// <param name="cancellationToken">Cancellation token.</param>
-        public static async Task<string> GetResultAsync( this HttpClient client, string resultKey, string requestUri, object requestObject = null, CancellationToken cancellationToken = default( CancellationToken ) )
+        public static async Task<string> GetResultAsync(this HttpClient client, string resultKey, string requestUri, object requestObject = null, CancellationToken cancellationToken = default)
         {
             try
             {
-                //StaticLogger.DebugLogger?.Invoke( $"Making Get Request for key: {resultKey}" );
                 var response = await client.GetJObjectAsync(requestUri, requestObject, cancellationToken).ConfigureAwait(false);
                 return response[resultKey].ToString();
             }
             catch (Exception)
             {
-                //StaticLogger.ExceptionLogger?.Invoke( e );
                 return null;
             }
         }
@@ -157,7 +148,7 @@ namespace AP.CrossPlatform.Http
         /// <param name="requestUri">Request URI.</param>
         /// <param name="jsonObj">Json object.</param>
         /// <param name="cancellationToken">Cancellation token.</param>
-        public static async Task<HttpResponseMessage> PostJsonObjectAsync( this HttpClient client, string requestUri, object jsonObj, CancellationToken cancellationToken = default( CancellationToken ) )
+        public static async Task<HttpResponseMessage> PostJsonObjectAsync(this HttpClient client, string requestUri, object jsonObj, CancellationToken cancellationToken = default)
         {
             return await client.PostAsync(requestUri, new JsonContent(jsonObj), cancellationToken).ConfigureAwait(false);
         }
@@ -169,18 +160,18 @@ namespace AP.CrossPlatform.Http
         /// <param name="client">Client.</param>
         /// <param name="requestUri">Request URI.</param>
         /// <param name="cancellationToken">Cancellation token.</param>
-        public static async Task<string> GetStringAsync( this HttpClient client, string requestUri, CancellationToken cancellationToken )
+        public static async Task<string> GetStringAsync(this HttpClient client, string requestUri, CancellationToken cancellationToken)
         {
             var response = await client.GetAsync(requestUri, cancellationToken).ConfigureAwait(false);
             return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
         }
 
-        public static Task<HttpResponseMessage> PutAsync(this HttpClient client, string requestUri, object model, CancellationToken cancellationToken = default(CancellationToken))
+        public static Task<HttpResponseMessage> PutAsync(this HttpClient client, string requestUri, object model, CancellationToken cancellationToken = default)
         {
             return client.SendAsync(new HttpRequestMessage(HttpMethod.Put, requestUri) { Content = new JsonContent(model) }, cancellationToken);
         }
 
-        public static Task<HttpResponseMessage> DeleteAsync(this HttpClient client, string requestUri, object model, CancellationToken cancellationToken = default(CancellationToken))
+        public static Task<HttpResponseMessage> DeleteAsync(this HttpClient client, string requestUri, object model, CancellationToken cancellationToken = default)
         {
             return client.SendAsync(new HttpRequestMessage(HttpMethod.Delete, requestUri) { Content = new JsonContent(model) }, cancellationToken);
         }
@@ -192,8 +183,8 @@ namespace AP.CrossPlatform.Http
         /// <param name="client">Client.</param>
         /// <param name="address">Address.</param>
         /// <param name="content">Content.</param>
-        public static async Task<HttpResponseMessage> PatchAsync( this HttpClient client, string address, HttpContent content ) =>
-            await client.SendAsync( new HttpRequestMessage( patch_method, address ) { Content = content } ).ConfigureAwait(false);
+        public static async Task<HttpResponseMessage> PatchAsync(this HttpClient client, string address, HttpContent content) =>
+            await client.SendAsync(new HttpRequestMessage(PatchMethod, address) { Content = content }).ConfigureAwait(false);
 
         /// <summary>
         /// Sends Http Path Async
@@ -202,8 +193,8 @@ namespace AP.CrossPlatform.Http
         /// <param name="client">Client.</param>
         /// <param name="address">Address.</param>
         /// <param name="content">Content.</param>
-        public static async Task<HttpResponseMessage> PatchAsync( this HttpClient client, string address, string content ) =>
-            await client.SendAsync( new HttpRequestMessage( patch_method, address ) { Content = new StringContent( content ) } ).ConfigureAwait(false);
+        public static async Task<HttpResponseMessage> PatchAsync(this HttpClient client, string address, string content) =>
+            await client.SendAsync(new HttpRequestMessage(PatchMethod, address) { Content = new StringContent(content) }).ConfigureAwait(false);
 
         /// <summary>
         /// Sends Http Path Async
@@ -213,8 +204,9 @@ namespace AP.CrossPlatform.Http
         /// <param name="address">Address.</param>
         /// <param name="content">Content.</param>
         /// <typeparam name="T">The 1st type parameter.</typeparam>
-        public static async Task<HttpResponseMessage> PatchAsync<T>( this HttpClient client, string address, T content ) where T : class =>
-            await client.SendAsync( new HttpRequestMessage( patch_method, address ) { Content = new JsonContent( content ) } ).ConfigureAwait(false);
+        public static async Task<HttpResponseMessage> PatchAsync<T>(this HttpClient client, string address, T content)
+            where T : class =>
+            await client.SendAsync(new HttpRequestMessage(PatchMethod, address) { Content = new JsonContent(content) }).ConfigureAwait(false);
 
         /// <summary>
         /// Sends Http Path Async
@@ -223,7 +215,7 @@ namespace AP.CrossPlatform.Http
         /// <param name="client">Client.</param>
         /// <param name="address">Address.</param>
         /// <param name="content">Content.</param>
-        public static async Task<HttpResponseMessage> PatchAsync( this HttpClient client, string address, JObject content ) =>
-            await client.SendAsync( new HttpRequestMessage( patch_method, address ) { Content = new JsonContent( content ) } );
+        public static async Task<HttpResponseMessage> PatchAsync(this HttpClient client, string address, JObject content) =>
+            await client.SendAsync(new HttpRequestMessage(PatchMethod, address) { Content = new JsonContent(content) });
     }
 }

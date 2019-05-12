@@ -5,11 +5,11 @@ namespace AP.CrossPlatform.Core.Tests.Mocks
     [TestMock]
     public enum EnumerationMock
     {
-        [EnumField( "Field A" )]
+        [EnumField("Field A")]
         FieldA,
 
         [EnumFooField]
-        [EnumField( "Field B" )]
+        [EnumField("Field B")]
         FieldB
     }
 }

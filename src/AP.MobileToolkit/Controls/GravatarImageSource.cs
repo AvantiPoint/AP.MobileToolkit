@@ -42,7 +42,10 @@ namespace AP.MobileToolkit.Controls
             {
                 var response = await client.GetAsync(GetGravatarUri(Email));
 
-                if (!response.IsSuccessStatusCode) return Array.Empty<byte>();
+                if (!response.IsSuccessStatusCode)
+                {
+                    return Array.Empty<byte>();
+                }
 
                 return await response.Content.ReadAsByteArrayAsync();
             }
@@ -54,7 +57,7 @@ namespace AP.MobileToolkit.Controls
 
         private string DefaultGravatarName()
         {
-            switch(Default)
+            switch (Default)
             {
                 case DefaultGravatar.FileNotFound:
                     return "404";

@@ -4,11 +4,12 @@ using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
+#pragma warning disable SA1300
 namespace AP.MobileToolkit.Controls.Platform.iOS
+#pragma warning restore SA1300
 {
     public class MaterialButtonRenderer : ButtonRenderer
     {
-
         protected override void OnElementChanged(ElementChangedEventArgs<Button> e)
         {
             base.OnElementChanged(e);
@@ -43,7 +44,6 @@ namespace AP.MobileToolkit.Controls.Platform.iOS
             Layer.ShadowOpacity = 0.80f;
             Layer.ShadowPath = UIBezierPath.FromRect(Layer.Bounds).CGPath;
             Layer.MasksToBounds = false;
-
         }
     }
 }

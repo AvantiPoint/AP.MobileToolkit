@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using AP.CrossPlatform.Core.Tests.Mocks;
 
 namespace AP.CrossPlatform.Core.Tests.Data

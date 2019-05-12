@@ -29,7 +29,7 @@ namespace AP.MobileToolkit.Fonts
 
         public string FindIconForKey(string name)
         {
-            var glyphName = Regex.Replace(name, $"^{Prefix}-", "");
+            var glyphName = Regex.Replace(name, $"^{Prefix}-", string.Empty);
             var icon = Icons.FirstOrDefault(x => x.PropertyName.Equals(glyphName, StringComparison.InvariantCultureIgnoreCase) ||
                                 x.IconName.Equals(glyphName, StringComparison.InvariantCultureIgnoreCase));
             return icon.Glyph;

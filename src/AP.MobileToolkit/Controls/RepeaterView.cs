@@ -44,7 +44,7 @@ namespace AP.MobileToolkit.Controls
             View view = null;
             object content = null;
 
-            switch(ItemTemplate)
+            switch (ItemTemplate)
             {
                 case DataTemplateSelector selector:
                     var template = selector.SelectTemplate(item, this);
@@ -57,9 +57,6 @@ namespace AP.MobileToolkit.Controls
 
             view = (content is View) ? content as View : ((ViewCell)content)?.View;
 
-            if(view != null)
-                view.BindingContext = item;
-
             return view;
         }
 
@@ -67,9 +64,9 @@ namespace AP.MobileToolkit.Controls
         {
             Children.Clear();
 
-            if(ItemsSource?.Cast<object>()?.Any() ?? false)
+            if (ItemsSource?.Cast<object>()?.Any() ?? false)
             {
-                if(Header != null)
+                if (Header != null)
                     Children.Add(Header);
 
                 AddChildren(ItemsSource);
@@ -78,10 +75,10 @@ namespace AP.MobileToolkit.Controls
 
         protected void AddChildren(IEnumerable items)
         {
-            foreach(var item in items)
+            foreach (var item in items)
             {
                 var view = ViewFor(item);
-                if(view != null)
+                if (view != null)
                 {
                     Children.Add(view);
                 }
@@ -90,14 +87,14 @@ namespace AP.MobileToolkit.Controls
 
         private static void ItemsChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            if(bindable is RepeaterView control)
+            if (bindable is RepeaterView control)
             {
                 control.UpdateChildren();
-                if(newValue is INotifyCollectionChanged observableCollection)
+                if (newValue is INotifyCollectionChanged observableCollection)
                 {
                     observableCollection.CollectionChanged += (sender, e) =>
                     {
-                        switch(e.Action)
+                        switch (e.Action)
                         {
                             case NotifyCollectionChangedAction.Add:
                                 control.AddChildren(e.NewItems);
@@ -119,10 +116,9 @@ namespace AP.MobileToolkit.Controls
 
         private class DefaultDataTemplate : DataTemplate
         {
-            public DefaultDataTemplate() :
-                base(GetLabel)
+            public DefaultDataTemplate()
+                : base(GetLabel)
             {
-
             }
 
             private static Label GetLabel()

@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
-using System.Diagnostics.Tracing;
-using System.Diagnostics;
 using AP.CrossPlatform.Collections;
 
 namespace AP.CrossPlatform.Validations
@@ -18,7 +16,6 @@ namespace AP.CrossPlatform.Validations
                 if (validatable.Errors == null)
                     validatable.Errors = new ObservableErrorCollection();
 
-                //new ValidationContext()
                 var context = new ValidationContext(validatable);
                 var results = new List<ValidationResult>();
                 var valid = Validator.TryValidateObject(validatable, context, results, true);

@@ -2,7 +2,9 @@ using CoreGraphics;
 using Foundation;
 using UIKit;
 
-namespace AP.MobileToolkit.Platform.iOS
+#pragma warning disable SA1300
+namespace AP.MobileToolkit.Controls.Platform.iOS
+#pragma warning restore SA1300
 {
     /// <summary>
     /// Class CheckBoxView.
@@ -22,7 +24,8 @@ namespace AP.MobileToolkit.Platform.iOS
         /// Initializes a new instance of the <see cref="CheckBoxView"/> class.
         /// </summary>
         /// <param name="bounds">The bounds.</param>
-        public CheckBoxView(CGRect bounds) : base(bounds)
+        public CheckBoxView(CGRect bounds)
+            : base(bounds)
         {
             Initialize();
         }
@@ -33,10 +36,7 @@ namespace AP.MobileToolkit.Platform.iOS
         /// <value>The checked title.</value>
         public string CheckedTitle
         {
-            set
-            {
-                SetTitle(value, UIControlState.Selected);
-            }
+            set => SetTitle(value, UIControlState.Selected);
         }
 
         /// <summary>
@@ -45,10 +45,7 @@ namespace AP.MobileToolkit.Platform.iOS
         /// <value>The unchecked title.</value>
         public string UncheckedTitle
         {
-            set
-            {
-                SetTitle(value, UIControlState.Normal);
-            }
+            set => SetTitle(value, UIControlState.Normal);
         }
 
         /// <summary>
@@ -57,8 +54,8 @@ namespace AP.MobileToolkit.Platform.iOS
         /// <value><c>true</c> if checked; otherwise, <c>false</c>.</value>
         public bool Checked
         {
-            set { Selected = value; }
-            get { return Selected; }
+            get => Selected;
+            set => Selected = value;
         }
 
         /// <summary>
@@ -70,7 +67,8 @@ namespace AP.MobileToolkit.Platform.iOS
             ApplyStyle();
 
             TouchUpInside += (sender, args) => Selected = !Selected;
-            // set default color, because type is not UIButtonType.System 
+
+            // set default color, because type is not UIButtonType.System
             SetTitleColor(UIColor.DarkTextColor, UIControlState.Normal);
             SetTitleColor(UIColor.DarkTextColor, UIControlState.Selected);
         }

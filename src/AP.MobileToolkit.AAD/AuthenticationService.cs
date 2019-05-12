@@ -1,9 +1,9 @@
-﻿using Microsoft.Identity.Client;
-using Prism.Logging;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Identity.Client;
+using Prism.Logging;
 #if __ANDROID__
 using Plugin.CurrentActivity;
 #endif
@@ -58,7 +58,7 @@ namespace AP.MobileToolkit.AAD
 #endif
                                          .ExecuteAsync();
             }
-            catch(MsalException msal)
+            catch (MsalException msal)
             {
                 if (msal.ErrorCode != MsalError.AuthenticationCanceledError && msal.ErrorCode != MsalError.PasswordRequiredForManagedUserError)
                 {
@@ -114,12 +114,12 @@ namespace AP.MobileToolkit.AAD
             }
         }
 
-        public Task<IAccount> GetAccountAsync(string identifier) => 
+        public Task<IAccount> GetAccountAsync(string identifier) =>
             AuthClient.GetAccountAsync(identifier);
 
         private void LogException(Exception ex, string callingMethod, string policy)
         {
-            if(ex is MsalException msal)
+            if (ex is MsalException msal)
             {
                 Logger.Report(msal, msal.GetExceptionInfo(new Dictionary<string, string>
                 {

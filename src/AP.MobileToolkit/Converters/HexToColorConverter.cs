@@ -1,6 +1,6 @@
-﻿using AP.MobileToolkit.Extensions;
-using System;
+﻿using System;
 using System.Globalization;
+using AP.MobileToolkit.Extensions;
 using Xamarin.Forms;
 
 namespace AP.MobileToolkit.Converters
@@ -40,8 +40,7 @@ namespace AP.MobileToolkit.Converters
         /// Converts the back.
         /// </summary>
         /// <returns>The back.</returns>
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => 
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) =>
             ((Color)value).GetHexString();
-
     }
 }

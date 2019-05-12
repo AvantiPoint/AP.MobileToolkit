@@ -13,11 +13,14 @@ namespace AP.CrossPlatform.Extensions
         /// </summary>
         /// <returns>The stream.</returns>
         /// <param name="data">Data.</param>
-        public static Stream ToStream( this byte[] data )
+        public static Stream ToStream(this byte[] data)
         {
-            if ( data.IsNullOrEmpty() ) return null;
+            if (data.IsNullOrEmpty())
+            {
+                return null;
+            }
 
-            return new MemoryStream( data );
+            return new MemoryStream(data);
         }
     }
 }

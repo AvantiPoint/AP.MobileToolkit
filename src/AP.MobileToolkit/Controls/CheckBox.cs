@@ -37,8 +37,6 @@ namespace AP.MobileToolkit.Controls
         /// <summary>
         /// Identifies the TextColor bindable property.
         /// </summary>
-        /// 
-        /// <remarks/>
         public static readonly BindableProperty TextColorProperty =
             BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(CheckBox), Color.Default);
 
@@ -68,10 +66,10 @@ namespace AP.MobileToolkit.Controls
             get => (bool)GetValue(CheckedProperty);
             set
             {
-                if(this.Checked != value)
+                if (Checked != value)
                 {
-                    this.SetValue(CheckedProperty, value);
-                    this.CheckedChanged.Invoke(this, value);
+                    SetValue(CheckedProperty, value);
+                    CheckedChanged.Invoke(this, value);
                 }
             }
         }
@@ -149,9 +147,9 @@ namespace AP.MobileToolkit.Controls
         {
             get
             {
-                return this.Checked
-                    ? (string.IsNullOrEmpty(this.CheckedText) ? this.DefaultText : this.CheckedText)
-                        : (string.IsNullOrEmpty(this.UncheckedText) ? this.DefaultText : this.UncheckedText);
+                return Checked
+                    ? (string.IsNullOrEmpty(CheckedText) ? DefaultText : CheckedText)
+                        : (string.IsNullOrEmpty(UncheckedText) ? DefaultText : UncheckedText);
             }
         }
 

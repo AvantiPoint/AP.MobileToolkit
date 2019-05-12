@@ -18,16 +18,16 @@ namespace AP.MobileToolkit.AAD
                 { "TargetSite", msal.TargetSite.Name }
             };
 
-            if(msal is MsalServiceException serviceException)
+            if (msal is MsalServiceException serviceException)
             {
                 props.Add("Claims", serviceException.Claims);
                 props.Add("ResponseBody", serviceException.ResponseBody);
                 props.Add("StatusCode", $"{serviceException.StatusCode}");
             }
 
-            if(additionalValues != null)
+            if (additionalValues != null)
             {
-                foreach(var pair in additionalValues)
+                foreach (var pair in additionalValues)
                 {
                     props.Add(pair.Key, pair.Value);
                 }

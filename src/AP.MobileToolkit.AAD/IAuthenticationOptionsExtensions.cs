@@ -6,7 +6,9 @@
         {
             var domainParts = options.Tenant.Split('.');
             if (domainParts.Length == 1)
+            {
                 return $"{options.Tenant.ToLower()}.onmicrosoft.com";
+            }
 
             return options.Tenant.ToLower();
         }

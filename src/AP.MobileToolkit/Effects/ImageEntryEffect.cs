@@ -8,7 +8,6 @@ namespace AP.MobileToolkit.Effects
         public ImageEntryEffect()
             : base(Constants.GetEffectName(nameof(ImageEntryEffect)))
         {
-
         }
 
         [TypeConverter(typeof(ImageSourceConverter))]

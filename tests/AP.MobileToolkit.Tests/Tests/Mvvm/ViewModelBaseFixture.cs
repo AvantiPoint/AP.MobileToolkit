@@ -1,9 +1,7 @@
-﻿using AP.MobileToolkit.Resources;
-using AP.MobileToolkit.Tests.Mocks;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
+using AP.MobileToolkit.Resources;
+using AP.MobileToolkit.Tests.Mocks;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -11,7 +9,7 @@ namespace AP.MobileToolkit.Tests.Tests.Mvvm
 {
     public class ViewModelBaseFixture : TestBase
     {
-        public ViewModelBaseFixture(ITestOutputHelper testOutputHelper) 
+        public ViewModelBaseFixture(ITestOutputHelper testOutputHelper)
             : base(testOutputHelper)
         {
         }
@@ -20,7 +18,7 @@ namespace AP.MobileToolkit.Tests.Tests.Mvvm
         public void TitleIsSetToTypeName()
         {
             var vm = new ViewModelMock();
-            _testOutputHelper.WriteLine(vm.Title);
+            TestOutputHelper.WriteLine(vm.Title);
             Assert.Equal(nameof(ViewModelMock), vm.Title);
         }
 
@@ -28,7 +26,7 @@ namespace AP.MobileToolkit.Tests.Tests.Mvvm
         public void TitleIsSetToSanitizedName()
         {
             var vm = new MockViewModel();
-            _testOutputHelper.WriteLine(vm.Title);
+            TestOutputHelper.WriteLine(vm.Title);
             Assert.Equal("Mock", vm.Title);
         }
 
@@ -75,14 +73,16 @@ namespace AP.MobileToolkit.Tests.Tests.Mvvm
         {
             var navService = new NavigationServiceMock();
             var dialogService = new PageDialogServiceMock();
-            var logger = new XunitLogger(_testOutputHelper);
+            var logger = new XunitLogger(TestOutputHelper);
             var vm = new ViewModelMock(navService, dialogService, logger);
 
             Assert.True(vm.NavigateCommand.CanExecute("good"));
             vm.NavigateCommand.Execute("good");
             await Task.Run(() =>
             {
-                while (vm.IsBusy) { }
+                while (vm.IsBusy)
+                {
+                }
             });
             Assert.Null(dialogService.Title);
             Assert.Null(dialogService.Message);
@@ -93,14 +93,16 @@ namespace AP.MobileToolkit.Tests.Tests.Mvvm
         {
             var navService = new NavigationServiceMock();
             var dialogService = new PageDialogServiceMock();
-            var logger = new XunitLogger(_testOutputHelper);
+            var logger = new XunitLogger(TestOutputHelper);
             var vm = new ViewModelMock(navService, dialogService, logger);
 
             Assert.True(vm.NavigateCommand.CanExecute("bad"));
             vm.NavigateCommand.Execute("bad");
             await Task.Run(() =>
             {
-                while (vm.IsBusy) { }
+                while (vm.IsBusy)
+                {
+                }
             });
 
             Assert.Equal(ToolkitResources.Error, dialogService.Title);

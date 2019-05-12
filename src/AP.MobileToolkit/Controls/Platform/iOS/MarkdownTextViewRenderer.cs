@@ -1,16 +1,14 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UIKit;
+﻿using System.ComponentModel;
+using AP.MobileToolkit.Controls;
+using AP.MobileToolkit.Controls.Platform.iOS;
+using AP.MobileToolkit.Markdown;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
-using System.ComponentModel;
-using AP.MobileToolkit.Controls.Platform.iOS;
-using AP.MobileToolkit.Controls;
-using AP.MobileToolkit.Markdown;
 
 [assembly: ExportRenderer(typeof(MarkdownTextView), typeof(MarkdownTextViewRenderer))]
+#pragma warning disable SA1300
 namespace AP.MobileToolkit.Controls.Platform.iOS
+#pragma warning restore SA1300
 {
     public class MarkdownTextViewRenderer : LabelRenderer
     {

@@ -11,9 +11,23 @@ namespace AP.MobileToolkit.Tests.Tests.Converters
 {
     public class ByteArrayToImageSourceConverterFixture : ConverterBaseFixture
     {
-        public ByteArrayToImageSourceConverterFixture(ITestOutputHelper testOutputHelper) 
+        public ByteArrayToImageSourceConverterFixture(ITestOutputHelper testOutputHelper)
             : base(testOutputHelper)
         {
+        }
+
+        public static byte[] ReadFully(Stream input)
+        {
+            byte[] buffer = new byte[16 * 1024];
+            using (MemoryStream ms = new MemoryStream())
+            {
+                int read;
+                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    ms.Write(buffer, 0, read);
+                }
+                return ms.ToArray();
+            }
         }
 
         [Fact]
@@ -46,20 +60,6 @@ namespace AP.MobileToolkit.Tests.Tests.Converters
             var converter = new ByteArrayToImageSourceConverter();
             var ex = Record.Exception(() => converter.ConvertBack(null, typeof(byte[]), null, CurrentCulture));
             Assert.IsType<NotImplementedException>(ex);
-        }
-
-        public static byte[] ReadFully(Stream input)
-        {
-            byte[] buffer = new byte[16 * 1024];
-            using (MemoryStream ms = new MemoryStream())
-            {
-                int read;
-                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
-                {
-                    ms.Write(buffer, 0, read);
-                }
-                return ms.ToArray();
-            }
         }
 
         private byte[] GetAvantiPointLogo() =>

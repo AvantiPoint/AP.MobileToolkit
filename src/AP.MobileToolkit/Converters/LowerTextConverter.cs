@@ -11,7 +11,7 @@ namespace AP.MobileToolkit.Converters
             if (value == null)
                 return string.Empty;
 
-            var text = ((string)value);
+            var text = (string)value;
 
             return text.ToLowerInvariant();
         }

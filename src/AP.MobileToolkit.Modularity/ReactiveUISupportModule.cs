@@ -1,9 +1,9 @@
-﻿using Prism.Ioc;
+﻿using System;
+using System.Collections.Generic;
+using Prism.Ioc;
 using Prism.Logging;
 using Prism.Modularity;
 using ReactiveUI;
-using System;
-using System.Collections.Generic;
 
 namespace AP.MobileToolkit.Rx
 {
@@ -11,7 +11,9 @@ namespace AP.MobileToolkit.Rx
     {
         private ILogger Logger { get; set; }
 
-        public void OnCompleted() { }
+        public void OnCompleted()
+        {
+        }
 
         public void OnError(Exception error)
         {
@@ -35,6 +37,8 @@ namespace AP.MobileToolkit.Rx
             });
         }
 
-        public void RegisterTypes(IContainerRegistry containerRegistry) { }
+        public void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+        }
     }
 }

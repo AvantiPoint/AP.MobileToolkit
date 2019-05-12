@@ -11,14 +11,14 @@ namespace AP.MobileToolkit.Controls
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BadgeView
     {
-        public static BindableProperty TextProperty =
+        public static readonly BindableProperty TextProperty =
             BindableProperty.Create(nameof(Text), typeof(string), typeof(BadgeView), "0", propertyChanged: (bindable, oldVal, newVal) =>
             {
                 var view = (BadgeView)bindable;
                 view.BadgeLabel.Text = (string)newVal;
             });
 
-        public static BindableProperty BadgeColorProperty = 
+        public static readonly BindableProperty BadgeColorProperty =
             BindableProperty.Create(nameof(BadgeColor), typeof(Color), typeof(BadgeView), Color.Blue, propertyChanged: (bindable, oldVal, newVal) =>
             {
                 var view = (BadgeView)bindable;
@@ -30,6 +30,7 @@ namespace AP.MobileToolkit.Controls
             get => (string)GetValue(TextProperty);
             set => SetValue(TextProperty, value);
         }
+
         public Color BadgeColor
         {
             get => (Color)GetValue(BadgeColorProperty);

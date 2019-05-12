@@ -6,7 +6,7 @@ namespace AP.MobileToolkit.Tests.Tests.Converters
 {
     public class InverseBooleanConverterFixture : ConverterBaseFixture
     {
-        public InverseBooleanConverterFixture(ITestOutputHelper testOutputHelper) 
+        public InverseBooleanConverterFixture(ITestOutputHelper testOutputHelper)
             : base(testOutputHelper)
         {
         }

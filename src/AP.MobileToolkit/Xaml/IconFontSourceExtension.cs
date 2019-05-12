@@ -1,5 +1,5 @@
-﻿using AP.MobileToolkit.Fonts;
-using System;
+﻿using System;
+using AP.MobileToolkit.Fonts;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

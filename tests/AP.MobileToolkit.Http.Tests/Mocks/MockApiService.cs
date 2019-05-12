@@ -6,24 +6,24 @@ namespace AP.MobileToolkit.Http.Tests.Mocks
 {
     public class MockApiService
     {
-        private IApiClient _apiClient { get; }
+        private IApiClient ApiClient { get; }
 
-        public MockApiService(IApiClient apiClient) => _apiClient = apiClient;
+        public MockApiService(IApiClient apiClient) => ApiClient = apiClient;
 
         [AllowAnonymous]
         public Task<HttpResponseMessage> MockAnnonymousCall() =>
-            _apiClient.GetAsync("");
+            ApiClient.GetAsync(string.Empty);
 
         public Task<HttpResponseMessage> MockDelete() =>
-            _apiClient.DeleteAsync("?id=1", null);
+            ApiClient.DeleteAsync("?id=1", null);
 
         public Task<HttpResponseMessage> MockGet() =>
-            _apiClient.GetAsync("");
+            ApiClient.GetAsync(string.Empty);
 
         public Task<HttpResponseMessage> MockPost() =>
-            _apiClient.PostAsync("", null);
+            ApiClient.PostAsync(string.Empty, null);
 
         public Task<HttpResponseMessage> MockPut() =>
-            _apiClient.PutAsync("", null);
+            ApiClient.PutAsync(string.Empty, null);
     }
 }

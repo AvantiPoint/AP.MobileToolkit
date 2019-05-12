@@ -10,7 +10,7 @@ namespace AP.CrossPlatform.Auth.Tests
 {
     public class IUserTests : TestBase
     {
-        public IUserTests(ITestOutputHelper testOutputHelper) 
+        public IUserTests(ITestOutputHelper testOutputHelper)
             : base(testOutputHelper)
         {
         }
@@ -48,7 +48,7 @@ namespace AP.CrossPlatform.Auth.Tests
         }
 
         [Fact]
-        public  void ReturnsDateFromDateString()
+        public void ReturnsDateFromDateString()
         {
             var now = new DateTime(2018, 8, 25, 12, 0, 0);
             var user = new JwtUser()

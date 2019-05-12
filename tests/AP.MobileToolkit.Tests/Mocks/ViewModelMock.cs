@@ -1,20 +1,20 @@
-﻿using AP.MobileToolkit.Mvvm;
-using Prism.Events;
+﻿using System;
+using System.Threading.Tasks;
+using AP.MobileToolkit.Mvvm;
 using Prism.Logging;
 using Prism.Navigation;
 using Prism.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AP.MobileToolkit.Tests.Mocks
 {
     public class ViewModelMock : ViewModelBase
     {
-        public ViewModelMock() : base(null, null, null) { }
+        public ViewModelMock()
+            : base(null, null, null)
+        {
+        }
 
-        public ViewModelMock(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger) 
+        public ViewModelMock(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
             : base(navigationService, pageDialogService, logger)
         {
         }

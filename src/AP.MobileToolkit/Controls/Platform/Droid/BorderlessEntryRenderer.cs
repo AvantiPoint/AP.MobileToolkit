@@ -9,11 +9,9 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
 {
     public class BorderlessEntryRenderer : EntryRenderer
     {
-        public static void Init() { }
-
-        public BorderlessEntryRenderer(Context context) : base(context)
+        public BorderlessEntryRenderer(Context context)
+            : base(context)
         {
-
         }
 
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)

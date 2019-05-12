@@ -5,7 +5,7 @@ namespace AP.MobileToolkit.Pages
 {
     public static class CustomPage
     {
-        public static readonly BindableProperty FormattedTitleProperty = 
+        public static readonly BindableProperty FormattedTitleProperty =
             BindableProperty.CreateAttached("FormattedTitle", typeof(FormattedString), typeof(Page), null);
 
         public static FormattedString GetFormattedTitle(BindableObject view) =>
@@ -14,7 +14,7 @@ namespace AP.MobileToolkit.Pages
         public static void SetFormattedTitle(BindableObject view, FormattedString value) =>
             view.SetValue(FormattedTitleProperty, value);
 
-        public static readonly BindableProperty FormattedSubtitleProperty = 
+        public static readonly BindableProperty FormattedSubtitleProperty =
             BindableProperty.CreateAttached("FormattedSubtitle", typeof(FormattedString), typeof(Page), null);
 
         public static FormattedString GetFormattedSubtitle(BindableObject view) =>
@@ -23,7 +23,7 @@ namespace AP.MobileToolkit.Pages
         public static void SetFormattedSubtitle(BindableObject view, FormattedString value) =>
             view.SetValue(FormattedSubtitleProperty, value);
 
-        public static readonly BindableProperty SubtitleProperty = 
+        public static readonly BindableProperty SubtitleProperty =
             BindableProperty.CreateAttached("Subtitle", typeof(string), typeof(CustomPage), null);
 
         public static string GetSubtitle(BindableObject view) =>

@@ -17,8 +17,9 @@ namespace AP.CrossPlatform.Auth
         }
 
         private string _accessToken;
-        public string AccessToken 
-        { 
+
+        public string AccessToken
+        {
             get => _accessToken;
             protected set => Update(value);
         }

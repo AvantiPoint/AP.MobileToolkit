@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using AP.MobileToolkit.Controls;
+using AP.MobileToolkit.Controls.Platform.iOS;
 using AP.MobileToolkit.Extensions;
 using AP.MobileToolkit.Platform.iOS;
 using AP.MobileToolkit.Platform.iOS.Extensions;
@@ -9,8 +10,10 @@ using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
-[assembly: ExportRenderer( typeof( CustomRadioButton ), typeof( RadioButtonRenderer ) )]
-namespace AP.MobileToolkit.Platform.iOS
+[assembly: ExportRenderer(typeof(CustomRadioButton), typeof(RadioButtonRenderer))]
+#pragma warning disable SA1300
+namespace AP.MobileToolkit.Controls.Platform.iOS
+#pragma warning restore SA1300
 {
     /// <summary>
     /// The Radio button renderer for iOS.
@@ -23,21 +26,24 @@ namespace AP.MobileToolkit.Platform.iOS
         /// Handles the Element Changed event
         /// </summary>
         /// <param name="e">The e.</param>
-        protected override void OnElementChanged( ElementChangedEventArgs<CustomRadioButton> e )
+        protected override void OnElementChanged(ElementChangedEventArgs<CustomRadioButton> e)
         {
-            base.OnElementChanged( e );
+            base.OnElementChanged(e);
 
-            if ( Control == null )
+            if (Control == null)
             {
-                var checkBox = new RadioButtonView( Bounds );
-                _defaultTextColor = checkBox.TitleColor( UIControlState.Normal );
+                var checkBox = new RadioButtonView(Bounds);
+                _defaultTextColor = checkBox.TitleColor(UIControlState.Normal);
 
-                checkBox.TouchUpInside += ( s, args ) => Element.Checked = Control.Checked;
+                checkBox.TouchUpInside += (s, args) => Element.Checked = Control.Checked;
 
-                SetNativeControl( checkBox );
+                SetNativeControl(checkBox);
             }
 
-            if ( Element == null ) return;
+            if (Element == null)
+            {
+                return;
+            }
 
             BackgroundColor = Element.BackgroundColor.ToUIColor();
             UpdateFont();
@@ -60,21 +66,21 @@ namespace AP.MobileToolkit.Platform.iOS
 
             var width = Control.TitleLabel.Bounds.Width;
 
-            var height = text.StringHeight( Control.Font, width );
+            var height = text.StringHeight(Control.Font, width);
 
-            var minHeight = string.Empty.StringHeight( Control.Font, width );
+            var minHeight = string.Empty.StringHeight(Control.Font, width);
 
-            var requiredLines = Math.Round( height / minHeight, MidpointRounding.AwayFromZero );
+            var requiredLines = Math.Round(height / minHeight, MidpointRounding.AwayFromZero);
 
-            var supportedLines = Math.Round( bounds.Height / minHeight, MidpointRounding.ToEven );
+            var supportedLines = Math.Round(bounds.Height / minHeight, MidpointRounding.ToEven);
 
             // TODO: Determine if we need to address the floating point precision issue.
-            if ( supportedLines == requiredLines )
+            if (supportedLines == requiredLines)
             {
                 return;
             }
 
-            bounds.Height += ( float )( minHeight * ( requiredLines - supportedLines ) );
+            bounds.Height += (float)(minHeight * (requiredLines - supportedLines));
 
             Control.Bounds = bounds;
             Element.HeightRequest = bounds.Height;
@@ -84,9 +90,9 @@ namespace AP.MobileToolkit.Platform.iOS
         /// Draws the specified rect.
         /// </summary>
         /// <param name="rect">The rect.</param>
-        public override void Draw( CGRect rect )
+        public override void Draw(CGRect rect)
         {
-            base.Draw( rect );
+            base.Draw(rect);
 
             ResizeText();
         }
@@ -96,14 +102,14 @@ namespace AP.MobileToolkit.Platform.iOS
         /// </summary>
         private void UpdateFont()
         {
-            if ( string.IsNullOrEmpty( Element.FontName ) )
+            if (string.IsNullOrEmpty(Element.FontName))
             {
                 return;
             }
 
-            var font = UIFont.FromName( Element.FontName, ( Element.FontSize > 0 ) ? ( float )Element.FontSize : 12.0f );
+            var font = UIFont.FromName(Element.FontName, (Element.FontSize > 0) ? (float)Element.FontSize : 12.0f);
 
-            if ( font != null )
+            if (font != null)
             {
                 Control.Font = font;
             }
@@ -114,8 +120,8 @@ namespace AP.MobileToolkit.Platform.iOS
         /// </summary>
         private void UpdateTextColor()
         {
-            Control.SetTitleColor( Element.TextColor.ToUIColorOrDefault( _defaultTextColor ), UIControlState.Normal );
-            Control.SetTitleColor( Element.TextColor.ToUIColorOrDefault( _defaultTextColor ), UIControlState.Selected );
+            Control.SetTitleColor(Element.TextColor.ToUIColorOrDefault(_defaultTextColor), UIControlState.Normal);
+            Control.SetTitleColor(Element.TextColor.ToUIColorOrDefault(_defaultTextColor), UIControlState.Selected);
         }
 
         /// <summary>
@@ -123,11 +129,11 @@ namespace AP.MobileToolkit.Platform.iOS
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="PropertyChangedEventArgs"/> instance containing the event data.</param>
-        protected override void OnElementPropertyChanged( object sender, PropertyChangedEventArgs e )
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            base.OnElementPropertyChanged( sender, e );
+            base.OnElementPropertyChanged(sender, e);
 
-            switch ( e.PropertyName )
+            switch (e.PropertyName)
             {
                 case "Checked":
                     Control.Checked = Element.Checked;
@@ -147,7 +153,7 @@ namespace AP.MobileToolkit.Platform.iOS
                     UpdateFont();
                     break;
                 default:
-                    //                    Debug.WriteLine("Property change for {0} has not been implemented.", e.PropertyName);
+                    // Debug.WriteLine("Property change for {0} has not been implemented.", e.PropertyName);
                     return;
             }
         }

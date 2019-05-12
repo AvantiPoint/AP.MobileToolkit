@@ -16,7 +16,7 @@ namespace AP.MobileToolkit.Platform
     {
         float _minimumDpi = 300;
 
-        public Task<WindowsImageSource> LoadImageAsync(ImageSource imagesource, CancellationToken _ = default) =>
+        public Task<WindowsImageSource> LoadImageAsync(ImageSource imagesource, CancellationToken cancellationToken = default) =>
             new Task<WindowsImageSource>(() => LoadImage(imagesource));
 
         private WindowsImageSource LoadImage(ImageSource imagesource)

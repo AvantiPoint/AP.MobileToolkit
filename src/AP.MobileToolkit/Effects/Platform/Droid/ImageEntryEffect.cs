@@ -45,28 +45,12 @@ namespace AP.MobileToolkit.Effects.Platform.Droid
 
         protected override void OnDetached()
         {
-
         }
-
-        //private IImageSourceHandler GetImageHandler(ImageSource source)
-        //{
-        //    switch(source)
-        //    {
-        //        case UriImageSource uriSource:
-        //            return new ImageLoaderSourceHandler();
-        //        case FileImageSource fileSource:
-        //            return new FileImageSourceHandler();
-        //        case StreamImageSource streamSource:
-        //            return new StreamImagesourceHandler();
-        //        default:
-        //            return null;
-        //    }
-        //}
 
         private void SetImageOnEntry(Drawable drawable)
         {
-            var editText = this.Control;
-            switch(Effect.Alignment)
+            var editText = Control;
+            switch (Effect.Alignment)
             {
                 case ImageAlignment.Left:
                     editText.SetCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);

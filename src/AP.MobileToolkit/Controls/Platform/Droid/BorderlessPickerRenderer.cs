@@ -9,11 +9,9 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
 {
     public class BorderlessPickerRenderer : PickerRenderer
     {
-        public static void Init() { }
-
-        public BorderlessPickerRenderer(Context context) : base(context)
+        public BorderlessPickerRenderer(Context context)
+            : base(context)
         {
-
         }
 
         protected override void OnElementChanged(ElementChangedEventArgs<Picker> e)

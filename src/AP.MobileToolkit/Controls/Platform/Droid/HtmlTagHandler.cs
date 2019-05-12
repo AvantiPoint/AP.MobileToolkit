@@ -1,17 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using Android.Text.Style;
 using Android.Text;
-using Org.Xml.Sax;
+using Android.Text.Style;
 using AP.MobileToolkit.Markdown;
+using Org.Xml.Sax;
 
 namespace AP.MobileToolkit.Controls.Platform.Droid
 {
@@ -23,21 +16,48 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
     public class HtmlTagHandler : Java.Lang.Object, Android.Text.Html.ITagHandler
     {
         /**
+         * List indentation in pixels. Nested lists use multiple of this.
+         */
+        private static readonly int indent = 10;
+
+        private static int listItemIndent = indent * 2;
+
+        private static BulletSpan bullet = new BulletSpan(indent);
+
+        /**
+         * Get last marked position of a specific tag kind (private class)
+         */
+        private static Java.Lang.Object GetLast(IEditable text, Type kind)
+        {
+            Java.Lang.Object[] objs = text.GetSpans(0, text.Length(), Java.Lang.Class.FromType(kind)); // TODO: LOl will this work?
+            if (objs.Length == 0)
+            {
+                return null;
+            }
+            else
+            {
+                for (int i = objs.Length; i > 0; i--)
+                {
+                    if (text.GetSpanFlags(objs[i - 1]) == SpanTypes.MarkMark)
+                    {
+                        return objs[i - 1];
+                    }
+                }
+                return null;
+            }
+        }
+
+        /**
          * Keeps track of lists (ol, ul). On bottom of Stack is the outermost list
          * and on top of Stack is the most nested list
          */
         Stack<string> lists = new Stack<string>();
+
         /**
          * Tracks indexes of ordered lists so that after a nested list ends
          * we can continue with correct index of outer list
          */
         Stack<int> olNextIndex = new Stack<int>();
-        /**
-         * List indentation in pixels. Nested lists use multiple of this.
-         */
-        private static int indent = 10;
-        private static int listItemIndent = indent * 2;
-        private static BulletSpan bullet = new BulletSpan(indent);
 
         private class Ul : Java.Lang.Object
         {
@@ -59,7 +79,6 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
         {
         }
 
-
         public void HandleTag(bool opening, string tag, Android.Text.IEditable output, IXMLReader xmlReader)
         {
             if (opening)
@@ -68,7 +87,7 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
                 //          if (HtmlTextView.DEBUG) {
                 //              Log.d(HtmlTextView.TAG, "opening, output: " + output.ToString());
                 //          }
-                //
+
                 if (tag.ToLower() == "ul")
                 {
                     lists.Push(tag);
@@ -115,7 +134,7 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
                 //          if (HtmlTextView.DEBUG) {
                 //              Log.d(HtmlTextView.TAG, "closing, output: " + output.ToString());
                 //          }
-                //
+
                 if (tag.EqualsIgnoreCase("ul"))
                 {
                     lists.Pop();
@@ -133,6 +152,7 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
                         {
                             output.Append("\n");
                         }
+
                         // Nested BulletSpans increases distance between bullet and Text, so we must prevent it.
                         int bulletMargin = indent;
                         if (lists.Count > 1)
@@ -146,7 +166,10 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
                             }
                         }
                         BulletSpan newBullet = new BulletSpan(bulletMargin);
-                        End(output, typeof(Ul), false,
+                        End(
+                            output,
+                            typeof(Ul),
+                            false,
                             new LeadingMarginSpanStandard(listItemIndent * (lists.Count - 1)),
                             newBullet);
                     }
@@ -188,9 +211,9 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
             int len = output.Length();
             output.SetSpan(mark, len, len, SpanTypes.MarkMark);
 
-            //      if (HtmlTextView.DEBUG) {
-            //          Log.d(HtmlTextView.TAG, "len: " + len);
-            //      }
+            // if (HtmlTextView.DEBUG) {
+            //     Log.d(HtmlTextView.TAG, "len: " + len);
+            // }
         }
 
         /**
@@ -199,8 +222,10 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
         private void End(IEditable output, Type kind, bool paragraphStyle, params Java.Lang.Object[] replaces)
         {
             Java.Lang.Object obj = GetLast(output, kind);
+
             // start of the tag
             int where = output.GetSpanStart(obj);
+
             // end of the tag
             int len = output.Length();
 
@@ -209,6 +234,7 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
             if (where != len)
             {
                 int thisLen = len;
+
                 // paragraph styles like AlignmentSpan need to end with a new line!
                 if (paragraphStyle)
                 {
@@ -220,35 +246,11 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
                     output.SetSpan(replace, where, thisLen, SpanTypes.ExclusiveExclusive);
                 }
 
-                //          if (HtmlTextView.DEBUG) {
-                //              Log.d(HtmlTextView.TAG, "where: " + where);
-                //              Log.d(HtmlTextView.TAG, "thisLen: " + thisLen);
-                //          }
+                // if (HtmlTextView.DEBUG) {
+                //     Log.d(HtmlTextView.TAG, "where: " + where);
+                //     Log.d(HtmlTextView.TAG, "thisLen: " + thisLen);
+                // }
             }
         }
-
-        /**
-         * Get last marked position of a specific tag kind (private class)
-         */
-        private static Java.Lang.Object GetLast(IEditable Text, Type kind)
-        {
-            Java.Lang.Object[] objs = Text.GetSpans(0, Text.Length(), Java.Lang.Class.FromType(kind)); // TODO: LOl will this work?
-            if (objs.Length == 0)
-            {
-                return null;
-            }
-            else
-            {
-                for (int i = objs.Length; i > 0; i--)
-                {
-                    if (Text.GetSpanFlags(objs[i - 1]) == SpanTypes.MarkMark)
-                    {
-                        return objs[i - 1];
-                    }
-                }
-                return null;
-            }
-        }
-
     }
 }

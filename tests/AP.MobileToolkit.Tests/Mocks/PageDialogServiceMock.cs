@@ -1,14 +1,13 @@
-﻿using Prism.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
+using Prism.Services;
 
 namespace AP.MobileToolkit.Tests.Mocks
 {
     public class PageDialogServiceMock : IPageDialogService
     {
         public string Title { get; private set; }
+
         public string Message { get; private set; }
 
         public Task<string> DisplayActionSheetAsync(string title, string cancelButton, string destroyButton, params string[] otherButtons)

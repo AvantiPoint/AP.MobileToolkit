@@ -2,14 +2,15 @@
 using AP.MobileToolkit.Controls;
 using UIKit;
 
+#pragma warning disable SA1300
 namespace AP.MobileToolkit.Controls.Platform.iOS
+#pragma warning restore SA1300
 {
     /// <summary>
     /// Class UISeparator.
     /// </summary>
     public class UISeparator : UIView
     {
-
         /// <summary>
         /// The _thickness
         /// </summary>
@@ -21,14 +22,11 @@ namespace AP.MobileToolkit.Controls.Platform.iOS
         /// <value>The thickness.</value>
         public double Thickness
         {
+            get => _thickness;
             set
             {
                 _thickness = value;
-                SetNeedsDisplayInRect( Bounds );
-            }
-            get
-            {
-                return _thickness;
+                SetNeedsDisplayInRect(Bounds);
             }
         }
 
@@ -43,14 +41,11 @@ namespace AP.MobileToolkit.Controls.Platform.iOS
         /// <value>The spacing before.</value>
         public double SpacingBefore
         {
+            get => _spacingBefore;
             set
             {
                 _spacingBefore = value;
-                SetNeedsDisplayInRect( Bounds );
-            }
-            get
-            {
-                return _spacingBefore;
+                SetNeedsDisplayInRect(Bounds);
             }
         }
 
@@ -65,14 +60,11 @@ namespace AP.MobileToolkit.Controls.Platform.iOS
         /// <value>The spacing after.</value>
         public double SpacingAfter
         {
+            get => _spacingAfter;
             set
             {
                 _spacingAfter = value;
-                SetNeedsDisplayInRect( Bounds );
-            }
-            get
-            {
-                return _spacingAfter;
+                SetNeedsDisplayInRect(Bounds);
             }
         }
 
@@ -87,17 +79,13 @@ namespace AP.MobileToolkit.Controls.Platform.iOS
         /// <value>The color of the stroke.</value>
         public UIColor StrokeColor
         {
+            get => _strokeColor;
             set
             {
                 _strokeColor = value;
-                SetNeedsDisplayInRect( Bounds );
-            }
-            get
-            {
-                return _strokeColor;
+                SetNeedsDisplayInRect(Bounds);
             }
         }
-
 
         /// <summary>
         /// The _stroke type
@@ -110,14 +98,11 @@ namespace AP.MobileToolkit.Controls.Platform.iOS
         /// <value>The type of the stroke.</value>
         public StrokeType StrokeType
         {
+            get => _strokeType;
             set
             {
                 _strokeType = value;
-                SetNeedsDisplayInRect( Bounds );
-            }
-            get
-            {
-                return _strokeType;
+                SetNeedsDisplayInRect(Bounds);
             }
         }
 
@@ -132,14 +117,11 @@ namespace AP.MobileToolkit.Controls.Platform.iOS
         /// <value>The orientation.</value>
         public SeparatorOrientation Orientation
         {
+            get => _orientation;
             set
             {
                 _orientation = value;
-                SetNeedsDisplayInRect( Bounds );
-            }
-            get
-            {
-                return _orientation;
+                SetNeedsDisplayInRect(Bounds);
             }
         }
 
@@ -156,8 +138,8 @@ namespace AP.MobileToolkit.Controls.Platform.iOS
         /// Initializes a new instance of the <see cref="UISeparator"/> class.
         /// </summary>
         /// <param name="bounds">The bounds.</param>
-        public UISeparator( CoreGraphics.CGRect bounds )
-            : base( bounds )
+        public UISeparator(CoreGraphics.CGRect bounds)
+            : base(bounds)
         {
             Initialize();
         }
@@ -166,8 +148,8 @@ namespace AP.MobileToolkit.Controls.Platform.iOS
         /// Initializes a new instance of the <see cref="UISeparator"/> class.
         /// </summary>
         /// <param name="handle">The handle.</param>
-        public UISeparator( IntPtr handle )
-            : base( handle )
+        public UISeparator(IntPtr handle)
+            : base(handle)
         {
             Initialize();
         }
@@ -184,72 +166,77 @@ namespace AP.MobileToolkit.Controls.Platform.iOS
         /// Draws the specified rect.
         /// </summary>
         /// <param name="rect">The rect.</param>
-        public override void Draw( CoreGraphics.CGRect rect )
+        public override void Draw(CoreGraphics.CGRect rect)
         {
-            base.Draw( rect );
-
+            base.Draw(rect);
 
             var height = Bounds.Size.Height;
-            //var percentage = (this.Limit - Math.Abs(this.CurrentValue)) / this.Limit;
+
+            // var percentage = (this.Limit - Math.Abs(this.CurrentValue)) / this.Limit;
 
             var context = UIGraphics.GetCurrentContext();
 
-            context.ClearRect( rect );
-            //context.SetFillColor(UIColor.Clear.CGColor);
-            //context.FillRect(rect);
-            context.SetStrokeColor( StrokeColor.CGColor );
-            switch( StrokeType )
+            context.ClearRect(rect);
+
+            // context.SetFillColor(UIColor.Clear.CGColor);
+            // context.FillRect(rect);
+
+            context.SetStrokeColor(StrokeColor.CGColor);
+            switch (StrokeType)
             {
                 case StrokeType.Dashed:
-                    context.SetLineDash( 0, new nfloat[] { 6, 2 } );
+                    context.SetLineDash(0, new nfloat[] { 6, 2 });
                     break;
                 case StrokeType.Dotted:
-                    context.SetLineDash( 0, new nfloat[] { ( nfloat )Thickness, ( nfloat )Thickness } );
+                    context.SetLineDash(0, new nfloat[] { (nfloat)Thickness, (nfloat)Thickness });
                     break;
                 default:
 
                     break;
             }
 
-            context.SetLineWidth( ( float )Thickness );
+            context.SetLineWidth((float)Thickness);
             var desiredTotalSpacing = SpacingAfter + SpacingBefore;
 
             float leftForSpacing = 0;
             float actualSpacingBefore = 0;
-            //float actualSpacingAfter = 0;
 
-            if( Orientation == SeparatorOrientation.Horizontal )
+            // float actualSpacingAfter = 0;
+
+            if (Orientation == SeparatorOrientation.Horizontal)
             {
-                leftForSpacing = ( float )Bounds.Size.Height - ( float )Thickness;
+                leftForSpacing = (float)Bounds.Size.Height - (float)Thickness;
             }
             else
             {
-                leftForSpacing = ( float )Bounds.Size.Width - ( float )Thickness;
+                leftForSpacing = (float)Bounds.Size.Width - (float)Thickness;
             }
-            if( desiredTotalSpacing > 0 )
+            if (desiredTotalSpacing > 0)
             {
-                float spacingCompressionRatio = ( float )( leftForSpacing / desiredTotalSpacing );
-                actualSpacingBefore = ( float )SpacingBefore * spacingCompressionRatio;
-                //actualSpacingAfter = ( float )SpacingAfter * spacingCompressionRatio;
+                float spacingCompressionRatio = (float)(leftForSpacing / desiredTotalSpacing);
+                actualSpacingBefore = (float)SpacingBefore * spacingCompressionRatio;
+
+                // actualSpacingAfter = ( float )SpacingAfter * spacingCompressionRatio;
             }
             else
             {
                 actualSpacingBefore = 0;
-                //actualSpacingAfter = 0;
-            }
-            float thicknessOffset = ( float )Thickness / 2.0f;
 
-            if( Orientation == SeparatorOrientation.Horizontal )
+                // actualSpacingAfter = 0;
+            }
+            float thicknessOffset = (float)Thickness / 2.0f;
+
+            if (Orientation == SeparatorOrientation.Horizontal)
             {
-                //var half = Bounds.Size.Height / 2.0f;
-                context.MoveTo( 0, actualSpacingBefore + thicknessOffset );
-                context.AddLineToPoint( rect.Width, actualSpacingBefore + thicknessOffset );
+                // var half = Bounds.Size.Height / 2.0f;
+                context.MoveTo(0, actualSpacingBefore + thicknessOffset);
+                context.AddLineToPoint(rect.Width, actualSpacingBefore + thicknessOffset);
             }
             else
             {
-                //var half = Bounds.Size.Width / 2.0f;
-                context.MoveTo( actualSpacingBefore + thicknessOffset, 0 );
-                context.AddLineToPoint( actualSpacingBefore + thicknessOffset, rect.Height );
+                // var half = Bounds.Size.Width / 2.0f;
+                context.MoveTo(actualSpacingBefore + thicknessOffset, 0);
+                context.AddLineToPoint(actualSpacingBefore + thicknessOffset, rect.Height);
             }
             context.StrokePath();
         }

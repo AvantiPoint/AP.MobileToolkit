@@ -1,11 +1,11 @@
-﻿using AP.MobileToolkit.Resources;
-using AP.MobileToolkit.Tests.Mocks;
-using ReactiveUI;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
+using AP.MobileToolkit.Resources;
+using AP.MobileToolkit.Tests.Mocks;
+using ReactiveUI;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -22,52 +22,52 @@ namespace AP.MobileToolkit.Tests.Tests.Mvvm
         [Fact]
         public void InitializesWithoutException()
         {
-            var ex = Record.Exception(() => new ReactiveMockViewModel(_testOutputHelper));
+            var ex = Record.Exception(() => new ReactiveMockViewModel(TestOutputHelper));
             Assert.Null(ex);
         }
 
         [Fact]
         public void TitleDoesNotContainPage()
         {
-            var vm = new ReactivePageViewModel(_testOutputHelper);
-            _testOutputHelper.WriteLine(vm.Title);
+            var vm = new ReactivePageViewModel(TestOutputHelper);
+            TestOutputHelper.WriteLine(vm.Title);
             Assert.Equal("Reactive", vm.Title);
         }
 
         [Fact]
         public void TitleIsSetToTypeName()
         {
-            var vm = new ReactiveViewModelMock(_testOutputHelper);
-            _testOutputHelper.WriteLine(vm.Title);
+            var vm = new ReactiveViewModelMock(TestOutputHelper);
+            TestOutputHelper.WriteLine(vm.Title);
             Assert.Equal(nameof(ReactiveViewModelMock), vm.Title);
         }
 
         [Fact]
         public void TitleIsSetToSanitizedName()
         {
-            var vm = new ReactiveMockViewModel(_testOutputHelper);
-            _testOutputHelper.WriteLine(vm.Title);
+            var vm = new ReactiveMockViewModel(TestOutputHelper);
+            TestOutputHelper.WriteLine(vm.Title);
             Assert.Equal("Reactive Mock", vm.Title);
         }
 
         [Fact]
         public void InitialIsBusy_IsFalse()
         {
-            var vm = new ReactiveMockViewModel(_testOutputHelper);
+            var vm = new ReactiveMockViewModel(TestOutputHelper);
             Assert.False(vm.IsBusy);
         }
 
         [Fact]
         public void InitialIsNotBusy_IsTrue()
         {
-            var vm = new ReactiveMockViewModel(_testOutputHelper);
+            var vm = new ReactiveMockViewModel(TestOutputHelper);
             Assert.True(vm.IsNotBusy);
         }
 
         [Fact]
         public async Task SetIsBusy_UpdatesIsNotBusy()
         {
-            var vm = new ReactiveMockViewModel(_testOutputHelper);
+            var vm = new ReactiveMockViewModel(TestOutputHelper);
             Assert.False(vm.IsToggled);
             await vm.ToggleIsBusyCommand.Execute();
             Assert.True(vm.IsToggled);
@@ -85,10 +85,10 @@ namespace AP.MobileToolkit.Tests.Tests.Mvvm
         {
             var navService = new NavigationServiceMock();
             var dialogService = new PageDialogServiceMock();
-            var logger = new XunitLogger(_testOutputHelper);
+            var logger = new XunitLogger(TestOutputHelper);
             var vm = new ReactiveMockViewModel(navService, dialogService, logger);
 
-            //Assert.True(vm.NavigateCommand.CanExecute("good"));
+            // Assert.True(vm.NavigateCommand.CanExecute("good"));
             await vm.NavigateCommand.Execute("good");
             Assert.Null(dialogService.Title);
             Assert.Null(dialogService.Message);
@@ -99,10 +99,10 @@ namespace AP.MobileToolkit.Tests.Tests.Mvvm
         {
             var navService = new NavigationServiceMock();
             var dialogService = new PageDialogServiceMock();
-            var logger = new XunitLogger(_testOutputHelper);
+            var logger = new XunitLogger(TestOutputHelper);
             var vm = new ReactiveMockViewModel(navService, dialogService, logger);
 
-            //Assert.True(vm.NavigateCommand.CanExecute("bad"));
+            // Assert.True(vm.NavigateCommand.CanExecute("bad"));
             await vm.NavigateCommand.Execute("bad");
 
             Assert.Equal(ToolkitResources.Error, dialogService.Title);
@@ -111,29 +111,29 @@ namespace AP.MobileToolkit.Tests.Tests.Mvvm
             Assert.Contains(dialogMessage, dialogService.Message);
         }
 
-        //[Fact]
-        //public async Task NavigateCommand_CanNotExecute_WhenIsBusy()
-        //{
+        // [Fact]
+        // public async Task NavigateCommand_CanNotExecute_WhenIsBusy()
+        // {
         //    var vm = new ReactiveViewModelMock();
         //    await vm.ToggleIsBusyCommand.Execute();
         //    Assert.False(await vm.NavigateCommand.CanExecute);
         //    await vm.ToggleIsBusyCommand.Execute();
         //    Assert.True(await vm.NavigateCommand.CanExecute);
-        //}
+        // }
 
         void IObserver<Exception>.OnCompleted()
         {
-            _testOutputHelper.WriteLine("OnCompleted");
+            TestOutputHelper.WriteLine("OnCompleted");
         }
 
         void IObserver<Exception>.OnError(Exception error)
         {
-            _testOutputHelper.WriteLine(error.ToString());
+            TestOutputHelper.WriteLine(error.ToString());
         }
 
         void IObserver<Exception>.OnNext(Exception value)
         {
-            _testOutputHelper.WriteLine(value.ToString());
+            TestOutputHelper.WriteLine(value.ToString());
         }
     }
 }

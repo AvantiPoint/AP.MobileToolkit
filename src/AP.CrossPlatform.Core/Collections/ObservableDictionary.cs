@@ -62,19 +62,21 @@ namespace AP.CrossPlatform.Collections
             return Dictionary.ContainsKey(key);
         }
 
-        public ICollection<TKey> Keys
-        {
-            get { return Dictionary.Keys; }
-        }
+        public ICollection<TKey> Keys => Dictionary.Keys;
 
         public bool Remove(TKey key)
         {
-            if (key == null) throw new ArgumentNullException(nameof(key));
+            if (key is null)
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
+
             Dictionary.TryGetValue(key, out _);
             var removed = Dictionary.Remove(key);
             if (removed)
-                //OnCollectionChanged(NotifyCollectionChangedAction.Remove, new KeyValuePair<TKey, TValue>(key, value));
+            {
                 RaiseCollectionChanged();
+            }
 
             return removed;
         }
@@ -84,21 +86,12 @@ namespace AP.CrossPlatform.Collections
             return Dictionary.TryGetValue(key, out value);
         }
 
-        public ICollection<TValue> Values
-        {
-            get { return Dictionary.Values; }
-        }
+        public ICollection<TValue> Values => Dictionary.Values;
 
         public TValue this[TKey key]
         {
-            get
-            {
-                return Dictionary[key];
-            }
-            set
-            {
-                Insert(key, value, false);
-            }
+            get => Dictionary[key];
+            set => Insert(key, value, false);
         }
 
         #endregion
@@ -178,19 +171,31 @@ namespace AP.CrossPlatform.Collections
 
         public void AddRange(IDictionary<TKey, TValue> items)
         {
-            if (items == null) throw new ArgumentNullException("items");
+            if (items == null)
+            {
+                throw new ArgumentNullException("items");
+            }
 
             if (items.Count > 0)
             {
                 if (Dictionary.Count > 0)
                 {
                     if (items.Keys.Any((k) => Dictionary.ContainsKey(k)))
+                    {
                         throw new ArgumentException("An item with the same key has already been added.");
+                    }
                     else
-                        foreach (var item in items) Dictionary.Add(item);
+                    {
+                        foreach (var item in items)
+                        {
+                            Dictionary.Add(item);
+                        }
+                    }
                 }
                 else
+                {
                     Dictionary = new Dictionary<TKey, TValue>(items);
+                }
 
                 RaiseCollectionChanged(NotifyCollectionChangedAction.Add, items.ToArray());
             }
@@ -198,14 +203,24 @@ namespace AP.CrossPlatform.Collections
 
         private void Insert(TKey key, TValue value, bool add)
         {
-            if (key == null) throw new ArgumentNullException("key");
+            if (key == null)
+            {
+                throw new ArgumentNullException("key");
+            }
 
             if (Dictionary.TryGetValue(key, out TValue item))
             {
-                if (add) throw new ArgumentException("An item with the same key has already been added.");
-                if (Equals(item, value)) return;
-                Dictionary[key] = value;
+                if (add)
+                {
+                    throw new ArgumentException("An item with the same key has already been added.");
+                }
 
+                if (Equals(item, value))
+                {
+                    return;
+                }
+
+                Dictionary[key] = value;
 
                 RaiseCollectionChanged(NotifyCollectionChangedAction.Replace, new KeyValuePair<TKey, TValue>(key, value), new KeyValuePair<TKey, TValue>(key, item));
             }
@@ -219,17 +234,26 @@ namespace AP.CrossPlatform.Collections
 
         public void ReplaceRange(IDictionary<TKey, TValue> items)
         {
-            if (items == null) throw new ArgumentNullException("items");
+            if (items == null)
+            {
+                throw new ArgumentNullException("items");
+            }
 
             if (items.Count > 0)
             {
                 if (Dictionary.Count > 0)
                 {
                     Dictionary.Clear();
-                    foreach (var item in items) Dictionary.Add(item);
+
+                    foreach (var item in items)
+                    {
+                        Dictionary.Add(item);
+                    }
                 }
                 else
+                {
                     Dictionary = new Dictionary<TKey, TValue>(items);
+                }
 
                 RaiseCollectionChanged(NotifyCollectionChangedAction.Replace, items.ToArray());
             }

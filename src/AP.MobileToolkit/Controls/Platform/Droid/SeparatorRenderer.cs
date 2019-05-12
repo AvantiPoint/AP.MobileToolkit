@@ -11,42 +11,41 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
     /// </summary>
     public class SeparatorRenderer : ViewRenderer<Separator, SeparatorDroidView>
     {
-        public SeparatorRenderer(Context context) : base(context)
+        public SeparatorRenderer(Context context)
+            : base(context)
         {
-
         }
 
         /// <summary>
         /// Called when [element changed].
         /// </summary>
         /// <param name="e">The e.</param>
-        protected override void OnElementChanged( ElementChangedEventArgs<Separator> e )
+        protected override void OnElementChanged(ElementChangedEventArgs<Separator> e)
         {
-            base.OnElementChanged( e );
+            base.OnElementChanged(e);
 
-            if ( e.NewElement == null )
+            if (e.NewElement is null)
             {
                 return;
             }
 
-            if ( this.Control == null )
+            if (Control is null)
             {
-                this.SetNativeControl( new SeparatorDroidView( this.Context ) );
+                SetNativeControl(new SeparatorDroidView(Context));
             }
 
-            this.SetProperties();
+            SetProperties();
         }
-
 
         /// <summary>
         /// Handles the <see cref="E:ElementPropertyChanged" /> event.
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="PropertyChangedEventArgs"/> instance containing the event data.</param>
-        protected override void OnElementPropertyChanged( object sender, PropertyChangedEventArgs e )
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            base.OnElementPropertyChanged( sender, e );
-            this.SetProperties();
+            base.OnElementPropertyChanged(sender, e);
+            SetProperties();
         }
 
         /// <summary>
@@ -61,7 +60,7 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
             Control.StrokeType = Element.StrokeType;
             Control.Orientation = Element.Orientation;
 
-            this.Control.Invalidate();
+            Control.Invalidate();
         }
     }
 }

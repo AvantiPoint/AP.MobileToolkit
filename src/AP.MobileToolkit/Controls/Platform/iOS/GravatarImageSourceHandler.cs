@@ -8,13 +8,15 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportImageSourceHandler(typeof(GravatarImageSource), typeof(GravatarImageSourceHandler))]
+#pragma warning disable SA1300
 namespace AP.MobileToolkit.Controls.Platform.iOS
+#pragma warning restore SA1300
 {
     public class GravatarImageSourceHandler : IImageSourceHandler
     {
         public async Task<UIImage> LoadImageAsync(ImageSource imagesource, CancellationToken cancelationToken = default, float scale = 1)
         {
-            if(imagesource is GravatarImageSource gis)
+            if (imagesource is GravatarImageSource gis)
             {
                 var imageBytes = await gis.GetGravatarAsync();
 

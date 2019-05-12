@@ -12,11 +12,9 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
 {
     public class MaterialButtonRenderer : Xamarin.Forms.Platform.Android.AppCompat.ButtonRenderer
     {
-        public static void Init() { }
-
-        public MaterialButtonRenderer(Context context) : base(context)
+        public MaterialButtonRenderer(Context context)
+            : base(context)
         {
-
         }
 
         /// <summary>
@@ -34,7 +32,6 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
 
             // set the elevation manually
             UpdateMaterialShadow();
-
         }
 
         /// <summary>

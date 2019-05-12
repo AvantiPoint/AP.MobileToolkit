@@ -2,7 +2,9 @@
 using System.Linq;
 using Foundation;
 
+#pragma warning disable SA1300
 namespace AP.MobileToolkit.Platform.iOS.Extensions
+#pragma warning restore SA1300
 {
     /// <summary>
     /// NSUser defaults extensions.
@@ -14,12 +16,12 @@ namespace AP.MobileToolkit.Platform.iOS.Extensions
         /// </summary>
         /// <param name="defaults">Defaults.</param>
         /// <param name="action">Action.</param>
-        public static void AddPrefernceSpecifierObserver( this NSUserDefaults defaults, Action action )
+        public static void AddPrefernceSpecifierObserver(this NSUserDefaults defaults, Action action)
         {
-            defaults.AddObserver( "PreferenceSpecifiers", NSKeyValueObservingOptions.New, ( observedChange ) =>
+            defaults.AddObserver("PreferenceSpecifiers", NSKeyValueObservingOptions.New, (observedChange) =>
             {
                 action?.Invoke();
-            } );
+            });
         }
 
         /// <summary>
@@ -27,9 +29,9 @@ namespace AP.MobileToolkit.Platform.iOS.Extensions
         /// </summary>
         /// <returns>The preference specifiers.</returns>
         /// <param name="defaults">Defaults.</param>
-        public static NSDictionary[] GetPreferenceSpecifiers( this NSUserDefaults defaults )
+        public static NSDictionary[] GetPreferenceSpecifiers(this NSUserDefaults defaults)
         {
-            return NSArray.FromArray<NSDictionary>( defaults[ "PreferenceSpecifiers" ] as NSArray );
+            return NSArray.FromArray<NSDictionary>(defaults["PreferenceSpecifiers"] as NSArray);
         }
 
         /// <summary>
@@ -38,10 +40,10 @@ namespace AP.MobileToolkit.Platform.iOS.Extensions
         /// <returns>The preference item.</returns>
         /// <param name="defaults">Defaults.</param>
         /// <param name="key">Key.</param>
-        public static NSDictionary GetPreferenceItem( this NSUserDefaults defaults, string key )
+        public static NSDictionary GetPreferenceItem(this NSUserDefaults defaults, string key)
         {
             var preferenceItems = defaults.GetPreferenceSpecifiers();
-            return preferenceItems?.FirstOrDefault( x => x[ "Key" ]?.ToString() == key );
+            return preferenceItems?.FirstOrDefault(x => x["Key"]?.ToString() == key);
         }
 
         /// <summary>
@@ -50,9 +52,9 @@ namespace AP.MobileToolkit.Platform.iOS.Extensions
         /// <returns>The preference item default value.</returns>
         /// <param name="defaults">Defaults.</param>
         /// <param name="key">Key.</param>
-        public static NSObject GetPreferenceItemDefaultValue( this NSUserDefaults defaults, string key )
+        public static NSObject GetPreferenceItemDefaultValue(this NSUserDefaults defaults, string key)
         {
-            return defaults.GetPreferenceItem( key )?[ "DefaultValue" ];
+            return defaults.GetPreferenceItem(key)?["DefaultValue"];
         }
 
         /// <summary>
@@ -60,9 +62,9 @@ namespace AP.MobileToolkit.Platform.iOS.Extensions
         /// </summary>
         /// <returns>The preference item default value.</returns>
         /// <param name="preferenceItem">Preference item.</param>
-        public static NSObject GetPreferenceItemDefaultValue( this NSDictionary preferenceItem )
+        public static NSObject GetPreferenceItemDefaultValue(this NSDictionary preferenceItem)
         {
-            return preferenceItem[ "DefaultValue" ];
+            return preferenceItem["DefaultValue"];
         }
 
         /// <summary>
@@ -71,9 +73,9 @@ namespace AP.MobileToolkit.Platform.iOS.Extensions
         /// <returns>The from preference key.</returns>
         /// <param name="defaults">Defaults.</param>
         /// <param name="key">Key.</param>
-        public static string StringFromPreferenceKey( this NSUserDefaults defaults, string key )
+        public static string StringFromPreferenceKey(this NSUserDefaults defaults, string key)
         {
-            return defaults.GetPreferenceItemDefaultValue( key )?.ToString() ?? string.Empty;
+            return defaults.GetPreferenceItemDefaultValue(key)?.ToString() ?? string.Empty;
         }
 
         /// <summary>
@@ -83,15 +85,15 @@ namespace AP.MobileToolkit.Platform.iOS.Extensions
         /// <param name="defaults">Defaults.</param>
         /// <param name="key">Key.</param>
         /// <param name="defaultValue">Default value.</param>
-        public static int IntFromPreferenceKey( this NSUserDefaults defaults, string key, int defaultValue = 0 )
+        public static int IntFromPreferenceKey(this NSUserDefaults defaults, string key, int defaultValue = 0)
         {
             try
             {
-                return int.Parse( defaults.GetPreferenceItemDefaultValue( key ).ToString() );
+                return int.Parse(defaults.GetPreferenceItemDefaultValue(key).ToString());
             }
-            catch ( Exception e )
+            catch (Exception e)
             {
-                System.Diagnostics.Debug.WriteLine( e );
+                System.Diagnostics.Debug.WriteLine(e);
                 return defaultValue;
             }
         }
@@ -104,13 +106,13 @@ namespace AP.MobileToolkit.Platform.iOS.Extensions
         /// <param name="key">Key.</param>
         /// <param name="defaultValue">Default value.</param>
         /// <typeparam name="T">The 1st type parameter.</typeparam>
-        public static T GetValueFromPreferenceKey<T>( this NSUserDefaults defaults, string key, T defaultValue = default( T ) )
+        public static T GetValueFromPreferenceKey<T>(this NSUserDefaults defaults, string key, T defaultValue = default(T))
         {
             try
             {
-                return ( T )Convert.ChangeType( defaults.GetPreferenceItemDefaultValue( key ).ToString(), typeof( T ) );
+                return (T)Convert.ChangeType(defaults.GetPreferenceItemDefaultValue(key).ToString(), typeof(T));
             }
-            catch ( Exception )
+            catch (Exception)
             {
                 return defaultValue;
             }

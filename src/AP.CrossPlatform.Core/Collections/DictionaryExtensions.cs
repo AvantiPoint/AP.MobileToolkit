@@ -17,15 +17,18 @@ namespace AP.CrossPlatform.Collections
         /// <param name="value">Value.</param>
         /// <typeparam name="TKey">The 1st type parameter.</typeparam>
         /// <typeparam name="TValue">The 2nd type parameter.</typeparam>
-        public static bool AddOrUpdate<TKey, TValue>( this IDictionary<TKey, TValue> dict, TKey key, TValue value )
+        public static bool AddOrUpdate<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key, TValue value)
         {
             bool updated = false;
 
-            if ( key == null || ( typeof( TKey ) == typeof( string ) && string.IsNullOrWhiteSpace( key as string ) ) ) return false;
-
-            if ( updated = ( ( dict.ContainsKey( key ) && !dict[ key ].Equals( value ) ) || !dict.ContainsKey( key ) ) )
+            if (key == null || (typeof(TKey) == typeof(string) && string.IsNullOrWhiteSpace(key as string)))
             {
-                dict[ key ] = value;
+                return updated;
+            }
+
+            if (updated = (dict.ContainsKey(key) && !dict[key].Equals(value)) || !dict.ContainsKey(key))
+            {
+                dict[key] = value;
             }
 
             return updated;
@@ -42,10 +45,10 @@ namespace AP.CrossPlatform.Collections
         /// <typeparam name="TKey">The 1st type parameter.</typeparam>
         /// <typeparam name="TValue">The 2nd type parameter.</typeparam>
         /// <typeparam name="T">The 3rd type parameter.</typeparam>
-        public static T GetValueOrDefault<TKey, TValue, T>( this IDictionary<TKey, TValue> dict, TKey key, T defaultValue )
+        public static T GetValueOrDefault<TKey, TValue, T>(this IDictionary<TKey, TValue> dict, TKey key, T defaultValue)
         {
-            if ( dict.ContainsKey( key ) && dict[ key ] != null )
-                return ( T )Convert.ChangeType( dict[ key ], typeof( T ) );
+            if (dict.ContainsKey(key) && dict[key] != null)
+                return (T)Convert.ChangeType(dict[key], typeof(T));
 
             return defaultValue;
         }
@@ -57,7 +60,7 @@ namespace AP.CrossPlatform.Collections
         /// <param name="dict">Dict.</param>
         /// <typeparam name="TKey">The 1st type parameter.</typeparam>
         /// <typeparam name="TValue">The 2nd type parameter.</typeparam>
-        public static bool IsNullOrEmpty<TKey, TValue>( this IDictionary<TKey, TValue> dict ) =>
+        public static bool IsNullOrEmpty<TKey, TValue>(this IDictionary<TKey, TValue> dict) =>
             dict == null || dict.Count == 0;
     }
 }

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace AP.MobileToolkit.Markdown
@@ -8,10 +6,16 @@ namespace AP.MobileToolkit.Markdown
     internal static class MarkdownExtensions
     {
         #region MARKDOWN STYLES
+
+#pragma warning disable SA1310
         private const string ORIGINAL_PATTERN_BEGIN = "<code>";
+
         private const string ORIGINAL_PATTERN_END = "</code>";
+
         private const string PARSED_PATTERN_BEGIN = "<font color=\"#888888\" face=\"monospace\"><tt>";
+
         private const string PARSED_PATTERN_END = "</tt></font>";
+
         public const string MARKDOWN_STYLES_DARK = @"<style>
 p,h1,h2,h3,h4,h5,h6,blockquote,pre{
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -57,6 +61,7 @@ code{
     overflow-x: scroll;
 }
 </style>";
+
         public const string MARKDOWN_STYLES_LIGHT = @"<style>
 p,h1,h2,h3,h4,h5,h6,blockquote,pre{
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -103,7 +108,7 @@ code{
     color: #212121;
 }
 </style>";
-
+#pragma warning restore SA1310
 
         #endregion
 
@@ -122,14 +127,14 @@ code{
             var regex = new Regex("\n");
             htmlContent = regex.Replace(htmlContent, "<br/>");
 
-            //if (isLight)
-            //{
+            // if (isLight)
+            // {
             //    htmlContent = MARKDOWN_STYLES_LIGHT + htmlContent;
-            //}
-            //else
-            //{
+            // }
+            // else
+            // {
             //    htmlContent = MARKDOWN_STYLES_DARK + htmlContent;
-            //}
+            // }
 
             var html = string.Format("<html><body>{0}</body></html>", htmlContent);
             var regex2 = new Regex("\r");
@@ -160,7 +165,11 @@ code{
         /// <returns>The html string with parsed code tags</returns>
         public static string ParseCodeTags(this string htmlText)
         {
-            if (htmlText.IndexOf(ORIGINAL_PATTERN_BEGIN) < 0) return htmlText;
+            if (htmlText.IndexOf(ORIGINAL_PATTERN_BEGIN) < 0)
+            {
+                return htmlText;
+            }
+
             var regex = new Regex(ORIGINAL_PATTERN_BEGIN);
             var regex2 = new Regex(ORIGINAL_PATTERN_END);
 
@@ -181,10 +190,11 @@ code{
                 html = html.ReplaceBreaks();
             }
             Regex regHtml = new Regex("<[^>]*>");
-            var strippedString = regHtml.Replace(html, "");
+            var strippedString = regHtml.Replace(html, string.Empty);
             strippedString = strippedString.TrimLines();
             return strippedString;
         }
+
         public static bool EqualsIgnoreCase(this string text, string text2)
         {
             return text.Equals(text2, StringComparison.CurrentCultureIgnoreCase);

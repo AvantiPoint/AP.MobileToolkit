@@ -1,11 +1,11 @@
 ﻿using AP.CrossPlatform;
-using AP.MobileToolkit.Controls;
 
 namespace AP.MobileToolkit.Tests.Mocks
 {
     public class SelectableMock : ObservableObject, ISelectable
     {
         private string _name;
+
         public string Name
         {
             get => _name;
@@ -13,6 +13,7 @@ namespace AP.MobileToolkit.Tests.Mocks
         }
 
         private bool _isSelected;
+
         public bool IsSelected
         {
             get => _isSelected;

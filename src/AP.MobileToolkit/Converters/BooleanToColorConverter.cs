@@ -12,9 +12,9 @@ namespace AP.MobileToolkit.Converters
         /// <summary>
         /// Initializes a new instance of the <see cref="BooleanToColorConverter"/> class with default colors.
         /// </summary>
-        public BooleanToColorConverter() : this( Color.Green, Color.Red )
+        public BooleanToColorConverter()
+            : this(Color.Green, Color.Red)
         {
-
         }
 
         /// <summary>
@@ -22,10 +22,10 @@ namespace AP.MobileToolkit.Converters
         /// </summary>
         /// <param name="trueColor">True color.</param>
         /// <param name="falseColor">False color.</param>
-        public BooleanToColorConverter( Color trueColor, Color falseColor )
+        public BooleanToColorConverter(Color trueColor, Color falseColor)
         {
-            this.TrueColor = trueColor;
-            this.FalseColor = falseColor;
+            TrueColor = trueColor;
+            FalseColor = falseColor;
         }
 
         /// <summary>
@@ -48,11 +48,11 @@ namespace AP.MobileToolkit.Converters
         /// <returns>
         /// Color value for true or false.
         /// </returns>
-        public object Convert( object value, Type targetType, object parameter, CultureInfo culture )
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if( value is bool && targetType == typeof(Color))
+            if (value is bool && targetType == typeof(Color))
             {
-                return ( bool )value ? this.TrueColor : this.FalseColor;
+                return (bool)value ? TrueColor : FalseColor;
             }
 
             throw new InvalidConverterUseException("This converter must be used to convert a Boolean to a Xamarin.Forms.Color");
@@ -65,14 +65,14 @@ namespace AP.MobileToolkit.Converters
         /// <returns>
         /// True if the value is true color, otherwise false.
         /// </returns>
-        public object ConvertBack( object value, Type targetType, object parameter, CultureInfo culture )
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if(!(value is Color) || targetType != typeof(bool))
+            if (!(value is Color) || targetType != typeof(bool))
             {
                 throw new InvalidConverterUseException("This converter must be used to convert a Boolean to a Xamarin.Forms.Color");
             }
 
-            return ( value is Color && ( Color )value == this.TrueColor );
+            return value is Color && (Color)value == TrueColor;
         }
     }
 }

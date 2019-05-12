@@ -18,10 +18,10 @@ namespace AP.CrossPlatform.Collections
         /// </summary>
         /// <param name="key">Key.</param>
         /// <param name="items">Items.</param>
-        public Grouping( TKey key, IEnumerable<TItem> items )
+        public Grouping(TKey key, IEnumerable<TItem> items)
         {
             Key = key;
-            AddRange( items );
+            AddRange(items);
         }
     }
 }

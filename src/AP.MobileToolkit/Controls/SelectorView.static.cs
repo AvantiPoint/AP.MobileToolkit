@@ -1,9 +1,7 @@
-﻿using AP.CrossPlatform;
-using AP.CrossPlatform.Collections;
-using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Linq;
-using System.Text;
+using AP.CrossPlatform;
+using AP.CrossPlatform.Collections;
 using Xamarin.Forms;
 
 namespace AP.MobileToolkit.Controls
@@ -23,29 +21,29 @@ namespace AP.MobileToolkit.Controls
         {
             var selectorView = bindable as SelectorView;
 
-            if(!selectorView.AllowMultiple && selectorView.SelectedItems.NullableCount() > 1)
+            if (!selectorView.AllowMultiple && selectorView.SelectedItems.NullableCount() > 1)
             {
-                for(int i = 0; i < selectorView.SelectedItems.Count(); i++)
+                for (int i = 0; i < selectorView.SelectedItems.Count(); i++)
                 {
                     var item = selectorView.SelectedItems[i];
-                    if(i == 0)
+                    if (i == 0)
                     {
                         selectorView.SelectedItem = item;
                         continue;
                     }
 
-                    if(item is ISelectable selectable)
+                    if (item is ISelectable selectable)
                     {
                         selectable.IsSelected = false;
                     }
                 }
             }
-            else if(selectorView.AllowMultiple && selectorView.SelectedItem != null)
+            else if (selectorView.AllowMultiple && selectorView.SelectedItem != null)
             {
                 selectorView.SelectedItems.Add(selectorView.SelectedItem);
             }
 
-            if(selectorView.AllowMultiple)
+            if (selectorView.AllowMultiple)
             {
                 selectorView.SelectedItem = null;
             }

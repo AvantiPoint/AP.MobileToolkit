@@ -9,7 +9,7 @@ using AP.MobileToolkit.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer( typeof( CustomRadioButton ), typeof( RadioButtonRenderer ) )]
+[assembly: ExportRenderer(typeof(CustomRadioButton), typeof(RadioButtonRenderer))]
 namespace AP.MobileToolkit.Renderers
 {
     /// <summary>
@@ -19,42 +19,44 @@ namespace AP.MobileToolkit.Renderers
     {
         private ColorStateList _defaultTextColor;
 
-        public RadioButtonRenderer(Context context) : base(context)
+        public RadioButtonRenderer(Context context)
+            : base(context)
         {
-
         }
 
         /// <summary>
         /// Called when [element changed].
         /// </summary>
         /// <param name="e">The e.</param>
-        protected override void OnElementChanged( ElementChangedEventArgs<CustomRadioButton> e )
+        protected override void OnElementChanged(ElementChangedEventArgs<CustomRadioButton> e)
         {
-            base.OnElementChanged( e );
+            base.OnElementChanged(e);
 
-            if ( Control == null )
+            if (Control == null)
             {
-                var radButton = new RadioButton( Context );
+                var radButton = new RadioButton(Context);
                 _defaultTextColor = radButton.TextColors;
 
-                radButton.CheckedChange += radButton_CheckedChange;
+                radButton.CheckedChange += RadioButton_CheckedChange;
 
-                SetNativeControl( radButton );
+                SetNativeControl(radButton);
             }
 
             Control.Text = e.NewElement.Text;
-            //Control.TextSize = 14;
+
+            // Control.TextSize = 14;
+
             Control.Checked = e.NewElement.Checked;
             UpdateTextColor();
 
-            if ( e.NewElement.FontSize > 0 )
+            if (e.NewElement.FontSize > 0)
             {
-                Control.TextSize = ( float )e.NewElement.FontSize;
+                Control.TextSize = (float)e.NewElement.FontSize;
             }
 
-            if ( !string.IsNullOrEmpty( e.NewElement.FontName ) )
+            if (!string.IsNullOrEmpty(e.NewElement.FontName))
             {
-                Control.Typeface = TrySetFont( e.NewElement.FontName );
+                Control.Typeface = TrySetFont(e.NewElement.FontName);
             }
         }
 
@@ -63,7 +65,7 @@ namespace AP.MobileToolkit.Renderers
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="CompoundButton.CheckedChangeEventArgs"/> instance containing the event data.</param>
-        private void radButton_CheckedChange( object sender, CompoundButton.CheckedChangeEventArgs e )
+        private void RadioButton_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
         {
             Element.Checked = e.IsChecked;
         }
@@ -73,11 +75,11 @@ namespace AP.MobileToolkit.Renderers
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="PropertyChangedEventArgs"/> instance containing the event data.</param>
-        protected override void OnElementPropertyChanged( object sender, PropertyChangedEventArgs e )
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            base.OnElementPropertyChanged( sender, e );
+            base.OnElementPropertyChanged(sender, e);
 
-            switch ( e.PropertyName )
+            switch (e.PropertyName)
             {
                 case "Checked":
                     Control.Checked = Element.Checked;
@@ -89,15 +91,15 @@ namespace AP.MobileToolkit.Renderers
                     UpdateTextColor();
                     break;
                 case "FontName":
-                    if ( !string.IsNullOrEmpty( Element.FontName ) )
+                    if (!string.IsNullOrEmpty(Element.FontName))
                     {
-                        Control.Typeface = TrySetFont( Element.FontName );
+                        Control.Typeface = TrySetFont(Element.FontName);
                     }
                     break;
                 case "FontSize":
-                    if ( Element.FontSize > 0 )
+                    if (Element.FontSize > 0)
                     {
-                        Control.TextSize = ( float )Element.FontSize;
+                        Control.TextSize = (float)Element.FontSize;
                     }
                     break;
             }
@@ -108,28 +110,28 @@ namespace AP.MobileToolkit.Renderers
         /// </summary>
         /// <param name="fontName">Name of the font.</param>
         /// <returns>Typeface.</returns>
-        private Typeface TrySetFont( string fontName )
+        private Typeface TrySetFont(string fontName)
         {
             var tf = Typeface.Default;
 
             try
             {
-                tf = Typeface.CreateFromAsset( Context.Assets, fontName );
+                tf = Typeface.CreateFromAsset(Context.Assets, fontName);
 
                 return tf;
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                Console.Write( "not found in assets {0}", ex );
+                Console.Write("not found in assets {0}", ex);
                 try
                 {
-                    tf = Typeface.CreateFromFile( fontName );
+                    tf = Typeface.CreateFromFile(fontName);
 
                     return tf;
                 }
-                catch ( Exception ex1 )
+                catch (Exception ex1)
                 {
-                    Console.Write( ex1 );
+                    Console.Write(ex1);
 
                     return Typeface.Default;
                 }
@@ -141,13 +143,13 @@ namespace AP.MobileToolkit.Renderers
         /// </summary>
         private void UpdateTextColor()
         {
-            if ( Control == null || Element == null )
+            if (Control == null || Element == null)
                 return;
 
-            if ( Element.TextColor == Xamarin.Forms.Color.Default )
-                Control.SetTextColor( _defaultTextColor );
+            if (Element.TextColor == Xamarin.Forms.Color.Default)
+                Control.SetTextColor(_defaultTextColor);
             else
-                Control.SetTextColor( Element.TextColor.ToAndroid() );
+                Control.SetTextColor(Element.TextColor.ToAndroid());
         }
     }
 }

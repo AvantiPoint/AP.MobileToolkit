@@ -11,8 +11,11 @@ namespace AP.MobileToolkit.Http
     public abstract class ApiClientBase : IApiClient
     {
         protected IAuthenticationHandler AuthenticationHandler { get; }
+
         protected HttpClient Client { get; }
+
         protected ILogger Logger { get; }
+
         protected string InstallId { get; }
 
         public ApiClientBase(IApiClientOptions options, IAuthenticationHandler authenticationHandler, ILogger logger)

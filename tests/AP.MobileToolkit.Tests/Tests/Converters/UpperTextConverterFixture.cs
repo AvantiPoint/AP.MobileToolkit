@@ -1,9 +1,4 @@
 ﻿using AP.MobileToolkit.Converters;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
-using System.Threading;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -11,7 +6,7 @@ namespace AP.MobileToolkit.Tests.Tests.Converters
 {
     public class UpperTextConverterFixture : ConverterBaseFixture
     {
-        public UpperTextConverterFixture(ITestOutputHelper testOutputHelper) 
+        public UpperTextConverterFixture(ITestOutputHelper testOutputHelper)
             : base(testOutputHelper)
         {
         }

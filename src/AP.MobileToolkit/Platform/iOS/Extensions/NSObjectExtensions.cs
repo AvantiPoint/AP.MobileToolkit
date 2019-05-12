@@ -1,6 +1,8 @@
 ﻿using Foundation;
 
+#pragma warning disable SA1300
 namespace AP.MobileToolkit.Platform.iOS.Extensions
+#pragma warning restore SA1300
 {
     /// <summary>
     /// NSObject extensions.
@@ -12,9 +14,9 @@ namespace AP.MobileToolkit.Platform.iOS.Extensions
         /// </summary>
         /// <returns>The NSO bject.</returns>
         /// <param name="obj">Object.</param>
-        public static NSObject ToNSObject( this object obj )
+        public static NSObject ToNSObject(this object obj)
         {
-            return NSObject.FromObject( obj );
+            return NSObject.FromObject(obj);
         }
 
         /// <summary>
@@ -22,12 +24,14 @@ namespace AP.MobileToolkit.Platform.iOS.Extensions
         /// </summary>
         /// <returns>The int.</returns>
         /// <param name="obj">Object.</param>
-        public static int ToInt( this NSObject obj )
+        public static int ToInt(this NSObject obj)
         {
-            if( obj == null ) return default( int );
+            if (obj is null)
+            {
+                return default;
+            }
 
-            int result = 0;
-            int.TryParse( obj.ToString(), out result );
+            int.TryParse(obj.ToString(), out var result);
             return result;
         }
 
@@ -36,12 +40,14 @@ namespace AP.MobileToolkit.Platform.iOS.Extensions
         /// </summary>
         /// <returns><c>true</c>, if bool was toed, <c>false</c> otherwise.</returns>
         /// <param name="obj">Object.</param>
-        public static bool ToBool( this NSObject obj )
+        public static bool ToBool(this NSObject obj)
         {
-            if ( obj == null ) return default( bool );
+            if (obj is null)
+            {
+                return default;
+            }
 
-            bool result = false;
-            bool.TryParse( obj.ToString(), out result );
+            bool.TryParse(obj.ToString(), out var result);
             return result;
         }
     }

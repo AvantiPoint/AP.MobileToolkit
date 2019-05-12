@@ -1,4 +1,8 @@
-﻿using AP.MobileToolkit.Extensions;
+﻿using System;
+using System.Reactive;
+using System.Reactive.Linq;
+using System.Threading.Tasks;
+using AP.MobileToolkit.Extensions;
 using AP.MobileToolkit.Resources;
 using Prism;
 using Prism.AppModel;
@@ -6,32 +10,31 @@ using Prism.Logging;
 using Prism.Navigation;
 using Prism.Services;
 using ReactiveUI;
-using System;
-using System.Reactive;
-using System.Reactive.Linq;
-using System.Threading.Tasks;
 
 namespace AP.MobileToolkit.Mvvm
 {
     public abstract class ReactiveViewModelBase : ReactiveObject, IActiveAware, IInitialize, IInitializeAsync, INavigatedAware, IDestructible, IConfirmNavigation, IConfirmNavigationAsync, IApplicationLifecycleAware, IPageLifecycleAware
     {
-        protected INavigationService _navigationService { get; }
-        protected IPageDialogService _pageDialogService { get; }
-        protected ILogger _logger { get; }
+        protected INavigationService NavigationService { get; }
+
+        protected IPageDialogService PageDialogService { get; }
+
+        protected ILogger Logger { get; }
 
         public ReactiveViewModelBase(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
         {
-            _navigationService = navigationService;
-            _pageDialogService = pageDialogService;
-            _logger = logger;
+            NavigationService = navigationService;
+            PageDialogService = pageDialogService;
+            Logger = logger;
 
             Title = GetType().SanitizeViewModelTypeName();
-            NavigateCommand = ReactiveCommand.CreateFromTask<string>(OnNavigateCommandExecuted, 
+            NavigateCommand = ReactiveCommand.CreateFromTask<string>(
+                OnNavigateCommandExecuted,
                 this.WhenAnyObservable(x => x.NavigateCommand.IsExecuting)
                             .Select(isExecuting => !isExecuting)
                             .StartWith(true));
             _isBusyHelper = GetIsBusyProperty();
-            _isNotBusyHelper = this.WhenAnyValue(x => x.IsBusy)  
+            _isNotBusyHelper = this.WhenAnyValue(x => x.IsBusy)
                                    .Select(x => !IsBusy)
                                    .ToProperty(this, x => x.IsNotBusy, true);
 
@@ -48,6 +51,7 @@ namespace AP.MobileToolkit.Mvvm
         }
 
         private string _title;
+
         public string Title
         {
             get => _title;
@@ -55,6 +59,7 @@ namespace AP.MobileToolkit.Mvvm
         }
 
         private string _subtitle;
+
         public string Subtitle
         {
             get => _subtitle;
@@ -62,9 +67,11 @@ namespace AP.MobileToolkit.Mvvm
         }
 
         protected ObservableAsPropertyHelper<bool> _isBusyHelper;
+
         public bool IsBusy => _isBusyHelper?.Value ?? false;
 
         private ObservableAsPropertyHelper<bool> _isNotBusyHelper;
+
         public bool IsNotBusy => _isNotBusyHelper.Value;
 
         public ReactiveCommand<string, Unit> NavigateCommand { get; private set; }
@@ -80,7 +87,7 @@ namespace AP.MobileToolkit.Mvvm
         {
             try
             {
-                var result = await _navigationService.NavigateAsync(uri, parameters);
+                var result = await NavigationService.NavigateAsync(uri, parameters);
                 if (result.Exception != null)
                 {
                     await HandleNavigationException(uri, parameters, result.Exception);
@@ -97,21 +104,22 @@ namespace AP.MobileToolkit.Mvvm
             var correlationId = Guid.NewGuid().ToString();
             var errorParameters = parameters.ToErrorParameters(uri);
             errorParameters.Add("CorrelationId", correlationId);
-            _logger.Report(ex, errorParameters);
+            Logger.Report(ex, errorParameters);
             await DisplayAlertForException(ex, correlationId);
         }
 
         protected virtual async Task DisplayAlertForException(Exception ex, string correlationId)
         {
-            await _pageDialogService.DisplayAlertAsync(
-                            ToolkitResources.Error, 
-                            string.Format(ToolkitResources.AlertErrorMessageTemplate, ex.ToErrorMessage(), correlationId), 
+            await PageDialogService.DisplayAlertAsync(
+                            ToolkitResources.Error,
+                            string.Format(ToolkitResources.AlertErrorMessageTemplate, ex.ToErrorMessage(), correlationId),
                             ToolkitResources.Ok);
         }
 
         #region IActiveAware
 
         private bool _isActive;
+
         public bool IsActive
         {
             get => _isActive;
@@ -120,7 +128,7 @@ namespace AP.MobileToolkit.Mvvm
 
         public event EventHandler IsActiveChanged;
 
-        private ReactiveCommand<Unit, Unit> IsActiveChangedCommand;
+        private ReactiveCommand<Unit, Unit> IsActiveChangedCommand { get; set; }
 
         private void OnIsActiveChanged()
         {
@@ -136,15 +144,21 @@ namespace AP.MobileToolkit.Mvvm
             }
         }
 
-        protected virtual void OnIsActive() { }
+        protected virtual void OnIsActive()
+        {
+        }
 
-        protected virtual void OnIsNotActive() { }
+        protected virtual void OnIsNotActive()
+        {
+        }
 
         #endregion IActiveAware
 
         #region IInitialize
 
-        protected virtual void Initialize(INavigationParameters parameters) { }
+        protected virtual void Initialize(INavigationParameters parameters)
+        {
+        }
 
         protected virtual Task InitializeAsync(INavigationParameters parameters) => Task.CompletedTask;
 
@@ -156,9 +170,13 @@ namespace AP.MobileToolkit.Mvvm
 
         #region INavigatedAware
 
-        protected virtual void OnNavigatedTo(INavigationParameters parameters) { }
+        protected virtual void OnNavigatedTo(INavigationParameters parameters)
+        {
+        }
 
-        protected virtual void OnNavigatedFrom(INavigationParameters parameters) { }
+        protected virtual void OnNavigatedFrom(INavigationParameters parameters)
+        {
+        }
 
         void INavigatedAware.OnNavigatedTo(INavigationParameters parameters) => OnNavigatedTo(parameters);
 
@@ -168,17 +186,19 @@ namespace AP.MobileToolkit.Mvvm
 
         #region IDestructible
 
-        protected virtual void Destroy() { }
+        protected virtual void Destroy()
+        {
+        }
 
         void IDestructible.Destroy()
         {
-            if(NavigateCommand != null)
+            if (NavigateCommand != null)
             {
                 NavigateCommand.Dispose();
                 NavigateCommand = null;
             }
 
-            if(IsActiveChangedCommand != null)
+            if (IsActiveChangedCommand != null)
             {
                 IsActiveChangedCommand.Dispose();
                 IsActiveChangedCommand = null;
@@ -216,9 +236,13 @@ namespace AP.MobileToolkit.Mvvm
 
         #region IApplicationLifecycleAware
 
-        protected virtual void OnResume() { }
+        protected virtual void OnResume()
+        {
+        }
 
-        protected virtual void OnSleep() { }
+        protected virtual void OnSleep()
+        {
+        }
 
         void IApplicationLifecycleAware.OnResume() => OnResume();
 
@@ -228,9 +252,13 @@ namespace AP.MobileToolkit.Mvvm
 
         #region IPageLifecycleAware
 
-        protected virtual void OnAppearing() { }
+        protected virtual void OnAppearing()
+        {
+        }
 
-        protected virtual void OnDisappearing() { }
+        protected virtual void OnDisappearing()
+        {
+        }
 
         void IPageLifecycleAware.OnAppearing() => OnAppearing();
 

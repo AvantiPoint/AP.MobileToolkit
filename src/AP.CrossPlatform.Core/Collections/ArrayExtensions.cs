@@ -14,13 +14,13 @@ namespace AP.CrossPlatform.Collections
         /// <param name="array">Array.</param>
         /// <param name="length">Length.</param>
         /// <typeparam name="T">The 1st type parameter.</typeparam>
-        public static T[] SubArray<T>( this T[] array, int length )
+        public static T[] SubArray<T>(this T[] array, int length)
         {
-            if ( length > array.Length )
+            if (length > array.Length)
                 length -= length - array.Length;
 
-            T[] result = new T[ length ];
-            Array.Copy( array, result, length );
+            T[] result = new T[length];
+            Array.Copy(array, result, length);
             return result;
         }
     }

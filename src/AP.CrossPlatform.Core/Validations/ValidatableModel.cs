@@ -6,6 +6,7 @@ namespace AP.CrossPlatform.Validations
     public class ValidatableModel : ObservableObject, IValidatableModel
     {
         private bool _isValid;
+
         [JsonIgnore]
         public bool IsValid
         {
@@ -14,6 +15,7 @@ namespace AP.CrossPlatform.Validations
         }
 
         private ObservableErrorCollection _errors = new ObservableErrorCollection();
+
         [JsonIgnore]
         public ObservableErrorCollection Errors
         {

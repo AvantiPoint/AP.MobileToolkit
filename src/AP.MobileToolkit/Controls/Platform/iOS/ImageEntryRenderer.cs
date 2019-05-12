@@ -8,7 +8,9 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(ImageEntry), typeof(ImageEntryRenderer))]
+#pragma warning disable SA1300
 namespace AP.MobileToolkit.Controls.Platform.iOS
+#pragma warning restore SA1300
 {
     public class ImageEntryRenderer : EntryRenderer
     {
@@ -19,8 +21,8 @@ namespace AP.MobileToolkit.Controls.Platform.iOS
             if (e.OldElement != null || e.NewElement == null)
                 return;
 
-            var element = (ImageEntry)this.Element;
-            var textField = this.Control;
+            var element = (ImageEntry)Element;
+            var textField = Control;
             if (!string.IsNullOrEmpty(element.Image))
             {
                 switch (element.ImageAlignment)
@@ -39,7 +41,7 @@ namespace AP.MobileToolkit.Controls.Platform.iOS
             textField.BorderStyle = UITextBorderStyle.None;
             CALayer bottomBorder = new CALayer
             {
-                Frame = new CGRect(0.0f, element.HeightRequest - 1, this.Frame.Width, 1.0f),
+                Frame = new CGRect(0.0f, element.HeightRequest - 1, Frame.Width, 1.0f),
                 BorderWidth = 2.0f,
                 BorderColor = element.LineColor.ToCGColor()
             };

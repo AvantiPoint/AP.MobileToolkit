@@ -3,12 +3,14 @@ using CoreGraphics;
 using Foundation;
 using UIKit;
 
-namespace AP.MobileToolkit.Platform.iOS
+#pragma warning disable SA1300
+namespace AP.MobileToolkit.Controls.Platform.iOS
+#pragma warning restore SA1300
 {
     /// <summary>
     /// Class RadioButtonView.
     /// </summary>
-    [Register( "RadioButtonView" )]
+    [Register("RadioButtonView")]
     public class RadioButtonView : UIButton
     {
         /// <summary>
@@ -23,12 +25,11 @@ namespace AP.MobileToolkit.Platform.iOS
         /// Initializes a new instance of the <see cref="RadioButtonView"/> class.
         /// </summary>
         /// <param name="bounds">The bounds.</param>
-        public RadioButtonView( CGRect bounds )
-            : base( bounds )
+        public RadioButtonView(CGRect bounds)
+            : base(bounds)
         {
             Initialize();
         }
-
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="RadioButtonView"/> is checked.
@@ -36,8 +37,8 @@ namespace AP.MobileToolkit.Platform.iOS
         /// <value><c>true</c> if checked; otherwise, <c>false</c>.</value>
         public bool Checked
         {
-            set { Selected = value; }
-            get { return Selected; }
+            get => Selected;
+            set => Selected = value;
         }
 
         /// <summary>
@@ -46,7 +47,7 @@ namespace AP.MobileToolkit.Platform.iOS
         /// <value>The text.</value>
         public string Text
         {
-            set { SetTitle( value, UIControlState.Normal ); }
+            set { SetTitle(value, UIControlState.Normal); }
         }
 
         /// <summary>
@@ -57,10 +58,10 @@ namespace AP.MobileToolkit.Platform.iOS
             AdjustEdgeInsets();
             ApplyStyle();
 
-            // set default color, because type is not UIButtonType.System 
-            SetTitleColor( UIColor.DarkTextColor, UIControlState.Normal );
-            SetTitleColor( UIColor.DarkTextColor, UIControlState.Selected );
-            TouchUpInside += ( sender, args ) => Selected = !Selected;
+            // set default color, because type is not UIButtonType.System
+            SetTitleColor(UIColor.DarkTextColor, UIControlState.Normal);
+            SetTitleColor(UIColor.DarkTextColor, UIControlState.Selected);
+            TouchUpInside += (sender, args) => Selected = !Selected;
         }
 
         /// <summary>
@@ -71,8 +72,8 @@ namespace AP.MobileToolkit.Platform.iOS
             const float inset = 8f;
 
             HorizontalAlignment = UIControlContentHorizontalAlignment.Left;
-            ImageEdgeInsets = new UIEdgeInsets( 0f, inset, 0f, 0f );
-            TitleEdgeInsets = new UIEdgeInsets( 0f, inset * 2, 0f, 0f );
+            ImageEdgeInsets = new UIEdgeInsets(0f, inset, 0f, 0f);
+            TitleEdgeInsets = new UIEdgeInsets(0f, inset * 2, 0f, 0f);
         }
 
         /// <summary>
@@ -80,8 +81,8 @@ namespace AP.MobileToolkit.Platform.iOS
         /// </summary>
         void ApplyStyle()
         {
-            SetImage( UIImage.FromBundle( "Images/RadioButton/checked.png" ), UIControlState.Selected );
-            SetImage( UIImage.FromBundle( "Images/RadioButton/unchecked.png" ), UIControlState.Normal );
+            SetImage(UIImage.FromBundle("Images/RadioButton/checked.png"), UIControlState.Selected);
+            SetImage(UIImage.FromBundle("Images/RadioButton/unchecked.png"), UIControlState.Normal);
         }
     }
 }

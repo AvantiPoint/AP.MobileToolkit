@@ -18,9 +18,9 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
     {
         private ColorStateList defaultTextColor;
 
-        public CheckBoxRenderer(Context context) : base(context)
+        public CheckBoxRenderer(Context context)
+            : base(context)
         {
-
         }
 
         /// <summary>
@@ -31,25 +31,25 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
         {
             base.OnElementChanged(e);
 
-            if(this.Control == null)
+            if (Control is null)
             {
-                var checkBox = new Android.Widget.CheckBox(this.Context);
+                var checkBox = new Android.Widget.CheckBox(Context);
                 checkBox.CheckedChange += CheckBoxCheckedChange;
 
                 defaultTextColor = checkBox.TextColors;
-                this.SetNativeControl(checkBox);
+                SetNativeControl(checkBox);
             }
 
             Control.Text = e.NewElement.Text;
             Control.Checked = e.NewElement.Checked;
             UpdateTextColor();
 
-            if(e.NewElement.FontSize > 0)
+            if (e.NewElement.FontSize > 0)
             {
                 Control.TextSize = (float)e.NewElement.FontSize;
             }
 
-            if(!string.IsNullOrEmpty(e.NewElement.FontName))
+            if (!string.IsNullOrEmpty(e.NewElement.FontName))
             {
                 Control.Typeface = TrySetFont(e.NewElement.FontName);
             }
@@ -64,7 +64,7 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
         {
             base.OnElementPropertyChanged(sender, e);
 
-            switch(e.PropertyName)
+            switch (e.PropertyName)
             {
                 case "Checked":
                     Control.Text = Element.Text;
@@ -74,13 +74,13 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
                     UpdateTextColor();
                     break;
                 case "FontName":
-                    if(!string.IsNullOrEmpty(Element.FontName))
+                    if (!string.IsNullOrEmpty(Element.FontName))
                     {
                         Control.Typeface = TrySetFont(Element.FontName);
                     }
                     break;
                 case "FontSize":
-                    if(Element.FontSize > 0)
+                    if (Element.FontSize > 0)
                     {
                         Control.TextSize = (float)Element.FontSize;
                     }
@@ -102,7 +102,7 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
         /// <param name="e">The <see cref="Android.Widget.CompoundButton.CheckedChangeEventArgs"/> instance containing the event data.</param>
         void CheckBoxCheckedChange(object sender, Android.Widget.CompoundButton.CheckedChangeEventArgs e)
         {
-            this.Element.Checked = e.IsChecked;
+            Element.Checked = e.IsChecked;
         }
 
         /// <summary>
@@ -113,12 +113,13 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
         private Typeface TrySetFont(string fontName)
         {
             Typeface tf = Typeface.Default;
+
             try
             {
                 tf = Typeface.CreateFromAsset(Context.Assets, fontName);
                 return tf;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.Write("not found in assets {0}", ex);
                 try
@@ -126,10 +127,10 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
                     tf = Typeface.CreateFromFile(fontName);
                     return tf;
                 }
-                catch(Exception ex1)
+                catch (Exception ex1)
                 {
                     Console.Write(ex1);
-                    return Typeface.Default;
+                    return tf;
                 }
             }
         }
@@ -139,13 +140,19 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
         /// </summary>
         private void UpdateTextColor()
         {
-            if(Control == null || Element == null)
+            if (Control is null || Element is null)
+            {
                 return;
+            }
 
-            if(Element.TextColor == Xamarin.Forms.Color.Default)
+            if (Element.TextColor == Xamarin.Forms.Color.Default)
+            {
                 Control.SetTextColor(defaultTextColor);
+            }
             else
+            {
                 Control.SetTextColor(Element.TextColor.ToAndroid());
+            }
         }
     }
 }

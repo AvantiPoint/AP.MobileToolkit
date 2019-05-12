@@ -16,7 +16,7 @@ namespace AP.MobileToolkit.Xaml
         {
             var result = await navigationService.NavigateAsync(Name, parameters);
 
-            if(result.Exception != null)
+            if (result.Exception != null)
             {
                 var correlationId = Guid.NewGuid().ToString();
                 var errorParameters = parameters.ToErrorParameters(Name, ("CorrelationId", correlationId));

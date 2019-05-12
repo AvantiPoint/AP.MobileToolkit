@@ -15,11 +15,12 @@ namespace AP.CrossPlatform.Http
         /// </summary>
         /// <param name="message">Message.</param>
         /// <param name="encoding">Encoding.</param>
-        public JsonContent( JObject message, Encoding encoding = null ) : base( GetByteArray( message.ToString(), encoding ) )
+        public JsonContent(JObject message, Encoding encoding = null)
+            : base(GetByteArray(message.ToString(), encoding))
         {
-            Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue( "application/json" )
+            Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json")
             {
-                CharSet = ( encoding ?? Encoding.UTF8 ).WebName
+                CharSet = (encoding ?? Encoding.UTF8).WebName
             };
         }
 
@@ -28,22 +29,23 @@ namespace AP.CrossPlatform.Http
         /// </summary>
         /// <param name="message">Message.</param>
         /// <param name="encoding">Encoding.</param>
-        public JsonContent( object message, Encoding encoding = null ) : base( GetByteArray( message, encoding ) )
+        public JsonContent(object message, Encoding encoding = null)
+            : base(GetByteArray(message, encoding))
         {
-            Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue( "application/json" )
+            Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json")
             {
-                CharSet = ( encoding ?? Encoding.UTF8 ).WebName
+                CharSet = (encoding ?? Encoding.UTF8).WebName
             };
         }
 
-        static byte[] GetByteArray( object content, Encoding encoding = null )
+        static byte[] GetByteArray(object content, Encoding encoding = null)
         {
-            return GetByteArray(JsonConvert.SerializeObject( content ), encoding);
+            return GetByteArray(JsonConvert.SerializeObject(content), encoding);
         }
 
-        static byte[] GetByteArray( string content, Encoding encoding = null )
+        static byte[] GetByteArray(string content, Encoding encoding = null)
         {
-            return ( encoding ?? Encoding.UTF8 ).GetBytes( content );
+            return (encoding ?? Encoding.UTF8).GetBytes(content);
         }
     }
 }

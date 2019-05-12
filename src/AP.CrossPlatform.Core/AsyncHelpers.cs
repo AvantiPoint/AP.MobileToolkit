@@ -14,30 +14,31 @@ namespace AP.CrossPlatform
         /// Execute's an async Task&lt;T&gt; method which has a void return value synchronously
         /// </summary>
         /// <param name="task">Task&lt;T&gt; method to execute</param>
-        public static void RunSync( Func<Task> task )
+        public static void RunSync(Func<Task> task)
         {
             var oldContext = SynchronizationContext.Current;
             var synch = new ExclusiveSynchronizationContext();
-            SynchronizationContext.SetSynchronizationContext( synch );
-            synch.Post( async _ =>
-                                  {
-                                      try
-                                      {
-                                          await task();
-                                      }
-                                      catch ( Exception e )
-                                      {
-                                          synch.InnerException = e;
-                                          throw;
-                                      }
-                                      finally
-                                      {
-                                          synch.EndMessageLoop();
-                                      }
-                                  }, null );
+            SynchronizationContext.SetSynchronizationContext(synch);
+            synch.Post(
+                async _ =>
+                {
+                    try
+                    {
+                        await task();
+                    }
+                    catch (Exception e)
+                    {
+                        synch.InnerException = e;
+                        throw;
+                    }
+                    finally
+                    {
+                        synch.EndMessageLoop();
+                    }
+                }, null);
             synch.BeginMessageLoop();
 
-            SynchronizationContext.SetSynchronizationContext( oldContext );
+            SynchronizationContext.SetSynchronizationContext(oldContext);
         }
 
         /// <summary>
@@ -46,30 +47,31 @@ namespace AP.CrossPlatform
         /// <typeparam name="T">Return Type</typeparam>
         /// <param name="task">Task&lt;T&gt; method to execute</param>
         /// <returns></returns>
-        public static T RunSync<T>( Func<Task<T>> task )
+        public static T RunSync<T>(Func<Task<T>> task)
         {
             var oldContext = SynchronizationContext.Current;
             var synch = new ExclusiveSynchronizationContext();
-            SynchronizationContext.SetSynchronizationContext( synch );
-            T ret = default( T );
-            synch.Post( async _ =>
-                                  {
-                                      try
-                                      {
-                                          ret = await task();
-                                      }
-                                      catch ( Exception e )
-                                      {
-                                          synch.InnerException = e;
-                                          throw;
-                                      }
-                                      finally
-                                      {
-                                          synch.EndMessageLoop();
-                                      }
-                                  }, null );
+            SynchronizationContext.SetSynchronizationContext(synch);
+            T ret = default;
+            synch.Post(
+                async _ =>
+                {
+                    try
+                    {
+                        ret = await task();
+                    }
+                    catch (Exception e)
+                    {
+                        synch.InnerException = e;
+                        throw;
+                    }
+                    finally
+                    {
+                        synch.EndMessageLoop();
+                    }
+                }, null);
             synch.BeginMessageLoop();
-            SynchronizationContext.SetSynchronizationContext( oldContext );
+            SynchronizationContext.SetSynchronizationContext(oldContext);
             return ret;
         }
 
@@ -78,48 +80,51 @@ namespace AP.CrossPlatform
             private readonly Queue<Tuple<SendOrPostCallback, object>> _items =
                 new Queue<Tuple<SendOrPostCallback, object>>();
 
-            private readonly AutoResetEvent _workItemsWaiting = new AutoResetEvent( false );
+            private readonly AutoResetEvent _workItemsWaiting = new AutoResetEvent(false);
 
             private bool done;
+
             public Exception InnerException { get; set; }
 
-            public override void Send( SendOrPostCallback d, object state )
+            public override void Send(SendOrPostCallback d, object state)
             {
-                throw new NotSupportedException( "We cannot send to our same thread" );
+                throw new NotSupportedException("We cannot send to our same thread");
             }
 
-            public override void Post( SendOrPostCallback d, object state )
+            public override void Post(SendOrPostCallback d, object state)
             {
-                lock ( _items )
+                lock (_items)
                 {
-                    _items.Enqueue( Tuple.Create( d, state ) );
+                    _items.Enqueue(Tuple.Create(d, state));
                 }
                 _workItemsWaiting.Set();
             }
 
             public void EndMessageLoop()
             {
-                Post( _ => done = true, null );
+                Post(_ => done = true, null);
             }
 
             public void BeginMessageLoop()
             {
-                while ( !done )
+                while (!done)
                 {
                     Tuple<SendOrPostCallback, object> task = null;
-                    lock ( _items )
+                    lock (_items)
                     {
-                        if ( _items.Count > 0 )
+                        if (_items.Count > 0)
                         {
                             task = _items.Dequeue();
                         }
                     }
-                    if ( task != null )
+                    if (task != null)
                     {
-                        task.Item1( task.Item2 );
-                        if ( InnerException != null ) // the method threw an exception
+                        task.Item1(task.Item2);
+
+                        // the method threw an exception
+                        if (InnerException != null)
                         {
-                            throw new AggregateException( "AsyncHelpers.Run method threw an exception.", InnerException );
+                            throw new AggregateException("AsyncHelpers.Run method threw an exception.", InnerException);
                         }
                     }
                     else

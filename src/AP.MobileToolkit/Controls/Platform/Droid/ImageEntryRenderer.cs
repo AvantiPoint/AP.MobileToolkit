@@ -14,7 +14,8 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
     {
         ImageEntry element;
 
-        public ImageEntryRenderer(Context context) : base(context)
+        public ImageEntryRenderer(Context context)
+            : base(context)
         {
         }
 
@@ -25,9 +26,9 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
             if (e.OldElement != null || e.NewElement == null)
                 return;
 
-            element = (ImageEntry)this.Element;
+            element = (ImageEntry)Element;
 
-            var editText = this.Control;
+            var editText = Control;
             if (!string.IsNullOrEmpty(element.Image))
             {
                 switch (element.ImageAlignment)
@@ -46,8 +47,8 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
 
         private BitmapDrawable GetDrawable(string imageEntryImage)
         {
-            int resID = Resources.GetIdentifier(imageEntryImage, "drawable", this.Context.PackageName);
-            var drawable = ContextCompat.GetDrawable(this.Context, resID);
+            int resID = Resources.GetIdentifier(imageEntryImage, "drawable", Context.PackageName);
+            var drawable = ContextCompat.GetDrawable(Context, resID);
             var bitmap = ((BitmapDrawable)drawable).Bitmap;
 
             return new BitmapDrawable(Resources, Bitmap.CreateScaledBitmap(bitmap, element.ImageWidth * 2, element.ImageHeight * 2, true));

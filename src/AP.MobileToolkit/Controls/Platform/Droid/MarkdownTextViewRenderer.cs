@@ -1,8 +1,8 @@
-﻿using Android.Content;
+﻿using System.ComponentModel;
+using Android.Content;
 using AP.MobileToolkit.Controls;
 using AP.MobileToolkit.Controls.Platform.Droid;
 using AP.MobileToolkit.Markdown;
-using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
@@ -11,7 +11,7 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
 {
     public class MarkdownTextViewRenderer : LabelRenderer
     {
-        public MarkdownTextViewRenderer(Context context) 
+        public MarkdownTextViewRenderer(Context context)
             : base(context)
         {
         }

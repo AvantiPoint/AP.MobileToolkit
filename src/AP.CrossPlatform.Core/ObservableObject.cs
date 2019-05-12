@@ -25,7 +25,8 @@ namespace AP.CrossPlatform
         /// desired value.</returns>
         protected virtual bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
         {
-            if(Equals(storage, value)) return false;
+            if (Equals(storage, value))
+                return false;
 
             storage = value;
             RaisePropertyChanged(propertyName);
@@ -48,7 +49,8 @@ namespace AP.CrossPlatform
         /// desired value.</returns>
         protected virtual bool SetProperty<T>(ref T storage, T value, Action onChanged, [CallerMemberName] string propertyName = null)
         {
-            if(Equals(storage, value)) return false;
+            if (Equals(storage, value))
+                return false;
 
             storage = value;
             onChanged?.Invoke();

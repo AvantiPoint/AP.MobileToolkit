@@ -1,9 +1,4 @@
 ﻿using AP.MobileToolkit.Converters;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
-using System.Threading;
 using Xamarin.Forms;
 using Xunit;
 using Xunit.Abstractions;
@@ -12,7 +7,7 @@ namespace AP.MobileToolkit.Tests.Tests.Converters
 {
     public class BooleanToColorConverterFixture : ConverterBaseFixture
     {
-        public BooleanToColorConverterFixture(ITestOutputHelper testOutputHelper) 
+        public BooleanToColorConverterFixture(ITestOutputHelper testOutputHelper)
             : base(testOutputHelper)
         {
         }

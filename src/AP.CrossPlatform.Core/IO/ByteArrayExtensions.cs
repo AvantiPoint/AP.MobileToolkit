@@ -15,7 +15,8 @@ namespace AP.CrossPlatform.IO
         /// <param name="data">Data.</param>
         public static Stream ToStream(this byte[] data)
         {
-            if(data.IsNullOrEmpty()) return null;
+            if (data.IsNullOrEmpty())
+                return null;
 
             return new MemoryStream(data);
         }

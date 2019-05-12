@@ -1,7 +1,7 @@
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 namespace AP.CrossPlatform.Auth
 {
@@ -24,16 +24,16 @@ namespace AP.CrossPlatform.Auth
         {
             try
             {
-                if(user.ContainsKey(key))
+                if (user.ContainsKey(key))
                 {
                     var value = user[key];
-                    if(Regex.IsMatch(value, @"\[.*\]"))
+                    if (Regex.IsMatch(value, @"\[.*\]"))
                         return JsonConvert.DeserializeObject<IEnumerable<string>>(value);
 
                     return new string[] { value.Trim() };
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new string[] { ex.Message };
             }
@@ -62,7 +62,6 @@ namespace AP.CrossPlatform.Auth
         /// <param name="defaultValue">Default value.</param>
         public static DateTime? GetDateTimeValue(this IUser user, string key, DateTime? defaultValue = null)
         {
-
             var str = user.GetStringValue(key);
 
             if (string.IsNullOrEmpty(str))
@@ -104,7 +103,6 @@ namespace AP.CrossPlatform.Auth
         /// <param name="defaultValue">Default value.</param>
         public static long? GetLongValue(this IUser user, string key, long? defaultValue = null)
         {
-
             var str = user.GetStringValue(key);
 
             if (string.IsNullOrEmpty(str))
@@ -137,13 +135,12 @@ namespace AP.CrossPlatform.Auth
         /// <param name="defaultValue">Default value.</param>
         public static bool? GetBoolValue(this IUser user, string key, bool? defaultValue = null)
         {
-
             var str = user.GetStringValue(key);
 
             if (string.IsNullOrEmpty(str))
                 return defaultValue;
 
-            if(int.TryParse(str, out int i))
+            if (int.TryParse(str, out int i))
             {
                 if (i == 0)
                     return false;

@@ -1,6 +1,6 @@
 ﻿using Android.Text;
-using Java.Lang;
 using AP.MobileToolkit.Markdown;
+using Java.Lang;
 
 namespace AP.MobileToolkit.Controls.Platform.Droid
 {
@@ -22,12 +22,14 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
                     html = Html.FromHtml(htmlText.ParseCodeTags(), null, new HtmlTagHandler()) as ICharSequence;
 #pragma warning disable CS0618
                 }
+
                 // this is required to get rid of the end two "\n" that android adds with Html.FromHtml
                 // see: http://stackoverflow.com/questions/16585557/extra-padding-on-textview-with-html-contents for example
                 while (html.CharAt(html.Length() - 1) == '\n')
                 {
                     html = html.SubSequenceFormatted(0, html.Length() - 1);
                 }
+
                 return html;
             }
             catch
@@ -35,6 +37,5 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
                 return null;
             }
         }
-
     }
 }
