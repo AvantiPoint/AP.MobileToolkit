@@ -9,7 +9,10 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="Prism.Core" Version="7.2.0.1233-pre" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.4.0" />
-    
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\AP.MobileToolkit.AAD\Properties\*.cs" Link="Properties\%(Filename)%(Extension)" />
   </ItemGroup>
 
 </Project>

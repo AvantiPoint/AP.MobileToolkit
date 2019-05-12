@@ -14,4 +14,8 @@
     <ProjectReference Include="..\AP.CrossPlatform.Core\AP.CrossPlatform.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Include="..\AP.MobileToolkit.AAD\Properties\*.cs" Link="Properties\%(Filename)%(Extension)" />
+  </ItemGroup>
+
 </Project>
