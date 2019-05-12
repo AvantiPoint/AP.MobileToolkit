@@ -18,7 +18,9 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
                 else
                 {
                     // handle legacy builds
+#pragma warning disable CS0618 // Obsolete API is called only when running on older devices where it is supported.
                     html = Html.FromHtml(htmlText.ParseCodeTags(), null, new HtmlTagHandler()) as ICharSequence;
+#pragma warning disable CS0618
                 }
                 // this is required to get rid of the end two "\n" that android adds with Html.FromHtml
                 // see: http://stackoverflow.com/questions/16585557/extra-padding-on-textview-with-html-contents for example

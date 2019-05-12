@@ -7,9 +7,6 @@
   <ItemGroup>
     <PackageReference Include="Prism.Plugin.Logging.Abstractions" Version="1.4.0.342-pre" />
     <PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.1.0" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-18618-05" PrivateAssets="all">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
