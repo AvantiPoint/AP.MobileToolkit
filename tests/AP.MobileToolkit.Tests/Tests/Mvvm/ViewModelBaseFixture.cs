@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
+using AP.MobileToolkit.Extensions;
 using AP.MobileToolkit.Resources;
 using AP.MobileToolkit.Tests.Mocks;
+using Humanizer;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -19,7 +21,7 @@ namespace AP.MobileToolkit.Tests.Tests.Mvvm
         {
             var vm = new ViewModelMock();
             TestOutputHelper.WriteLine(vm.Title);
-            Assert.Equal(nameof(ViewModelMock), vm.Title);
+            Assert.Equal(nameof(ViewModelMock).Humanize(LetterCasing.Title), vm.Title);
         }
 
         [Fact]
@@ -106,7 +108,8 @@ namespace AP.MobileToolkit.Tests.Tests.Mvvm
             });
 
             Assert.Equal(ToolkitResources.Error, dialogService.Title);
-            var dialogMessage = string.Format(ToolkitResources.AlertErrorMessageTemplate, nameof(Exception), vm.CorrelationId);
+            var errorMessage = new Exception("bad").ToErrorMessage();
+            var dialogMessage = string.Format(ToolkitResources.AlertErrorMessageTemplate, errorMessage, vm.CorrelationId);
             Assert.NotNull(vm.CorrelationId);
             Assert.Contains(dialogMessage, dialogService.Message);
         }

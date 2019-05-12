@@ -55,7 +55,9 @@ namespace AP.MobileToolkit.Controls
                     break;
             }
 
-            view = (content is View) ? content as View : ((ViewCell)content)?.View;
+            view = content is ViewCell vc ? vc.View : content as View;
+
+            view.BindingContext = item;
 
             return view;
         }

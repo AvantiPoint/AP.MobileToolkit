@@ -64,6 +64,7 @@ namespace AP.MobileToolkit.Tests.Tests.Controls
                 Assert.NotNull(child);
                 Assert.NotNull(context);
 
+                Assert.NotNull(child.BindingContext);
                 Assert.Equal(context, child.BindingContext);
             }
         }

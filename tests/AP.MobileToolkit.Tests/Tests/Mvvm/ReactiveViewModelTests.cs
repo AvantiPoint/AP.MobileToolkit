@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
+using AP.MobileToolkit.Extensions;
 using AP.MobileToolkit.Resources;
 using AP.MobileToolkit.Tests.Mocks;
+using Humanizer;
 using ReactiveUI;
 using Xunit;
 using Xunit.Abstractions;
@@ -39,7 +41,7 @@ namespace AP.MobileToolkit.Tests.Tests.Mvvm
         {
             var vm = new ReactiveViewModelMock(TestOutputHelper);
             TestOutputHelper.WriteLine(vm.Title);
-            Assert.Equal(nameof(ReactiveViewModelMock), vm.Title);
+            Assert.Equal(nameof(ReactiveViewModelMock).Humanize(LetterCasing.Title), vm.Title);
         }
 
         [Fact]
@@ -106,7 +108,8 @@ namespace AP.MobileToolkit.Tests.Tests.Mvvm
             await vm.NavigateCommand.Execute("bad");
 
             Assert.Equal(ToolkitResources.Error, dialogService.Title);
-            var dialogMessage = string.Format(ToolkitResources.AlertErrorMessageTemplate, nameof(Exception), vm.CorrelationId);
+            var errorMessage = new Exception("bad").ToErrorMessage();
+            var dialogMessage = string.Format(ToolkitResources.AlertErrorMessageTemplate, errorMessage, vm.CorrelationId);
             Assert.NotNull(vm.CorrelationId);
             Assert.Contains(dialogMessage, dialogService.Message);
         }
