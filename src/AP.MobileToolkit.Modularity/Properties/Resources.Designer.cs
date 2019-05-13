@@ -61,11 +61,20 @@ namespace AP.MobileToolkit.Modularity.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A duplicated module with name {0} has been found in the ModuleCatalog..
+        /// </summary>
+        internal static string DuplicatedModuleInCatalog {
+            get {
+                return ResourceManager.GetString("DuplicatedModuleInCatalog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Module {0} was not found in the catalog..
         /// </summary>
-        internal static string ModuleNotFoundErrorMessage {
+        internal static string ModuleNotFound {
             get {
-                return ResourceManager.GetString("ModuleNotFoundErrorMessage", resourceCulture);
+                return ResourceManager.GetString("ModuleNotFound", resourceCulture);
             }
         }
     }

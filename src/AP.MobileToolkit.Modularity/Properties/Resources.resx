@@ -117,7 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ModuleNotFoundErrorMessage" xml:space="preserve">
+  <data name="DuplicatedModuleInCatalog" xml:space="preserve">
+    <value>A duplicated module with name {0} has been found in the ModuleCatalog.</value>
+  </data>
+  <data name="ModuleNotFound" xml:space="preserve">
     <value>Module {0} was not found in the catalog.</value>
   </data>
 </root>

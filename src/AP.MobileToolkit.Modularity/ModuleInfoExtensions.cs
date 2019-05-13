@@ -37,7 +37,7 @@ namespace AP.MobileToolkit.Modularity
                 var dependentModule = moduleCatalog.Modules.FirstOrDefault(m => m.ModuleName == name);
 
                 yield return dependentModule ??
-                    throw new ModuleNotFoundException(name, string.Format(Resources.ModuleNotFoundErrorMessage, name));
+                    throw new ModuleNotFoundException(name, string.Format(Resources.ModuleNotFound, name));
             }
         }
     }
