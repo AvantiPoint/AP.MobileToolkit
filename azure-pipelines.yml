@@ -88,7 +88,7 @@ stages:
                 command: push
                 packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg'
                 nuGetFeedType: external
-                publishFeedCredentials: 'DanSiegel-MyGet'
+                publishFeedCredentials: 'AvaintPoint-MyGet'
   - deployment: NuGet
     displayName: NuGet.org
     environment: NuGet
