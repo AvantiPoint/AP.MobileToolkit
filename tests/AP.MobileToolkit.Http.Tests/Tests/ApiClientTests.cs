@@ -129,6 +129,7 @@ namespace AP.MobileToolkit.Http.Tests
         {
             using (new MockServer(MockApiClientOptions.TestPort, string.Empty, (req, rsp, prm) =>
             {
+                TestOutputHelper.WriteLine($"HttpMethod: {req.HttpMethod}");
                 Assert.Equal("GET", req.HttpMethod);
             }))
             {
@@ -143,6 +144,7 @@ namespace AP.MobileToolkit.Http.Tests
         {
             using (new MockServer(MockApiClientOptions.TestPort, string.Empty, (req, rsp, prm) =>
             {
+                TestOutputHelper.WriteLine($"HttpMethod: {req.HttpMethod}");
                 Assert.Equal("DELETE", req.HttpMethod);
             }))
             {
@@ -152,25 +154,27 @@ namespace AP.MobileToolkit.Http.Tests
             }
         }
 
-        // [Fact]
-        // public async Task ServiceSendsRequestWithPatchVerb()
-        // {
-        //    using (new MockServer(MockApiClientOptions.TestPort, "", (req, rsp, prm) =>
-        //    {
-        //        Assert.Equal("PATCH", req.HttpMethod);
-        //    }))
-        //    {
-        //        var client = CreateClient();
-        //        var service = new MockApiService(client);
-        //        await service.MockGet();
-        //    }
-        // }
+        [Fact]
+        public async Task ServiceSendsRequestWithPatchVerb()
+        {
+            using (new MockServer(MockApiClientOptions.TestPort, string.Empty, (req, rsp, prm) =>
+            {
+                TestOutputHelper.WriteLine($"HttpMethod: {req.HttpMethod}");
+                Assert.Equal("PATCH", req.HttpMethod);
+            }))
+            {
+                var client = CreateClient();
+                var service = new MockApiService(client);
+                await service.MockPatch();
+            }
+        }
 
         [Fact]
         public async Task ServiceSendsRequestWithPostVerb()
         {
             using (new MockServer(MockApiClientOptions.TestPort, string.Empty, (req, rsp, prm) =>
             {
+                TestOutputHelper.WriteLine($"HttpMethod: {req.HttpMethod}");
                 Assert.Equal("POST", req.HttpMethod);
             }))
             {
@@ -181,10 +185,28 @@ namespace AP.MobileToolkit.Http.Tests
         }
 
         [Fact]
+        public async Task ServiceAllowMultipleDisposible()
+        {
+            using (new MockServer(MockApiClientOptions.TestPort, string.Empty, (req, rsp, prm) =>
+            {
+                TestOutputHelper.WriteLine($"HttpMethod: {req.HttpMethod}");
+                Assert.Equal("GET", req.HttpMethod);
+            }))
+            {
+                var client = CreateClient();
+                var service = new MockApiService(client);
+                await service.MockDisposibleCall();
+                await service.MockDisposibleCall();
+                await service.MockDisposibleCall();
+            }
+        }
+
+        [Fact]
         public async Task ServiceSendsRequestWithPutVerb()
         {
             using (new MockServer(MockApiClientOptions.TestPort, string.Empty, (req, rsp, prm) =>
             {
+                TestOutputHelper.WriteLine($"HttpMethod: {req.HttpMethod}");
                 Assert.Equal("PUT", req.HttpMethod);
             }))
             {

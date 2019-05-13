@@ -12,24 +12,32 @@ namespace AP.MobileToolkit.Http
     {
         protected IAuthenticationHandler AuthenticationHandler { get; }
 
-        protected HttpClient Client { get; }
+        protected IApiClientOptions Options { get; }
 
         protected ILogger Logger { get; }
 
         protected string InstallId { get; }
 
+        private HttpClient _client;
+
+        private HttpClient Client
+        {
+            get
+            {
+                if (_client is null)
+                {
+                    _client = CreateClient();
+                }
+
+                return _client;
+            }
+        }
+
         public ApiClientBase(IApiClientOptions options, IAuthenticationHandler authenticationHandler, ILogger logger)
         {
             InstallId = options.InstallId;
             AuthenticationHandler = authenticationHandler;
-            var authenticationMessageHandler = new AuthenticationMessageHandler(authenticationHandler)
-            {
-                InnerHandler = new RetryRequestDelegateHandler()
-            };
-            Client = new HttpClient(authenticationMessageHandler)
-            {
-                BaseAddress = new Uri(options.BaseUri)
-            };
+            Options = options;
             Logger = logger;
         }
 
@@ -41,6 +49,11 @@ namespace AP.MobileToolkit.Http
         public virtual Task<HttpResponseMessage> DeleteAsync(string requestUri, object content = null, CancellationToken cancellationToken = default)
         {
             return Client.DeleteAsync(requestUri, content, cancellationToken);
+        }
+
+        public virtual Task<HttpResponseMessage> PatchAsync(string requestUri, object content = null, CancellationToken cancellationToken = default)
+        {
+            return Client.PatchAsync(requestUri, content, cancellationToken);
         }
 
         public virtual Task<HttpResponseMessage> PostAsync(string requestUri, object content = null, CancellationToken cancellationToken = default)
@@ -65,6 +78,32 @@ namespace AP.MobileToolkit.Http
                 Logger.Report(ex);
                 return null;
             }
+        }
+
+        protected virtual void SetDefaultHeaders(HttpClient client)
+        {
+        }
+
+        protected virtual HttpClient CreateClient()
+        {
+            var authenticationMessageHandler = new AuthenticationMessageHandler(AuthenticationHandler)
+            {
+                InnerHandler = new RetryRequestDelegateHandler()
+            };
+            var client = new HttpClient(authenticationMessageHandler)
+            {
+                BaseAddress = new Uri(Options.BaseUri)
+            };
+
+            SetDefaultHeaders(client);
+
+            return client;
+        }
+
+        public void Dispose()
+        {
+            _client?.Dispose();
+            _client = null;
         }
     }
 }

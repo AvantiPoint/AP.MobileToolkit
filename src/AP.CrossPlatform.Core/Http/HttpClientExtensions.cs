@@ -181,41 +181,41 @@ namespace AP.CrossPlatform.Http
         /// </summary>
         /// <returns>The async.</returns>
         /// <param name="client">Client.</param>
-        /// <param name="address">Address.</param>
+        /// <param name="requestUri">Address.</param>
         /// <param name="content">Content.</param>
-        public static async Task<HttpResponseMessage> PatchAsync(this HttpClient client, string address, HttpContent content) =>
-            await client.SendAsync(new HttpRequestMessage(PatchMethod, address) { Content = content }).ConfigureAwait(false);
+        public static async Task<HttpResponseMessage> PatchAsync(this HttpClient client, string requestUri, HttpContent content, CancellationToken cancellationToken = default) =>
+            await client.SendAsync(new HttpRequestMessage(PatchMethod, requestUri) { Content = content }, cancellationToken).ConfigureAwait(false);
 
         /// <summary>
         /// Sends Http Path Async
         /// </summary>
         /// <returns>The async.</returns>
         /// <param name="client">Client.</param>
-        /// <param name="address">Address.</param>
+        /// <param name="requestUri">Address.</param>
         /// <param name="content">Content.</param>
-        public static async Task<HttpResponseMessage> PatchAsync(this HttpClient client, string address, string content) =>
-            await client.SendAsync(new HttpRequestMessage(PatchMethod, address) { Content = new StringContent(content) }).ConfigureAwait(false);
+        public static async Task<HttpResponseMessage> PatchAsync(this HttpClient client, string requestUri, string content, CancellationToken cancellationToken = default) =>
+            await client.SendAsync(new HttpRequestMessage(PatchMethod, requestUri) { Content = new StringContent(content) }, cancellationToken).ConfigureAwait(false);
 
         /// <summary>
         /// Sends Http Path Async
         /// </summary>
         /// <returns>The async.</returns>
         /// <param name="client">Client.</param>
-        /// <param name="address">Address.</param>
+        /// <param name="requestUri">Address.</param>
         /// <param name="content">Content.</param>
         /// <typeparam name="T">The 1st type parameter.</typeparam>
-        public static async Task<HttpResponseMessage> PatchAsync<T>(this HttpClient client, string address, T content)
+        public static async Task<HttpResponseMessage> PatchAsync<T>(this HttpClient client, string requestUri, T content, CancellationToken cancellationToken = default)
             where T : class =>
-            await client.SendAsync(new HttpRequestMessage(PatchMethod, address) { Content = new JsonContent(content) }).ConfigureAwait(false);
+            await client.SendAsync(new HttpRequestMessage(PatchMethod, requestUri) { Content = new JsonContent(content) }, cancellationToken).ConfigureAwait(false);
 
         /// <summary>
         /// Sends Http Path Async
         /// </summary>
         /// <returns>The async.</returns>
         /// <param name="client">Client.</param>
-        /// <param name="address">Address.</param>
+        /// <param name="requestUri">Address.</param>
         /// <param name="content">Content.</param>
-        public static async Task<HttpResponseMessage> PatchAsync(this HttpClient client, string address, JObject content) =>
-            await client.SendAsync(new HttpRequestMessage(PatchMethod, address) { Content = new JsonContent(content) });
+        public static async Task<HttpResponseMessage> PatchAsync(this HttpClient client, string requestUri, JObject content, CancellationToken cancellationToken = default) =>
+            await client.SendAsync(new HttpRequestMessage(PatchMethod, requestUri) { Content = new JsonContent(content) }, cancellationToken);
     }
 }

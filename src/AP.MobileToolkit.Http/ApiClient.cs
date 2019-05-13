@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Headers;
+﻿using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Prism.Logging;
 using Xamarin.Essentials.Interfaces;
@@ -18,28 +19,27 @@ namespace AP.MobileToolkit.Http
         {
             AppInfo = appInfo;
             DeviceInfo = deviceInfo;
-            SetDefaultHeaders();
         }
 
-        protected virtual void SetDefaultHeaders()
+        protected override void SetDefaultHeaders(HttpClient client)
         {
-            Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            Client.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            client.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue
             {
                 NoCache = true
             };
             var agentHeader = ProductHeaderValue.Parse($"{AppInfo.Name}/{AppInfo.VersionString}");
-            Client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue(agentHeader));
-            Client.DefaultRequestHeaders.Add("X-MobileAppVer", AppInfo.VersionString);
-            Client.DefaultRequestHeaders.Add("X-DeviceModel", DeviceInfo.Model);
-            Client.DefaultRequestHeaders.Add("X-DeviceManufacturer", DeviceInfo.Manufacturer);
-            Client.DefaultRequestHeaders.Add("X-DeviceName", DeviceInfo.Name);
-            Client.DefaultRequestHeaders.Add("X-DevicePlatform", $"{DeviceInfo.Platform}");
-            Client.DefaultRequestHeaders.Add("X-DeviceIdiom", $"{DeviceInfo.Idiom}");
+            client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue(agentHeader));
+            client.DefaultRequestHeaders.Add("X-MobileAppVer", AppInfo.VersionString);
+            client.DefaultRequestHeaders.Add("X-DeviceModel", DeviceInfo.Model);
+            client.DefaultRequestHeaders.Add("X-DeviceManufacturer", DeviceInfo.Manufacturer);
+            client.DefaultRequestHeaders.Add("X-DeviceName", DeviceInfo.Name);
+            client.DefaultRequestHeaders.Add("X-DevicePlatform", $"{DeviceInfo.Platform}");
+            client.DefaultRequestHeaders.Add("X-DeviceIdiom", $"{DeviceInfo.Idiom}");
 
             if (!string.IsNullOrWhiteSpace(InstallId))
             {
-                Client.DefaultRequestHeaders.Add("X-ClientId", InstallId);
+                client.DefaultRequestHeaders.Add("X-ClientId", InstallId);
             }
         }
     }

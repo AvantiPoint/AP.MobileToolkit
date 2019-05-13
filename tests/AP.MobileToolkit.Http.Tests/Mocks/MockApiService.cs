@@ -14,11 +14,22 @@ namespace AP.MobileToolkit.Http.Tests.Mocks
         public Task<HttpResponseMessage> MockAnnonymousCall() =>
             ApiClient.GetAsync(string.Empty);
 
+        public async Task<HttpResponseMessage> MockDisposibleCall()
+        {
+            using (ApiClient)
+            {
+                return await ApiClient.GetAsync(string.Empty);
+            }
+        }
+
         public Task<HttpResponseMessage> MockDelete() =>
             ApiClient.DeleteAsync("?id=1", null);
 
         public Task<HttpResponseMessage> MockGet() =>
             ApiClient.GetAsync(string.Empty);
+
+        public Task<HttpResponseMessage> MockPatch() =>
+            ApiClient.PatchAsync(string.Empty, null);
 
         public Task<HttpResponseMessage> MockPost() =>
             ApiClient.PostAsync(string.Empty, null);
