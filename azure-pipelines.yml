@@ -64,7 +64,18 @@ stages:
   displayName: Deploy NuGet Packages
   condition: and(succeeded(), eq(variables['system.pullrequest.isfork'], false))
   jobs:
-  - deployment: myget
+  - job: ProcessDeployment
+    pool:
+      vmImage: windows-2019
+    steps:
+    - task: DownloadPipelineArtifact@1
+      inputs:
+        artifactName: 'NuGet'
+        downloadPath: $(Pipeline.Workspace)
+    - powershell: $(System.DefaultWorkingDirectory)/build/Process-Release.ps1
+      workingDirectory: $(Pipeline.Workspace)
+      displayName: Process Artifacts for Release
+  - deployment: MyGet
     displayName: MyGet.org
     environment: MyGet
     strategy:
@@ -78,17 +89,30 @@ stages:
                 packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg'
                 nuGetFeedType: external
                 publishFeedCredentials: 'DanSiegel-MyGet'
-  - deployment: nuget
+  - deployment: NuGet
     displayName: NuGet.org
     environment: NuGet
+    dependsOn: ProcessDeployment
+    condition: and(succeeded(), eq(variables['DeployToNuGet'], 'true'))
     strategy:
       runOnce:
         deploy:
           steps:
-          - task: NuGetCommand@2
-            displayName: 'NuGet push'
+          - task: jakobehn.jakobehn-vsts-github-tasks.publish-github-release.PublishGitHubRelease@0
+            displayName: 'Publish GitHub Release'
             inputs:
-                command: push
-                packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg;!$(Pipeline.Workspace)/**/*.symbols.nupkg;!$(Pipeline.Workspace)/**/*-ci*'
-                nuGetFeedType: external
-                publishFeedCredentials: 'NuGet'
+              applicationName: AzureDevOps
+              token: '$(GitHubToken)'
+              repo: Prism.Container.Extensions
+              owner: dansiegel
+              tagName: 'v$(VersionName)'
+              releaseName: '$(ReleaseDisplayName)'
+              prerelease: $(IsPreview)
+              assetsPattern: '$(Pipeline.Workspace)/**/*.nupkg'
+          - task: NuGetCommand@2
+            displayName: NuGet Push
+            inputs:
+              command: push
+              packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg;!$(Pipeline.Workspace)/**/*.symbols.nupkg'
+              nuGetFeedType: external
+              publishFeedCredentials: 'NuGet'
