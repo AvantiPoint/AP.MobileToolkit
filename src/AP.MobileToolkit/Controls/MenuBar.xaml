@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:menu="clr-namespace:AP.MobileToolkit.Menus"
+             BindableLayout.ItemsSource="{Binding MenuOptions,Source={x:Reference this}}"
+             x:Name="this"
+             x:Class="AP.MobileToolkit.Controls.MenuBar">
+    <BindableLayout.ItemTemplate>
+        <DataTemplate x:DataType="menu:MainMenuOption">
+            <Frame Padding="20,8">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigationCommand,Source={x:Reference this}}"
+                                          CommandParameter="{Binding Uri}" />
+                </Frame.GestureRecognizers>
+                <Grid ColumnSpacing="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image HeightRequest="20"
+                           WidthRequest="20"
+                           HorizontalOptions="Center"
+                           Source="{Binding IconSource}" />
+                    <Label Text="{Binding Text}"
+                           Grid.Column="1"/>
+                </Grid>
+            </Frame>
+        </DataTemplate>
+    </BindableLayout.ItemTemplate>
+</StackLayout>
