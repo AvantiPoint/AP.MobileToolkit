@@ -12,8 +12,15 @@ namespace AP.MobileToolkit.Xaml
 {
     public class NavigateToExtension : Prism.Navigation.Xaml.NavigateToExtension
     {
+        bool isExecuting;
+
         protected override async Task HandleNavigation(INavigationParameters parameters, INavigationService navigationService)
         {
+            if (isExecuting)
+            {
+                return;
+            }
+
             var result = await navigationService.NavigateAsync(Name, parameters);
 
             if (result.Exception != null)
@@ -27,6 +34,8 @@ namespace AP.MobileToolkit.Xaml
                     string.Format(ToolkitResources.AlertErrorMessageTemplate, result.Exception.ToErrorMessage(), correlationId),
                     ToolkitResources.Ok);
             }
+
+            isExecuting = false;
         }
 
         private T GetService<T>() => PrismApplicationBase.Current.Container.Resolve<T>();
