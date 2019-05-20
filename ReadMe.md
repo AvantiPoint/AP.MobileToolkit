@@ -33,11 +33,11 @@ Both base ViewModel's implement all of the important Prism Navigation Interfaces
 | Control | Android | iOS | UWP |
 |---------|:-------:|:---:|:---:|
 | BadgeView | X | X | X |
-| BorderlessDatePicker | X | X | - |
-| BorderlessEditor | X | X | - |
-| BorderlessEntry | X | X | - |
-| BorderlessPicker | X | X | - |
-| BorderlessTimePicker | X | X | - |
+| BorderlessDatePicker | X | X | X |
+| BorderlessEditor | X | X | X |
+| BorderlessEntry | X | X | X |
+| BorderlessPicker | X | X | X |
+| BorderlessTimePicker | X | X | X |
 | CheckBox | X | X | - |
 | CustomRadioButton | X | X | - |
 | DatePickerCell | X | X | X |
@@ -46,11 +46,11 @@ Both base ViewModel's implement all of the important Prism Navigation Interfaces
 | IconSpan | X | X | X |
 | ImageEntry | X | X | - |
 | MarkdownTextView | X | X | - |
-| MaterialButton | X | X| - |
-| MaterialDatePicker | X | X| - |
-| MaterialEntry | X | X| - |
-| MaterialPicker | X | X| - |
-| MaterialTimePicker | X | X| - |
+| MaterialButton | X | X| X |
+| MaterialDatePicker | X | X| X |
+| MaterialEntry | X | X| X |
+| MaterialPicker | X | X| X |
+| MaterialTimePicker | X | X| X |
 | RadioButtonGroup | X | X| - |
 | RepeaterView | X | X | X |
 | SelectorView | X | X | X |
