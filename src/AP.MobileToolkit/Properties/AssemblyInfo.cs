@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System.Runtime.CompilerServices;
+using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
 [assembly: Preserve(AllMembers = true)]
@@ -10,3 +11,5 @@ using Xamarin.Forms.Internals;
 [assembly: XmlnsDefinition("http://avantipoint.com/schemas/xaml", "AP.MobileToolkit.Pages")]
 [assembly: XmlnsDefinition("http://avantipoint.com/schemas/xaml", "AP.MobileToolkit.Resources")]
 [assembly: XmlnsDefinition("http://avantipoint.com/schemas/xaml", "AP.MobileToolkit.Xaml")]
+
+[assembly: InternalsVisibleTo("AP.MobileToolkit.Tests")]

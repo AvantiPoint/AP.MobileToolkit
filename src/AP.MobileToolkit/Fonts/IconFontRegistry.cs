@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 namespace AP.MobileToolkit.Fonts
@@ -8,14 +9,22 @@ namespace AP.MobileToolkit.Fonts
     {
         internal static IconFontRegistry Instance = new IconFontRegistry();
 
-        private List<IconFont> RegisteredFonts { get; }
+        internal List<IconFont> RegisteredFonts { get; }
 
-        public static void Register(params IconFont[] fonts)
+        public static void Register(params IconFont[] fonts) =>
+            RegisterInternal(fonts);
+
+        public static void Register(IEnumerable<IconFont> fonts) =>
+            RegisterInternal(fonts);
+
+        private static void RegisterInternal(IEnumerable<IconFont> fonts)
         {
             foreach (var font in fonts)
             {
                 if (Instance.RegisteredFonts.Any(x => x.Prefix.Equals(font.Prefix, StringComparison.InvariantCultureIgnoreCase)))
+                {
                     throw new InvalidOperationException($"A font with the prefix '{font.Prefix}' has already been registered");
+                }
 
                 Instance.RegisteredFonts.Add(font);
             }
@@ -24,6 +33,13 @@ namespace AP.MobileToolkit.Fonts
         private IconFontRegistry()
         {
             RegisteredFonts = new List<IconFont>();
+        }
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public static void Reset()
+        {
+            Instance.RegisteredFonts.Clear();
+            Instance = new IconFontRegistry();
         }
 
         internal IconInfo FindIconForKey(string iconName)
@@ -47,8 +63,9 @@ namespace AP.MobileToolkit.Fonts
                 icon = FindIconForKey(iconName);
                 return !string.IsNullOrEmpty(icon.FontFamily) && !string.IsNullOrEmpty(icon.Glyph);
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return false;
             }
         }

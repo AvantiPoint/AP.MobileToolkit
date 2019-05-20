@@ -9,8 +9,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.UWP;
 using WindowsImageSource = Windows.UI.Xaml.Media.ImageSource;
 
-[assembly: ExportImageSourceHandler(typeof(IconImageSource), typeof(AP.MobileToolkit.Platform.IconImageSourceHandler))]
-namespace AP.MobileToolkit.Platform
+[assembly: ExportImageSourceHandler(typeof(IconImageSource), typeof(AP.MobileToolkit.Fonts.Platform.UWP.IconImageSourceHandler))]
+namespace AP.MobileToolkit.Fonts.Platform.UWP
 {
     internal class IconImageSourceHandler : IImageSourceHandler
     {

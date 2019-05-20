@@ -42,6 +42,8 @@ Both base ViewModel's implement all of the important Prism Navigation Interfaces
 | CustomRadioButton | X | X | - |
 | DatePickerCell | X | X | X |
 | GravatarImageSource | X | X | X |
+| IconImageSource | X | X | X |
+| IconSpan | X | X | X |
 | ImageEntry | X | X | - |
 | MarkdownTextView | X | X | - |
 | MaterialButton | X | X| - |
