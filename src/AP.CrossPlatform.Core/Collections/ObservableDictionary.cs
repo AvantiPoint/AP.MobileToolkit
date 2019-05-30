@@ -66,7 +66,7 @@ namespace AP.CrossPlatform.Collections
 
         public bool Remove(TKey key)
         {
-            if (key is null)
+            if (key == null)
             {
                 throw new ArgumentNullException(nameof(key));
             }
