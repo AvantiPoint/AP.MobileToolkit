@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Prism.Plugin.Logging.Abstractions" Version="1.4.0.342-pre" />
-    <PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.1.0" />
+    <PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.2.0" />
   </ItemGroup>
 
   <ItemGroup>
