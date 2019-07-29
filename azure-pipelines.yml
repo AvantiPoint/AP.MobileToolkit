@@ -18,6 +18,10 @@ stages:
     pool:
       vmImage: windows-2019
     steps:
+    - task: DotNetCoreInstaller@0
+      inputs:
+        version: '3.0.100-preview7-012821'
+
     - task: NuGetToolInstaller@0
       displayName: Use NuGet 5.1.0
       inputs:
