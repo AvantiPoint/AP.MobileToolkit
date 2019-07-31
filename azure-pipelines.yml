@@ -20,25 +20,25 @@ stages:
     steps:
     - task: DotNetCoreInstaller@0
       inputs:
-        version: '3.0.100-preview7-012821'
+        version: '3.0.100'
 
     - task: NuGetToolInstaller@0
       displayName: Use NuGet 4.9.4
       inputs:
         versionSpec: 4.9.4
 
-    - task: NuGetCommand@2
-      displayName: 'NuGet restore'
-      inputs:
-        feedsToUse: config
-        nugetConfigPath: build/NuGet.config
+    # - task: NuGetCommand@2
+    #   displayName: 'NuGet restore'
+    #   inputs:
+    #     feedsToUse: config
+    #     nugetConfigPath: build/NuGet.config
 
     - task: MSBuild@1
       displayName: 'Build solution AP.MobileToolkit.sln'
       inputs:
         platform: '$(BuildPlatform)'
         configuration: '$(BuildConfiguration)'
-        msbuildArguments: '/p:DebugType=portable /p:JavaSdkDirectory="$(JAVA_HOME)"'
+        msbuildArguments: '/p:DebugType=portable /p:JavaSdkDirectory="$(JAVA_HOME)" /restore'
 
     - task: DotNetCoreCLI@2
       displayName: Run Tests
