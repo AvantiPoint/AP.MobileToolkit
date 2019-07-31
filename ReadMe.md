@@ -38,7 +38,6 @@ Both base ViewModel's implement all of the important Prism Navigation Interfaces
 | BorderlessEntry | X | X | X |
 | BorderlessPicker | X | X | X |
 | BorderlessTimePicker | X | X | X |
-| CheckBox | X | X | - |
 | CustomRadioButton | X | X | - |
 | DatePickerCell | X | X | X |
 | GravatarImageSource | X | X | X |
