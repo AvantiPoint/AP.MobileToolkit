@@ -23,9 +23,9 @@ stages:
         version: '3.0.100-preview7-012821'
 
     - task: NuGetToolInstaller@0
-      displayName: Use NuGet 5.1.0
+      displayName: Use NuGet 4.9.4
       inputs:
-        versionSpec: 5.1.0
+        versionSpec: 4.9.4
 
     - task: NuGetCommand@2
       displayName: 'NuGet restore'
