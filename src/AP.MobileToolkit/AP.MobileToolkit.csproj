@@ -40,7 +40,7 @@
     <PackageReference Include="Humanizer.Core" Version="2.6.2" />
     <PackageReference Include="Prism.Forms" Version="7.2.0.1367" />
     <PackageReference Include="Prism.Plugin.Logging.Abstractions" Version="7.2.0.560" />
-    <PackageReference Include="ReactiveUI" Version="9.19.5" />
+    <PackageReference Include="ReactiveUI" Version="9.21.1" />
     <PackageReference Include="NCrontab" Version="3.3.1" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.5.0" />
     <PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.2.0" />
