@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:toolkit="clr-namespace:AP.MobileToolkit.Controls;assembly=AP.MobileToolkit"                
+             x:Class="ToolkitDemo.Views.BorderlessEntryPage" Title="Borderless Entry">
+    <StackLayout Padding="20">
+        <toolkit:BorderlessEntry TextColor="DarkBlue" Placeholder="Enter something here..." PlaceholderColor="Red">
+
+        </toolkit:BorderlessEntry>
+
+        <toolkit:BorderlessEntry Text="Hello World!">
+
+        </toolkit:BorderlessEntry>
+
+        <toolkit:BorderlessEntry Text="Password" TextColor="DarkBlue" IsPassword="True">
+
+        </toolkit:BorderlessEntry>
+    </StackLayout>
+</ContentPage>
