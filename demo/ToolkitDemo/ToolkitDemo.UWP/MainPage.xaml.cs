@@ -23,15 +23,7 @@ namespace ToolkitDemo.UWP
         {
             InitializeComponent();
 
-            LoadApplication(new ToolkitDemo.App(new UwpInitializer()));
-        }
-    }
-
-    public class UwpInitializer : IPlatformInitializer
-    {
-        public void RegisterTypes(IContainerRegistry containerRegistry)
-        {
-            // Register any platform specific implementations
+            LoadApplication(new ToolkitDemo.App());
         }
     }
 }

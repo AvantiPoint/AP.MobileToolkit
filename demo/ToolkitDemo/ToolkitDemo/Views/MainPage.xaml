@@ -12,7 +12,7 @@
                 <ListView x:Name="listView" ItemsSource="{Binding NavigationItemsList}">
                     <ListView.Behaviors>
                         <prism:EventToCommandBehavior 
-                            Command="{Binding NavigateCommand}" 
+                            Command="{Binding NavigateItemsCommand}" 
                             EventName="ItemTapped" 
                             EventArgsParameterPath="Item" />
                     </ListView.Behaviors>

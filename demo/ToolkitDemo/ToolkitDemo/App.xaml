@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
              x:Class="ToolkitDemo.App">
-	<Application.Resources>
+	<prism:PrismApplication.Resources>
 
 		<!-- Application resource dictionary -->
 
-	</Application.Resources>
+	</prism:PrismApplication.Resources>
 </prism:PrismApplication>

@@ -1,32 +1,35 @@
 ﻿using AP.CrossPlatform.Collections;
+using AP.MobileToolkit.Mvvm;
 using Prism.Commands;
+using Prism.Logging;
 using Prism.Navigation;
+using Prism.Services;
 
 namespace ToolkitDemo.ViewModels
 {
-    public class MainPageViewModel : ViewModelBase
+    public class MainPageViewModel : ReactiveViewModelBase
     {
-        private DelegateCommand<NavigationItemsListViewModel> _navigateCommand;
-        public DelegateCommand<NavigationItemsListViewModel> NavigateCommand =>
-            _navigateCommand ?? (_navigateCommand = new DelegateCommand<NavigationItemsListViewModel>(ExecuteNavigateCommand));
+        private DelegateCommand<NavigationItemsList> _navigateCommand;
+        public DelegateCommand<NavigationItemsList> NavigateItemsCommand =>
+           _navigateCommand ?? (_navigateCommand = new DelegateCommand<NavigationItemsList>(ExecuteNavigateCommand));
 
-        public ObservableRangeCollection<NavigationItemsListViewModel> NavigationItemsList { get; set; }
+        public ObservableRangeCollection<NavigationItemsList> NavigationItemsList { get; set; }
 
-        public MainPageViewModel(INavigationService navigationService)
-            : base(navigationService)
+        public MainPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
+           : base(navigationService, pageDialogService, logger)
         {
             Title = "Toolkit Demo";
-            NavigationItemsList = new ObservableRangeCollection<NavigationItemsListViewModel>()
+            NavigationItemsList = new ObservableRangeCollection<NavigationItemsList>()
             {
-                new NavigationItemsListViewModel { Name = "Home Page", Uri = "NavigationPage/HomePage" },
-                new NavigationItemsListViewModel { Name = "Datepicker", Uri = "NavigationPage/BorderlessDatePickerPage" },
-                new NavigationItemsListViewModel { Name = "Timepicker", Uri = "NavigationPage/BorderlessTimePickerPage" },
-                new NavigationItemsListViewModel { Name = "Borderless Entry", Uri = "NavigationPage/BorderlessEntryPage" },
-                new NavigationItemsListViewModel { Name = "Material Datepicker", Uri = "NavigationPage/MaterialDatepickerPage" },
+                new NavigationItemsList { Name = "Home Page", Uri = "NavigationPage/HomePage" },
+                new NavigationItemsList { Name = "Datepicker", Uri = "NavigationPage/BorderlessDatePickerPage" },
+                new NavigationItemsList { Name = "Timepicker", Uri = "NavigationPage/BorderlessTimePickerPage" },
+                new NavigationItemsList { Name = "Borderless Entry", Uri = "NavigationPage/BorderlessEntryPage" },
+                new NavigationItemsList { Name = "Material Datepicker", Uri = "NavigationPage/MaterialDatepickerPage" },
             };
         }
 
-        async void ExecuteNavigateCommand(NavigationItemsListViewModel item)
+        async void ExecuteNavigateCommand(NavigationItemsList item)
         {
             await NavigationService.NavigateAsync(item.Uri);
         }

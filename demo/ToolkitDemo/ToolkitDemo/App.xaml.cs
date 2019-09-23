@@ -36,11 +36,11 @@ namespace ToolkitDemo
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
-            containerRegistry.RegisterForNavigation<BorderlessDatePickerPage, BorderlessDatePickerPageViewModel>();
-            containerRegistry.RegisterForNavigation<BorderlessEntryPage, BorderlessEntryPageViewModel>();
-            containerRegistry.RegisterForNavigation<BorderlessTimePickerPage, BorderlessTimePickerPageViewModel>();
-            containerRegistry.RegisterForNavigation<HomePage, HomePageViewModel>();
-            containerRegistry.RegisterForNavigation<MaterialDatepickerPage, MaterialDatepickerPageViewModel>();
+            containerRegistry.RegisterForNavigation<BorderlessDatePickerPage>();
+            containerRegistry.RegisterForNavigation<BorderlessEntryPage>();
+            containerRegistry.RegisterForNavigation<BorderlessTimePickerPage>();
+            containerRegistry.RegisterForNavigation<HomePage>();
+            containerRegistry.RegisterForNavigation<MaterialDatepickerPage>();
         }
     }
 }
