@@ -1,5 +1,6 @@
 ﻿using Prism;
 using Prism.Ioc;
+using Prism.Logging;
 using ToolkitDemo.ViewModels;
 using ToolkitDemo.Views;
 using Xamarin.Forms;
@@ -35,6 +36,7 @@ namespace ToolkitDemo
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
+            containerRegistry.Register<ILogger, ConsoleLoggingService>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<BorderlessDatePickerPage>();
             containerRegistry.RegisterForNavigation<BorderlessEntryPage>();
