@@ -4,33 +4,33 @@
                   xmlns:prism="http://prismlibrary.com"
                   prism:ViewModelLocator.AutowireViewModel="True"
                   x:Class="ToolkitDemo.Views.MainPage"
-                  Title="Menu">
+                  Title="Menu" x:Name="HamburgerMenuPage">
 
     <MasterDetailPage.Master>
         <ContentPage Title="Menu">
             <StackLayout Padding="20">
-                <ListView x:Name="listView" ItemsSource="{Binding NavigationItemsList}">
+                <ListView IsGroupingEnabled="True" ItemsSource="{Binding Categories}">
+                    <ListView.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ContentView Padding="10,0,0,0">
+                                    <Label Text="{Binding Key.Category.CategoryTitle}" VerticalOptions="Center"/>
+                                    <ContentView.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={x:Reference HamburgerMenuPage }, Path=BindingContext.HeaderSelectedCommand}" CommandParameter="{Binding .}"/>
+                                    </ContentView.GestureRecognizers>
+                                </ContentView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.GroupHeaderTemplate>
                     <ListView.Behaviors>
                         <prism:EventToCommandBehavior 
                             Command="{Binding NavigateItemsCommand}" 
                             EventName="ItemTapped" 
                             EventArgsParameterPath="Item" />
                     </ListView.Behaviors>
-
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <ViewCell>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="5*"></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-
-                                    <Label Grid.Row="0" Text="{Binding Name}" TextColor="Black" FontSize="Medium" FontAttributes="Bold" />
-                                </Grid>
-                            </ViewCell>
+                            <TextCell Text="{Binding ItemTitle}"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
