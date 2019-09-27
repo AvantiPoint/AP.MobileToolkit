@@ -3,9 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="ToolkitDemo.Views.MaterialDatepickerPage"
+             x:Class="ToolkitDemo.Views.MaterialDatePickerPage"
              xmlns:toolkit="clr-namespace:AP.MobileToolkit.Controls;assembly=AP.MobileToolkit"
              Title="Material Datepicker">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="MaterialDatePickerCodeBehind" Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}"/>
+    </ContentPage.ToolbarItems>
+    
     <StackLayout Padding="20">
         <toolkit:MaterialDatePicker Text="Pick a date" Date="2019-09-20" DefaultColor="Purple" AccentColor="Aqua">
             

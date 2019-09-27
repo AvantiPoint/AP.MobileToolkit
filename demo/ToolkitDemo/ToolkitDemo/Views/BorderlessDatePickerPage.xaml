@@ -7,6 +7,10 @@
                 xmlns:toolkit="clr-namespace:AP.MobileToolkit.Controls;assembly=AP.MobileToolkit"
                 Title="Datepicker">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="BorderlessDatepickerCodeBehind" Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}"/>
+    </ContentPage.ToolbarItems>
+
     <StackLayout Padding="20">
         <toolkit:BorderlessDatePicker BackgroundColor="Azure" Date="2019-09-17">
 

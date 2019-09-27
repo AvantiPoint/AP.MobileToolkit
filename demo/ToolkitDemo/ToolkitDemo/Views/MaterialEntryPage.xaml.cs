@@ -2,9 +2,9 @@
 
 namespace ToolkitDemo.Views
 {
-    public partial class MaterialDatePickerPage : ContentPage
+    public partial class MaterialEntryPage : ContentPage
     {
-        public MaterialDatePickerPage()
+        public MaterialEntryPage()
         {
             InitializeComponent();
         }

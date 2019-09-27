@@ -1,6 +1,7 @@
 ﻿using Prism;
 using Prism.Ioc;
 using Prism.Logging;
+using ToolkitDemo.Helpers;
 using ToolkitDemo.ViewModels;
 using ToolkitDemo.Views;
 using Xamarin.Forms;
@@ -37,12 +38,18 @@ namespace ToolkitDemo
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.Register<ILogger, ConsoleLoggingService>();
+            containerRegistry.Register<IXamlResourceReader, XamlResourceReader>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<BorderlessDatePickerPage>();
             containerRegistry.RegisterForNavigation<BorderlessEntryPage>();
             containerRegistry.RegisterForNavigation<BorderlessTimePickerPage>();
             containerRegistry.RegisterForNavigation<HomePage>();
-            containerRegistry.RegisterForNavigation<MaterialDatepickerPage>();
+            containerRegistry.RegisterForNavigation<MaterialDatePickerPage>();
+            containerRegistry.RegisterForNavigation<MaterialDatePickerCodePage, MaterialDatePickerCodePageViewModel>();
+            containerRegistry.RegisterForNavigation<BorderlessDatePickerCodePage, BorderlessDatePickerCodePageViewModel>();
+            containerRegistry.RegisterForNavigation<BorderlessEntryCodePage, BorderlessEntryCodePageViewModel>();
+            containerRegistry.RegisterForNavigation<MaterialEntryPage, MaterialEntryPageViewModel>();
+            containerRegistry.RegisterForNavigation<MaterialEntryCodePage, MaterialEntryCodePageViewModel>();
         }
     }
 }

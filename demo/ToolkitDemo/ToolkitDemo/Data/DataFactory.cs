@@ -46,7 +46,7 @@ namespace ToolkitDemo.Data
                 {
                     ItemId = 5,
                     ItemTitle = "Material Datepicker",
-                    ItemUri = "NavigationPage/MaterialDatepickerPage",
+                    ItemUri = "NavigationPage/MaterialDatePickerPage",
                     Category = uiControls
                 },
                 new Item
