@@ -39,6 +39,7 @@ namespace ToolkitDemo
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.Register<ILogger, ConsoleLoggingService>();
             containerRegistry.Register<IXamlResourceReader, XamlResourceReader>();
+            containerRegistry.Register<ICopyTextHelper, CopyTextHelper>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<BorderlessDatePickerPage>();
             containerRegistry.RegisterForNavigation<BorderlessEntryPage>();
@@ -50,6 +51,12 @@ namespace ToolkitDemo
             containerRegistry.RegisterForNavigation<BorderlessEntryCodePage, BorderlessEntryCodePageViewModel>();
             containerRegistry.RegisterForNavigation<MaterialEntryPage, MaterialEntryPageViewModel>();
             containerRegistry.RegisterForNavigation<MaterialEntryCodePage, MaterialEntryCodePageViewModel>();
+            containerRegistry.RegisterForNavigation<APIClientPage, APIClientPageViewModel>();
+            containerRegistry.RegisterForNavigation<APIClientCodePage, APIClientCodePageViewModel>();
+            containerRegistry.RegisterForNavigation<MaterialTimePickerPage, MaterialTimePickerPageViewModel>();
+            containerRegistry.RegisterForNavigation<MaterialTimePickerCodePage, MaterialTimePickerCodePageViewModel>();
+            containerRegistry.RegisterForNavigation<BadgeViewPage, BadgeViewPageViewModel>();
+            containerRegistry.RegisterForNavigation<BadgeViewCodePage, BadgeViewCodePageViewModel>();
         }
     }
 }

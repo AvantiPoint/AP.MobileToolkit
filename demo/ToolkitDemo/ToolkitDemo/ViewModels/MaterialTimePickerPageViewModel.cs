@@ -6,19 +6,19 @@ using Prism.Services;
 
 namespace ToolkitDemo.ViewModels
 {
-    public class MaterialEntryPageViewModel : ReactiveViewModelBase
+    public class MaterialTimePickerPageViewModel : ReactiveViewModelBase
     {
         private DelegateCommand _showCodeBehind;
         public DelegateCommand ShowCodeBehind => _showCodeBehind ?? (_showCodeBehind = new DelegateCommand(ExecuteShowCodeBehind));
 
-        public MaterialEntryPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ConsoleLoggingService logger)
+        public MaterialTimePickerPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ConsoleLoggingService logger)
             : base(navigationService, pageDialogService, logger)
         {
         }
 
         async void ExecuteShowCodeBehind()
         {
-            await NavigationService.NavigateAsync("MaterialEntryCodePage");
+            await NavigationService.NavigateAsync("MaterialTimePickerCodePage");
         }
     }
 }

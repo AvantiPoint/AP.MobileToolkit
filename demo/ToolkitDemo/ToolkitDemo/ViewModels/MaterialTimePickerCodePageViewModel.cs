@@ -4,7 +4,7 @@ using ToolkitDemo.Helpers;
 
 namespace ToolkitDemo.ViewModels
 {
-    public class BorderlessEntryCodePageViewModel : BindableBase
+    public class MaterialTimePickerCodePageViewModel : BindableBase
     {
         public IXamlResourceReader XamlResourceReader { get; set; }
         public ICopyTextHelper CopyTextHelper { get; set; }
@@ -13,11 +13,11 @@ namespace ToolkitDemo.ViewModels
         public DelegateCommand CopyTextToClipboard =>
             _copyTextToClipboard ?? (_copyTextToClipboard = new DelegateCommand(CopyText));
 
-        public BorderlessEntryCodePageViewModel(IXamlResourceReader xamlResourceReader, ICopyTextHelper copyTextHelper)
+        public MaterialTimePickerCodePageViewModel(IXamlResourceReader xamlResourceReader, ICopyTextHelper copyTextHelper)
         {
             XamlResourceReader = xamlResourceReader;
             CopyTextHelper = copyTextHelper;
-            ResourceContent = XamlResourceReader.ReadEmbeddedResource("AP.MobileToolkit.Controls.BorderlessEntry.xaml");
+            ResourceContent = XamlResourceReader.ReadEmbeddedResource("AP.MobileToolkit.Controls.MaterialTimePicker.xaml");
         }
         void CopyText()
         {

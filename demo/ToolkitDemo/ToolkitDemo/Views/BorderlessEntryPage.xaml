@@ -5,6 +5,11 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:toolkit="clr-namespace:AP.MobileToolkit.Controls;assembly=AP.MobileToolkit"                
              x:Class="ToolkitDemo.Views.BorderlessEntryPage" Title="Borderless Entry">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="BorderlessEntryCodeBehind" Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}"/>
+    </ContentPage.ToolbarItems>
+
     <StackLayout Padding="20">
         <toolkit:BorderlessEntry TextColor="DarkBlue" Placeholder="Enter something here..." PlaceholderColor="Red">
 

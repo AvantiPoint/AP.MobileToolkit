@@ -5,7 +5,6 @@ using Xamarin.Forms.Xaml;
 
 namespace AP.MobileToolkit.Controls
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MaterialEntry : ContentView
     {
         #region Events

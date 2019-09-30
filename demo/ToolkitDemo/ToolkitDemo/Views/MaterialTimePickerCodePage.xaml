@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="ToolkitDemo.Views.BorderlessDatePickerCodePage"
+             x:Class="ToolkitDemo.Views.MaterialTimePickerCodePage"
              Title="Source Code">
     <ContentPage.Content>
         <StackLayout Padding="20">
-            <Label Text="Borderless Datepicker" HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold"></Label>
+            <Label Text="Material Timepicker" HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold"></Label>
             <ScrollView>
                 <Label Text="{Binding ResourceContent}"></Label>
             </ScrollView>

@@ -3,16 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="ToolkitDemo.Views.MaterialEntryPage"
              xmlns:toolkit="clr-namespace:AP.MobileToolkit.Controls;assembly=AP.MobileToolkit"
-             Title="Material Entry">
+             x:Class="ToolkitDemo.Views.BadgeViewPage" Title="Badge View">
+
     <ContentPage.ToolbarItems>
-        <ToolbarItem Name="MaterialEntryCodeBehind" Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}"/>
+        <ToolbarItem Name="MaterialDatePickerCodeBehind" Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}"/>
     </ContentPage.ToolbarItems>
 
     <StackLayout Padding="20">
-        <toolkit:MaterialEntry Text="Hello World!">
+        <toolkit:BadgeView Text="13">
 
-        </toolkit:MaterialEntry>
+        </toolkit:BadgeView>
     </StackLayout>
 </ContentPage>

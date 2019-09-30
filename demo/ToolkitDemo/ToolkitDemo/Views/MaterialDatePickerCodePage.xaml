@@ -11,6 +11,7 @@
             <ScrollView>
                 <Label Text="{Binding ResourceContent}"></Label>
             </ScrollView>
+            <Button Text="Copy Text" Command="{Binding CopyTextToClipboard}" BorderRadius="20" HeightRequest="40"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
