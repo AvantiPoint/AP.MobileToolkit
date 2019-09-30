@@ -4,11 +4,11 @@ using ToolkitDemo.Models;
 
 namespace ToolkitDemo.Data
 {
-    public class DataFactory
+    public class Menu
     {
         public static IList<Item> DataItems { get; private set; }
 
-        static DataFactory()
+        static Menu()
         {
             Category homePage = new Category { CategoryId = 1, CategoryTitle = "Home Page" };
             Category uiControls = new Category { CategoryId = 1, CategoryTitle = "UI Controls" };

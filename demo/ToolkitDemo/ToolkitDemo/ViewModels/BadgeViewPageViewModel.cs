@@ -11,12 +11,12 @@ namespace ToolkitDemo.ViewModels
         private DelegateCommand _showCodeBehind;
         public DelegateCommand ShowCodeBehind => _showCodeBehind ?? (_showCodeBehind = new DelegateCommand(ExecuteShowCodeBehind));
 
-        public BadgeViewPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ConsoleLoggingService logger)
+        public BadgeViewPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
             : base(navigationService, pageDialogService, logger)
         {
         }
 
-        async void ExecuteShowCodeBehind()
+        private async void ExecuteShowCodeBehind()
         {
             await NavigationService.NavigateAsync("BadgeViewCodePage");
         }

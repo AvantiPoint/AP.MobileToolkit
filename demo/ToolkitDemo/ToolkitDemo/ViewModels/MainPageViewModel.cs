@@ -29,7 +29,7 @@ namespace ToolkitDemo.ViewModels
                g.Key.Selected = !g.Key.Selected;
                if (g.Key.Selected)
                {
-                   List<Item> itemsList = DataFactory.DataItems.Where(i => i.Category.CategoryId == g.Key.Category.CategoryId).ToList();
+                   List<Item> itemsList = Menu.DataItems.Where(i => i.Category.CategoryId == g.Key.Category.CategoryId).ToList();
                    foreach (var item in itemsList)
                    {
                        g.Add(item);
@@ -48,14 +48,14 @@ namespace ToolkitDemo.ViewModels
 
             Categories = new ObservableCollection<Grouping<SelectedCategory, Item>>();
             var selectCategories =
-                    DataFactory.DataItems.Select(x => new SelectedCategory { Category = x.Category, Selected = false })
+                    Menu.DataItems.Select(x => new SelectedCategory { Category = x.Category, Selected = false })
                    .GroupBy(sc => new { sc.Category.CategoryId })
                    .Select(g => g.First())
                    .ToList();
             selectCategories.ForEach(sc => Categories.Add(new Grouping<SelectedCategory, Item>(sc, new List<Item>())));
         }
 
-        async void ExecuteNavigateCommand(Item item)
+        private async void ExecuteNavigateCommand(Item item)
         {
             await NavigationService.NavigateAsync(item.ItemUri);
         }

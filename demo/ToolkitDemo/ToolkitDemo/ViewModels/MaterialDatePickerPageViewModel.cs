@@ -11,12 +11,12 @@ namespace ToolkitDemo.ViewModels
         private DelegateCommand _showCodeBehind;
         public DelegateCommand ShowCodeBehind => _showCodeBehind ?? (_showCodeBehind = new DelegateCommand(ExecuteShowCodeBehind));
 
-        public MaterialDatePickerPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ConsoleLoggingService logger)
+        public MaterialDatePickerPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
             : base(navigationService, pageDialogService, logger)
         {
         }
 
-        async void ExecuteShowCodeBehind()
+        private async void ExecuteShowCodeBehind()
         {
             await NavigationService.NavigateAsync("MaterialDatePickerCodePage");
         }
