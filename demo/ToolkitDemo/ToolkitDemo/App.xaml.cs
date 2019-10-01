@@ -2,6 +2,7 @@
 using Prism.Ioc;
 using Prism.Logging;
 using ToolkitDemo.Helpers;
+using ToolkitDemo.SideMenu;
 using ToolkitDemo.ViewModels;
 using ToolkitDemo.Views;
 using Xamarin.Forms;
@@ -57,6 +58,7 @@ namespace ToolkitDemo
             containerRegistry.RegisterForNavigation<MaterialTimePickerCodePage, MaterialTimePickerCodePageViewModel>();
             containerRegistry.RegisterForNavigation<BadgeViewPage, BadgeViewPageViewModel>();
             containerRegistry.RegisterForNavigation<BadgeViewCodePage, BadgeViewCodePageViewModel>();
+            containerRegistry.RegisterSingleton<IMenu, SideMenu.Menu>();
         }
     }
 }

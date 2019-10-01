@@ -5,11 +5,11 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <None Remove="Images\avantipoint_logo.png" />
+    <None Remove="Images\logo.png" />
   </ItemGroup>
   
   <ItemGroup>
-    <EmbeddedResource Include="Images\avantipoint_logo.png" />
+    <EmbeddedResource Include="Images\logo.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,77 +1,90 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using AP.CrossPlatform.Collections;
 using ToolkitDemo.Models;
 
-namespace ToolkitDemo.Data
+namespace ToolkitDemo.SideMenu
 {
-    public class Menu
+    public class Menu : IMenu
     {
-        public static IList<Item> DataItems { get; private set; }
+        public ObservableCollection<Grouping<Category, Item>> Categories { get; set; }
+        public IList<Item> MenuItems { get; set; }
+        private IList<Category> itemCategories;
 
-        static Menu()
+        public Menu()
         {
-            Category homePage = new Category { CategoryId = 1, CategoryTitle = "Home Page" };
-            Category uiControls = new Category { CategoryId = 1, CategoryTitle = "UI Controls" };
-            Category httpControls = new Category { CategoryId = 2, CategoryTitle = "Http Client" };
-            DataItems = new ObservableCollection<Item>()
+            itemCategories = new ObservableCollection<Category>()
+            {
+                new Category { CategoryId = 1, CategoryTitle = "UI Controls", IsSelected = false },
+                new Category { CategoryId = 2, CategoryTitle = "Http Client", IsSelected = false }
+            };
+
+            MenuItems = new ObservableCollection<Item>()
             {
                 new Item
                 {
                     ItemId = 1,
-                    ItemTitle = "Datepicker",
+                    ItemTitle = "Borderless Datepicker",
                     ItemUri = "NavigationPage/BorderlessDatePickerPage",
-                    Category = uiControls
+                    CategoryId = 1
                 },
                 new Item
                 {
                     ItemId = 2,
-                    ItemTitle = "Timepicker",
+                    ItemTitle = "Borderless Timepicker",
                     ItemUri = "NavigationPage/BorderlessTimePickerPage",
-                    Category = uiControls
+                    CategoryId = 1
                 },
                 new Item
                 {
                     ItemId = 3,
                     ItemTitle = "Borderless Entry",
                     ItemUri = "NavigationPage/BorderlessEntryPage",
-                    Category = uiControls
+                    CategoryId = 1
                 },
                 new Item
                 {
                     ItemId = 4,
                     ItemTitle = "Material Datepicker",
                     ItemUri = "NavigationPage/MaterialDatePickerPage",
-                    Category = uiControls
+                    CategoryId = 1
                 },
                 new Item
                 {
                     ItemId = 5,
                     ItemTitle = "Material Entry",
                     ItemUri = "NavigationPage/MaterialEntryPage",
-                    Category = uiControls
+                    CategoryId = 1
                 },
                 new Item
                 {
                     ItemId = 6,
                     ItemTitle = "Material Timepicker",
                     ItemUri = "NavigationPage/MaterialTimePickerPage",
-                    Category = uiControls
+                    CategoryId = 1
                 },
                 new Item
                 {
                     ItemId = 7,
                     ItemTitle = "Badge View",
                     ItemUri = "NavigationPage/BadgeViewPage",
-                    Category = uiControls
+                    CategoryId = 1
                 },
                 new Item
                 {
                     ItemId = 8,
                     ItemTitle = "API Client",
                     ItemUri = "NavigationPage/HomePage",
-                    Category = httpControls
+                    CategoryId = 2
                 }
             };
+
+            Categories = new ObservableCollection<Grouping<Category, Item>>();
+
+            foreach (var itemCatergory in itemCategories)
+            {
+                Categories.Add(new Grouping<Category, Item>(itemCatergory, new List<Item>()));
+            }
         }
     }
 }

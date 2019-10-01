@@ -7,30 +7,31 @@ using Prism.Commands;
 using Prism.Logging;
 using Prism.Navigation;
 using Prism.Services;
-using ToolkitDemo.Data;
 using ToolkitDemo.Models;
+using ToolkitDemo.SideMenu;
 
 namespace ToolkitDemo.ViewModels
 {
     public class MainPageViewModel : ReactiveViewModelBase
     {
+        public IMenu Menu { get; set; }
         private DelegateCommand<Item> _navigateCommand;
         public DelegateCommand<Item> NavigateItemsCommand =>
            _navigateCommand ?? (_navigateCommand = new DelegateCommand<Item>(ExecuteNavigateCommand));
 
-        public ObservableCollection<Grouping<SelectedCategory, Item>> Categories { get; set; }
+        public ObservableCollection<Grouping<Models.Category, Item>> Categories { get; set; }
 
-        private DelegateCommand<Grouping<SelectedCategory, Item>> _headerSelectedCommand;
-        public DelegateCommand<Grouping<SelectedCategory, Item>> HeaderSelectedCommand =>
-           _headerSelectedCommand ?? (_headerSelectedCommand = new DelegateCommand<Grouping<SelectedCategory, Item>>(g =>
+        private DelegateCommand<Grouping<Models.Category, Item>> _headerSelectedCommand;
+        public DelegateCommand<Grouping<Models.Category, Item>> HeaderSelectedCommand =>
+           _headerSelectedCommand ?? (_headerSelectedCommand = new DelegateCommand<Grouping<Models.Category, Item>>(g =>
            {
                if (g == null)
                    return;
-               g.Key.Selected = !g.Key.Selected;
-               if (g.Key.Selected)
+               g.Key.IsSelected = !g.Key.IsSelected;
+               if (g.Key.IsSelected)
                {
-                   List<Item> itemsList = Menu.DataItems.Where(i => i.Category.CategoryId == g.Key.Category.CategoryId).ToList();
-                   foreach (var item in itemsList)
+                   List<Item> itemslist = Menu.MenuItems.Where(i => i.CategoryId == g.Key.CategoryId).ToList();
+                   foreach (var item in itemslist)
                    {
                        g.Add(item);
                    }
@@ -41,18 +42,12 @@ namespace ToolkitDemo.ViewModels
                }
            }));
 
-        public MainPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
+        public MainPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger, IMenu menu)
            : base(navigationService, pageDialogService, logger)
         {
             Title = "Toolkit Demo";
-
-            Categories = new ObservableCollection<Grouping<SelectedCategory, Item>>();
-            var selectCategories =
-                    Menu.DataItems.Select(x => new SelectedCategory { Category = x.Category, Selected = false })
-                   .GroupBy(sc => new { sc.Category.CategoryId })
-                   .Select(g => g.First())
-                   .ToList();
-            selectCategories.ForEach(sc => Categories.Add(new Grouping<SelectedCategory, Item>(sc, new List<Item>())));
+            Menu = menu;
+            Categories = Menu.Categories;
         }
 
         private async void ExecuteNavigateCommand(Item item)

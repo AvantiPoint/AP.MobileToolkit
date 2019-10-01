@@ -14,7 +14,7 @@
                         <DataTemplate>
                             <ViewCell>
                                 <ContentView Padding="10,0,0,0">
-                                    <Label Text="{Binding Key.Category.CategoryTitle}" VerticalOptions="Center"/>
+                                    <Label Text="{Binding Key.CategoryTitle}" VerticalOptions="Center"/>
                                     <ContentView.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding Source={x:Reference HamburgerMenuPage }, Path=BindingContext.HeaderSelectedCommand}" CommandParameter="{Binding .}"/>
                                     </ContentView.GestureRecognizers>
@@ -30,7 +30,7 @@
                     </ListView.Behaviors>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell Text="{Binding ItemTitle}"/>
+                            <TextCell Text="{Binding ItemTitle}" />
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

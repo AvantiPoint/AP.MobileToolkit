@@ -7,12 +7,11 @@
              x:Class="ToolkitDemo.Views.BadgeViewPage" Title="Badge View">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Name="MaterialDatePickerCodeBehind" Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}"/>
+        <ToolbarItem Name="MaterialDatePickerCodeBehind" Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}" />
     </ContentPage.ToolbarItems>
 
     <StackLayout Padding="20">
-        <toolkit:BadgeView Text="13">
-
+        <toolkit:BadgeView Text="20">
         </toolkit:BadgeView>
     </StackLayout>
 </ContentPage>
