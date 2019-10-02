@@ -59,6 +59,7 @@ namespace ToolkitDemo
             containerRegistry.RegisterForNavigation<BadgeViewPage, BadgeViewPageViewModel>();
             containerRegistry.RegisterForNavigation<BadgeViewCodePage, BadgeViewCodePageViewModel>();
             containerRegistry.RegisterSingleton<IMenu, SideMenu.Menu>();
+            containerRegistry.RegisterForNavigation<BorderlessTimePickerCodePage, BorderlessTimePickerCodePageViewModel>();
         }
     }
 }

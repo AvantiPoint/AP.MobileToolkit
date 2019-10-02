@@ -7,7 +7,7 @@ namespace ToolkitDemo.ViewModels
         public BorderlessEntryCodePageViewModel(IXamlResourceReader xamlResourceReader, ICopyTextHelper copyTextHelper)
             : base(xamlResourceReader, copyTextHelper)
         {
-            ResourceContent = _xamlResourceReader.ReadEmbeddedResource("AP.MobileToolkit.Controls.BorderlessEntry.xaml");
+            ResourceContent = _xamlResourceReader.ReadEmbeddedResource("ToolkitDemo.Views.BorderlessEntryPage.xaml");
         }
     }
 }

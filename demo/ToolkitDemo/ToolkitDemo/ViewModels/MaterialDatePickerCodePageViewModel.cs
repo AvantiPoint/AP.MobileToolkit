@@ -7,7 +7,7 @@ namespace ToolkitDemo.ViewModels
         public MaterialDatePickerCodePageViewModel(IXamlResourceReader xamlResourceReader, ICopyTextHelper copyTextHelper)
             : base(xamlResourceReader, copyTextHelper)
         {
-            ResourceContent = _xamlResourceReader.ReadEmbeddedResource("AP.MobileToolkit.Controls.MaterialDatePicker.xaml");
+            ResourceContent = _xamlResourceReader.ReadEmbeddedResource("ToolkitDemo.Views.MaterialDatepickerPage.xaml");
         }
     }
 }

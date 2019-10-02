@@ -1,13 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  
+
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Product>(netstandard2.0)</Product>
+    <ApplicationIcon />
+    <Win32Resource />
   </PropertyGroup>
-  
+
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <!-- Preserve the embedded resources so the resource loader can properly cause LoadFromXaml behavior even XamlC is turned on. -->
+    <XFKeepXamlResources>true</XFKeepXamlResources>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="Images\logo.png" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <EmbeddedResource Include="Images\logo.png" />
   </ItemGroup>
@@ -49,6 +59,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\BorderlessEntryCodePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\BorderlessEntryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\BorderlessTimePickerCodePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\MaterialDatePickerCodePage.xaml">
@@ -109,5 +125,5 @@
       <Generator>MSBuild:Compile</Generator>
     </None>
   </ItemGroup>
-  
+
 </Project>

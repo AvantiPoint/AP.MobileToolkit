@@ -8,6 +8,7 @@ using Xamarin.Forms.Xaml;
 
 namespace AP.MobileToolkit.Controls
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BadgeView
     {
         public static readonly BindableProperty TextProperty =

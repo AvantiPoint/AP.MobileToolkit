@@ -7,7 +7,7 @@ namespace ToolkitDemo.ViewModels
         public BadgeViewCodePageViewModel(IXamlResourceReader xamlResourceReader, ICopyTextHelper copyTextHelper)
             : base(xamlResourceReader, copyTextHelper)
         {
-            ResourceContent = _xamlResourceReader.ReadEmbeddedResource("AP.MobileToolkit.Controls.BadgeView.xaml");
+            ResourceContent = _xamlResourceReader.ReadEmbeddedResource("ToolkitDemo.Views.BadgeViewPage.xaml");
         }
     }
 }

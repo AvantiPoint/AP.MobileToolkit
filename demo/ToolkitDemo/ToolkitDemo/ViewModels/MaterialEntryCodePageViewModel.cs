@@ -7,7 +7,7 @@ namespace ToolkitDemo.ViewModels
         public MaterialEntryCodePageViewModel(IXamlResourceReader xamlResourceReader, ICopyTextHelper copyTextHelper)
             : base(xamlResourceReader, copyTextHelper)
         {
-            ResourceContent = _xamlResourceReader.ReadEmbeddedResource("AP.MobileToolkit.Controls.MaterialEntry.xaml");
+            ResourceContent = _xamlResourceReader.ReadEmbeddedResource("ToolkitDemo.Views.MaterialEntryPage.xaml");
         }
     }
 }

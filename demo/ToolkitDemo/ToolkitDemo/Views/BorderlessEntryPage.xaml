@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-             xmlns:toolkit="clr-namespace:AP.MobileToolkit.Controls;assembly=AP.MobileToolkit"                
+             xmlns:toolkit="clr-namespace:AP.MobileToolkit.Controls;assembly=AP.MobileToolkit"
              x:Class="ToolkitDemo.Views.BorderlessEntryPage" Title="Borderless Entry">
 
     <ContentPage.ToolbarItems>

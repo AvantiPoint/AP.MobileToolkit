@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Reflection;
 using AP.MobileToolkit.Pages;
+using ToolkitDemo.Views;
 
 namespace ToolkitDemo.Helpers
 {
@@ -8,7 +9,7 @@ namespace ToolkitDemo.Helpers
     {
         public string ReadEmbeddedResource(string resourceName)
         {
-            var assembly = IntrospectionExtensions.GetTypeInfo(typeof(CustomPage)).Assembly;
+            var assembly = IntrospectionExtensions.GetTypeInfo(typeof(HomePage)).Assembly;
             Stream stream = assembly.GetManifestResourceStream(resourceName);
 
             string resourceContent = "No info to show";

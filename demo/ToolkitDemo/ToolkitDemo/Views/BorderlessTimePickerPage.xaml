@@ -5,7 +5,11 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="ToolkitDemo.Views.BorderlessTimePickerPage"
              xmlns:toolkit="clr-namespace:AP.MobileToolkit.Controls;assembly=AP.MobileToolkit"
-             Title="Timepicker">
+             Title="Borderless Timepicker">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="BorderlessTimepickerCodeBehind" Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}"/>
+    </ContentPage.ToolbarItems>
 
     <StackLayout Padding="20">
         <toolkit:BorderlessTimePicker TextColor="Red" Time="19:17:00">

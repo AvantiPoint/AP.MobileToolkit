@@ -6,6 +6,7 @@ using Device = Xamarin.Forms.Device;
 
 namespace AP.MobileToolkit.Controls
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MaterialTimePicker
     {
         public static readonly BindableProperty TimeProperty =

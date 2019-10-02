@@ -5,7 +5,7 @@
                 prism:ViewModelLocator.AutowireViewModel="True"
                 x:Class="ToolkitDemo.Views.BorderlessDatePickerPage"
                 xmlns:toolkit="clr-namespace:AP.MobileToolkit.Controls;assembly=AP.MobileToolkit"
-                Title="Datepicker">
+                Title="Borderless Datepicker">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Name="BorderlessDatepickerCodeBehind" Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}"/>
