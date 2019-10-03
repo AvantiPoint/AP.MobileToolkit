@@ -11,7 +11,7 @@
 
     <StackLayout Padding="20">
         <Label Text="Pick time" FontAttributes="Bold"></Label>
-        <toolkit:MaterialTimePicker Time="15:01:00">
+        <toolkit:MaterialTimePicker Time="15:01">
 
         </toolkit:MaterialTimePicker>
     </StackLayout>

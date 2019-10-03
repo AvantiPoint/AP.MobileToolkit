@@ -14,7 +14,8 @@ namespace ToolkitDemo.ViewModels
 {
     public class MainPageViewModel : ReactiveViewModelBase
     {
-        public IMenu Menu { get; set; }
+        private IMenu Menu { get; set; }
+
         private DelegateCommand<Item> _navigateCommand;
         public DelegateCommand<Item> NavigateItemsCommand =>
            _navigateCommand ?? (_navigateCommand = new DelegateCommand<Item>(ExecuteNavigateCommand));
@@ -23,29 +24,12 @@ namespace ToolkitDemo.ViewModels
 
         private DelegateCommand<Grouping<Models.Category, Item>> _headerSelectedCommand;
         public DelegateCommand<Grouping<Models.Category, Item>> HeaderSelectedCommand =>
-           _headerSelectedCommand ?? (_headerSelectedCommand = new DelegateCommand<Grouping<Models.Category, Item>>(g =>
-           {
-               if (g == null)
-                   return;
-               g.Key.IsSelected = !g.Key.IsSelected;
-               if (g.Key.IsSelected)
-               {
-                   List<Item> itemslist = Menu.MenuItems.Where(i => i.CategoryId == g.Key.CategoryId).ToList();
-                   foreach (var item in itemslist)
-                   {
-                       g.Add(item);
-                   }
-               }
-               else
-               {
-                   g.Clear();
-               }
-           }));
+           _headerSelectedCommand ?? (_headerSelectedCommand = new DelegateCommand<Grouping<Models.Category, Item>>(CategorySelectedCommand));
 
         public MainPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger, IMenu menu)
            : base(navigationService, pageDialogService, logger)
         {
-            Title = "Toolkit Demo";
+            Title = "Menu";
             Menu = menu;
             Categories = Menu.Categories;
         }
@@ -53,6 +37,33 @@ namespace ToolkitDemo.ViewModels
         private async void ExecuteNavigateCommand(Item item)
         {
             await NavigationService.NavigateAsync(item.ItemUri);
+        }
+
+        private async void CategorySelectedCommand(Grouping<Models.Category, Item> categoryGroup)
+        {
+            if (categoryGroup == null)
+                return;
+
+            if (categoryGroup.Key.CategoryTitle.Equals("Home"))
+            {
+                await NavigationService.NavigateAsync("NavigationPage/HomePage");
+                categoryGroup.Clear();
+                return;
+            }
+
+            categoryGroup.Key.IsSelected = !categoryGroup.Key.IsSelected;
+            if (categoryGroup.Key.IsSelected)
+            {
+                List<Item> itemslist = Menu.MenuItems.Where(i => i.CategoryId == categoryGroup.Key.CategoryId).ToList();
+                foreach (var item in itemslist)
+                {
+                    categoryGroup.Add(item);
+                }
+            }
+            else
+            {
+                categoryGroup.Clear();
+            }
         }
     }
 }
