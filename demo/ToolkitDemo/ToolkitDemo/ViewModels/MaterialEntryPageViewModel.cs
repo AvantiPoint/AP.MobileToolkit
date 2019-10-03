@@ -1,6 +1,8 @@
-﻿using Prism.Logging;
+﻿using System.Reflection;
+using Prism.Logging;
 using Prism.Navigation;
 using Prism.Services;
+using Xamarin.Forms;
 
 namespace ToolkitDemo.ViewModels
 {

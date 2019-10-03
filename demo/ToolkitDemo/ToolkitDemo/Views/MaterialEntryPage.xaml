@@ -5,14 +5,16 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="ToolkitDemo.Views.MaterialEntryPage"
              xmlns:toolkit="clr-namespace:AP.MobileToolkit.Controls;assembly=AP.MobileToolkit"
+             xmlns:xaml="clr-namespace:AP.MobileToolkit.Xaml;assembly=AP.MobileToolkit"
              Title="Material Entry">
     <ContentPage.ToolbarItems>
         <ToolbarItem Name="MaterialEntryCodeBehind" Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}"/>
     </ContentPage.ToolbarItems>
 
-    <StackLayout Padding="20">
-        <toolkit:MaterialEntry Text="Hello World!">
-
-        </toolkit:MaterialEntry>
-    </StackLayout>
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <Label Text="Text" FontAttributes="Bold"></Label>
+            <toolkit:MaterialEntry Text="Hello World!"></toolkit:MaterialEntry>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

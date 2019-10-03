@@ -12,7 +12,8 @@
     </ContentPage.ToolbarItems>
 
     <StackLayout Padding="20">
-        <toolkit:BorderlessDatePicker BackgroundColor="Azure" Date="2019-09-17">
+        <Label Text="Pick a date" FontAttributes="Bold"></Label>
+        <toolkit:BorderlessDatePicker Date="2019-09-17">
 
         </toolkit:BorderlessDatePicker>
     </StackLayout>

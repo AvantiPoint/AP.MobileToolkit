@@ -11,15 +11,18 @@
     </ContentPage.ToolbarItems>
 
     <StackLayout Padding="20">
-        <toolkit:BorderlessEntry TextColor="DarkBlue" Placeholder="Enter something here..." PlaceholderColor="Red">
+        <Label Text="Placehloder" FontAttributes="Bold"></Label>
+        <toolkit:BorderlessEntry Placeholder="Enter something here" >
 
         </toolkit:BorderlessEntry>
 
+        <Label Text="Text" FontAttributes="Bold"></Label>
         <toolkit:BorderlessEntry Text="Hello World!">
 
         </toolkit:BorderlessEntry>
 
-        <toolkit:BorderlessEntry Text="Password" TextColor="DarkBlue" IsPassword="True">
+        <Label Text="Password" FontAttributes="Bold"></Label>
+        <toolkit:BorderlessEntry Text="Password" IsPassword="True">
 
         </toolkit:BorderlessEntry>
     </StackLayout>

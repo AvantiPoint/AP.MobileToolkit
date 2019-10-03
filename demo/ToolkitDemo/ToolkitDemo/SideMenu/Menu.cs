@@ -16,7 +16,8 @@ namespace ToolkitDemo.SideMenu
             itemCategories = new ObservableCollection<Category>()
             {
                 new Category { CategoryId = 1, CategoryTitle = "UI Controls", IsSelected = false },
-                new Category { CategoryId = 2, CategoryTitle = "Http Client", IsSelected = false }
+                new Category { CategoryId = 2, CategoryTitle = "Http Client", IsSelected = false },
+                new Category { CategoryId = 3, CategoryTitle = "Converters", IsSelected = false },
             };
 
             MenuItems = new ObservableCollection<Item>()
@@ -76,7 +77,29 @@ namespace ToolkitDemo.SideMenu
                     ItemTitle = "API Client",
                     ItemUri = "NavigationPage/HomePage",
                     CategoryId = 2
-                }
+                },
+
+                // new Item
+                // {
+                //    ItemId = 9,
+                //    ItemTitle = "Image Entry",
+                //    ItemUri = "NavigationPage/ImageEntryPage",
+                //    CategoryId = 1
+                // },
+                // new Item
+                // {
+                //    ItemId = 10,
+                //    ItemTitle = "Radio Button",
+                //    ItemUri = "NavigationPage/RadioButtonPage",
+                //    CategoryId = 1
+                // },
+                new Item
+                {
+                    ItemId = 11,
+                    ItemTitle = "Uppercase Converter",
+                    ItemUri = "NavigationPage/UppercaseConverterPage",
+                    CategoryId = 3
+                },
             };
 
             Categories = new ObservableCollection<Grouping<Category, Item>>();

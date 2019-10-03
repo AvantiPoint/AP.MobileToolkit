@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using System.Reflection;
-using AP.MobileToolkit.Pages;
 using ToolkitDemo.Views;
 
 namespace ToolkitDemo.Helpers

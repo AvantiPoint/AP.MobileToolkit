@@ -12,7 +12,8 @@
     </ContentPage.ToolbarItems>
 
     <StackLayout Padding="20">
-        <toolkit:BorderlessTimePicker TextColor="Red" Time="19:17:00">
+        <Label Text="Pick time" FontAttributes="Bold"></Label>
+        <toolkit:BorderlessTimePicker Time="19:17:00">
 
         </toolkit:BorderlessTimePicker>
     </StackLayout>

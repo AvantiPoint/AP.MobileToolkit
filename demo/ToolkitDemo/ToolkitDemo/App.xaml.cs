@@ -60,6 +60,10 @@ namespace ToolkitDemo
             containerRegistry.RegisterForNavigation<BadgeViewCodePage, BadgeViewCodePageViewModel>();
             containerRegistry.RegisterSingleton<IMenu, SideMenu.Menu>();
             containerRegistry.RegisterForNavigation<BorderlessTimePickerCodePage, BorderlessTimePickerCodePageViewModel>();
+            containerRegistry.RegisterForNavigation<ImageEntryPage, ImageEntryPageViewModel>();
+            containerRegistry.RegisterForNavigation<RadioButtonPage, RadioButtonPageViewModel>();
+            containerRegistry.RegisterForNavigation<UppercaseConverterCodePage, UppercaseConverterCodePageViewModel>();
+            containerRegistry.RegisterForNavigation<UppercaseConverterPage, UppercaseConverterPageViewModel>();
         }
     }
 }
