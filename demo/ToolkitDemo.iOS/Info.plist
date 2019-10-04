@@ -28,6 +28,19 @@
     <string>com.avantipoint.toolkitdemo</string>
     <key>CFBundleVersion</key>
     <string>1.0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.avantipoint.toolkitdemo</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>msal$AzureADClientId$</string>
+			</array>
+		</dict>
+	</array>
     <key>CFBundleIconFiles</key>
     <array>
       <string>Default</string>

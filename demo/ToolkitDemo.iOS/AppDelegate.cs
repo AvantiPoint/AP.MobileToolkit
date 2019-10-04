@@ -1,4 +1,5 @@
 ﻿using Foundation;
+using Microsoft.Identity.Client;
 using Prism;
 using Prism.Ioc;
 using UIKit;
@@ -9,7 +10,7 @@ namespace ToolkitDemo.iOS
     // User Interface of the application, as well as listening (and optionally responding) to
     // application events from iOS.
     [Register("AppDelegate")]
-    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate, IPlatformInitializer
     {
         // This method is invoked when the application has loaded and is ready to run. In this
         // method you should instantiate the window, load the UI into it and then make the window
@@ -20,9 +21,19 @@ namespace ToolkitDemo.iOS
         {
             global::Xamarin.Forms.Forms.Init();
 
-            LoadApplication(new App());
+            LoadApplication(new App(this));
 
             return base.FinishedLaunching(app, options);
+        }
+
+        public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
+        {
+            AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs(url);
+            return true;
+        }
+
+        public void RegisterTypes(IContainerRegistry containerRegistry)
+        {
         }
     }
 }
