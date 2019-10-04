@@ -21,11 +21,12 @@ namespace AP.MobileToolkit.AAD
 #if __ANDROID__
         private ICurrentActivity CurrentActivity { get; }
 
-        public AuthenticationService(IAuthenticationOptions authenticationOptions, ILogger logger, IPublicClientApplication publicClientApplication)
+        public AuthenticationService(IAuthenticationOptions authenticationOptions, ILogger logger, IPublicClientApplication publicClientApplication, ICurrentActivity currentActivity)
         {
             Options = authenticationOptions;
             Logger = logger;
             AuthClient = publicClientApplication;
+            CurrentActivity = currentActivity;
         }
 #else
         public AuthenticationService(IAuthenticationOptions authenticationOptions, ILogger logger, IPublicClientApplication publicClientApplication)
