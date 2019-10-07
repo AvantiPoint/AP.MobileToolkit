@@ -8,7 +8,6 @@ namespace ToolkitDemo.Droid
         protected override void OnResume()
         {
             base.OnResume();
-            System.Threading.Thread.Sleep(3000);
             StartActivity(typeof(MainActivity));
         }
     }
