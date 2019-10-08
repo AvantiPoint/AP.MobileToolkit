@@ -1,8 +1,6 @@
-﻿using System.Reflection;
-using Prism.Logging;
+﻿using Prism.Logging;
 using Prism.Navigation;
 using Prism.Services;
-using Xamarin.Forms;
 
 namespace ToolkitDemo.ViewModels
 {
@@ -11,6 +9,7 @@ namespace ToolkitDemo.ViewModels
         public MaterialEntryPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
             : base(navigationService, pageDialogService, logger)
         {
+            PageName = GetType().Name.Replace("ViewModel", string.Empty);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace ToolkitDemo.SideMenu
 {
     public interface IMenu
     {
-        ObservableCollection<Grouping<Category, Item>> Categories { get; set; }
+        IEnumerable<Grouping<Category, Item>> Categories { get; set; }
         IList<Item> MenuItems { get; set; }
     }
 }

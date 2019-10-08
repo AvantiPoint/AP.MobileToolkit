@@ -9,6 +9,7 @@ namespace ToolkitDemo.ViewModels
         public MaterialTimePickerPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
             : base(navigationService, pageDialogService, logger)
         {
+            PageName = GetType().Name.Replace("ViewModel", string.Empty);
         }
     }
 }

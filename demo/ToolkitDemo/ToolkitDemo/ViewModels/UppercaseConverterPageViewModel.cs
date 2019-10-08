@@ -11,6 +11,7 @@ namespace ToolkitDemo.ViewModels
             : base(navigationService, pageDialogService, logger)
         {
             TextToBeConverted = "Text to be converted to uppercase";
+            PageName = GetType().Name.Replace("ViewModel", string.Empty);
         }
     }
 }

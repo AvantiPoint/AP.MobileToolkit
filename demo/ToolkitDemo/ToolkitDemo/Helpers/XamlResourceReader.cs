@@ -1,6 +1,4 @@
 ﻿using System.IO;
-using System.Reflection;
-using ToolkitDemo.Views;
 
 namespace ToolkitDemo.Helpers
 {
@@ -8,7 +6,18 @@ namespace ToolkitDemo.Helpers
     {
         public string ReadEmbeddedResource(string resourceName)
         {
-            var assembly = IntrospectionExtensions.GetTypeInfo(typeof(HomePage)).Assembly;
+            var assembly = GetType().Assembly;
+            string assemblyName = assembly.GetName().Name;
+
+            if (resourceName.EndsWith(".xaml") || resourceName.EndsWith(".xaml.cs"))
+            {
+                resourceName = assemblyName + ".Views." + resourceName;
+            }
+            if (resourceName.EndsWith("ViewModel.cs"))
+            {
+                resourceName = assemblyName + ".ViewModels." + resourceName;
+            }
+
             Stream stream = assembly.GetManifestResourceStream(resourceName);
 
             string resourceContent = "No info to show";

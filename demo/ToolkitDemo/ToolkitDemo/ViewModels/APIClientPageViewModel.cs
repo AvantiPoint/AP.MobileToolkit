@@ -13,20 +13,20 @@ namespace ToolkitDemo.ViewModels
         private bool _apiResult;
         public bool APIResult
         {
-            get { return _apiResult; }
-            set { _apiResult = value; }
+            get => _apiResult;
+            set => _apiResult = value;
         }
 
-        private DelegateCommand _showCodeBehind;
-        public DelegateCommand ShowCodeBehind => _showCodeBehind ?? (_showCodeBehind = new DelegateCommand(ExecuteShowCodeBehind));
+        public DelegateCommand ShowCodeBehind { get; }
 
-        private DelegateCommand _getApiData;
-        public DelegateCommand GetApiData => _getApiData ?? (_getApiData = new DelegateCommand(GetAPIData));
+        public DelegateCommand GetApiData { get; }
 
         public APIClientPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ConsoleLoggingService logger, IApiClient apiClient)
             : base(navigationService, pageDialogService, logger)
         {
             ApiClient = apiClient;
+            ShowCodeBehind = new DelegateCommand(ExecuteShowCodeBehind);
+            GetApiData = new DelegateCommand(GetAPIData);
         }
 
         async void ExecuteShowCodeBehind()

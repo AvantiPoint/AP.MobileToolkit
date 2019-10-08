@@ -2,9 +2,9 @@
 
 namespace ToolkitDemo.Views
 {
-    public partial class MaterialEntryCodePage : ContentPage
+    public partial class ShowCodePage : ContentPage
     {
-        public MaterialEntryCodePage()
+        public ShowCodePage()
         {
             InitializeComponent();
         }

@@ -9,6 +9,7 @@ namespace ToolkitDemo.ViewModels
         public BadgeViewPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
             : base(navigationService, pageDialogService, logger)
         {
+            PageName = GetType().Name.Replace("ViewModel", string.Empty);
         }
     }
 }

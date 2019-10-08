@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using AP.CrossPlatform.Collections;
 using AP.MobileToolkit.Mvvm;
@@ -7,6 +6,7 @@ using Prism.Commands;
 using Prism.Logging;
 using Prism.Navigation;
 using Prism.Services;
+using ToolkitDemo.Helpers;
 using ToolkitDemo.Models;
 using ToolkitDemo.SideMenu;
 
@@ -16,22 +16,21 @@ namespace ToolkitDemo.ViewModels
     {
         private IMenu Menu { get; set; }
 
-        private DelegateCommand<Item> _navigateCommand;
-        public DelegateCommand<Item> NavigateItemsCommand =>
-           _navigateCommand ?? (_navigateCommand = new DelegateCommand<Item>(ExecuteNavigateCommand));
+        public IEnumerable<Grouping<Models.Category, Item>> Categories { get; set; }
 
-        public ObservableCollection<Grouping<Models.Category, Item>> Categories { get; set; }
+        public DelegateCommand<Item> NavigateItemsCommand { get; }
 
-        private DelegateCommand<Grouping<Models.Category, Item>> _headerSelectedCommand;
-        public DelegateCommand<Grouping<Models.Category, Item>> HeaderSelectedCommand =>
-           _headerSelectedCommand ?? (_headerSelectedCommand = new DelegateCommand<Grouping<Models.Category, Item>>(CategorySelectedCommand));
+        public DelegateCommand<Grouping<Models.Category, Item>> HeaderSelectedCommand { get; }
 
-        public MainPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger, IMenu menu)
+        public MainPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger, IMenu menu, IPageNameHelper pageNameHelper)
            : base(navigationService, pageDialogService, logger)
         {
             Title = "Menu";
             Menu = menu;
             Categories = Menu.Categories;
+
+            NavigateItemsCommand = new DelegateCommand<Item>(ExecuteNavigateCommand);
+            HeaderSelectedCommand = new DelegateCommand<Grouping<Models.Category, Item>>(CategorySelectedCommand);
         }
 
         private async void ExecuteNavigateCommand(Item item)

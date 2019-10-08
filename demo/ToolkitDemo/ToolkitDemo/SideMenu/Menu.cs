@@ -7,7 +7,7 @@ namespace ToolkitDemo.SideMenu
 {
     public class Menu : IMenu
     {
-        public ObservableCollection<Grouping<Category, Item>> Categories { get; set; }
+        public IEnumerable<Grouping<Category, Item>> Categories { get; set; }
         public IList<Item> MenuItems { get; set; }
         private IList<Category> itemCategories;
 
@@ -79,36 +79,23 @@ namespace ToolkitDemo.SideMenu
                     ItemUri = "NavigationPage/HomePage",
                     CategoryId = 3
                 },
-
-                // new Item
-                // {
-                //    ItemId = 9,
-                //    ItemTitle = "Image Entry",
-                //    ItemUri = "NavigationPage/ImageEntryPage",
-                //    CategoryId = 2
-                // },
-                // new Item
-                // {
-                //    ItemId = 10,
-                //    ItemTitle = "Radio Button",
-                //    ItemUri = "NavigationPage/RadioButtonPage",
-                //    CategoryId = 2
-                // },
                 new Item
                 {
-                    ItemId = 11,
+                    ItemId = 9,
                     ItemTitle = "Uppercase Converter",
                     ItemUri = "NavigationPage/UppercaseConverterPage",
                     CategoryId = 4
-                },
+                }
             };
 
-            Categories = new ObservableCollection<Grouping<Category, Item>>();
+            var categories = new ObservableCollection<Grouping<Category, Item>>();
 
             foreach (var itemCatergory in itemCategories)
             {
-                Categories.Add(new Grouping<Category, Item>(itemCatergory, new List<Item>()));
+                categories.Add(new Grouping<Category, Item>(itemCatergory, new List<Item>()));
             }
+
+            Categories = categories;
         }
     }
 }
