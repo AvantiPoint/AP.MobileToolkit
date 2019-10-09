@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <PackageReference Include="Prism.DryIoc.Forms" Version="7.2.0.1367" />
-    <PackageReference Include="ReactiveUI" Version="10.3.6" />
     <PackageReference Include="Xamarin.Forms" Version="4.2.0.815419" />
   </ItemGroup>
 
