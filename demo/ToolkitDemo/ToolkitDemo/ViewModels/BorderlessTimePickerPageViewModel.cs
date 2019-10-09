@@ -4,12 +4,11 @@ using Prism.Services;
 
 namespace ToolkitDemo.ViewModels
 {
-    public class BorderlessTimePickerPageViewModel : PageViewModelBase
+    public class BorderlessTimePickerPageViewModel : DemoPageViewModelBase
     {
         public BorderlessTimePickerPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
             : base(navigationService, pageDialogService, logger)
         {
-            PageName = GetType().Name.Replace("ViewModel", string.Empty);
         }
     }
 }

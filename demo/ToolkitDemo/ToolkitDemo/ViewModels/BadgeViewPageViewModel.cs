@@ -4,12 +4,11 @@ using Prism.Services;
 
 namespace ToolkitDemo.ViewModels
 {
-    public class BadgeViewPageViewModel : PageViewModelBase
+    public class BadgeViewPageViewModel : DemoPageViewModelBase
     {
         public BadgeViewPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
             : base(navigationService, pageDialogService, logger)
         {
-            PageName = GetType().Name.Replace("ViewModel", string.Empty);
         }
     }
 }

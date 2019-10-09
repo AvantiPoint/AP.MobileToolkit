@@ -4,12 +4,11 @@ using Prism.Services;
 
 namespace ToolkitDemo.ViewModels
 {
-    public class MaterialDatePickerPageViewModel : PageViewModelBase
+    public class MaterialDatePickerPageViewModel : DemoPageViewModelBase
     {
         public MaterialDatePickerPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
             : base(navigationService, pageDialogService, logger)
         {
-            PageName = GetType().Name.Replace("ViewModel", string.Empty);
         }
     }
 }

@@ -6,17 +6,18 @@ using Prism.Services;
 
 namespace ToolkitDemo.ViewModels
 {
-    public class PageViewModelBase : ReactiveViewModelBase
+    public class DemoPageViewModelBase : ReactiveViewModelBase
     {
-        public string PageName { get; set; }
+        public string PageName { get; }
 
         public DelegateCommand ShowCodeBehind { get; }
 
         private NavigationParameters navigationParams;
 
-        public PageViewModelBase(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
+        public DemoPageViewModelBase(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
             : base(navigationService, pageDialogService, logger)
         {
+            PageName = GetType().Name.Replace("ViewModel", string.Empty);
             ShowCodeBehind = new DelegateCommand(ExecuteShowCodeBehind);
         }
 

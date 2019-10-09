@@ -4,14 +4,13 @@ using Prism.Services;
 
 namespace ToolkitDemo.ViewModels
 {
-    public class UppercaseConverterPageViewModel : PageViewModelBase
+    public class UppercaseConverterPageViewModel : DemoPageViewModelBase
     {
         public string TextToBeConverted { get; set; }
         public UppercaseConverterPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
             : base(navigationService, pageDialogService, logger)
         {
             TextToBeConverted = "Text to be converted to uppercase";
-            PageName = GetType().Name.Replace("ViewModel", string.Empty);
         }
     }
 }
