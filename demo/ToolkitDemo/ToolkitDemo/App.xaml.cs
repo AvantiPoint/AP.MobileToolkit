@@ -2,7 +2,6 @@
 using Prism.Ioc;
 using Prism.Logging;
 using ToolkitDemo.Services;
-using ToolkitDemo.SideMenu;
 using Xamarin.Essentials.Implementation;
 using Xamarin.Essentials.Interfaces;
 using Xamarin.Forms;
@@ -40,7 +39,7 @@ namespace ToolkitDemo
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.Register<ILogger, ConsoleLoggingService>();
-            containerRegistry.RegisterSingleton<IMenu, SideMenu.Menu>();
+            containerRegistry.RegisterSingleton<IMenuService, MenuService>();
             containerRegistry.Register<IClipboard, ClipboardImplementation>();
             containerRegistry.Register<ICodeSampleResolver, CodeSampleResolver>();
         }

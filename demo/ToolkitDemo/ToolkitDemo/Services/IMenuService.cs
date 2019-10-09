@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using AP.CrossPlatform.Collections;
 using ToolkitDemo.Models;
 
-namespace ToolkitDemo.SideMenu
+namespace ToolkitDemo.Services
 {
-    public interface IMenu
+    public interface IMenuService
     {
         IEnumerable<Grouping<Category, Item>> Categories { get; set; }
-        IList<Item> MenuItems { get; set; }
     }
 }

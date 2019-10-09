@@ -10,14 +10,14 @@
         <ContentPage Title="Menu">
             <StackLayout Padding="20" Margin="0,10,0,0">
                 <Label Text="Tookit Demo" FontSize="Medium" FontAttributes="Bold"></Label>
-                <ListView IsGroupingEnabled="True" ItemsSource="{Binding Categories}">
+                <ListView IsGroupingEnabled="True" ItemsSource="{Binding Categories}" SelectionMode="None">
                     <ListView.GroupHeaderTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <ContentView Padding="10,0,0,0">
-                                    <Label Text="{Binding Key.CategoryTitle}" FontAttributes="Bold" VerticalOptions="Center"/>
+                                    <Label Text="{Binding Key.Name}" FontAttributes="Bold" VerticalOptions="Center"/>
                                     <ContentView.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding Source={x:Reference HamburgerMenuPage }, Path=BindingContext.HeaderSelectedCommand}" CommandParameter="{Binding .}"/>
+                                        <TapGestureRecognizer Command="{Binding Source={ x:Reference HamburgerMenuPage }, Path=BindingContext.SelectCategoryCommand}" CommandParameter="{Binding .}"/>
                                     </ContentView.GestureRecognizers>
                                 </ContentView>
                             </ViewCell>
@@ -25,13 +25,13 @@
                     </ListView.GroupHeaderTemplate>
                     <ListView.Behaviors>
                         <prism:EventToCommandBehavior 
-                            Command="{Binding NavigateItemsCommand}" 
+                            Command="{Binding NavigationCommand}" 
                             EventName="ItemTapped" 
                             EventArgsParameterPath="Item" />
                     </ListView.Behaviors>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell Text="{Binding ItemTitle}" />
+                            <TextCell Text="{Binding Name}" />
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
