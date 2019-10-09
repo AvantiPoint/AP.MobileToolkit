@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using AP.CrossPlatform.Collections;
 using AP.MobileToolkit.Mvvm;
 using Prism.Commands;
 using Prism.Logging;
@@ -32,12 +33,7 @@ namespace ToolkitDemo.ViewModels
             set => this.RaiseAndSetIfChanged(ref _resourceContent, value);
         }
 
-        public ObservableCollection<SelectableItem> _fileList;
-        public ObservableCollection<SelectableItem> FileList
-        {
-            get => _fileList;
-            set => this.RaiseAndSetIfChanged(ref _fileList, value);
-        }
+        public ObservableRangeCollection<SelectableItem> FileList { get; } = new ObservableRangeCollection<SelectableItem>();
 
         public DelegateCommand<string> TapCommand { get; }
         public DelegateCommand CopyTextToClipboardCommand { get; }
@@ -59,24 +55,21 @@ namespace ToolkitDemo.ViewModels
 
         protected override void OnNavigatedTo(INavigationParameters parameters)
         {
-            PageName = parameters["page_name"] as string;
+            PageName = parameters.GetValue<string>("page_name");
             IEnumerable<string> pageFileNames = CodeSampleResolver.GetPageFilesName(PageName);
-            var fileList = new ObservableCollection<SelectableItem>();
 
             foreach (var filename in pageFileNames)
             {
                 var item = new SelectableItem();
 
-                if (fileList.Count == 0)
+                if (FileList.Count == 0)
                 {
                     item.IsSelected = true;
                 }
 
                 item.Text = filename;
-                fileList.Add(item);
+                FileList.Add(item);
             }
-
-            FileList = fileList;
 
             if (FileList.Count() > 0)
             {

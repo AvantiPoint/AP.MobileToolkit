@@ -12,8 +12,6 @@ namespace ToolkitDemo.ViewModels
 
         public DelegateCommand ShowCodeBehind { get; }
 
-        private NavigationParameters navigationParams;
-
         public DemoPageViewModelBase(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
             : base(navigationService, pageDialogService, logger)
         {
@@ -23,9 +21,7 @@ namespace ToolkitDemo.ViewModels
 
         public async void ExecuteShowCodeBehind()
         {
-            navigationParams = new NavigationParameters();
-            navigationParams.Add("page_name", PageName);
-            await NavigationService.NavigateAsync("ShowCodePage", navigationParams);
+            await NavigationService.NavigateAsync("ShowCodePage", ("page_name", PageName));
         }
     }
 }
