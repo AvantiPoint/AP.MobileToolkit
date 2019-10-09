@@ -1,27 +1,15 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using AP.CrossPlatform;
+﻿using AP.CrossPlatform;
 
 namespace ToolkitDemo.Models
 {
-    public class SelectableItem : ISelectable, INotifyPropertyChanged
+    public class SelectableItem : ObservableObject, ISelectable
     {
         public bool _isSelected;
         public bool IsSelected
         {
             get => _isSelected;
-            set
-            {
-                _isSelected = value;
-                NotifyPropertyChanged();
-            }
+            set => SetProperty(ref _isSelected, value);
         }
         public string Text { get; set; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }
