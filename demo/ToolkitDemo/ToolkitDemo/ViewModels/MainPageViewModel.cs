@@ -6,7 +6,6 @@ using Prism.Commands;
 using Prism.Logging;
 using Prism.Navigation;
 using Prism.Services;
-using ToolkitDemo.Helpers;
 using ToolkitDemo.Models;
 using ToolkitDemo.SideMenu;
 
@@ -22,7 +21,7 @@ namespace ToolkitDemo.ViewModels
 
         public DelegateCommand<Grouping<Models.Category, Item>> HeaderSelectedCommand { get; }
 
-        public MainPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger, IMenu menu, IPageNameHelper pageNameHelper)
+        public MainPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger, IMenu menu)
            : base(navigationService, pageDialogService, logger)
         {
             Title = "Menu";

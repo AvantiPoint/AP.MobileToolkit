@@ -7,16 +7,15 @@ using Prism.Logging;
 using Prism.Navigation;
 using Prism.Services;
 using ReactiveUI;
-using ToolkitDemo.Helpers;
 using ToolkitDemo.Models;
+using ToolkitDemo.Services;
 using Xamarin.Essentials.Interfaces;
 
 namespace ToolkitDemo.ViewModels
 {
     public class ShowCodePageViewModel : ReactiveViewModelBase
     {
-        protected IPageNameHelper PageNameHelper { get; set; }
-        protected IXamlResourceReader XamlResourceReader { get; set; }
+        protected ICodeSampleResolver CodeSampleResolver { get; set; }
         protected IClipboard Clipboard { get; set; }
 
         public string _pageName;
@@ -43,11 +42,10 @@ namespace ToolkitDemo.ViewModels
         public DelegateCommand<string> TapCommand { get; }
         public DelegateCommand CopyTextToClipboardCommand { get; }
 
-        public ShowCodePageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger, IPageNameHelper pageNameHelper, IXamlResourceReader xamlResourceReader, IClipboard clipboard)
+        public ShowCodePageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger, ICodeSampleResolver codeSampleResolver, IClipboard clipboard)
             : base(navigationService, pageDialogService, logger)
         {
-            PageNameHelper = pageNameHelper;
-            XamlResourceReader = xamlResourceReader;
+            CodeSampleResolver = codeSampleResolver;
             Clipboard = clipboard;
 
             TapCommand = new DelegateCommand<string>(OnTapCommandExecuted);
@@ -62,7 +60,7 @@ namespace ToolkitDemo.ViewModels
         protected override void OnNavigatedTo(INavigationParameters parameters)
         {
             PageName = parameters["page_name"] as string;
-            IEnumerable<string> pageFileNames = PageNameHelper.GetPageFilesName(PageName);
+            IEnumerable<string> pageFileNames = CodeSampleResolver.GetPageFilesName(PageName);
             var fileList = new ObservableCollection<SelectableItem>();
 
             foreach (var filename in pageFileNames)
@@ -82,7 +80,7 @@ namespace ToolkitDemo.ViewModels
 
             if (FileList.Count() > 0)
             {
-                ResourceContent = XamlResourceReader.ReadEmbeddedResource(FileList.First(x => x.IsSelected == true).Text);
+                ResourceContent = CodeSampleResolver.ReadEmbeddedResource(FileList.First(x => x.IsSelected == true).Text);
             }
         }
 
@@ -90,7 +88,7 @@ namespace ToolkitDemo.ViewModels
         {
             FileList.ToList().ForEach(c => c.IsSelected = false);
             FileList.FirstOrDefault(f => f.Text.Equals(filename)).IsSelected = true;
-            ResourceContent = XamlResourceReader.ReadEmbeddedResource(filename);
+            ResourceContent = CodeSampleResolver.ReadEmbeddedResource(filename);
         }
 
         private async void OnCopyTextToClipboardCommandExecuted()
