@@ -27,14 +27,4 @@
     <ProjectReference Include="..\..\..\src\AP.MobileToolkit.Http\AP.MobileToolkit.Http.csproj" />
     <ProjectReference Include="..\..\..\src\AP.MobileToolkit\AP.MobileToolkit.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Views\MaterialDatepickerPage.xaml.cs">
-      <DependentUpon>MaterialDatePickerPage.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Helpers\" />
-  </ItemGroup>
 </Project>
