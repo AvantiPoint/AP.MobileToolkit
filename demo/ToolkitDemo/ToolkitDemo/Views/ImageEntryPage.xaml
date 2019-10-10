@@ -10,6 +10,6 @@
     </ContentPage.ToolbarItems>
 
     <StackLayout Padding="20">
-        <toolkit:ImageEntry Image="logo.png" ImageHeight="20" ImageWidth="20" Placeholder="Enter something here" />
+        <toolkit:ImageEntry Image="icon" ImageHeight="50" ImageWidth="50" Placeholder="Enter something here" />
     </StackLayout>
 </ContentPage>
