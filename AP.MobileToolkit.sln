@@ -43,13 +43,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AP.MobileToolkit.Http.Tests
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AP.CrossPlatform.Auth.Tests", "tests\AP.CrossPlatform.Auth.Tests\AP.CrossPlatform.Auth.Tests.csproj", "{1F57E4A6-05AE-4FCD-93D6-DEC35EC5A898}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToolkitDemo", "demo\ToolkitDemo\ToolkitDemo\ToolkitDemo.csproj", "{B4D2C938-D3B6-4E86-AA03-004B1E20246D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToolkitDemo", "demo\ToolkitDemo\ToolkitDemo.csproj", "{B4D2C938-D3B6-4E86-AA03-004B1E20246D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolkitDemo.Android", "demo\ToolkitDemo\ToolkitDemo.Android\ToolkitDemo.Android.csproj", "{D62135FD-92DC-4431-A6D3-4F381C09BBBE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolkitDemo.Android", "demo\ToolkitDemo.Android\ToolkitDemo.Android.csproj", "{D62135FD-92DC-4431-A6D3-4F381C09BBBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolkitDemo.iOS", "demo\ToolkitDemo\ToolkitDemo.iOS\ToolkitDemo.iOS.csproj", "{3417C93B-3E04-4E84-94AD-489E05AA4CBB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolkitDemo.iOS", "demo\ToolkitDemo.iOS\ToolkitDemo.iOS.csproj", "{3417C93B-3E04-4E84-94AD-489E05AA4CBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolkitDemo.UWP", "demo\ToolkitDemo\ToolkitDemo.UWP\ToolkitDemo.UWP.csproj", "{83DB9E94-9ABE-4BDF-ADCC-6536C0C2CA1A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolkitDemo.UWP", "demo\ToolkitDemo.UWP\ToolkitDemo.UWP.csproj", "{83DB9E94-9ABE-4BDF-ADCC-6536C0C2CA1A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demo", "demo", "{130BED82-F100-4833-8273-493D77FF2486}"
 EndProject

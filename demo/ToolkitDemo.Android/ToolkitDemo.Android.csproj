@@ -80,7 +80,7 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher.png" />
   </ItemGroup>
   <ItemGroup>
-    <AdditionalFiles Include="..\..\..\stylecop.json">
+    <AdditionalFiles Include="..\..\stylecop.json">
       <Link>stylecop.json</Link>
     </AdditionalFiles>
     <None Include="Properties\AndroidManifest.xml" />
@@ -93,7 +93,7 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\AP.MobileToolkit\AP.MobileToolkit.csproj">
+    <ProjectReference Include="..\..\src\AP.MobileToolkit\AP.MobileToolkit.csproj">
       <Project>{9399f044-5098-4b9d-8e8f-fbee772f7efc}</Project>
       <Name>AP.MobileToolkit</Name>
     </ProjectReference>
