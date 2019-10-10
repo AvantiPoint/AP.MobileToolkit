@@ -9,8 +9,6 @@ namespace ToolkitDemo.Services
 {
     public class MenuService : IMenuService
     {
-        public IEnumerable<Grouping<Category, Item>> Categories { get; set; }
-
         public MenuService()
         {
             object[] menuItemAttributes = GetType().Assembly.GetCustomAttributes(typeof(MenuItemAttribute), false);
@@ -29,5 +27,7 @@ namespace ToolkitDemo.Services
 
             Categories = new ObservableRangeCollection<Grouping<Category, Item>>(categoryList);
         }
+
+        public IEnumerable<Grouping<Category, Item>> Categories { get; set; }
     }
 }

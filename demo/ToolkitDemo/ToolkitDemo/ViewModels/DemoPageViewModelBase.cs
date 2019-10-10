@@ -8,16 +8,16 @@ namespace ToolkitDemo.ViewModels
 {
     public class DemoPageViewModelBase : ReactiveViewModelBase
     {
-        public string PageName { get; }
-
-        public DelegateCommand ShowCodeBehind { get; }
-
         public DemoPageViewModelBase(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
             : base(navigationService, pageDialogService, logger)
         {
             PageName = GetType().Name.Replace("ViewModel", string.Empty);
             ShowCodeBehind = new DelegateCommand(ExecuteShowCodeBehind);
         }
+
+        public string PageName { get; }
+
+        public DelegateCommand ShowCodeBehind { get; }
 
         private async void ExecuteShowCodeBehind()
         {

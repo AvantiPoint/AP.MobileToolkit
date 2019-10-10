@@ -15,12 +15,6 @@ namespace ToolkitDemo.ViewModels
     {
         private IMenuService MenuService { get; }
 
-        public IEnumerable<Grouping<Models.Category, Item>> Categories { get; set; }
-
-        public DelegateCommand<Item> NavigationCommand { get; }
-
-        public DelegateCommand<Grouping<Models.Category, Item>> SelectCategoryCommand { get; }
-
         public MainPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger, IMenuService menuService)
            : base(navigationService, pageDialogService, logger)
         {
@@ -32,6 +26,12 @@ namespace ToolkitDemo.ViewModels
             NavigationCommand = new DelegateCommand<Item>(OnNavigationCommandExecuted);
             SelectCategoryCommand = new DelegateCommand<Grouping<Models.Category, Item>>(OnSelectCategoryCommandExecuted);
         }
+
+        public IEnumerable<Grouping<Models.Category, Item>> Categories { get; set; }
+
+        public DelegateCommand<Item> NavigationCommand { get; }
+
+        public DelegateCommand<Grouping<Models.Category, Item>> SelectCategoryCommand { get; }
 
         private async void OnNavigationCommandExecuted(Item item)
         {

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using AP.CrossPlatform.Collections;
 using AP.MobileToolkit.Mvvm;
@@ -18,27 +17,8 @@ namespace ToolkitDemo.ViewModels
     public class ShowCodePageViewModel : ReactiveViewModelBase, IAutoInitialize
     {
         private ICodeSampleResolver CodeSampleResolver { get; }
+
         private IClipboard Clipboard { get; }
-
-        public string _pageName;
-        [AutoInitialize("page_name", true)]
-        public string PageName
-        {
-            get => _pageName;
-            set => this.RaiseAndSetIfChanged(ref _pageName, value);
-        }
-
-        public string _resourceContent;
-        public string ResourceContent
-        {
-            get => _resourceContent;
-            set => this.RaiseAndSetIfChanged(ref _resourceContent, value);
-        }
-
-        public ObservableRangeCollection<SelectableItem> FileList { get; } = new ObservableRangeCollection<SelectableItem>();
-
-        public DelegateCommand<string> TapCommand { get; }
-        public DelegateCommand CopyTextToClipboardCommand { get; }
 
         public ShowCodePageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger, ICodeSampleResolver codeSampleResolver, IClipboard clipboard)
             : base(navigationService, pageDialogService, logger)
@@ -49,6 +29,27 @@ namespace ToolkitDemo.ViewModels
             TapCommand = new DelegateCommand<string>(OnTapCommandExecuted);
             CopyTextToClipboardCommand = new DelegateCommand(OnCopyTextToClipboardCommandExecuted);
         }
+
+        public ObservableRangeCollection<SelectableItem> FileList { get; } = new ObservableRangeCollection<SelectableItem>();
+
+        [AutoInitialize("page_name", true)]
+        public string PageName
+        {
+            get => _pageName;
+            set => this.RaiseAndSetIfChanged(ref _pageName, value);
+        }
+        private string _pageName;
+
+        public string ResourceContent
+        {
+            get => _resourceContent;
+            set => this.RaiseAndSetIfChanged(ref _resourceContent, value);
+        }
+        private string _resourceContent;
+
+        public DelegateCommand<string> TapCommand { get; }
+
+        public DelegateCommand CopyTextToClipboardCommand { get; }
 
         protected override void Initialize(INavigationParameters parameters)
         {
