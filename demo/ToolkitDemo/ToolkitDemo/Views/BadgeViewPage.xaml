@@ -5,13 +5,11 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:toolkit="clr-namespace:AP.MobileToolkit.Controls;assembly=AP.MobileToolkit"
              x:Class="ToolkitDemo.Views.BadgeViewPage" Title="Badge View">
-
     <ContentPage.ToolbarItems>
-        <ToolbarItem Name="MaterialDatePickerCodeBehind" Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}" />
+        <ToolbarItem Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}" />
     </ContentPage.ToolbarItems>
 
     <StackLayout Padding="20">
-        <toolkit:BadgeView Text="20">
-        </toolkit:BadgeView>
+        <toolkit:BadgeView Text="20" />
     </StackLayout>
 </ContentPage>

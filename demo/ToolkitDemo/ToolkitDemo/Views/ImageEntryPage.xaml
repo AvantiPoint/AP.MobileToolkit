@@ -5,16 +5,11 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:toolkit="clr-namespace:AP.MobileToolkit.Controls;assembly=AP.MobileToolkit"
              x:Class="ToolkitDemo.Views.ImageEntryPage" Title="Image Entry">
-
     <ContentPage.ToolbarItems>
-        <ToolbarItem Name="ImageEntryCodeBehind" Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}"/>
+        <ToolbarItem Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}"/>
     </ContentPage.ToolbarItems>
 
-    <ContentPage.Content>
-        <StackLayout Padding="20">
-            <toolkit:ImageEntry Image="logo.png" ImageHeight="20" ImageWidth="20" Placeholder="Enter something here" PlaceholderColor="BlueViolet">
-
-            </toolkit:ImageEntry>
-        </StackLayout>
-    </ContentPage.Content>
+    <StackLayout Padding="20">
+        <toolkit:ImageEntry Image="logo.png" ImageHeight="20" ImageWidth="20" Placeholder="Enter something here" />
+    </StackLayout>
 </ContentPage>

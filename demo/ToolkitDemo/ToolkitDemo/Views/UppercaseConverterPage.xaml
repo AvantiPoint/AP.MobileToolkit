@@ -6,7 +6,7 @@
              xmlns:conv="clr-namespace:AP.MobileToolkit.Converters;assembly=AP.MobileToolkit"
              x:Class="ToolkitDemo.Views.UppercaseConverterPage" Title="Uppercase Converter">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Name="UppercaseConverterCodeBehind" Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}"/>
+        <ToolbarItem Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}" />
     </ContentPage.ToolbarItems>
 
     <ContentPage.Resources>
@@ -15,13 +15,10 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ContentPage.Content>
-        <StackLayout Padding="20">
-            <Label Text="Text before conversion:" FontSize="Medium" FontAttributes="Bold"/>
-            <Label Text="{Binding TextToBeConverted}"></Label>
-
-            <Label Text="Text after conversion:" FontSize="Medium" FontAttributes="Bold"/>
-            <Label Text="{Binding TextToBeConverted, Converter={StaticResource UpperCaseTextConverter}}"></Label>
-        </StackLayout>
-    </ContentPage.Content>
+    <StackLayout Padding="20">
+        <Label Text="Text before conversion:" FontSize="Medium" FontAttributes="Bold" />
+        <Label Text="{Binding TextToBeConverted}" />
+        <Label Text="Text after conversion:" FontSize="Medium" FontAttributes="Bold" />
+        <Label Text="{Binding TextToBeConverted, Converter={StaticResource UpperCaseTextConverter}}" />
+    </StackLayout>
 </ContentPage>

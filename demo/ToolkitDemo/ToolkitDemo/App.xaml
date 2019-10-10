@@ -5,15 +5,12 @@
              x:Class="ToolkitDemo.App">
     <prism:PrismApplication.Resources>
         <!-- Application resource dictionary -->
-
         <ResourceDictionary Source="Theme/AppTheme.xaml" />
-
         <Style TargetType="NavigationPage">
             <Setter Property="BarBackgroundColor"
                     Value="{DynamicResource NavigationBarColor}" />
             <Setter Property="BarTextColor"
                     Value="{DynamicResource SecondaryTextColor}" />
         </Style>
-
     </prism:PrismApplication.Resources>
 </prism:PrismApplication>

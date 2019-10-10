@@ -5,14 +5,11 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:toolkit="clr-namespace:AP.MobileToolkit.Controls;assembly=AP.MobileToolkit"             
              x:Class="ToolkitDemo.Views.RadioButtonPage" Title="Radio Button">
-    
     <ContentPage.ToolbarItems>
-        <ToolbarItem Name="RadioButtonCodeBehind" Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}"/>
+        <ToolbarItem Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}"/>
     </ContentPage.ToolbarItems>
 
     <StackLayout Padding="20">
-        <toolkit:CustomRadioButton Checked="True" Text="Check me" TextColor="Accent" >
-
-        </toolkit:CustomRadioButton>
+        <toolkit:CustomRadioButton Checked="True" Text="Check me" TextColor="Accent" />
     </StackLayout>
 </ContentPage>

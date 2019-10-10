@@ -4,15 +4,13 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:toolkit="clr-namespace:AP.MobileToolkit.Controls;assembly=AP.MobileToolkit"    
-             x:Class="ToolkitDemo.Views.MaterialTimePickerPage" Title="Material Timepicker">
+             x:Class="ToolkitDemo.Views.MaterialTimePickerPage" Title="Material TimePicker">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Name="MaterialTimepickerCodeBehind" Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}"/>
+        <ToolbarItem Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}"/>
     </ContentPage.ToolbarItems>
 
     <StackLayout Padding="20">
-        <Label Text="Pick time" FontAttributes="Bold"></Label>
-        <toolkit:MaterialTimePicker Time="15:01">
-
-        </toolkit:MaterialTimePicker>
+        <Label Text="Pick time" FontAttributes="Bold" />
+        <toolkit:MaterialTimePicker Time="15:01" />
     </StackLayout>
 </ContentPage>

@@ -4,10 +4,9 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="ToolkitDemo.Views.HomePage" Title="Home Page">
+    
     <StackLayout Padding="20">
         <Label Text="Welcome to the Toolkit Demo" FontSize="Medium" FontAttributes="Bold" 
-               VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Label>
-
-        <Image Source="logo.png"></Image>
+               VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
     </StackLayout>
 </ContentPage>

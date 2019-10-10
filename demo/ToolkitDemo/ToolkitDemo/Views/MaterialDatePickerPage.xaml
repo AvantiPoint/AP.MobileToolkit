@@ -5,16 +5,13 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="ToolkitDemo.Views.MaterialDatePickerPage"
              xmlns:toolkit="clr-namespace:AP.MobileToolkit.Controls;assembly=AP.MobileToolkit"
-             Title="Material Datepicker">
-
+             Title="Material DatePicker">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Name="MaterialDatePickerCodeBehind" Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}"/>
+        <ToolbarItem Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}"/>
     </ContentPage.ToolbarItems>
     
     <StackLayout Padding="20">
-        <Label Text="Pick a date" FontAttributes="Bold"></Label>
-        <toolkit:MaterialDatePicker Date="2019-09-20" DefaultColor="Purple" AccentColor="Aqua">
-            
-        </toolkit:MaterialDatePicker>
+        <Label Text="Pick a date" FontAttributes="Bold" />
+        <toolkit:MaterialDatePicker Date="2019-09-20" DefaultColor="Purple" AccentColor="Aqua" />
     </StackLayout>
 </ContentPage>

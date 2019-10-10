@@ -5,17 +5,13 @@
                 prism:ViewModelLocator.AutowireViewModel="True"
                 x:Class="ToolkitDemo.Views.BorderlessDatePickerPage"
                 xmlns:toolkit="clr-namespace:AP.MobileToolkit.Controls;assembly=AP.MobileToolkit"
-                Title="Borderless Datepicker">
-
+                Title="Borderless DatePicker">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Name="BorderlessDatepickerCodeBehind" Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}"/>
+        <ToolbarItem Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}"/>
     </ContentPage.ToolbarItems>
 
     <StackLayout Padding="20">
-        <Label Text="Pick a date" FontAttributes="Bold"></Label>
-        <toolkit:BorderlessDatePicker Date="2019-09-17">
-
-        </toolkit:BorderlessDatePicker>
+        <Label Text="Pick a date" FontAttributes="Bold" />
+        <toolkit:BorderlessDatePicker Date="2019-09-17" />
     </StackLayout>
-
 </ContentPage>
