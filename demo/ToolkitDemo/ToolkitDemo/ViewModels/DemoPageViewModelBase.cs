@@ -19,7 +19,7 @@ namespace ToolkitDemo.ViewModels
             ShowCodeBehind = new DelegateCommand(ExecuteShowCodeBehind);
         }
 
-        public async void ExecuteShowCodeBehind()
+        private async void ExecuteShowCodeBehind()
         {
             await NavigationService.NavigateAsync("ShowCodePage", ("page_name", PageName));
         }

@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using AP.CrossPlatform.Collections;
 using AP.MobileToolkit.Mvvm;
+using Prism.AppModel;
 using Prism.Commands;
 using Prism.Logging;
 using Prism.Navigation;
@@ -14,12 +15,13 @@ using Xamarin.Essentials.Interfaces;
 
 namespace ToolkitDemo.ViewModels
 {
-    public class ShowCodePageViewModel : ReactiveViewModelBase
+    public class ShowCodePageViewModel : ReactiveViewModelBase, IAutoInitialize
     {
-        protected ICodeSampleResolver CodeSampleResolver { get; set; }
-        protected IClipboard Clipboard { get; set; }
+        private ICodeSampleResolver CodeSampleResolver { get; }
+        private IClipboard Clipboard { get; }
 
         public string _pageName;
+        [AutoInitialize("page_name", true)]
         public string PageName
         {
             get => _pageName;
@@ -48,30 +50,18 @@ namespace ToolkitDemo.ViewModels
             CopyTextToClipboardCommand = new DelegateCommand(OnCopyTextToClipboardCommandExecuted);
         }
 
-        protected override void OnAppearing()
+        protected override void Initialize(INavigationParameters parameters)
         {
-            base.OnAppearing();
-        }
-
-        protected override void OnNavigatedTo(INavigationParameters parameters)
-        {
-            PageName = parameters.GetValue<string>("page_name");
             IEnumerable<string> pageFileNames = CodeSampleResolver.GetPageFilesName(PageName);
 
-            foreach (var filename in pageFileNames)
+            int i = 0;
+            FileList.AddRange(pageFileNames.Select(x => new SelectableItem
             {
-                var item = new SelectableItem();
+                IsSelected = i++ == 0,
+                Text = x
+            }));
 
-                if (FileList.Count == 0)
-                {
-                    item.IsSelected = true;
-                }
-
-                item.Text = filename;
-                FileList.Add(item);
-            }
-
-            if (FileList.Count() > 0)
+            if (FileList.Any())
             {
                 ResourceContent = CodeSampleResolver.ReadEmbeddedResource(FileList.First(x => x.IsSelected == true).Text);
             }
@@ -79,8 +69,7 @@ namespace ToolkitDemo.ViewModels
 
         private void OnTapCommandExecuted(string filename)
         {
-            FileList.ToList().ForEach(c => c.IsSelected = false);
-            FileList.FirstOrDefault(f => f.Text.Equals(filename)).IsSelected = true;
+            FileList.ToList().ForEach(f => f.IsSelected = f.Text.Equals(filename));
             ResourceContent = CodeSampleResolver.ReadEmbeddedResource(filename);
         }
 
