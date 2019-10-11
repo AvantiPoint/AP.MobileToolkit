@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ToolkitDemo.Views.ShowCodePage" 
+             xmlns:converter="clr-namespace:AP.MobileToolkit.Converters;assembly=AP.MobileToolkit"
+             x:Name="this" Title="Source Code">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary" Text="Copy" Priority="0" Command="{Binding CopyTextToClipboardCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:BooleanToColorConverter x:Key="IsSelectedConverter" TrueColor="#0600ff" FalseColor="#57585b" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout>
+        <StackLayout VerticalOptions="FillAndExpand" >
+            <ScrollView Padding="10">
+                <Label Text="{Binding ResourceContent}" />
+            </ScrollView>
+        </StackLayout>
+        <StackLayout VerticalOptions="End" HorizontalOptions="CenterAndExpand" Margin="0" BackgroundColor="LightGray">
+            <ScrollView Orientation="Horizontal" Padding="20">
+                <StackLayout BindableLayout.ItemsSource="{Binding FileList}" Orientation="Horizontal">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Label Margin="0,0,5,0" Text="{Binding Text}" TextColor="{Binding IsSelected, Converter={StaticResource IsSelectedConverter}}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BindingContext.TapCommand, Source={x:Reference this}}" CommandParameter="{Binding Text}" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

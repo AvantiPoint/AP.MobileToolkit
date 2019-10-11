@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:prism="http://prismlibrary.com"
+                  prism:ViewModelLocator.AutowireViewModel="True"
+                  x:Class="ToolkitDemo.Views.MainPage"
+                  Title="{Binding Title}" x:Name="HamburgerMenuPage">
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu">
+            <StackLayout Padding="20" Margin="0,10,0,0">
+                <Label Text="Toolkit Demo" FontSize="Medium" FontAttributes="Bold" />
+                <ListView IsGroupingEnabled="True" ItemsSource="{Binding Categories}" SelectionMode="None">
+                    <ListView.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ContentView Padding="10,0,0,0">
+                                    <Label Text="{Binding Key.Name}" FontAttributes="Bold" VerticalOptions="Center"/>
+                                    <ContentView.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={ x:Reference HamburgerMenuPage }, Path=BindingContext.SelectCategoryCommand}" CommandParameter="{Binding .}" />
+                                    </ContentView.GestureRecognizers>
+                                </ContentView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.GroupHeaderTemplate>
+                    <ListView.Behaviors>
+                        <prism:EventToCommandBehavior 
+                            Command="{Binding NavigationCommand}" 
+                            EventName="ItemTapped" 
+                            EventArgsParameterPath="Item" />
+                    </ListView.Behaviors>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Name}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+</MasterDetailPage>

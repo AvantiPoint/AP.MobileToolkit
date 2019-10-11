@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <XFKeepXamlResources>true</XFKeepXamlResources>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <!-- Preserve the embedded resources so the resource loader can properly cause LoadFromXaml behavior even XamlC is turned on. -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\*.png" />
+    <EmbeddedResource Include="Images\*.png" />
+    <EmbeddedResource Include="**\*.xaml.cs" />
+    <EmbeddedResource Include="**\*ViewModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Prism.DryIoc.Forms" Version="7.2.0.1367" />
+    <PackageReference Include="Xamarin.Forms" Version="4.2.0.815419" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\AP.MobileToolkit.Http\AP.MobileToolkit.Http.csproj" />
+    <ProjectReference Include="..\..\src\AP.MobileToolkit\AP.MobileToolkit.csproj" />
+  </ItemGroup>
+</Project>

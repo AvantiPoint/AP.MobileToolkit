@@ -6,7 +6,6 @@ using Xamarin.Forms.Xaml;
 
 namespace AP.MobileToolkit.Controls
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MaterialDatePicker
     {
         public static readonly BindableProperty CustomDateFormatProperty =
