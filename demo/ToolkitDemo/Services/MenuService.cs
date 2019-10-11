@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using AP.CrossPlatform.Collections;
-using ToolkitDemo.Extensions;
+using AP.CrossPlatform.Extensions;
 using ToolkitDemo.Helpers;
 using ToolkitDemo.Models;
 
@@ -11,14 +13,14 @@ namespace ToolkitDemo.Services
     {
         public MenuService()
         {
-            object[] menuItemAttributes = GetType().Assembly.GetCustomAttributes(typeof(MenuItemAttribute), false);
+            IEnumerable<MenuItemAttribute> menuItemAttributes = GetType().Assembly.GetCustomAttributes<MenuItemAttribute>();
             var categoryList = new List<Grouping<Category, Item>>();
 
-            categoryList = menuItemAttributes.OrderBy(i => (i as MenuItemAttribute).MenuGroup).GroupBy(x => (x as MenuItemAttribute).MenuGroup)
-                .Select(g => new Grouping<Category, Item>(new Category() { Name = g.Key.Description() }, g.Select(x => new Item()
+            categoryList = menuItemAttributes.OrderBy(i => i.MenuGroup).GroupBy(x => x.MenuGroup)
+                .Select(g => new Grouping<Category, Item>(new Category() { Name = g.Key.GetAttribute<DescriptionAttribute>().Description }, g.Select(x => new Item()
                 {
-                    Name = (x as MenuItemAttribute).DisplayName,
-                    Uri = (x as MenuItemAttribute).NavigationName
+                    Name = x.DisplayName,
+                    Uri = x.NavigationName
                 }).OrderBy(x => x.Name).ToList()))
                 .ToList();
 

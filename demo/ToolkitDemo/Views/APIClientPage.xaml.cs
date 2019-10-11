@@ -2,7 +2,7 @@
 using ToolkitDemo.Views;
 using Xamarin.Forms;
 
-[assembly: MenuItem("API Client", nameof(APIClientPage), MenuGroup.Controls)]
+[assembly: MenuItem("API Client", nameof(APIClientPage), MenuGroup.ApiClient)]
 namespace ToolkitDemo.Views
 {
     public partial class APIClientPage : ContentPage

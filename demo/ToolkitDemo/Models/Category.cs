@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using AP.CrossPlatform;
 
 namespace ToolkitDemo.Models
 {
-    public class Category
+    public class Category : ISelectable
     {
         public string Name { get; set; }
+
         public bool IsSelected { get; set; }
     }
 }
