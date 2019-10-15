@@ -12,6 +12,6 @@ namespace ToolkitDemo.ViewModels
             TextToBeConverted = "TEXT TO BE CONVERTED TO LOWERCASE";
         }
 
-        public string TextToBeConverted { get; set; }
+        public string TextToBeConverted { get; }
     }
 }
