@@ -31,6 +31,11 @@
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding BindingContext.TapCommand, Source={x:Reference this}}" CommandParameter="{Binding Text}" />
                                 </Label.GestureRecognizers>
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding IsSelected}" Value="True">
+                                        <Setter Property="FontAttributes" Value="Bold" />
+                                    </DataTrigger>
+                                </Label.Triggers>
                             </Label>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>

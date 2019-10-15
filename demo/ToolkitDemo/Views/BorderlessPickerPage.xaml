@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ToolkitDemo.Views.BorderlessPickerPage"
+             xmlns:toolkit="clr-namespace:AP.MobileToolkit.Controls;assembly=AP.MobileToolkit"
+             Title="Borderless Picker">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}" />
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Padding="20">
+        <Label Text="Pick an option" FontAttributes="Bold" />
+        <toolkit:BorderlessPicker ItemsSource="{Binding Options}" />
+    </StackLayout>
+</ContentPage>
