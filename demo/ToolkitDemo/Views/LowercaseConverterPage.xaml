@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:conv="clr-namespace:AP.MobileToolkit.Converters;assembly=AP.MobileToolkit"
+             x:Class="ToolkitDemo.Views.LowercaseConverterPage" Title="Lowercase Converter">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:LowerTextConverter x:Key="LowercaseTextConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Padding="20">
+        <Label Text="Text before conversion:" FontSize="Medium" FontAttributes="Bold" />
+        <Label Text="{Binding TextToBeConverted}" />
+        <Label Text="Text after conversion:" FontSize="Medium" FontAttributes="Bold" />
+        <Label Text="{Binding TextToBeConverted, Converter={StaticResource LowercaseTextConverter}}" />
+    </StackLayout>
+</ContentPage>
