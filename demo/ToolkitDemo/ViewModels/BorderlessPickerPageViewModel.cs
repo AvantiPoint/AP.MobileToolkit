@@ -20,6 +20,6 @@ namespace ToolkitDemo.ViewModels
             };
         }
 
-        public IEnumerable<string> Options { get; set; }
+        public IEnumerable<string> Options { get; }
     }
 }
