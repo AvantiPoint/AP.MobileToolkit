@@ -8,7 +8,9 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Dan Siegel</Authors>
     <Company>AvantiPoint</Company>
-    <PackageIconUrl>https://raw.githubusercontent.com/AvantiPoint/AP.MobileToolkit/master/avantipoint-icon.png</PackageIconUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>avantipoint-icon.png</PackageIcon>
+    <!--<PackageIconUrl>https://raw.githubusercontent.com/AvantiPoint/AP.MobileToolkit/master/avantipoint-icon.png</PackageIconUrl>-->
     <PackageProjectUrl>https://github.com/AvantiPoint/AP.MobileToolkit</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/AvantiPoint/AP.MobileToolkit</RepositoryUrl>
@@ -39,6 +41,10 @@
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-19367-01" PrivateAssets="all">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)avantipoint-icon.png" Pack="True" PackagePath="" />
   </ItemGroup>
 
 </Project>
