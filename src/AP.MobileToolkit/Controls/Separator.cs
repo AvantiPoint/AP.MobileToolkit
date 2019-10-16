@@ -53,7 +53,7 @@ namespace AP.MobileToolkit.Controls
         }
 
         /// <summary>
-        /// Orientation of the separator.
+        /// Gets or Sets Orientation of the separator.
         /// </summary>
         /// <value>The orientation.</value>
         public SeparatorOrientation Orientation
@@ -63,7 +63,7 @@ namespace AP.MobileToolkit.Controls
         }
 
         /// <summary>
-        /// Color of the separator. Black is a default color
+        /// Gets or Sets Color of the separator. Black is a default color
         /// </summary>
         /// <value>The color.</value>
         public Color Color
@@ -73,7 +73,7 @@ namespace AP.MobileToolkit.Controls
         }
 
         /// <summary>
-        /// Padding before the separator. Default is 1.
+        /// Gets or Sets Padding before the separator. Default is 1.
         /// </summary>
         /// <value>The spacing before.</value>
         public double SpacingBefore
@@ -83,7 +83,7 @@ namespace AP.MobileToolkit.Controls
         }
 
         /// <summary>
-        /// Padding after the separator. Default is 1.
+        /// Gets or Sets Padding after the separator. Default is 1.
         /// </summary>
         /// <value>The spacing after.</value>
         public double SpacingAfter
@@ -93,7 +93,7 @@ namespace AP.MobileToolkit.Controls
         }
 
         /// <summary>
-        /// How thick should the separator be. Default is 1
+        /// Gets or Sets How thick should the separator be. Default is 1
         /// </summary>
         /// <value>The thickness.</value>
         public double Thickness
@@ -103,7 +103,7 @@ namespace AP.MobileToolkit.Controls
         }
 
         /// <summary>
-        /// Stroke style of the separator. Default is Solid.
+        /// Gets or Sets Stroke style of the separator. Default is Solid.
         /// </summary>
         /// <value>The type of the stroke.</value>
         public StrokeType StrokeType

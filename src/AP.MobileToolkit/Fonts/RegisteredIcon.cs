@@ -12,17 +12,17 @@ namespace AP.MobileToolkit.Fonts
         }
 
         /// <summary>
-        /// The Property Name reflects the C# class Field Name such as DownArrow
+        /// Gets The Property Name reflects the C# class Field Name such as DownArrow
         /// </summary>
         public string PropertyName { get; }
 
         /// <summary>
-        /// The Icon Name reflects what you would typically see in CSS such as down-arrow
+        /// Gets The Icon Name reflects what you would typically see in CSS such as down-arrow
         /// </summary>
         public string IconName { get; }
 
         /// <summary>
-        /// The Glyph Character
+        /// Gets The Glyph Character
         /// </summary>
         public string Glyph { get; }
 
