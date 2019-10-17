@@ -292,3 +292,7 @@ docs/en/ns-.xml
 
 # MFractor
 .MFractor
+
+# runtime settings
+secrets.json
+appsettings.json

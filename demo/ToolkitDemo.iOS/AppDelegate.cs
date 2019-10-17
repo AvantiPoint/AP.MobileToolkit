@@ -1,6 +1,5 @@
 ﻿using Foundation;
-using Prism;
-using Prism.Ioc;
+using Microsoft.Identity.Client;
 using UIKit;
 
 namespace ToolkitDemo.iOS
@@ -23,6 +22,12 @@ namespace ToolkitDemo.iOS
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
+        }
+
+        public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
+        {
+            AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs(url);
+            return true;
         }
     }
 }

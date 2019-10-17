@@ -1,6 +1,9 @@
-﻿using Prism;
+﻿using AP.MobileToolkit.AAD;
+using Microsoft.Identity.Client;
+using Prism;
 using Prism.Ioc;
 using Prism.Logging;
+using ToolkitDemo.Helpers;
 using ToolkitDemo.Services;
 using Xamarin.Essentials.Implementation;
 using Xamarin.Essentials.Interfaces;
@@ -42,6 +45,24 @@ namespace ToolkitDemo
             containerRegistry.RegisterSingleton<IMenuService, MenuService>();
             containerRegistry.Register<IClipboard, ClipboardImplementation>();
             containerRegistry.Register<ICodeSampleResolver, CodeSampleResolver>();
+            containerRegistry.RegisterSingleton<IAuthenticationOptions, AuthenticationOptions>();
+            IAuthenticationOptions authOptions = ((IContainerProvider)containerRegistry).Resolve<IAuthenticationOptions>();
+            IPublicClientApplication aadClient = CreateAADClient(authOptions);
+            containerRegistry.RegisterInstance(aadClient);
+            containerRegistry.Register<IAuthenticationService, AuthenticationService>();
+        }
+
+        private IPublicClientApplication CreateAADClient(IAuthenticationOptions options)
+        {
+            PublicClientApplicationBuilder aadClientBuilder = PublicClientApplicationBuilder.Create(options.ClientId)
+                                                .WithRedirectUri($"msal{options.ClientId}://auth");
+
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                aadClientBuilder.WithIosKeychainSecurityGroup(Xamarin.Essentials.AppInfo.PackageName);
+            }
+
+            return aadClientBuilder.Build();
         }
     }
 }

@@ -10,5 +10,7 @@ namespace ToolkitDemo.Helpers
         Converters,
         [Description("API Client")]
         ApiClient,
+        [Description("Azure AD Authentication")]
+        AzureADAuth,
     }
 }
