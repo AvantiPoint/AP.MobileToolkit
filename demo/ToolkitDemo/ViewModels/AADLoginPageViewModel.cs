@@ -102,6 +102,7 @@ namespace ToolkitDemo.ViewModels
             try
             {
                 await AuthenticationService.LogoutAsync();
+                User = null;
                 IsLoggedIn = false;
             }
             catch (Exception ex)
