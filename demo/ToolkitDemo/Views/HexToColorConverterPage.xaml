@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:toolkit="clr-namespace:AP.MobileToolkit.Controls;assembly=AP.MobileToolkit"
+             xmlns:converter="clr-namespace:AP.MobileToolkit.Converters;assembly=AP.MobileToolkit"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ToolkitDemo.Views.HexToColorConverterPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:HexToColorConverter x:Key="HexToColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <StackLayout Padding="20">
+            <Label Style="{StaticResource Heading}" Text="Hex To Color Converter" />
+            <Label Style="{StaticResource Bold}" Text="Hex Code List" />
+            <toolkit:RepeaterView ItemsSource="{Binding HexCodeList}">
+                <toolkit:RepeaterView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame CornerRadius="5" Margin="0,5,0,5" BackgroundColor="{Binding ., Converter= {StaticResource HexToColorConverter}}">
+                                <Label Style="{StaticResource Bold}" Text="{Binding .}" VerticalTextAlignment="Center" />
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </toolkit:RepeaterView.ItemTemplate>
+            </toolkit:RepeaterView>
+
+            <StackLayout Margin="0,10,0,0">
+                <toolkit:MaterialEntry Text="{Binding HexCode}" Placeholder="Enter Hex Code"/>
+                <Frame CornerRadius="5" Margin="0,5,0,5" BackgroundColor="{Binding HexCode, Converter= {StaticResource HexToColorConverter}}">
+                    <Label Style="{StaticResource Bold}" Text="{Binding HexCode}" VerticalTextAlignment="Center" />
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -2,7 +2,7 @@
 using ToolkitDemo.Views;
 using Xamarin.Forms;
 
-[assembly: MenuItem("Uppercase Converter", nameof(UppercaseConverterPage), MenuGroup.Converters)]
+[assembly: MenuItem("Uppercase Text", nameof(UppercaseConverterPage), MenuGroup.Converters)]
 namespace ToolkitDemo.Views
 {
     public partial class UppercaseConverterPage : ContentPage

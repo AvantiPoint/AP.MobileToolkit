@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:toolkit="clr-namespace:AP.MobileToolkit.Controls;assembly=AP.MobileToolkit"
+             xmlns:converter="clr-namespace:AP.MobileToolkit.Converters;assembly=AP.MobileToolkit"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ToolkitDemo.Views.HumanizerConverterPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:HumanizerConverter x:Key="TitleHumanizerConverter" Casing="Title" />
+            <converter:HumanizerConverter x:Key="LowerCaseHumanizerConverter" Casing="LowerCase" />
+            <converter:HumanizerConverter x:Key="AllCapsHumanizerConverter" Casing="AllCaps" />
+            <converter:HumanizerConverter x:Key="SentenceHumanizerConverter" Casing="Sentence" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <StackLayout Padding="20">
+            <Label Style="{StaticResource Heading}" Text="Humanizer Converter" />
+            <toolkit:MaterialEntry Text="{Binding InputText}" Placeholder="Enter Text"/>
+            <Label Style="{StaticResource Bold}" Text="Title" />
+            <Label Text="{Binding InputText, Converter={StaticResource TitleHumanizerConverter}}" />
+            <Label Style="{StaticResource Bold}" Text="All Caps" />
+            <Label Text="{Binding InputText, Converter={StaticResource AllCapsHumanizerConverter}}" />
+            <Label Style="{StaticResource Bold}" Text="Lower Case" />
+            <Label Text="{Binding InputText, Converter={StaticResource LowerCaseHumanizerConverter}}" />
+            <Label Style="{StaticResource Bold}" Text="Sentence" />
+            <Label Text="{Binding InputText, Converter={StaticResource SentenceHumanizerConverter}}" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
