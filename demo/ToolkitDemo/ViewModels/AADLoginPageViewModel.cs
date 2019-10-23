@@ -19,7 +19,6 @@ namespace ToolkitDemo.ViewModels
         public AADLoginPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger, IAuthenticationService authenticationService)
             : base(navigationService, pageDialogService, logger)
         {
-            Title = "Login";
             AuthenticationService = authenticationService;
 
             LoginCommand = ReactiveCommand.CreateFromTask(
