@@ -5,7 +5,8 @@
              xmlns:toolkit="clr-namespace:AP.MobileToolkit.Controls;assembly=AP.MobileToolkit"
              xmlns:converter="clr-namespace:AP.MobileToolkit.Converters;assembly=AP.MobileToolkit"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="ToolkitDemo.Views.BooleanToColorConverterPage">
+             x:Class="ToolkitDemo.Views.BooleanToColorConverterPage"
+             Title="{Binding Title}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}" />
     </ContentPage.ToolbarItems>
@@ -18,7 +19,6 @@
 
     <ScrollView>
         <StackLayout Padding="20">
-            <Label Style="{StaticResource Heading}" Text="Boolean To Color Converter" />
             <StackLayout Orientation="Horizontal" Padding="0,10,5,10">
                 <Label Style="{StaticResource Bold}" Text="Toggle Switch" />
                 <Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding Value}" />

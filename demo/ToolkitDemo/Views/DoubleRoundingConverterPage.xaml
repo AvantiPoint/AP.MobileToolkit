@@ -5,7 +5,8 @@
              xmlns:toolkit="clr-namespace:AP.MobileToolkit.Controls;assembly=AP.MobileToolkit"
              xmlns:converter="clr-namespace:AP.MobileToolkit.Converters;assembly=AP.MobileToolkit"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="ToolkitDemo.Views.DoubleRoundingConverterPage">
+             x:Class="ToolkitDemo.Views.DoubleRoundingConverterPage"
+             Title="{Binding Title}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}"/>
     </ContentPage.ToolbarItems>
@@ -17,7 +18,6 @@
     </ContentPage.Resources>
 
     <StackLayout Padding="20">
-        <Label Style="{StaticResource Heading}" Text="Double Rounding Converter" />
         <toolkit:MaterialEntry Text="{Binding Value}" Placeholder="Enter Double Value" />
         <Label Style="{StaticResource Bold}" Text="Converted Value" />
         <Label Text="{Binding Value, Converter={StaticResource DoubleRoundingConverter}}" />

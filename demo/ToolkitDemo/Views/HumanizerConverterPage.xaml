@@ -5,7 +5,8 @@
              xmlns:toolkit="clr-namespace:AP.MobileToolkit.Controls;assembly=AP.MobileToolkit"
              xmlns:converter="clr-namespace:AP.MobileToolkit.Converters;assembly=AP.MobileToolkit"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="ToolkitDemo.Views.HumanizerConverterPage">
+             x:Class="ToolkitDemo.Views.HumanizerConverterPage"
+             Title="{Binding Title}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}" />
     </ContentPage.ToolbarItems>
@@ -21,7 +22,6 @@
 
     <ScrollView>
         <StackLayout Padding="20">
-            <Label Style="{StaticResource Heading}" Text="Humanizer Converter" />
             <toolkit:MaterialEntry Text="{Binding InputText}" Placeholder="Enter Text"/>
             <Label Style="{StaticResource Bold}" Text="Title" />
             <Label Text="{Binding InputText, Converter={StaticResource TitleHumanizerConverter}}" />

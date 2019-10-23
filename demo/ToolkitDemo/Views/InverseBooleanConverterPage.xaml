@@ -4,7 +4,8 @@
              xmlns:prism="http://prismlibrary.com"
              xmlns:converter="clr-namespace:AP.MobileToolkit.Converters;assembly=AP.MobileToolkit"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="ToolkitDemo.Views.InverseBooleanConverterPage">
+             x:Class="ToolkitDemo.Views.InverseBooleanConverterPage"
+             Title="{Binding Title}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}" />
     </ContentPage.ToolbarItems>
@@ -17,7 +18,6 @@
 
     <ScrollView>
         <StackLayout Padding="20">
-            <Label Style="{StaticResource Heading}" Text="Inverse Boolean Converter" />
             <StackLayout Orientation="Horizontal" Padding="0,10,5,10">
                 <Label Style="{StaticResource Bold}" Text="Toggle switch to invert the other control's state" />
                 <Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding Value}" />
