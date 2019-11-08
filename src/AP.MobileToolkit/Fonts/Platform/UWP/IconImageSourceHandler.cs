@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using AP.MobileToolkit.Fonts;
+using AP.MobileToolkit.Fonts.Controls;
 using Microsoft.Graphics.Canvas;
 using Microsoft.Graphics.Canvas.Text;
 using Microsoft.Graphics.Canvas.UI.Xaml;
@@ -9,8 +10,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.UWP;
 using WindowsImageSource = Windows.UI.Xaml.Media.ImageSource;
 
-[assembly: ExportImageSourceHandler(typeof(IconImageSource), typeof(AP.MobileToolkit.Fonts.Platform.UWP.IconImageSourceHandler))]
-namespace AP.MobileToolkit.Fonts.Platform.UWP
+[assembly: ExportImageSourceHandler(typeof(IconImageSource), typeof(AP.MobileToolkit.Platform.IconImageSourceHandler))]
+namespace AP.MobileToolkit.Platform
 {
     internal class IconImageSourceHandler : IImageSourceHandler
     {

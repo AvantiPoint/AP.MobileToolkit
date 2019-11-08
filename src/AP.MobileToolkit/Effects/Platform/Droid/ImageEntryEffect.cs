@@ -3,6 +3,7 @@ using Android.Graphics.Drawables;
 using Android.Widget;
 using AP.MobileToolkit;
 using AP.MobileToolkit.Fonts;
+using AP.MobileToolkit.Fonts.Controls;
 using AP.MobileToolkit.Platform.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;

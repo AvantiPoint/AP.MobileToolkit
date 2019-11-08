@@ -8,6 +8,7 @@ using Xamarin.Forms.Internals;
 [assembly: XmlnsDefinition("http://avantipoint.com/schemas/xaml", "AP.MobileToolkit.Controls")]
 [assembly: XmlnsDefinition("http://avantipoint.com/schemas/xaml", "AP.MobileToolkit.Converters")]
 [assembly: XmlnsDefinition("http://avantipoint.com/schemas/xaml", "AP.MobileToolkit.Effects")]
+[assembly: XmlnsDefinition("http://avantipoint.com/schemas/xaml", "AP.MobileToolkit.Fonts.Controls")]
 [assembly: XmlnsDefinition("http://avantipoint.com/schemas/xaml", "AP.MobileToolkit.Pages")]
 [assembly: XmlnsDefinition("http://avantipoint.com/schemas/xaml", "AP.MobileToolkit.Resources")]
 [assembly: XmlnsDefinition("http://avantipoint.com/schemas/xaml", "AP.MobileToolkit.Xaml")]

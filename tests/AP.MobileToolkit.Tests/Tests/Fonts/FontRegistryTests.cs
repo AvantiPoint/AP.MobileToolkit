@@ -17,6 +17,13 @@ namespace AP.MobileToolkit.Tests.Tests.Fonts
         }
 
         [Fact]
+        public void FontRegistryDoesNotThrowException()
+        {
+            var ex = Record.Exception(() => RegisterTestIcons());
+            Assert.Null(ex);
+        }
+
+        [Fact]
         public void TestFontIsRegistered()
         {
             RegisterTestIcons();

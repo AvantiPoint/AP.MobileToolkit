@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -16,19 +17,28 @@ namespace AP.MobileToolkit.Fonts
                                .Select(x => new RegisteredIcon(x));
         }
 
-        public IconFont(string fontName, string prefix, Type mappingClass, bool debug = false)
+        public IconFont(string fontName, string prefix, Type mappingClass)
+            : this(fontName, prefix, mappingClass, mappingClass)
+        {
+        }
+
+        public IconFont(string fontName, string prefix, Type mappingClass, Type resolvingType)
         {
             FontName = fontName;
             Prefix = prefix;
             Icons = GetIcons(mappingClass);
-            Debug = debug;
+            HasLoadedFont = false;
+            FontFile = FontFile.FromString(fontName);
+            FontFile.Assembly = resolvingType.Assembly;
         }
 
         public string FontName { get; }
 
         public string Prefix { get; }
 
-        internal bool Debug { get; set; }
+        internal bool HasLoadedFont { get; set; }
+
+        internal FontFile FontFile { get; }
 
         internal IEnumerable<RegisteredIcon> Icons { get; }
 

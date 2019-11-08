@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using AP.MobileToolkit.Fonts;
+using AP.MobileToolkit.Fonts.Controls;
+using AP.MobileToolkit.Tests.Mocks;
 using AP.MobileToolkit.Tests.Mocks.Fonts;
+using Xamarin.Forms;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -13,6 +16,8 @@ namespace AP.MobileToolkit.Tests.Tests.Fonts
         public IconSpanTests(ITestOutputHelper testOutputHelper)
             : base(testOutputHelper)
         {
+            Xamarin.Forms.Mocks.MockForms.Init();
+            DependencyService.Register<IEmbeddedFontLoader, EmbeddedFontLoaderMock>();
         }
 
         [Fact]

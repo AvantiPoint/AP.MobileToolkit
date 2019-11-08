@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Xamarin.Forms;
 
 namespace AP.MobileToolkit.Fonts
 {
@@ -50,6 +51,11 @@ namespace AP.MobileToolkit.Fonts
             if (string.IsNullOrEmpty(font.FontName))
             {
                 return default;
+            }
+
+            if (!font.HasLoadedFont)
+            {
+                DependencyService.Resolve<IEmbeddedFontLoader>().LoadFont(font.FontFile);
             }
 
             return new IconInfo(font.FontName, font.FindIconForKey(iconName));

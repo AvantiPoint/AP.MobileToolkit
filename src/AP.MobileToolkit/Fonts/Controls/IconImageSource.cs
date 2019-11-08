@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
-namespace AP.MobileToolkit.Fonts
+namespace AP.MobileToolkit.Fonts.Controls
 {
     public class IconImageSource : ImageSource
     {

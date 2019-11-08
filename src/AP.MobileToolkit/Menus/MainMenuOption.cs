@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using AP.MobileToolkit.Fonts;
+using AP.MobileToolkit.Fonts.Controls;
 using Xamarin.Forms;
 
 namespace AP.MobileToolkit.Menus

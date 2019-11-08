@@ -3,6 +3,7 @@ using AP.MobileToolkit;
 using AP.MobileToolkit.Effects;
 using AP.MobileToolkit.Effects.Platform.iOS;
 using AP.MobileToolkit.Fonts;
+using AP.MobileToolkit.Fonts.Controls;
 using AP.MobileToolkit.Platform.iOS.Extensions;
 using CoreAnimation;
 using CoreGraphics;

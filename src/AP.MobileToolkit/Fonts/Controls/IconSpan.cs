@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace AP.MobileToolkit.Fonts
+namespace AP.MobileToolkit.Fonts.Controls
 {
     public sealed class IconSpan : Span
     {

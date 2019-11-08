@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Linq;
+using System.Reflection;
 
 namespace AP.MobileToolkit.Fonts
 {
@@ -8,7 +9,7 @@ namespace AP.MobileToolkit.Fonts
         {
             PropertyName = fi.Name;
             Glyph = fi.GetValue(null).ToString();
-            IconName = SanitizeName(fi.Name);
+            IconName = SanitizeName(fi);
         }
 
         /// <summary>
@@ -26,20 +27,32 @@ namespace AP.MobileToolkit.Fonts
         /// </summary>
         public string Glyph { get; }
 
-        private static string SanitizeName(string name)
+        private static string SanitizeName(FieldInfo fi)
         {
             string output = string.Empty;
-            for (var i = 0; i < name.Length; i++)
+            if (fi.GetCustomAttributes(typeof(IconNameAttribute), false).Any())
             {
-                var c = name[i];
-                if (char.IsUpper(c) && i > 0)
+                output = fi.GetCustomAttribute<IconNameAttribute>().Name;
+            }
+            else
+            {
+                for (var i = 0; i < fi.Name.Length; i++)
                 {
-                    output += '-';
+                    var c = fi.Name[i];
+                    if (char.IsUpper(c) && i > 0)
+                    {
+                        output += '-';
+                    }
+                    output += c;
                 }
-                output += c;
             }
 
             return output.ToLower();
         }
+    }
+
+    internal interface IEmbeddedFontLoader
+    {
+        (bool success, string filePath) LoadFont(FontFile font);
     }
 }

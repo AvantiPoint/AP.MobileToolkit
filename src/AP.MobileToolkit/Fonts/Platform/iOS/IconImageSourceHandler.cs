@@ -1,6 +1,8 @@
 ﻿using System.Drawing;
 using System.Threading;
 using System.Threading.Tasks;
+using AP.MobileToolkit.Fonts;
+using AP.MobileToolkit.Fonts.Controls;
 using Foundation;
 using UIKit;
 using Xamarin.Forms;
@@ -8,9 +10,8 @@ using Xamarin.Forms.Platform.iOS;
 using Color = Xamarin.Forms.Color;
 using RectangleF = CoreGraphics.CGRect;
 
-#pragma warning disable SA1300
-namespace AP.MobileToolkit.Fonts.Platform.iOS
-#pragma warning restore SA1300
+[assembly: ExportImageSourceHandler(typeof(IconImageSource), typeof(AP.MobileToolkit.Platform.IconImageSourceHandler))]
+namespace AP.MobileToolkit.Platform
 {
     internal class IconImageSourceHandler : IImageSourceHandler
     {
