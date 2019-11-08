@@ -96,14 +96,32 @@ namespace AP.MobileToolkit.Http
             };
 
             SetDefaultHeaders(client);
+            disposedValue = false;
 
             return client;
         }
 
+        #region IDisposable Support
+        private bool disposedValue = false; // To detect redundant calls
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    _client?.Dispose();
+                    _client = null;
+                }
+
+                disposedValue = true;
+            }
+        }
+
         public void Dispose()
         {
-            _client?.Dispose();
-            _client = null;
+            Dispose(true);
         }
+        #endregion
     }
 }
