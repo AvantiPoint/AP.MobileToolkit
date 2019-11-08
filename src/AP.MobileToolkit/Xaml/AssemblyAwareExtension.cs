@@ -23,7 +23,7 @@ namespace AP.MobileToolkit.Xaml
             }
             else
             {
-                assembly = Assembly.LoadFrom(AssemblyName);
+                assembly = Assembly.Load(AssemblyName);
             }
 
             return ProvideValue(serviceProvider, assembly);
@@ -38,6 +38,11 @@ namespace AP.MobileToolkit.Xaml
             switch (value)
             {
                 case Page page:
+                    if (page.GetType().Namespace == "Xamarin.Forms" && page.Parent is MasterDetailPage mdp && mdp.Master == page)
+                    {
+                        return mdp.Master;
+                    }
+
                     return page;
                 case Element element:
                     return GetPage(element.Parent);
