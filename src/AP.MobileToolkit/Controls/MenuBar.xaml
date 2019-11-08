@@ -6,7 +6,7 @@
              x:Name="this"
              x:Class="AP.MobileToolkit.Controls.MenuBar">
     <BindableLayout.ItemTemplate>
-        <DataTemplate x:DataType="menu:MainMenuOption">
+        <DataTemplate>
             <Frame Padding="20,8">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigationCommand,Source={x:Reference this}}"
