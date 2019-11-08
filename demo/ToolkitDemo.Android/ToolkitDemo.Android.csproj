@@ -98,7 +98,7 @@
       <Name>AP.MobileToolkit</Name>
     </ProjectReference>
     <ProjectReference Include="..\ToolkitDemo\ToolkitDemo.csproj">
-      <Project>{A682884C-CB44-4A89-B752-27BB634E0ABE}</Project>
+      <Project>{B4D2C938-D3B6-4E86-AA03-004B1E20246D}</Project>
       <Name>ToolkitDemo</Name>
     </ProjectReference>
   </ItemGroup>

@@ -24,7 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\AP.MobileToolkit.Fonts.FontAwesome\AP.MobileToolkit.Fonts.FontAwesome.csproj" />
     <ProjectReference Include="..\..\src\AP.MobileToolkit.Http\AP.MobileToolkit.Http.csproj" />
     <ProjectReference Include="..\..\src\AP.MobileToolkit\AP.MobileToolkit.csproj" />
   </ItemGroup>
+
 </Project>
