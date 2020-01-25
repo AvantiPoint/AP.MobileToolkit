@@ -36,6 +36,8 @@ namespace AP.MobileToolkit.Controls
             set => SetValue(DefaultProperty, value);
         }
 
+        internal string CacheFileName => $"{GetMd5Hash(Email)}-{Size}.png";
+
         public async Task<byte[]> GetGravatarAsync()
         {
             using (var client = new HttpClient())
