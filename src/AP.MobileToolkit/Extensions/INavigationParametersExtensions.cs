@@ -8,7 +8,7 @@ namespace AP.MobileToolkit.Extensions
 {
     public static class INavigationParametersExtensions
     {
-        public static IDictionary<string, string> ToErrorParameters(this INavigationParameters navigationParameters, string uri, params (string key, object value)[] extraParameters)
+        public static IDictionary<string, string> ToErrorParameters(this INavigationParameters navigationParameters, string uri, params (string Key, object Value)[] extraParameters)
         {
             var dict = new Dictionary<string, string>();
 
@@ -37,7 +37,7 @@ namespace AP.MobileToolkit.Extensions
             return dict;
         }
 
-        public static IDictionary<string, string> ToErrorParameters(this INavigationParameters parameters, string uri, Exception ex, params (string key, object value)[] extraParameters)
+        public static IDictionary<string, string> ToErrorParameters(this INavigationParameters parameters, string uri, Exception ex, params (string Key, object Value)[] extraParameters)
         {
             var dict = parameters.ToErrorParameters(uri, extraParameters);
 
