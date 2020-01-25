@@ -50,9 +50,4 @@ namespace AP.MobileToolkit.Fonts
             return output.ToLower();
         }
     }
-
-    internal interface IEmbeddedFontLoader
-    {
-        (bool success, string filePath) LoadFont(FontFile font);
-    }
 }
