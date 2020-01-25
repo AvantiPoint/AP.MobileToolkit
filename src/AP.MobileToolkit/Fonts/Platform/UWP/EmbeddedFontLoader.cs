@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.IO;
 using AP.MobileToolkit.Fonts;
 using AP.MobileToolkit.Platform;
@@ -64,4 +64,4 @@ namespace AP.MobileToolkit.Platform
             return relativePath;
         }
     }
-}
+}*/

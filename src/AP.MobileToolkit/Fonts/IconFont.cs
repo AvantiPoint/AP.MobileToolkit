@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -27,7 +26,6 @@ namespace AP.MobileToolkit.Fonts
             FontName = fontName;
             Prefix = prefix;
             Icons = GetIcons(mappingClass);
-            HasLoadedFont = false;
             FontFile = FontFile.FromString(fontName);
             FontFile.Assembly = resolvingType.Assembly;
         }
@@ -35,8 +33,6 @@ namespace AP.MobileToolkit.Fonts
         public string FontName { get; }
 
         public string Prefix { get; }
-
-        internal bool HasLoadedFont { get; set; }
 
         internal FontFile FontFile { get; }
 

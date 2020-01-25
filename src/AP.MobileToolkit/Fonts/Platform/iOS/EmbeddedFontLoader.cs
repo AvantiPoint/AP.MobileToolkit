@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Text;
 using AP.MobileToolkit.Fonts;
@@ -36,4 +36,4 @@ namespace AP.MobileToolkit.Platform
             return (false, null);
         }
     }
-}
+}*/

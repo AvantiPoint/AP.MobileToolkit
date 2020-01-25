@@ -1,6 +1,4 @@
 ﻿using Foundation;
-using Prism;
-using Prism.Ioc;
 using UIKit;
 
 namespace ToolkitDemo.iOS
@@ -19,7 +17,6 @@ namespace ToolkitDemo.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

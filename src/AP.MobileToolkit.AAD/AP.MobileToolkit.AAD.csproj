@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Prism.Plugin.Logging.Abstractions" Version="7.2.0.616" />
-    <PackageReference Include="Microsoft.Identity.Client" Version="3.0.9" />
+    <PackageReference Include="Prism.Plugin.Logging.Abstractions" Version="7.2.0.700" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.7.1" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">

@@ -1,6 +1,6 @@
 ﻿namespace AP.MobileToolkit.Fonts.Mappings
 {
-    internal static class FontAwesomeSolid
+    public static class FontAwesomeSolid
     {
         public const string GlassMartini = "\uf000";
         public const string Music = "\uf001";
@@ -475,6 +475,8 @@
         public const string TicketAlt = "\uf3ff";
         public const string UserAlt = "\uf406";
         public const string WindowClose = "\uf410";
+        public const string CompressAlt = "\uf422";
+        public const string ExpandAlt = "\uf424";
         public const string BaseballBall = "\uf433";
         public const string BasketballBall = "\uf434";
         public const string BowlingBall = "\uf436";
@@ -553,7 +555,6 @@
         public const string TruckMoving = "\uf4df";
         public const string VideoSlash = "\uf4e2";
         public const string WineGlass = "\uf4e3";
-        public const string FontAwesomeLogoFull = "\uf4e6";
         public const string UserAltSlash = "\uf4fa";
         public const string UserAstronaut = "\uf4fb";
         public const string UserCheck = "\uf4fc";
@@ -786,7 +787,7 @@
         public const string FunnelDollar = "\uf662";
         public const string Gopuram = "\uf664";
         public const string Hamsa = "\uf665";
-        public const string Haykal = "\uf666";
+        public const string Bahai = "\uf666";
         public const string Jedi = "\uf669";
         public const string JournalWhills = "\uf66a";
         public const string Kaaba = "\uf66b";
@@ -963,5 +964,7 @@
         public const string HatCowboySide = "\uf8c1";
         public const string Mouse = "\uf8cc";
         public const string RecordVinyl = "\uf8d9";
+        public const string Caravan = "\uf8ff";
+        public const string Trailer = "\uf941";
     }
 }

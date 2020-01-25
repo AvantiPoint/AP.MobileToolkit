@@ -53,11 +53,6 @@ namespace AP.MobileToolkit.Fonts
                 return default;
             }
 
-            if (!font.HasLoadedFont)
-            {
-                DependencyService.Resolve<IEmbeddedFontLoader>().LoadFont(font.FontFile);
-            }
-
             return new IconInfo(font.FontName, font.FindIconForKey(iconName));
         }
 

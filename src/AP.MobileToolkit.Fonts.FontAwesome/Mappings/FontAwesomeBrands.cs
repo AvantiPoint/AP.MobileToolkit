@@ -1,6 +1,6 @@
-﻿namespace AP.MobileToolkit.Fonts.Mappings
+namespace AP.MobileToolkit.Fonts.Mappings
 {
-    internal static class FontAwesomeBrands
+    public static class FontAwesomeBrands
     {
         public const string TwitterSquare = "\uf081";
         public const string FacebookSquare = "\uf082";
@@ -335,7 +335,6 @@
         public const string Readme = "\uf4d5";
         public const string Java = "\uf4e4";
         public const string PiedPiperHat = "\uf4e5";
-        public const string FontAwesomeLogoFull = "\uf4e6";
         public const string CreativeCommonsBy = "\uf4e7";
         public const string CreativeCommonsNc = "\uf4e8";
         public const string CreativeCommonsNcEu = "\uf4e9";
@@ -437,5 +436,10 @@
         public const string Orcid = "\uf8d2";
         public const string Swift = "\uf8e1";
         public const string Umbraco = "\uf8e8";
+        public const string FirefoxBrowser = "\uf907";
+        public const string Ideal = "\uf913";
+        public const string Microblog = "\uf91a";
+        public const string PiedPiperSquare = "\uf91e";
+        public const string Unity = "\uf949";
     }
 }

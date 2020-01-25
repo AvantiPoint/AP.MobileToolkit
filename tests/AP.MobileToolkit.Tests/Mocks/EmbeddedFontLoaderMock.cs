@@ -1,5 +1,5 @@
 ﻿using AP.MobileToolkit.Fonts;
-
+/*
 namespace AP.MobileToolkit.Tests.Mocks
 {
     internal class EmbeddedFontLoaderMock : IEmbeddedFontLoader
@@ -9,4 +9,4 @@ namespace AP.MobileToolkit.Tests.Mocks
             return (true, font.FileNameWithExtension(".otf"));
         }
     }
-}
+}*/

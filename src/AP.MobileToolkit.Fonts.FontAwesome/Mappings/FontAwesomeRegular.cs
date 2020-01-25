@@ -1,6 +1,6 @@
 ﻿namespace AP.MobileToolkit.Fonts.Mappings
 {
-    internal static class FontAwesomeRegular
+    public static class FontAwesomeRegular
     {
         public const string Heart = "\uf004";
         public const string Star = "\uf005";
@@ -121,7 +121,6 @@
         public const string WindowClose = "\uf410";
         public const string CommentDots = "\uf4ad";
         public const string SmileWink = "\uf4da";
-        public const string FontAwesomeLogoFull = "\uf4e6";
         public const string Angry = "\uf556";
         public const string Dizzy = "\uf567";
         public const string Flushed = "\uf579";
