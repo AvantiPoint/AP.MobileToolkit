@@ -23,6 +23,7 @@ namespace AP.MobileToolkit.Tests.Tests.Xaml
         [InlineData("test-html5", TestFont.Html5)]
         [InlineData("test-3drotation", TestFont._3dRotation)]
         [InlineData("test-3d-rotation", TestFont._3dRotation)]
+        [InlineData("test-500px", TestFont.FiveHundredPx)]
         public void SetsTextAndFontFamily(string iconName, string expectedGlyph)
         {
             IconFontRegistry.Reset();
@@ -53,6 +54,8 @@ namespace AP.MobileToolkit.Tests.Tests.Xaml
 #pragma warning restore SA1310 // Field names should not contain underscore
             public const string Html5 = "\ue636";
             public const string _3dRotation = "\ue84d";
+            [IconName("500px")]
+            public const string FiveHundredPx = "\uf26e";
         }
     }
 }
