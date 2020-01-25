@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>Material icons are delightful, beautifully crafted symbols for common actions and items. This package builds on the AP.MobileToolkit to provide the Material icons as an easy to use plugin font with Xamarin.Forms embedded fonts.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="*.ttf" />
+    <ProjectReference Include="..\AP.MobileToolkit\AP.MobileToolkit.csproj" />
+  </ItemGroup>
+
+</Project>
