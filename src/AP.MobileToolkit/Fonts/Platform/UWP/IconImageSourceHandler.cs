@@ -22,7 +22,7 @@ namespace AP.MobileToolkit.Platform
 
         private WindowsImageSource LoadImage(ImageSource imagesource)
         {
-            if (!(imagesource is IconImageSource iconsource) || !IconFontRegistry.Instance.TryFindIconForKey(iconsource.Name, out var icon))
+            if (!(imagesource is IconImageSource iconsource) || !FontRegistry.HasFont(iconsource.Name, out var icon))
                 return null;
 
             var device = CanvasDevice.GetSharedDevice();
@@ -34,14 +34,15 @@ namespace AP.MobileToolkit.Platform
             {
                 var textFormat = new CanvasTextFormat
                 {
-                    FontFamily = icon.FontFamily,
+                    FontFamily = icon.FontFileName,
                     FontSize = (float)iconsource.Size,
                     HorizontalAlignment = CanvasHorizontalAlignment.Center,
                     Options = CanvasDrawTextOptions.Default,
                 };
 
                 var iconcolor = ToWindowsColor(iconsource.Color != Color.Default ? iconsource.Color : Color.White);
-                ds.DrawText(icon.Glyph, textFormat.FontSize / 2, 0, iconcolor, textFormat);
+                var glyph = icon.GetGlyph(iconsource.Name);
+                ds.DrawText(glyph, textFormat.FontSize / 2, 0, iconcolor, textFormat);
             }
 
             return canvas;

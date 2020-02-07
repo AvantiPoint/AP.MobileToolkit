@@ -21,7 +21,7 @@ namespace AP.MobileToolkit.Xaml
                 throw new ArgumentNullException("The IconGlyphExtension requires a ServiceProvider");
             }
 
-            if (IconFontRegistry.Instance.TryFindIconForKey(IconName, out var icon))
+            if(FontRegistry.HasFont(IconName, out var font))
             {
                 var provideValueTarget = serviceProvider.GetService(typeof(IProvideValueTarget)) as IProvideValueTarget;
                 var element = provideValueTarget.TargetObject;
@@ -32,8 +32,8 @@ namespace AP.MobileToolkit.Xaml
                     throw new NotSupportedException($"The target element {elementType.FullName} does not have a property for the FontFamily. This element is not supported for Icon Glyphs");
                 }
 
-                fontFamilyProperty.SetValue(element, icon.FontFamily);
-                return icon.Glyph;
+                fontFamilyProperty.SetValue(element, font.FontFileName);
+                return font.GetGlyph(IconName);
             }
 
             return "Unknown Icon";

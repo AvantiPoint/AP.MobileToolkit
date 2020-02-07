@@ -10,7 +10,5 @@ namespace AP.MobileToolkit.Fonts
         public const string Prefix = "material";
 
         public const string Version = "3.0.1";
-
-        public static readonly IconFont Font = new IconFont(FontName, Prefix, typeof(Mappings.MaterialIcons));
     }
 }

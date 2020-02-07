@@ -6,6 +6,8 @@ namespace AP.MobileToolkit.Fonts.Mappings
 {
     public static class DevIcons
     {
+        public const string FontFamily = Fonts.DevIcons.FontName;
+
         public const string BingSmall = "\ue600";
         public const string CssTricks = "\ue601";
         public const string Git = "\ue602";

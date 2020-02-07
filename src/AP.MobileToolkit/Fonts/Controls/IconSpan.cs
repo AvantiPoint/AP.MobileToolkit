@@ -9,11 +9,16 @@ namespace AP.MobileToolkit.Fonts.Controls
 
         private static void OnGlyphNameChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            if (bindable is IconSpan span)
+            if (bindable is IconSpan span && FontRegistry.HasFont(span.GlyphName, out var font))
             {
-                var icon = IconFontRegistry.Instance.FindIconForKey(span.GlyphName);
-                span.FontFamily = icon.FontFamily;
-                span.Text = icon.Glyph;
+                //var icon = IconFontRegistry.Instance.FindIconForKey(span.GlyphName);
+                span.FontFamily = font.FontFileName;
+                span.Text = font.GetGlyph(span.GlyphName);
+            }
+            else if(bindable is Span baseSpan)
+            {
+                baseSpan.FontFamily = null;
+                baseSpan.Text = null;
             }
         }
 

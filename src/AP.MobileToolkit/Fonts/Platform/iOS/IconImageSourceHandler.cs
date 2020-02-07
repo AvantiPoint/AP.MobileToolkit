@@ -21,15 +21,16 @@ namespace AP.MobileToolkit.Platform
         public Task<UIImage> LoadImageAsync(ImageSource imagesource, CancellationToken cancelationToken = default, float scale = 1)
         {
             UIImage image = null;
-            if (imagesource is IconImageSource iconsource && IconFontRegistry.Instance.TryFindIconForKey(iconsource.Name, out var icon))
+            if (imagesource is IconImageSource iconsource && FontRegistry.HasFont(iconsource.Name, out var icon))
             {
                 var iconcolor = iconsource.Color.IsDefault ? _defaultColor : iconsource.Color;
                 var imagesize = new SizeF((float)iconsource.Size, (float)iconsource.Size);
-                var font = UIFont.FromName(icon.FontFamily ?? string.Empty, (float)iconsource.Size) ??
+                var font = UIFont.FromName(icon.FontFileName ?? string.Empty, (float)iconsource.Size) ??
                     UIFont.SystemFontOfSize((float)iconsource.Size);
 
                 UIGraphics.BeginImageContextWithOptions(imagesize, false, 0f);
-                var attString = new NSAttributedString(icon.Glyph, font: font, foregroundColor: iconcolor.ToUIColor());
+                var glyph = icon.GetGlyph(iconsource.Name);
+                var attString = new NSAttributedString(glyph, font: font, foregroundColor: iconcolor.ToUIColor());
                 var ctx = new NSStringDrawingContext();
                 var boundingRect = attString.GetBoundingRect(imagesize, (NSStringDrawingOptions)0, ctx);
                 attString.DrawString(new RectangleF(

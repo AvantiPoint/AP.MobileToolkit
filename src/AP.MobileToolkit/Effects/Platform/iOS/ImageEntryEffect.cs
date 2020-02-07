@@ -22,7 +22,7 @@ namespace AP.MobileToolkit.Effects.Platform.iOS
         protected override async void OnAttached()
         {
             ImageSource source = null;
-            if (!string.IsNullOrWhiteSpace(Effect.Icon) && IconFontRegistry.Instance.TryFindIconForKey(Effect.Icon, out var _))
+            if (!string.IsNullOrWhiteSpace(Effect.Icon) && FontRegistry.HasFont(Effect.Icon, out var _))
             {
                 source = new IconImageSource
                 {

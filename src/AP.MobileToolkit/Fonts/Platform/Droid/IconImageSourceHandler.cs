@@ -26,7 +26,7 @@ namespace AP.MobileToolkit.Platform
         private Bitmap LoadImage(ImageSource imagesource, Context context)
         {
             Bitmap image = null;
-            if (imagesource is IconImageSource iconsource && IconFontRegistry.Instance.TryFindIconForKey(iconsource.Name, out var icon))
+            if (imagesource is IconImageSource iconsource && FontRegistry.HasFont(iconsource.Name, out var font))
             {
                 var paint = new Paint
                 {
@@ -36,15 +36,16 @@ namespace AP.MobileToolkit.Platform
                     AntiAlias = true,
                 };
 
-                using (var typeface = Typeface.CreateFromAsset(context.ApplicationContext.Assets, icon.FontFamily))
+                using (var typeface = Typeface.CreateFromAsset(context.ApplicationContext.Assets, font.FontFileName))
                     paint.SetTypeface(typeface);
 
-                var width = (int)(paint.MeasureText(icon.Glyph) + .5f);
+                var glyph = font.GetGlyph(iconsource.Name);
+                var width = (int)(paint.MeasureText(glyph) + .5f);
                 var baseline = (int)(-paint.Ascent() + .5f);
                 var height = (int)(baseline + paint.Descent() + .5f);
                 image = Bitmap.CreateBitmap(width, height, Bitmap.Config.Argb8888);
                 var canvas = new Canvas(image);
-                canvas.DrawText(icon.Glyph, 0, baseline, paint);
+                canvas.DrawText(glyph, 0, baseline, paint);
             }
 
             return image;

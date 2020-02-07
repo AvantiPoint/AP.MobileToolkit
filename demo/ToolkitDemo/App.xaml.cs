@@ -3,6 +3,7 @@ using AP.MobileToolkit.Fonts;
 using Prism;
 using Prism.Ioc;
 using Prism.Logging;
+using ToolkitDemo.Helpers;
 using ToolkitDemo.Services;
 using Xamarin.Essentials.Implementation;
 using Xamarin.Essentials.Interfaces;
@@ -29,10 +30,13 @@ namespace ToolkitDemo
         {
             InitializeComponent();
 
+            FontRegistry.RegisterFonts(FontAwesomeBrands.Font, FontAwesomeRegular.Font, FontAwesomeSolid.Font, DevIcons.Font);
+
             var result = await NavigationService.NavigateAsync("MainPage/NavigationPage/HomePage");
 
             if (!result.Success)
             {
+                MainPage = result.Exception.ToErrorPage();
                 System.Diagnostics.Debugger.Break();
             }
         }
@@ -40,6 +44,7 @@ namespace ToolkitDemo
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
+
             containerRegistry.Register<ILogger, ConsoleLoggingService>();
             containerRegistry.RegisterSingleton<IMenuService, MenuService>();
             containerRegistry.Register<IClipboard, ClipboardImplementation>();

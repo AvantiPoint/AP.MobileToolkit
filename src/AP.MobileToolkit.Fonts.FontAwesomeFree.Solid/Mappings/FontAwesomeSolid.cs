@@ -1,7 +1,13 @@
-﻿namespace AP.MobileToolkit.Fonts.Mappings
+﻿using Xamarin.Forms;
+
+[assembly: XmlnsPrefix("http://avantipoint.com/schemas/xaml", "ap")]
+[assembly: XmlnsDefinition("http://avantipoint.com/schemas/xaml", "AP.MobileToolkit.Fonts.Mappings")]
+namespace AP.MobileToolkit.Fonts.Mappings
 {
     public static class FontAwesomeSolid
     {
+        public const string FontFamily = Fonts.FontAwesomeSolid.FontName;
+
         public const string GlassMartini = "\uf000";
         public const string Music = "\uf001";
         public const string Search = "\uf002";

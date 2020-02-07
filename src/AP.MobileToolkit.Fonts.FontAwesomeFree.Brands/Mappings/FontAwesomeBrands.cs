@@ -1,7 +1,13 @@
+﻿using Xamarin.Forms;
+
+[assembly: XmlnsPrefix("http://avantipoint.com/schemas/xaml", "ap")]
+[assembly: XmlnsDefinition("http://avantipoint.com/schemas/xaml", "AP.MobileToolkit.Fonts.Mappings")]
 namespace AP.MobileToolkit.Fonts.Mappings
 {
     public static class FontAwesomeBrands
     {
+        public const string FontFamily = Fonts.FontAwesomeBrands.FontName;
+
         public const string TwitterSquare = "\uf081";
         public const string FacebookSquare = "\uf082";
         public const string Linkedin = "\uf08c";
@@ -126,8 +132,7 @@ namespace AP.MobileToolkit.Fonts.Mappings
         public const string Opera = "\uf26a";
         public const string InternetExplorer = "\uf26b";
         public const string Contao = "\uf26d";
-        [IconName("500px")]
-        public const string FiveHundredpx = "\uf26e";
+        public const string _500px = "\uf26e";
         public const string Amazon = "\uf270";
         public const string Houzz = "\uf27c";
         public const string VimeoV = "\uf27d";

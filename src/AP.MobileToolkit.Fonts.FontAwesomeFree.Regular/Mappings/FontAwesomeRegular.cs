@@ -1,7 +1,13 @@
-﻿namespace AP.MobileToolkit.Fonts.Mappings
+﻿using Xamarin.Forms;
+
+[assembly: XmlnsPrefix("http://avantipoint.com/schemas/xaml", "ap")]
+[assembly: XmlnsDefinition("http://avantipoint.com/schemas/xaml", "AP.MobileToolkit.Fonts.Mappings")]
+namespace AP.MobileToolkit.Fonts.Mappings
 {
     public static class FontAwesomeRegular
     {
+        public const string FontFamily = Fonts.FontAwesomeRegular.FontName;
+
         public const string Heart = "\uf004";
         public const string Star = "\uf005";
         public const string User = "\uf007";
