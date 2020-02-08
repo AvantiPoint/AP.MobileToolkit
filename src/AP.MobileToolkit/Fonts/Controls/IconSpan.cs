@@ -11,11 +11,10 @@ namespace AP.MobileToolkit.Fonts.Controls
         {
             if (bindable is IconSpan span && FontRegistry.HasFont(span.GlyphName, out var font))
             {
-                //var icon = IconFontRegistry.Instance.FindIconForKey(span.GlyphName);
                 span.FontFamily = font.FontFileName;
                 span.Text = font.GetGlyph(span.GlyphName);
             }
-            else if(bindable is Span baseSpan)
+            else if (bindable is Span baseSpan)
             {
                 baseSpan.FontFamily = null;
                 baseSpan.Text = null;

@@ -12,7 +12,7 @@ namespace AP.MobileToolkit.Fonts.StyleSheets
     /// doubt this will pass all the same tests as YUI compressor
     /// or some other tool
     /// </summary>
-    internal partial class CssParser : ICssParser //List<KeyValuePair<string, List<KeyValuePair<string, string>>>>, ICSSParser
+    internal partial class CssParser : ICssParser
     {
         private const string SelectorKey = "selector";
         private const string NameKey = "name";
@@ -27,17 +27,15 @@ namespace AP.MobileToolkit.Fonts.StyleSheets
         private Dictionary<string, Dictionary<string, string>> classes;
         private Dictionary<string, Dictionary<string, string>> elements;
 
-
-
         /// <summary>
-        /// Original Style Sheet loaded
+        /// Gets or Sets Original Style Sheet loaded
         /// </summary>
         public string StyleSheet
         {
             get => stylesheet;
             set
             {
-                //If the style sheet changes we will clean out any dependant data
+                // If the style sheet changes we will clean out any dependant data
                 stylesheet = value;
                 Clear();
             }
@@ -54,10 +52,10 @@ namespace AP.MobileToolkit.Fonts.StyleSheets
         /// <summary>
         /// Initializes a new instance of the <see cref="CascadingStyleSheet"/> class.
         /// </summary>
-        /// <param name="CascadingStyleSheet">The cascading style sheet.</param>
-        public CssParser(string CascadingStyleSheet)
+        /// <param name="cascadingStyleSheet">The cascading style sheet.</param>
+        public CssParser(string cascadingStyleSheet)
         {
-            Read(CascadingStyleSheet);
+            Read(cascadingStyleSheet);
         }
 
         /// <summary>
@@ -81,11 +79,11 @@ namespace AP.MobileToolkit.Fonts.StyleSheets
 
             if (!string.IsNullOrEmpty(cascadingStyleSheet))
             {
-                //Remove comments before parsing the CSS. Don't want any comments in the collection. Don't know how iTextSharp would react to CSS Comments
-                MatchCollection MatchList = rStyles.Matches(Regex.Replace(cascadingStyleSheet, RegularExpressionLibrary.CSSComments, string.Empty));
-                foreach (Match item in MatchList)
+                // Remove comments before parsing the CSS. Don't want any comments in the collection. Don't know how iTextSharp would react to CSS Comments
+                var matchList = rStyles.Matches(Regex.Replace(cascadingStyleSheet, RegularExpressionLibrary.CSSComments, string.Empty));
+                foreach (Match item in matchList)
                 {
-                    //Check for nulls
+                    // Check for nulls
                     if (item != null && item.Groups != null && item.Groups[SelectorKey] != null && item.Groups[SelectorKey].Captures != null && item.Groups[SelectorKey].Captures[0] != null && !string.IsNullOrEmpty(item.Groups[SelectorKey].Value))
                     {
                         string strSelector = item.Groups[SelectorKey].Captures[0].Value.Trim();
@@ -95,12 +93,14 @@ namespace AP.MobileToolkit.Fonts.StyleSheets
                         {
                             string className = item.Groups[NameKey].Captures[i].Value;
                             string value = item.Groups[ValueKey].Captures[i].Value;
-                            //Check for null values in the properies
+
+                            // Check for null values in the properies
                             if (!string.IsNullOrEmpty(className) && !string.IsNullOrEmpty(value))
                             {
                                 className = className.TrimWhiteSpace();
                                 value = value.TrimWhiteSpace();
-                                //One more check to be sure we are only pulling valid css values
+
+                                // One more check to be sure we are only pulling valid css values
                                 if (!string.IsNullOrEmpty(className) && !string.IsNullOrEmpty(value))
                                 {
                                     style.Add(new KeyValuePair<string, string>(className, value));
@@ -176,7 +176,7 @@ namespace AP.MobileToolkit.Fonts.StyleSheets
         /// </returns>
         public override string ToString()
         {
-            StringBuilder strb = new StringBuilder(this.StyleSheet.Length);
+            var strb = new StringBuilder(StyleSheet.Length);
             foreach (var item in Styles)
             {
                 strb.Append(item.SelectorText).Append("{");
@@ -187,8 +187,6 @@ namespace AP.MobileToolkit.Fonts.StyleSheets
                 strb.Append("}");
             }
 
-
-
             return strb.ToString();
         }
 
@@ -196,7 +194,7 @@ namespace AP.MobileToolkit.Fonts.StyleSheets
         /// Returns a hash code for this instance.
         /// </summary>
         /// <returns>
-        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
         /// </returns>
         public override int GetHashCode()
         {
@@ -225,8 +223,12 @@ namespace AP.MobileToolkit.Fonts.StyleSheets
                 return false;
             }
 
-            CssParser o = obj as CssParser;
-            return this.StyleSheet.Equals(o.StyleSheet);
+            if (obj is CssParser parser)
+            {
+                return StyleSheet.Equals(parser.StyleSheet);
+            }
+
+            return false;
         }
     }
 }

@@ -7,6 +7,7 @@ namespace AP.MobileToolkit.Fonts
 {
     public class EmbeddedWebFont : EmbeddedFontBase
     {
+        private readonly Dictionary<string, string> _glyphs;
         private ICssParser _cssParser;
 
         public EmbeddedWebFont(string fontFileName, string alias, string cssFileName, Type resolvingType)
@@ -22,8 +23,6 @@ namespace AP.MobileToolkit.Fonts
         }
 
         private string CssFileName { get; }
-
-        private Dictionary<string, string> _glyphs { get; }
 
         public override string GetGlyph(string name)
         {

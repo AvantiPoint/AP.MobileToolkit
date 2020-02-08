@@ -18,7 +18,7 @@ namespace AP.MobileToolkit.Fonts.StyleSheets
     internal interface ICssParser
     {
         /// <summary>
-        /// Original Style Sheet loaded
+        /// Gets or Sets Original Style Sheet loaded
         /// </summary>
         string StyleSheet { get; set; }
 
@@ -26,7 +26,6 @@ namespace AP.MobileToolkit.Fonts.StyleSheets
         /// Gets all styles in an Immutable collection
         /// </summary>
         ICssStyleSheet Styles { get; }
-        //IEnumerable<KeyValuePair<string, List<KeyValuePair<string, string>>>> Styles { get; }
 
         /// <summary>
         /// Gets the CSS classes.
@@ -46,8 +45,8 @@ namespace AP.MobileToolkit.Fonts.StyleSheets
         /// <summary>
         /// Reads the specified cascading style sheet.
         /// </summary>
-        /// <param name="CascadingStyleSheet">The cascading style sheet.</param>
-        void Read(string CascadingStyleSheet);
+        /// <param name="cascadingStyleSheet">The cascading style sheet.</param>
+        void Read(string cascadingStyleSheet);
 
         /// <summary>
         /// Reads the CSS file.

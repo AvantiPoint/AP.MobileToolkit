@@ -37,7 +37,7 @@ namespace AP.MobileToolkit.Fonts.StyleSheets
             parser.ReadCSSFile(resourceName, resolvingType.Assembly);
 
         /// <summary>
-        /// 
+        /// Reads a css file from a given assembly
         /// </summary>
         /// <param name="parser">The <see cref="ICssParser"/> instance</param>
         /// <param name="resourceName">The CSS file name 'sample.css' or 'sample.min.css'</param>

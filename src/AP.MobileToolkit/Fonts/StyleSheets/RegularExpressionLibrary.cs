@@ -28,7 +28,6 @@
         /// <remarks>http://xyfer.blogspot.com/2005/01/javascript-regexp-email-validator.html</remarks>
         public const string EmailPattern = @"^((""[\w-\s]+"")|([\w-]+(?:\.[\w-]+)*)|(""[\w-\s]+"")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-zA-Z]{2,6}(?:\.[a-zA-Z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)";
 
-        //@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|edu|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)\b";
         /// <summary>
         /// Use this Regular Expression to test if an email is in proper format
         /// Set Regular Expression to Case Insensitive
@@ -39,7 +38,7 @@
 
         /// <summary>
         /// Standard Public Url and Some Intranet Urls.
-        /// Will match 
+        /// Will match
         /// </summary>
         public const string URLPattern = @"^((ht|f)tp(s?)\:\/\/|~/|/)?([\w]+:\w+@)?(([a-zA-Z]{1}([\w\-]+\.)+([\w]{2,5}))|([a-zA-Z]{1}([\w\-]+[^\.])+([\w]{2,5})))(:[\d]{1,5})?|((^(25[0-5]|(2[0-4])\d|[0-1]?\d?\d)(\.(25[0-5]|2[0-4]\d|[0-1]?\d?\d)){3}))((/?\w+/)+|/?)(\w+\.[\w]{3,4})?((\?\w+(=\w+)?)(&\w+(=\w+)?)*)?";
 

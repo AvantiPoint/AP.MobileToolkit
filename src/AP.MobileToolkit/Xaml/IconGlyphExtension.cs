@@ -21,7 +21,7 @@ namespace AP.MobileToolkit.Xaml
                 throw new ArgumentNullException("The IconGlyphExtension requires a ServiceProvider");
             }
 
-            if(FontRegistry.HasFont(IconName, out var font))
+            if (FontRegistry.HasFont(IconName, out var font))
             {
                 var provideValueTarget = serviceProvider.GetService(typeof(IProvideValueTarget)) as IProvideValueTarget;
                 var element = provideValueTarget.TargetObject;

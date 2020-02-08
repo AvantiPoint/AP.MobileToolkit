@@ -49,7 +49,7 @@
     <Rule Id="SA1113" Action="Warning" />
     <Rule Id="SA1114" Action="Warning" />
     <Rule Id="SA1115" Action="Warning" />
-    <Rule Id="SA1116" Action="Warning" />
+    <Rule Id="SA1116" Action="None" />
     <Rule Id="SA1117" Action="Warning" />
     <Rule Id="SA1118" Action="Warning" />
     <Rule Id="SA1119" Action="Warning" />
@@ -72,7 +72,7 @@
     <Rule Id="SA1136" Action="Warning" />
     <Rule Id="SA1137" Action="Warning" />
     <Rule Id="SA1139" Action="Warning" />
-    <Rule Id="SA1200" Action="Warning" />
+    <Rule Id="SA1200" Action="None" />
     <Rule Id="SA1201" Action="None" />
     <Rule Id="SA1202" Action="None" />
     <Rule Id="SA1203" Action="Warning" />
@@ -95,7 +95,6 @@
     <Rule Id="SA1302" Action="Warning" />
     <Rule Id="SA1303" Action="None" />
     <Rule Id="SA1304" Action="Warning" />
-    <Rule Id="SA1305" Action="None" />
     <Rule Id="SA1306" Action="Warning" />
     <Rule Id="SA1307" Action="Warning" />
     <Rule Id="SA1308" Action="Warning" />
@@ -117,7 +116,6 @@
     <Rule Id="SA1409" Action="Warning" />
     <Rule Id="SA1410" Action="Warning" />
     <Rule Id="SA1411" Action="Warning" />
-    <Rule Id="SA1412" Action="None" />
     <Rule Id="SA1413" Action="None" />
     <Rule Id="SA1500" Action="Warning" />
     <Rule Id="SA1501" Action="Warning" />
@@ -149,7 +147,6 @@
     <Rule Id="SA1606" Action="None" />
     <Rule Id="SA1607" Action="None" />
     <Rule Id="SA1608" Action="None" />
-    <Rule Id="SA1609" Action="None" />
     <Rule Id="SA1610" Action="None" />
     <Rule Id="SA1611" Action="None" />
     <Rule Id="SA1612" Action="None" />
@@ -179,7 +176,6 @@
     <Rule Id="SA1636" Action="None" />
     <Rule Id="SA1637" Action="None" />
     <Rule Id="SA1638" Action="None" />
-    <Rule Id="SA1639" Action="None" />
     <Rule Id="SA1640" Action="None" />
     <Rule Id="SA1641" Action="None" />
     <Rule Id="SA1642" Action="None" />
@@ -194,8 +190,6 @@
     <Rule Id="SA1651" Action="None" />
     <Rule Id="SA1652" Action="None" />
     <Rule Id="SX1101" Action="Warning" />
-    <Rule Id="SX1309" Action="None" />
-    <Rule Id="SX1309S" Action="None" />
     <Rule Id="xUnit1026" Action="None" />
   </Rules>
 </RuleSet>

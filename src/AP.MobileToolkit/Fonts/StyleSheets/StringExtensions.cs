@@ -6,7 +6,7 @@
     internal static partial class StringExtensions
     {
         /// <summary>
-        /// Trims whitespaces including non printing 
+        /// Trims whitespaces including non printing
         /// whitespaces like carriage returns, line feeds,
         /// and form feeds
         /// </summary>
