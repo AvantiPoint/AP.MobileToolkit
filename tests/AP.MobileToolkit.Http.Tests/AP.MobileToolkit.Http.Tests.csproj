@@ -8,8 +8,8 @@
 
   <ItemGroup>
     <Compile Include="../AP.MobileToolkit.Tests/Mocks/Device/*.cs" Link="Mocks/Device/%(Filename)%(Extension)" />
-    <Compile Include="../AP.MobileToolkit.Tests/Mocks/XunitLogger.cs" Link="Mocks/%(Filename)%(Extension)" />
-    <Compile Include="../AP.MobileToolkit.Tests/Tests/TestBase.cs" Link="Tests/%(Filename)%(Extension)" />
+    <Compile Include="../AP.MobileToolkit.Tests/Mocks/XunitLogger.cs" Link="Mocks\XunitLogger.cs" />
+    <Compile Include="../AP.MobileToolkit.Tests/Tests/TestBase.cs" Link="Tests\TestBase.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,4 +28,12 @@
     <ProjectReference Include="..\..\src\AP.MobileToolkit.Http\AP.MobileToolkit.Http.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="..\AP.MobileToolkit.Tests\Mocks\Device\MockAppInfo.cs">
+      <Link>Mocks\Device\MockAppInfo.cs</Link>
+    </Compile>
+    <Compile Update="..\AP.MobileToolkit.Tests\Mocks\Device\MockDeviceInfo.cs">
+      <Link>Mocks\Device\MockDeviceInfo.cs</Link>
+    </Compile>
+  </ItemGroup>
 </Project>
