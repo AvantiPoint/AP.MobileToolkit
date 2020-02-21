@@ -1,13 +1,17 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras" ToolsVersion="16.0">
+﻿<Project Sdk="MSBuild.Sdk.Extras">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;MonoAndroid90</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid90;MonoAndroid10.0</TargetFrameworks>
     <Description>Provides a basic set of abstractions around making Azure Active Directory easy to use</Description>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Prism.Plugin.Logging.Abstractions" Version="7.2.0.700" />
     <PackageReference Include="Microsoft.Identity.Client" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
+    <PackageReference Include="Xamarin.Essentials" Version="1.4.0" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">

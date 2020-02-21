@@ -62,7 +62,13 @@ namespace AP.MobileToolkit.Effects.Platform.Droid
             }
 
             editText.CompoundDrawablePadding = 25;
+
+#if MONOANDROID10_0
+            var colorFilter = new BlendModeColorFilter(Effect.LineColor.ToAndroid(), BlendMode.SrcAtop);
+            Control.Background.SetColorFilter(colorFilter);
+#else
             Control.Background.SetColorFilter(Effect.LineColor.ToAndroid(), PorterDuff.Mode.SrcAtop);
+#endif
         }
     }
 }

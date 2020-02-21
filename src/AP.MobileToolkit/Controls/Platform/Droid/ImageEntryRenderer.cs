@@ -42,7 +42,13 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
                 }
             }
             editText.CompoundDrawablePadding = 25;
+
+#if MONOANDROID10_0
+            var colorFilter = new BlendModeColorFilter(element.LineColor.ToAndroid(), BlendMode.SrcAtop);
+            Control.Background.SetColorFilter(colorFilter);
+#else
             Control.Background.SetColorFilter(element.LineColor.ToAndroid(), PorterDuff.Mode.SrcAtop);
+#endif
         }
 
         private BitmapDrawable GetDrawable(string imageEntryImage)
