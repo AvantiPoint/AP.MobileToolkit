@@ -1,4 +1,5 @@
 ﻿using System;
+using Xamarin.Essentials;
 using Xamarin.Essentials.Interfaces;
 
 namespace AP.MobileToolkit.Tests.Mocks
@@ -14,6 +15,8 @@ namespace AP.MobileToolkit.Tests.Mocks
         public Version Version => typeof(IAppInfo).Assembly.GetName().Version;
 
         public string BuildString => Version.Build.ToString();
+
+        public AppTheme RequestedTheme { get; set; } = AppTheme.Light;
 
         public void ShowSettingsUI()
         {
