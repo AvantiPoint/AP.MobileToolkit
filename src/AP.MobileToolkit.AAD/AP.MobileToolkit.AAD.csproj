@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Prism.Plugin.Logging.Abstractions" Version="7.2.0.700" />
+    <PackageReference Include="Prism.Plugin.Logging.Abstractions" Version="7.2.0.1053" />
     <PackageReference Include="Microsoft.Identity.Client" Version="4.11.0" />
   </ItemGroup>
 
