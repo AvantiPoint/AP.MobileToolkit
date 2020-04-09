@@ -1,7 +1,11 @@
 ﻿using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
+#if MONOANDROID90
 using Android.Support.V4.Content;
+#else
+using AndroidX.Core.Content;
+#endif
 using AP.MobileToolkit.Controls;
 using AP.MobileToolkit.Controls.Platform.Droid;
 using Xamarin.Forms;
@@ -43,11 +47,11 @@ namespace AP.MobileToolkit.Controls.Platform.Droid
             }
             editText.CompoundDrawablePadding = 25;
 
-#if MONOANDROID10_0
+#if MONOANDROID90
+            Control.Background.SetColorFilter(element.LineColor.ToAndroid(), PorterDuff.Mode.SrcAtop);
+#else
             var colorFilter = new BlendModeColorFilter(element.LineColor.ToAndroid(), BlendMode.SrcAtop);
             Control.Background.SetColorFilter(colorFilter);
-#else
-            Control.Background.SetColorFilter(element.LineColor.ToAndroid(), PorterDuff.Mode.SrcAtop);
 #endif
         }
 

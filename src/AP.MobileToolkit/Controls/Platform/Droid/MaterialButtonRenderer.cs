@@ -1,6 +1,10 @@
 ﻿using System.ComponentModel;
 using Android.Content;
+#if MONOANDROID90
 using Android.Support.V4.View;
+#else
+using AndroidX.Core.View;
+#endif
 using AP.MobileToolkit.Controls;
 using AP.MobileToolkit.Controls.Platform.Droid;
 using Xamarin.Forms;
