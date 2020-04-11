@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Subjects;
 using System.Threading.Tasks;
 using Microsoft.Identity.Client;
-using Prism.Logging;
-#if __ANDROID__
-using Plugin.CurrentActivity;
-#endif
 
 namespace AP.MobileToolkit.AAD
 {
@@ -14,89 +11,85 @@ namespace AP.MobileToolkit.AAD
     {
         private IPublicClientApplication AuthClient { get; }
 
-        private IAuthenticationOptions Options { get; }
+        private IAuthConfiguration Config { get; }
 
-        private ILogger Logger { get; }
+        private readonly Subject<string> _accessToken;
 
-#if __ANDROID__
-        private ICurrentActivity CurrentActivity { get; }
+        private readonly Subject<AuthenticationResult> _authResult;
 
-        public AuthenticationService(IAuthenticationOptions authenticationOptions, ILogger logger, IPublicClientApplication publicClientApplication)
+        public AuthenticationService(IAuthConfiguration config, IPublicClientApplication publicClientApplication)
         {
-            Options = authenticationOptions;
-            Logger = logger;
+            _accessToken = new Subject<string>();
+            _authResult = new Subject<AuthenticationResult>();
+            Config = config;
             AuthClient = publicClientApplication;
         }
-#else
-        public AuthenticationService(IAuthenticationOptions authenticationOptions, ILogger logger, IPublicClientApplication publicClientApplication)
-        {
-            Options = authenticationOptions;
-            Logger = logger;
-            AuthClient = publicClientApplication;
-        }
-#endif
+
+        public IObservable<string> AccessToken => _accessToken;
+
+        public IObservable<AuthenticationResult> AuthenticationResult => _authResult;
 
         public Task<IEnumerable<IAccount>> GetAccountsAsync() => AuthClient.GetAccountsAsync();
 
-        public Task<AuthenticationResult> LoginAsync() => LoginAsync(Options.DefaultPolicy);
+        public Task<IMsalResult> LoginAsync() => LoginAsync(Config.Policy);
 
-        public async Task<AuthenticationResult> LoginAsync(string policy)
+        public async Task<IMsalResult> LoginAsync(string policy)
         {
-            AuthenticationResult result;
             try
             {
-                result = await SilentLoginAsync(policy);
+                var result = await SilentLoginAsync(policy);
 
-                if (result != null)
+                if (result.Success)
                     return result;
 
-                result = await AuthClient.AcquireTokenInteractive(Options.Scopes)
-                                         .WithB2CAuthority(Options.GetB2CAuthority(policy))
-                                         .WithUseEmbeddedWebView(true)
+                var builder = AuthClient.AcquireTokenInteractive(Config.Scopes)
 #if __ANDROID__
-                                         .WithParentActivityOrWindow(CurrentActivity.Activity)
+                                         .WithParentActivityOrWindow(Xamarin.Essentials.Platform.CurrentActivity)
 #endif
-                                         .ExecuteAsync();
-            }
-            catch (MsalException msal)
-            {
-                if (msal.ErrorCode != MsalError.AuthenticationCanceledError && msal.ErrorCode != MsalError.PasswordRequiredForManagedUserError)
+
+                             .WithUseEmbeddedWebView(true);
+                if (Config.IsB2C)
                 {
-                    LogException(msal, "LoginAsync", policy);
+                    builder = builder.WithB2CAuthority(Config.GetB2CAuthority(policy));
                 }
 
-                throw;
+                var authResult = await builder.ExecuteAsync();
+                _authResult.OnNext(authResult);
+                _accessToken.OnNext(authResult.AccessToken);
+                return new MsalResult(authResult);
             }
             catch (Exception ex)
             {
-                LogException(ex, "LoginAsync", policy);
-                throw;
+                return new MsalResult(ex);
             }
-
-            return result;
         }
 
-        public Task<AuthenticationResult> SilentLoginAsync() => SilentLoginAsync(Options.DefaultPolicy);
+        public Task<IMsalResult> SilentLoginAsync() => SilentLoginAsync(Config.Policy);
 
-        public async Task<AuthenticationResult> SilentLoginAsync(string policy)
+        public async Task<IMsalResult> SilentLoginAsync(string policy)
         {
-            AuthenticationResult result = null;
-
             try
             {
                 var accounts = await AuthClient.GetAccountsAsync();
 
-                result = await AuthClient.AcquireTokenSilent(Options.Scopes, accounts.FirstOrDefault())
-                                         .WithB2CAuthority(Options.GetB2CAuthority(policy))
-                                         .WithForceRefresh(true)
-                                         .ExecuteAsync();
+                var builder = AuthClient.AcquireTokenSilent(Config.Scopes, accounts.FirstOrDefault());
+
+                if (Config.IsB2C)
+                {
+                    builder.WithB2CAuthority(Config.GetB2CAuthority(policy));
+                }
+
+                var authResult = await builder.WithForceRefresh(true)
+                                    .ExecuteAsync();
+
+                _authResult.OnNext(authResult);
+                _accessToken.OnNext(authResult.AccessToken);
+                return new MsalResult(authResult);
             }
             catch (Exception ex)
             {
-                LogException(ex, "SilentLoginAsync", policy);
+                return new MsalResult(ex);
             }
-
-            return result;
         }
 
         public async Task<bool> IsLoggedInAsync()
@@ -112,32 +105,78 @@ namespace AP.MobileToolkit.AAD
             {
                 await AuthClient.RemoveAsync(account);
             }
+
+            _accessToken.OnNext(null);
+            _authResult.OnNext(null);
         }
 
         public Task<IAccount> GetAccountAsync(string identifier) =>
             AuthClient.GetAccountAsync(identifier);
 
-        private void LogException(Exception ex, string callingMethod, string policy)
+        public async Task<IMsalResult> EditProfileAsync(string policy)
         {
-            if (ex is MsalException msal)
+            if (!Config.IsB2C)
+                throw new NotSupportedException("This function is only supported for Azure Active Directory B2C");
+
+            try
             {
-                Logger.Report(msal, msal.GetExceptionInfo(new Dictionary<string, string>
-                {
-                    { "AuthServiceType", GetType().FullName },
-                    { "Method", callingMethod },
-                    { "Policy", policy }
-                }));
+                var authResult = await AcquireTokenInteractive(policy);
+
+                _authResult.OnNext(authResult);
+                _accessToken.OnNext(authResult.AccessToken);
+                return new MsalResult(authResult);
             }
-            else
+            catch (Exception ex)
             {
-                Logger.Report(ex, new Dictionary<string, string>
-                {
-                    { "AuthServiceType", GetType().FullName },
-                    { "Method", callingMethod },
-                    { "Policy", policy }
-                });
-                Console.WriteLine($"*** UNIDENTIFIED ERROR:\n {ex}");
+                return new MsalResult(ex);
             }
+        }
+
+        public async Task<IMsalResult> PasswordResetAsync(string policy)
+        {
+            if (!Config.IsB2C)
+                throw new NotSupportedException("This function is only supported for Azure Active Directory B2C");
+
+            try
+            {
+                var authResult = await AcquireTokenInteractive(policy);
+
+                _authResult.OnNext(authResult);
+                _accessToken.OnNext(authResult.AccessToken);
+                return new MsalResult(authResult);
+            }
+            catch (Exception ex)
+            {
+                return new MsalResult(ex);
+            }
+        }
+
+        private async Task<AuthenticationResult> AcquireTokenInteractive(string policy)
+        {
+            IEnumerable<IAccount> accounts = await AuthClient.GetAccountsAsync();
+            var account = GetAccountByPolicy(accounts, policy);
+            var builder = AuthClient.AcquireTokenInteractive(Config.Scopes)
+                                    .WithAccount(account)
+#if __ANDROID__
+                                    .WithParentActivityOrWindow(Xamarin.Essentials.Platform.CurrentActivity)
+#endif
+
+                                    .WithUseEmbeddedWebView(true)
+                                    .WithAuthority(Config.GetB2CAuthority(policy));
+
+            return await builder.ExecuteAsync();
+        }
+
+        private IAccount GetAccountByPolicy(IEnumerable<IAccount> accounts, string policy)
+        {
+            foreach (var account in accounts)
+            {
+                string userIdentifier = account.HomeAccountId.ObjectId.Split('.')[0];
+                if (userIdentifier.EndsWith(policy.ToLower()))
+                    return account;
+            }
+
+            return null;
         }
     }
 }

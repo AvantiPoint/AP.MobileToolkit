@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Identity.Client;
 
@@ -6,13 +7,21 @@ namespace AP.MobileToolkit.AAD
 {
     public interface IAuthenticationService
     {
-        Task<AuthenticationResult> LoginAsync();
+        IObservable<string> AccessToken { get; }
 
-        Task<AuthenticationResult> LoginAsync(string policy);
+        IObservable<AuthenticationResult> AuthenticationResult { get; }
 
-        Task<AuthenticationResult> SilentLoginAsync();
+        Task<IMsalResult> LoginAsync();
 
-        Task<AuthenticationResult> SilentLoginAsync(string policy);
+        Task<IMsalResult> LoginAsync(string policy);
+
+        Task<IMsalResult> SilentLoginAsync();
+
+        Task<IMsalResult> SilentLoginAsync(string policy);
+
+        Task<IMsalResult> EditProfileAsync(string policy);
+
+        Task<IMsalResult> PasswordResetAsync(string policy);
 
         Task<bool> IsLoggedInAsync();
 
