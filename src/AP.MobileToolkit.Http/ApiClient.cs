@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Prism.Logging;
 using Xamarin.Essentials.Interfaces;
@@ -28,7 +29,8 @@ namespace AP.MobileToolkit.Http
             {
                 NoCache = true
             };
-            var agentHeader = ProductHeaderValue.Parse($"{AppInfo.Name}/{AppInfo.VersionString}");
+            var appName = Regex.Replace(AppInfo.Name, @"\s", string.Empty);
+            var agentHeader = ProductHeaderValue.Parse($"{appName}/{AppInfo.VersionString}");
             client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue(agentHeader));
             client.DefaultRequestHeaders.Add("X-MobileAppVer", AppInfo.VersionString);
             client.DefaultRequestHeaders.Add("X-DeviceModel", DeviceInfo.Model);
