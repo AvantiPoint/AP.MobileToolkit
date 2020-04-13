@@ -84,13 +84,17 @@ namespace AP.MobileToolkit.Http
         {
         }
 
-        protected virtual HttpClient CreateClient()
+        protected virtual HttpMessageHandler CreateHandler(HttpMessageHandler innerHandler) => innerHandler;
+
+        private HttpClient CreateClient()
         {
             var authenticationMessageHandler = new AuthenticationMessageHandler(AuthenticationHandler)
             {
                 InnerHandler = new RetryRequestDelegateHandler()
             };
-            var client = new HttpClient(authenticationMessageHandler)
+
+            var handler = CreateHandler(authenticationMessageHandler);
+            var client = new HttpClient(handler)
             {
                 BaseAddress = new Uri(Options.BaseUri)
             };
