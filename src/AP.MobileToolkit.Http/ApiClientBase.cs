@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 using AP.CrossPlatform.Auth;
@@ -8,10 +9,8 @@ using Prism.Logging;
 
 namespace AP.MobileToolkit.Http
 {
-    public abstract class ApiClientBase : IApiClient
+    public abstract class ApiClientBase : IApiClient, IAuthenticationHandler
     {
-        protected IAuthenticationHandler AuthenticationHandler { get; }
-
         protected IApiClientOptions Options { get; }
 
         protected ILogger Logger { get; }
@@ -33,10 +32,9 @@ namespace AP.MobileToolkit.Http
             }
         }
 
-        public ApiClientBase(IApiClientOptions options, IAuthenticationHandler authenticationHandler, ILogger logger)
+        public ApiClientBase(IApiClientOptions options, ILogger logger)
         {
             InstallId = options.InstallId;
-            AuthenticationHandler = authenticationHandler;
             Options = options;
             Logger = logger;
         }
@@ -70,7 +68,7 @@ namespace AP.MobileToolkit.Http
         {
             try
             {
-                var token = await AuthenticationHandler.GetTokenAsync().ConfigureAwait(false);
+                var token = await GetTokenAsync().ConfigureAwait(false);
                 return new JwtUser(token);
             }
             catch (Exception ex)
@@ -88,7 +86,7 @@ namespace AP.MobileToolkit.Http
 
         private HttpClient CreateClient()
         {
-            var authenticationMessageHandler = new AuthenticationMessageHandler(AuthenticationHandler)
+            var authenticationMessageHandler = new AuthenticationMessageHandler(this)
             {
                 InnerHandler = new RetryRequestDelegateHandler()
             };
@@ -104,6 +102,21 @@ namespace AP.MobileToolkit.Http
 
             return client;
         }
+
+        protected virtual Task<string> GetTokenAsync()
+        {
+            Logger.Warn("You must override ApiClientBase.GetTokenAsync() to make authenticated calls.");
+            throw new NotImplementedException();
+        }
+
+        protected virtual void SetAuthenticationHeader(HttpRequestMessage request, string token)
+        {
+            request.Headers.Authorization = new AuthenticationHeaderValue("BEARER", token);
+        }
+
+        Task<string> IAuthenticationHandler.GetTokenAsync() => GetTokenAsync();
+
+        void IAuthenticationHandler.SetAuthenticationHeader(HttpRequestMessage request, string token) => SetAuthenticationHeader(request, token);
 
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls

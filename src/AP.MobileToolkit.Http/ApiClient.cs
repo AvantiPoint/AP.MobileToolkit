@@ -1,7 +1,9 @@
+﻿using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using AP.CrossPlatform.Extensions;
 using Prism.Logging;
 using Xamarin.Essentials.Interfaces;
 
@@ -15,8 +17,8 @@ namespace AP.MobileToolkit.Http
 
         protected IDeviceInfo DeviceInfo { get; }
 
-        public ApiClient(IApiClientOptions options, IAuthenticationHandler authenticationHandler, ILogger logger, IAppInfo appInfo, IDeviceInfo deviceInfo)
-            : base(options, authenticationHandler, logger)
+        public ApiClient(IApiClientOptions options, ILogger logger, IAppInfo appInfo, IDeviceInfo deviceInfo)
+            : base(options, logger)
         {
             AppInfo = appInfo;
             DeviceInfo = deviceInfo;
@@ -43,6 +45,12 @@ namespace AP.MobileToolkit.Http
             {
                 client.DefaultRequestHeaders.Add("X-ClientId", InstallId);
             }
+        }
+
+        protected override Task<string> GetTokenAsync()
+        {
+            Logger.Warn("You must override ApiClient.GetTokenAsync() to make authenticated calls.");
+            throw new NotImplementedException();
         }
     }
 }

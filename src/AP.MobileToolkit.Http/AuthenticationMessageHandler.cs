@@ -1,8 +1,6 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
@@ -35,7 +33,7 @@ namespace AP.MobileToolkit.Http
             if (callingMethod.GetCustomAttribute<AllowAnonymousAttribute>() == null)
             {
                 var token = await AuthenticationHandler.GetTokenAsync().ConfigureAwait(false);
-                request.Headers.Authorization = new AuthenticationHeaderValue("BEARER", token);
+                AuthenticationHandler.SetAuthenticationHeader(request, token);
             }
 
             return await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
