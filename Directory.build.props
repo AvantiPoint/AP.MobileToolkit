@@ -1,7 +1,6 @@
 <Project>
 
   <PropertyGroup>
-    <Product>$(AssemblyName) ($(TargetFramework))</Product>
     <NeutralLanguage>en</NeutralLanguage>
     <IncludeSymbols>True</IncludeSymbols>
     <IncludeSource>True</IncludeSource>
@@ -10,7 +9,7 @@
     <Company>AvantiPoint</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>avantipoint-icon.png</PackageIcon>
-    <!--<PackageIconUrl>https://raw.githubusercontent.com/AvantiPoint/AP.MobileToolkit/master/avantipoint-icon.png</PackageIconUrl>-->
+    <LangVersion>latest</LangVersion>
     <PackageProjectUrl>https://github.com/AvantiPoint/AP.MobileToolkit</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/AvantiPoint/AP.MobileToolkit</RepositoryUrl>
