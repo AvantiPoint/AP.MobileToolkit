@@ -24,14 +24,13 @@ namespace AP.MobileToolkit.Http.Tests
                 Assert.DoesNotContain("Authorization", req.Headers.AllKeys);
             }))
             {
-                var authHandler = new MockAuthenticationHandler();
-                var client = CreateClient(authHandler);
+                var client = CreateClient();
 
-                Assert.False(authHandler.DidGetToken);
+                Assert.False(client.DidGetToken);
                 var service = new MockApiService(client);
                 await service.MockAnnonymousCall();
 
-                Assert.False(authHandler.DidGetToken);
+                Assert.False(client.DidGetToken);
             }
         }
 
@@ -45,14 +44,13 @@ namespace AP.MobileToolkit.Http.Tests
                 Assert.Contains("Authorization", req.Headers.AllKeys);
             }))
             {
-                var authHandler = new MockAuthenticationHandler();
-                var client = CreateClient(authHandler);
+                var client = CreateClient();
 
-                Assert.False(authHandler.DidGetToken);
+                Assert.False(client.DidGetToken);
                 var service = new MockApiService(client);
                 await service.MockGet();
 
-                Assert.True(authHandler.DidGetToken);
+                Assert.True(client.DidGetToken);
             }
         }
 
@@ -73,13 +71,12 @@ namespace AP.MobileToolkit.Http.Tests
                 }
             }))
             {
-                var authHandler = new MockAuthenticationHandler();
-                var client = CreateClient(authHandler);
+                var client = CreateClient();
                 var service = new MockApiService(client);
                 var result = await service.MockGet();
-                Assert.True(authHandler.DidGetToken);
+                Assert.True(client.DidGetToken);
                 Assert.True(result.IsSuccessStatusCode);
-                Assert.Equal(1, authHandler.GetTokenCount);
+                Assert.Equal(1, client.GetTokenCount);
                 Assert.Equal(3, count);
             }
         }
@@ -94,7 +91,7 @@ namespace AP.MobileToolkit.Http.Tests
                 foreach (var key in req.Headers.AllKeys)
                     TestOutputHelper.WriteLine($"{key}: {req.Headers.Get(key)}");
                 Assert.Contains("Authorization", req.Headers.AllKeys);
-                Assert.Equal($"BEARER {MockAuthenticationHandler.Token}", req.Headers.Get("Authorization"));
+                Assert.Equal($"BEARER {MockApiClient.Token}", req.Headers.Get("Authorization"));
 
                 Assert.Contains("X-MobileAppVer", req.Headers.AllKeys);
                 Assert.Equal(appInfo.VersionString, req.Headers.Get("X-MobileAppVer"));
@@ -219,10 +216,9 @@ namespace AP.MobileToolkit.Http.Tests
         [Fact]
         public async Task GetsUserFromToken()
         {
-            var authHandler = new MockAuthenticationHandler();
-            var client = CreateClient(authHandler);
+            var client = CreateClient();
             var user = await client.GetUserAsync();
-            Assert.True(authHandler.DidGetToken);
+            Assert.True(client.DidGetToken);
             Assert.NotNull(user);
             Assert.Equal("c652decb-374e-4a34-b6e0-c0d377436a71", user.Id);
             Assert.Equal("John", user.FirstName);
@@ -230,12 +226,9 @@ namespace AP.MobileToolkit.Http.Tests
             Assert.Equal(new DateTime(2018, 1, 18, 1, 30, 22), user.IssuedAt);
         }
 
-        private IApiClient CreateClient(IAuthenticationHandler authenticationHandler = null)
+        private MockApiClient CreateClient()
         {
-            if (authenticationHandler == null)
-                authenticationHandler = new MockAuthenticationHandler();
-
-            return new ApiClient(new MockApiClientOptions(), authenticationHandler, new XunitLogger(TestOutputHelper), new MockAppInfo(), new MockDeviceInfo());
+            return new MockApiClient(new MockApiClientOptions(), new XunitLogger(TestOutputHelper), new MockAppInfo(), new MockDeviceInfo());
         }
     }
 }
