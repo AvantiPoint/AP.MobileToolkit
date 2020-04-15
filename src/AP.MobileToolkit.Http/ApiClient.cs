@@ -1,4 +1,4 @@
-﻿using System.Net.Http;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -29,13 +29,13 @@ namespace AP.MobileToolkit.Http
             {
                 NoCache = true
             };
-            var appName = Regex.Replace(AppInfo.Name, @"\s", string.Empty);
-            var agentHeader = ProductHeaderValue.Parse($"{appName}/{AppInfo.VersionString}");
+            var appName = Regex.Replace(AppInfo.Name, @"\s", string.Empty).ToASCII();
+            var agentHeader = ProductHeaderValue.Parse($"{appName}/{AppInfo.VersionString.ToASCII()}");
             client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue(agentHeader));
-            client.DefaultRequestHeaders.Add("X-MobileAppVer", AppInfo.VersionString);
-            client.DefaultRequestHeaders.Add("X-DeviceModel", DeviceInfo.Model);
-            client.DefaultRequestHeaders.Add("X-DeviceManufacturer", DeviceInfo.Manufacturer);
-            client.DefaultRequestHeaders.Add("X-DeviceName", DeviceInfo.Name);
+            client.DefaultRequestHeaders.Add("X-MobileAppVer", AppInfo.VersionString.ToASCII());
+            client.DefaultRequestHeaders.Add("X-DeviceModel", DeviceInfo.Model.ToASCII());
+            client.DefaultRequestHeaders.Add("X-DeviceManufacturer", DeviceInfo.Manufacturer.ToASCII());
+            client.DefaultRequestHeaders.Add("X-DeviceName", DeviceInfo.Name.ToASCII());
             client.DefaultRequestHeaders.Add("X-DevicePlatform", $"{DeviceInfo.Platform}");
             client.DefaultRequestHeaders.Add("X-DeviceIdiom", $"{DeviceInfo.Idiom}");
 
