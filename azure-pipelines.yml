@@ -71,17 +71,6 @@ stages:
   displayName: Deploy NuGet Packages
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['system.pullrequest.isfork'], false))
   jobs:
-  - job: ProcessDeployment
-    pool:
-      vmImage: windows-latest
-    steps:
-    - task: DownloadPipelineArtifact@2
-      inputs:
-        artifactName: 'NuGet'
-        targetPath: $(Pipeline.Workspace)
-    - powershell: $(System.DefaultWorkingDirectory)/build/Process-Release.ps1
-      workingDirectory: $(Pipeline.Workspace)
-      displayName: Process Artifacts for Release
   - deployment: MyGet
     displayName: MyGet.org
     environment: MyGet
@@ -96,10 +85,13 @@ stages:
                 packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg'
                 nuGetFeedType: external
                 publishFeedCredentials: 'AvaintPoint-MyGet'
+- stage: DeployRelease
+  displayName: Deploy Release NuGet Packages
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['system.pullrequest.isfork'], false), or(eq(variables['IS_PREVIEW'], true), eq(variables['IS_RELEASE'], true)))
+  jobs:
   - deployment: NuGet
     displayName: NuGet.org
     environment: NuGet
-    condition: and(succeeded(), or(eq(variables['IS_PREVIEW'], true), eq(variables['IS_RELEASE'], true)))
     strategy:
       runOnce:
         deploy:
@@ -130,4 +122,4 @@ stages:
                 command: push
                 packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg;!$(Pipeline.Workspace)/**/*.symbols.nupkg'
                 nuGetFeedType: external
-                publishFeedCredentials: 'NuGet'
+                publishFeedCredentials: 'NuGet.org'
