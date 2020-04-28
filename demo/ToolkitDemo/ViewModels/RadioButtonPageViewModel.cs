@@ -1,13 +1,11 @@
-﻿using Prism.Logging;
-using Prism.Navigation;
-using Prism.Services;
+﻿using AP.MobileToolkit.Mvvm;
 
 namespace ToolkitDemo.ViewModels
 {
     public class RadioButtonPageViewModel : DemoPageViewModelBase
     {
-        public RadioButtonPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
-            : base(navigationService, pageDialogService, logger)
+        public RadioButtonPageViewModel(BaseServices baseServices)
+            : base(baseServices)
         {
         }
     }

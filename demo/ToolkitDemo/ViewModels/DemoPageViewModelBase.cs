@@ -1,15 +1,13 @@
 ﻿using AP.MobileToolkit.Mvvm;
 using Prism.Commands;
-using Prism.Logging;
 using Prism.Navigation;
-using Prism.Services;
 
 namespace ToolkitDemo.ViewModels
 {
-    public class DemoPageViewModelBase : ReactiveViewModelBase
+    public class DemoPageViewModelBase : APBaseViewModel
     {
-        public DemoPageViewModelBase(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
-            : base(navigationService, pageDialogService, logger)
+        public DemoPageViewModelBase(BaseServices baseServices)
+            : base(baseServices)
         {
             PageName = GetType().Name.Replace("ViewModel", string.Empty);
             ShowCodeBehind = new DelegateCommand(ExecuteShowCodeBehind);

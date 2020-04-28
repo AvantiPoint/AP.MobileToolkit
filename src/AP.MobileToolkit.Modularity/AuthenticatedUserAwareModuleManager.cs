@@ -9,7 +9,7 @@ namespace AP.MobileToolkit.Modularity
 {
     public abstract class AuthenticatedUserAwareModuleManager : ModuleManager
     {
-        public AuthenticatedUserAwareModuleManager(IModuleInitializer moduleInitializer, IModuleCatalog moduleCatalog, IEventAggregator eventAggregator)
+        protected AuthenticatedUserAwareModuleManager(IModuleInitializer moduleInitializer, IModuleCatalog moduleCatalog, IEventAggregator eventAggregator)
             : base(moduleCatalog, moduleInitializer)
         {
             eventAggregator.GetEvent<AuthenticatedUserEvent>().Subscribe(OnAuthenticatedUserEventPublished);

@@ -7,15 +7,15 @@ using Prism.Services;
 
 namespace AP.MobileToolkit.Tests.Mocks
 {
-    public class ViewModelMock : ViewModelBase
+    public class ViewModelMock : APBaseViewModel
     {
         public ViewModelMock()
-            : base(null, null, null)
+            : base(new BaseServices(default, default, default, default, default, default))
         {
         }
 
-        public ViewModelMock(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
-            : base(navigationService, pageDialogService, logger)
+        public ViewModelMock(BaseServices baseServices)
+            : base(baseServices)
         {
         }
 

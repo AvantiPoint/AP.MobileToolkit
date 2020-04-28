@@ -30,7 +30,7 @@ namespace ToolkitDemo
         {
             InitializeComponent();
 
-            FontRegistry.RegisterFonts(FontAwesomeBrands.Font, FontAwesomeRegular.Font, FontAwesomeSolid.Font, DevIcons.Font);
+            FontRegistry.RegisterFonts(FontAwesomeBrands.Font, FontAwesomeRegular.Font, FontAwesomeSolid.Font);
 
             var result = await NavigationService.NavigateAsync("MainPage/NavigationPage/HomePage");
 

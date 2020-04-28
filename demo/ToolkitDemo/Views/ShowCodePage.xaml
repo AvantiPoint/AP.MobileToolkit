@@ -4,7 +4,7 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="ToolkitDemo.Views.ShowCodePage" 
-             xmlns:converter="clr-namespace:AP.MobileToolkit.Converters;assembly=AP.MobileToolkit"
+             xmlns:ap="http://avantipoint.com/mobiletoolkit"
              x:Name="this" Title="Source Code">
     <ContentPage.ToolbarItems>
         <ToolbarItem Order="Primary" Text="Copy" Priority="0" Command="{Binding CopyTextToClipboardCommand}" />
@@ -12,7 +12,7 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converter:BooleanToColorConverter x:Key="IsSelectedConverter" TrueColor="#0600ff" FalseColor="#57585b" />
+            <ap:BooleanToColorConverter x:Key="IsSelectedConverter" TrueColor="#0600ff" FalseColor="#57585b" />
         </ResourceDictionary>
     </ContentPage.Resources>
 

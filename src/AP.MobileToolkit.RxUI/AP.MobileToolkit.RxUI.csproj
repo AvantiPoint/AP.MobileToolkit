@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ReactiveUI" Version="11.3.8" />
+    <PackageReference Include="Prism.Core" Version="7.2.0.1422" />
+    <PackageReference Include="Prism.Plugin.Logging.Abstractions" Version="7.2.0.1114" />
+    <PackageReference Include="NCrontab" Version="3.3.1" />
+  </ItemGroup>
+
+</Project>

@@ -4,9 +4,7 @@ using AP.CrossPlatform.Collections;
 using AP.MobileToolkit.Mvvm;
 using Prism.AppModel;
 using Prism.Commands;
-using Prism.Logging;
 using Prism.Navigation;
-using Prism.Services;
 using ReactiveUI;
 using ToolkitDemo.Models;
 using ToolkitDemo.Services;
@@ -14,14 +12,14 @@ using Xamarin.Essentials.Interfaces;
 
 namespace ToolkitDemo.ViewModels
 {
-    public class ShowCodePageViewModel : ReactiveViewModelBase, IAutoInitialize
+    public class ShowCodePageViewModel : APBaseViewModel, IAutoInitialize
     {
         private ICodeSampleResolver CodeSampleResolver { get; }
 
         private IClipboard Clipboard { get; }
 
-        public ShowCodePageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger, ICodeSampleResolver codeSampleResolver, IClipboard clipboard)
-            : base(navigationService, pageDialogService, logger)
+        public ShowCodePageViewModel(BaseServices baseServices, ICodeSampleResolver codeSampleResolver, IClipboard clipboard)
+            : base(baseServices)
         {
             CodeSampleResolver = codeSampleResolver;
             Clipboard = clipboard;

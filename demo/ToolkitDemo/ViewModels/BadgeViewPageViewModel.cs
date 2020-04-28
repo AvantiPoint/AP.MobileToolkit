@@ -1,13 +1,11 @@
-﻿using Prism.Logging;
-using Prism.Navigation;
-using Prism.Services;
+﻿using AP.MobileToolkit.Mvvm;
 
 namespace ToolkitDemo.ViewModels
 {
     public class BadgeViewPageViewModel : DemoPageViewModelBase
     {
-        public BadgeViewPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
-            : base(navigationService, pageDialogService, logger)
+        public BadgeViewPageViewModel(BaseServices baseServices)
+            : base(baseServices)
         {
         }
     }

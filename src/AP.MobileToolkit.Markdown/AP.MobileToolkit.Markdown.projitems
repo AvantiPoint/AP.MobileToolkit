@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>73894fd0-58bc-4cfa-a2e1-b5a88a1ac095</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>AP.MobileToolkit.Markdown</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Markdown.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MarkdownExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MarkdownOptions.cs" />
+  </ItemGroup>
+</Project>

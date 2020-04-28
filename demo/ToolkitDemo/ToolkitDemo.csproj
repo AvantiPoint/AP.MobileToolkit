@@ -19,19 +19,33 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Prism.DryIoc.Forms" Version="7.2.0.1422" />
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.530" />
+    <Compile Remove="Views\InverseBooleanConverterPage.xaml.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Brands" Version="3.0.0.1517-pre" />
+    <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Regular" Version="3.0.0.1517-pre" />
+    <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Solid" Version="3.0.0.1517-pre" />
+    <PackageReference Include="Prism.DryIoc.Forms" Version="7.2.0.1422" />
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.657" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\AP.CrossPlatform.Auth\AP.CrossPlatform.Auth.csproj" />
     <ProjectReference Include="..\..\src\AP.CrossPlatform.Core\AP.CrossPlatform.Core.csproj" />
-    <ProjectReference Include="..\..\src\AP.MobileToolkit.Fonts.DevIcons\AP.MobileToolkit.Fonts.DevIcons.csproj" />
-    <ProjectReference Include="..\..\src\AP.MobileToolkit.Fonts.FontAwesomeFree.Brands\AP.MobileToolkit.Fonts.FontAwesomeFree.Brands.csproj" />
-    <ProjectReference Include="..\..\src\AP.MobileToolkit.Fonts.FontAwesomeFree.Regular\AP.MobileToolkit.Fonts.FontAwesomeFree.Regular.csproj" />
-    <ProjectReference Include="..\..\src\AP.MobileToolkit.Fonts.FontAwesomeFree.Solid\AP.MobileToolkit.Fonts.FontAwesomeFree.Solid.csproj" />
-    <ProjectReference Include="..\..\src\AP.MobileToolkit.Fonts.MaterialIcons\AP.MobileToolkit.Fonts.MaterialIcons.csproj" />
+    <ProjectReference Include="..\..\src\AP.MobileToolkit.AAD\AP.MobileToolkit.AAD.csproj" />
     <ProjectReference Include="..\..\src\AP.MobileToolkit.Http\AP.MobileToolkit.Http.csproj" />
-    <ProjectReference Include="..\..\src\AP.MobileToolkit\AP.MobileToolkit.csproj" />
+    <ProjectReference Include="..\..\src\AP.MobileToolkit.Modularity\AP.MobileToolkit.Modularity.csproj" />
+    <ProjectReference Include="..\..\src\AP.MobileToolkit.Resources\AP.MobileToolkit.Resources.csproj" />
+    <ProjectReference Include="..\..\src\AP.MobileToolkit.RxUI\AP.MobileToolkit.RxUI.csproj" />
+    <ProjectReference Include="..\..\src\Forms\AP.MobileToolkit.Forms.Mvvm\AP.MobileToolkit.Forms.Mvvm.csproj" />
+    <ProjectReference Include="..\..\src\Forms\AP.MobileToolkit.Forms\AP.MobileToolkit.Forms.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\InverseBooleanConverterPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

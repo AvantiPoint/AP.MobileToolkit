@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>AP.MobileToolkit</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Prism.Forms" Version="7.2.0.1422" />
+    <PackageReference Include="Prism.Plugin.Logging.Abstractions" Version="7.2.0.1114" />
+    <PackageReference Include="ReactiveUI" Version="11.3.8" />
+    <PackageReference Include="Humanizer.Core" Version="2.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\AP.CrossPlatform.Core\AP.CrossPlatform.Core.csproj" />
+    <ProjectReference Include="..\..\AP.MobileToolkit.Resources\AP.MobileToolkit.Resources.csproj" />
+  </ItemGroup>
+
+</Project>

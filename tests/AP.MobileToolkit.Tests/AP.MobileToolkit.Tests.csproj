@@ -6,36 +6,24 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Tests\Fonts\FontRegistryTests.cs" />
-    <Compile Remove="Tests\Fonts\IconFontTests.cs" />
-    <Compile Remove="Tests\Fonts\IconSpanTests.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.2" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
     <PackageReference Include="AP.MockHttpServer" Version="1.5.0.1061" />
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.530" />
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.657" />
     <PackageReference Include="Xamarin.Forms.Mocks" Version="3.5.0.3" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Moq" Version="4.13.1" />
+    <PackageReference Include="Moq" Version="4.14.0" />
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Tests\Fonts\FontRegistryTests.cs" />
-    <None Include="Tests\Fonts\IconFontTests.cs" />
-    <None Include="Tests\Fonts\IconSpanTests.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\AP.MobileToolkit.Fonts.FontAwesomeFree.Regular\AP.MobileToolkit.Fonts.FontAwesomeFree.Regular.csproj" />
-    <ProjectReference Include="..\..\src\AP.MobileToolkit.Fonts.FontAwesomeFree.Solid\AP.MobileToolkit.Fonts.FontAwesomeFree.Solid.csproj" />
-    <ProjectReference Include="..\..\src\AP.MobileToolkit\AP.MobileToolkit.csproj" />
+    <ProjectReference Include="..\..\src\AP.CrossPlatform.Core\AP.CrossPlatform.Core.csproj" />
+    <ProjectReference Include="..\..\src\Forms\AP.MobileToolkit.Forms.Mvvm\AP.MobileToolkit.Forms.Mvvm.csproj" />
+    <ProjectReference Include="..\..\src\Forms\AP.MobileToolkit.Forms\AP.MobileToolkit.Forms.csproj" />
   </ItemGroup>
 
   <ItemGroup>

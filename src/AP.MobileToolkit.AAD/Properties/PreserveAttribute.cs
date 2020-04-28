@@ -3,7 +3,7 @@
 namespace AP.MobileToolkit
 {
     [AttributeUsage(AttributeTargets.All)]
-    internal class PreserveAttribute : Attribute
+    internal sealed class PreserveAttribute : Attribute
     {
         public PreserveAttribute()
         {

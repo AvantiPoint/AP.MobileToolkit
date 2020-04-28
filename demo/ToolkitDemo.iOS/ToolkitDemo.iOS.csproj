@@ -197,13 +197,45 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.530" />
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.657" />
     <PackageReference Include="Prism.DryIoc.Forms" Version="7.2.0.1422" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\AP.MobileToolkit\AP.MobileToolkit.csproj">
-      <Project>{9399f044-5098-4b9d-8e8f-fbee772f7efc}</Project>
-      <Name>AP.MobileToolkit</Name>
+    <ProjectReference Include="..\..\src\AP.CrossPlatform.Auth\AP.CrossPlatform.Auth.csproj">
+      <Project>{5a20fbf4-a482-43d8-9ce3-d7214b851114}</Project>
+      <Name>AP.CrossPlatform.Auth</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\AP.CrossPlatform.Core\AP.CrossPlatform.Core.csproj">
+      <Project>{3e30c667-ae5b-41e8-81cc-7a5621d5567a}</Project>
+      <Name>AP.CrossPlatform.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\AP.MobileToolkit.AAD\AP.MobileToolkit.AAD.csproj">
+      <Project>{75970017-84d3-48d2-9edc-24aeb5a7adfc}</Project>
+      <Name>AP.MobileToolkit.AAD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\AP.MobileToolkit.Http\AP.MobileToolkit.Http.csproj">
+      <Project>{8f88cb38-3d32-4eed-b1e7-a2237c70d1cb}</Project>
+      <Name>AP.MobileToolkit.Http</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\AP.MobileToolkit.Modularity\AP.MobileToolkit.Modularity.csproj">
+      <Project>{71d87134-1a7d-491f-81c1-93f2454a8962}</Project>
+      <Name>AP.MobileToolkit.Modularity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\AP.MobileToolkit.Resources\AP.MobileToolkit.Resources.csproj">
+      <Project>{a4aca273-b11b-426e-8386-3aa93edf54f4}</Project>
+      <Name>AP.MobileToolkit.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\AP.MobileToolkit.RxUI\AP.MobileToolkit.RxUI.csproj">
+      <Project>{c13b14f5-3c33-45f1-9fe3-350dd2693201}</Project>
+      <Name>AP.MobileToolkit.RxUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Forms\AP.MobileToolkit.Forms.Mvvm\AP.MobileToolkit.Forms.Mvvm.csproj">
+      <Project>{3f652cad-4445-4431-9632-93772732840a}</Project>
+      <Name>AP.MobileToolkit.Forms.Mvvm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Forms\AP.MobileToolkit.Forms\AP.MobileToolkit.Forms.csproj">
+      <Project>{9febcd84-2c2d-46b2-a2dc-c8cf92efbe4f}</Project>
+      <Name>AP.MobileToolkit.Forms</Name>
     </ProjectReference>
     <ProjectReference Include="..\ToolkitDemo\ToolkitDemo.csproj">
       <Project>{A682884C-CB44-4A89-B752-27BB634E0ABE}</Project>

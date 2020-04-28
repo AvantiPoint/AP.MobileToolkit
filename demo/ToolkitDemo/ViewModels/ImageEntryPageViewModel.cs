@@ -1,13 +1,11 @@
-﻿using Prism.Logging;
-using Prism.Navigation;
-using Prism.Services;
+﻿using AP.MobileToolkit.Mvvm;
 
 namespace ToolkitDemo.ViewModels
 {
     public class ImageEntryPageViewModel : DemoPageViewModelBase
     {
-        public ImageEntryPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
-            : base(navigationService, pageDialogService, logger)
+        public ImageEntryPageViewModel(BaseServices baseServices)
+            : base(baseServices)
         {
         }
     }

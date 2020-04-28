@@ -1,13 +1,11 @@
-﻿using Prism.Logging;
-using Prism.Navigation;
-using Prism.Services;
+﻿using AP.MobileToolkit.Mvvm;
 
 namespace ToolkitDemo.ViewModels
 {
     public class UppercaseConverterPageViewModel : DemoPageViewModelBase
     {
-        public UppercaseConverterPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
-            : base(navigationService, pageDialogService, logger)
+        public UppercaseConverterPageViewModel(BaseServices baseServices)
+            : base(baseServices)
         {
             TextToBeConverted = "Text to be converted to uppercase";
         }

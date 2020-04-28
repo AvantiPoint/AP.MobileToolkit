@@ -1,4 +1,5 @@
 ﻿using AP.MobileToolkit.Converters;
+using Xamarin.Forms;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -14,7 +15,7 @@ namespace AP.MobileToolkit.Tests.Tests.Converters
         [Fact]
         public void TrueConvertersToFalse()
         {
-            var converter = new InverseBooleanConverter();
+            IValueConverter converter = new InverseBooleanConverter();
             object output = null;
             var exception = Record.Exception(() => { output = converter.Convert(true, typeof(bool), null, CurrentCulture); });
 
@@ -27,7 +28,7 @@ namespace AP.MobileToolkit.Tests.Tests.Converters
         [Fact]
         public void FalseConvertersToTrue()
         {
-            var converter = new InverseBooleanConverter();
+            IValueConverter converter = new InverseBooleanConverter();
             object output = null;
             var exception = Record.Exception(() => { output = converter.Convert(false, typeof(bool), null, CurrentCulture); });
 

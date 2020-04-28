@@ -1,18 +1,15 @@
 ﻿using AP.MobileToolkit.Http;
 using AP.MobileToolkit.Mvvm;
 using Prism.Commands;
-using Prism.Logging;
-using Prism.Navigation;
-using Prism.Services;
 
 namespace ToolkitDemo.ViewModels
 {
-    public class APIClientPageViewModel : ReactiveViewModelBase
+    public class APIClientPageViewModel : APBaseViewModel
     {
         private IApiClient ApiClient { get; }
 
-        public APIClientPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
-            : base(navigationService, pageDialogService, logger)
+        public APIClientPageViewModel(BaseServices baseServices)
+            : base(baseServices)
         {
             GetApiData = new DelegateCommand(GetAPIData);
         }

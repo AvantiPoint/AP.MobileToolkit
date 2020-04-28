@@ -1,6 +1,6 @@
 # AvantiPoint Mobile Toolkit
 
-The AvantiPoint Mobile Toolkit is built for producing Enterprise Quality applications. The Toolkit is broken into smaller chunks that are largely platform independent. Currently only the AP.MobileToolkit package has any dependency on Xamarin.Forms.
+The AvantiPoint Mobile Toolkit is built for producing Enterprise Quality applications. The Toolkit is broken into smaller chunks that are largely platform independent.
 
 [![Build Status](https://dev.azure.com/avantipoint/CrossPlatform/_apis/build/status/AvantiPoint.AP.MobileToolkit?branchName=master)](https://dev.azure.com/avantipoint/CrossPlatform/_build/latest?definitionId=55?branchName=master)
 
@@ -14,10 +14,14 @@ You can add the MyGet CI feed to nuget by adding it as a source in Visual Studio
 |-------|:-----:|:------:|
 | AP.CrossPlatform.Auth | [![CrossPlatAuthShield]][CrossPlatAuthNuGet] | [![CrossPlatAuthMyGetShield]][CrossPlatAuthMyGet] |
 | AP.CrossPlatform.Core | [![CrossPlatCoreShield]][CrossPlatCoreNuGet] | [![CrossPlatCoreMyGetShield]][CrossPlatCoreMyGet] |
-| AP.MobileToolkit | [![MobileToolkitShield]][MobileToolkitNuGet] | [![MobileToolkitMyGetShield]][MobileToolkitMyGet] |
 | AP.MobileToolkit.AAD | [![MobileToolkitAADShield]][MobileToolkitAADNuGet] | [![MobileToolkitAADMyGetShield]][MobileToolkitAADMyGet] |
 | AP.MobileToolkit.Http | [![MobileToolkitHttpShield]][MobileToolkitHttpNuGet] | [![MobileToolkitHttpMyGetShield]][MobileToolkitHttpMyGet] |
 | AP.MobileToolkit.Modularity | [![MobileToolkitModularityShield]][MobileToolkitModularityNuGet] | [![MobileToolkitModularityMyGetShield]][MobileToolkitModularityMyGet] |
+| AP.MobileToolkit.Resources | TBD |
+| AP.MobileToolkit.RxUI | TBD |
+<!--
+| AP.MobileToolkit | [![MobileToolkitShield]][MobileToolkitNuGet] | [![MobileToolkitMyGetShield]][MobileToolkitMyGet] |
+-->
 
 ## AP.MobileToolkit
 
@@ -33,11 +37,6 @@ Both base ViewModel's implement all of the important Prism Navigation Interfaces
 | Control | Android | iOS | UWP |
 |---------|:-------:|:---:|:---:|
 | BadgeView | X | X | X |
-| BorderlessDatePicker | X | X | X |
-| BorderlessEditor | X | X | X |
-| BorderlessEntry | X | X | X |
-| BorderlessPicker | X | X | X |
-| BorderlessTimePicker | X | X | X |
 | CustomRadioButton | X | X | - |
 | DatePickerCell | X | X | X |
 | GravatarImageSource | X | X | X |
@@ -45,11 +44,6 @@ Both base ViewModel's implement all of the important Prism Navigation Interfaces
 | IconSpan | X | X | X |
 | ImageEntry | X | X | - |
 | MarkdownTextView | X | X | - |
-| MaterialButton | X | X| X |
-| MaterialDatePicker | X | X| X |
-| MaterialEntry | X | X| X |
-| MaterialPicker | X | X| X |
-| MaterialTimePicker | X | X| X |
 | RadioButtonGroup | X | X| - |
 | RepeaterView | X | X | X |
 | SelectorView | X | X | X |

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-             xmlns:conv="clr-namespace:AP.MobileToolkit.Converters;assembly=AP.MobileToolkit"
+             xmlns:ap="http://avantipoint.com/mobiletoolkit"
              x:Class="ToolkitDemo.Views.UppercaseConverterPage" Title="Uppercase Converter">
     <ContentPage.ToolbarItems>
         <ToolbarItem Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}" />
@@ -11,7 +11,7 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <conv:UpperTextConverter x:Key="UpperCaseTextConverter" />
+            <ap:UpperTextConverter x:Key="UpperCaseTextConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 

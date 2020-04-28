@@ -3,13 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-             xmlns:toolkit="clr-namespace:AP.MobileToolkit.Controls;assembly=AP.MobileToolkit"             
+             xmlns:ap="http://avantipoint.com/mobiletoolkit"
              x:Class="ToolkitDemo.Views.RadioButtonPage" Title="Radio Button">
     <ContentPage.ToolbarItems>
         <ToolbarItem Order="Primary" Text="Code Behind" Priority="0" Command="{Binding ShowCodeBehind}"/>
     </ContentPage.ToolbarItems>
 
     <StackLayout Padding="20">
-        <toolkit:CustomRadioButton Checked="True" Text="Check me" TextColor="Accent" />
+        <ap:CustomRadioButton Checked="True" Text="Check me" TextColor="Accent" />
     </StackLayout>
 </ContentPage>

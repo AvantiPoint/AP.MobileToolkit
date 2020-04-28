@@ -3,20 +3,17 @@ using System.Linq;
 using AP.CrossPlatform.Collections;
 using AP.MobileToolkit.Mvvm;
 using Prism.Commands;
-using Prism.Logging;
-using Prism.Navigation;
-using Prism.Services;
 using ToolkitDemo.Models;
 using ToolkitDemo.Services;
 
 namespace ToolkitDemo.ViewModels
 {
-    public class MainPageViewModel : ReactiveViewModelBase
+    public class MainPageViewModel : APBaseViewModel
     {
         private IMenuService MenuService { get; }
 
-        public MainPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger, IMenuService menuService)
-           : base(navigationService, pageDialogService, logger)
+        public MainPageViewModel(BaseServices baseServices, IMenuService menuService)
+           : base(baseServices)
         {
             Title = "Menu";
             MenuService = menuService;

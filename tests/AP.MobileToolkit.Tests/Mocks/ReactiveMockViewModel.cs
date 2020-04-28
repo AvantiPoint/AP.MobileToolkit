@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Reactive;
+using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using AP.MobileToolkit.Mvvm;
 using Moq;
+using Prism.Events;
 using Prism.Logging;
 using Prism.Navigation;
 using Prism.Services;
+using Prism.Services.Dialogs;
 using ReactiveUI;
 using Xunit.Abstractions;
 
@@ -28,26 +31,23 @@ namespace AP.MobileToolkit.Tests.Mocks
         }
     }
 
-    public class ReactiveMockViewModel : ReactiveViewModelBase
+    public class ReactiveMockViewModel : APBaseViewModel
     {
         public ReactiveMockViewModel(ITestOutputHelper testOutputHelper)
-            : base(Mock.Of<INavigationService>(), Mock.Of<IPageDialogService>(), new XunitLogger(testOutputHelper))
+            : this(new BaseServices(Mock.Of<INavigationService>(), Mock.Of<IDialogService>(), Mock.Of<IPageDialogService>(), new XunitLogger(testOutputHelper), Mock.Of<IEventAggregator>(), Mock.Of<IDeviceService>()))
         {
         }
 
-        public ReactiveMockViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
-            : base(navigationService, pageDialogService, logger)
-        {
-        }
-
-        protected override ObservableAsPropertyHelper<bool> GetIsBusyProperty()
+        public ReactiveMockViewModel(BaseServices baseServices)
+            : base(baseServices)
         {
             ToggleIsBusyCommand = ReactiveCommand.Create(
                 () => { IsToggled = !IsToggled; },
                 this.WhenAnyValue(x => x.IsBusy)
                 .Select(x => !x));
-            return this.WhenAnyValue(x => x.IsToggled)
-                .ToProperty(this, x => x.IsBusy, false);
+            _isBusyHelper = this.WhenAnyValue(x => x.IsToggled)
+                .ToProperty(this, x => x.IsBusy, false)
+                .DisposeWith(Disposables);
         }
 
         private bool _isToggled;

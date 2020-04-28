@@ -1,19 +1,16 @@
 ﻿using AP.MobileToolkit.Mvvm;
-using Prism.Logging;
-using Prism.Navigation;
-using Prism.Services;
 
 namespace AP.MobileToolkit.Tests.Mocks
 {
-    public class MockViewModel : ViewModelBase
+    public class MockViewModel : APBaseViewModel
     {
         public MockViewModel()
-            : this(null, null, null)
+            : this(new BaseServices(default, default, default, default, default, default))
         {
         }
 
-        public MockViewModel(INavigationService navigationService, IPageDialogService pageDialogService, ILogger logger)
-            : base(navigationService, pageDialogService, logger)
+        public MockViewModel(BaseServices baseServices)
+            : base(baseServices)
         {
         }
     }
