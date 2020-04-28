@@ -23,23 +23,23 @@ stages:
         packageType: 'sdk'
         useGlobalJson: true
 
-    - task: NuGetToolInstaller@0
-      displayName: Use NuGet 5.3.0
+    - task: NuGetToolInstaller@1
+      displayName: Use Latest NuGet
       inputs:
-        versionSpec: 5.3.0
+        checkLatest: true
 
-    # - task: NuGetCommand@2
-    #   displayName: 'NuGet restore'
-    #   inputs:
-    #     feedsToUse: config
-    #     nugetConfigPath: build/NuGet.config
+    - task: NuGetCommand@2
+      displayName: 'NuGet restore'
+      inputs:
+        feedsToUse: config
+        nugetConfigPath: build/NuGet.config
 
     - task: MSBuild@1
       displayName: 'Build solution AP.MobileToolkit.sln'
       inputs:
         platform: '$(BuildPlatform)'
         configuration: '$(BuildConfiguration)'
-        msbuildArguments: '/p:DebugType=portable /p:JavaSdkDirectory="$(JAVA_HOME)" /restore'
+        msbuildArguments: '/p:DebugType=portable /p:JavaSdkDirectory="$(JAVA_HOME)"'
 
     - task: DotNetCoreCLI@2
       displayName: Run Tests
@@ -61,10 +61,10 @@ stages:
     #     SignServiceResourceId: $(SignServiceResourceId)
     #   condition: and(succeeded(), eq(variables['system.pullrequest.isfork'], false))
 
-    - task: PublishPipelineArtifact@0
+    - task: PublishPipelineArtifact@1
       displayName: 'Publish Package Artifacts'
       inputs:
-        artifactName: NuGet
+        artifact: NuGet
         targetPath: $(Build.ArtifactStagingDirectory)
 
 - stage: Deploy
@@ -75,10 +75,10 @@ stages:
     pool:
       vmImage: windows-latest
     steps:
-    - task: DownloadPipelineArtifact@1
+    - task: DownloadPipelineArtifact@2
       inputs:
         artifactName: 'NuGet'
-        downloadPath: $(Pipeline.Workspace)
+        targetPath: $(Pipeline.Workspace)
     - powershell: $(System.DefaultWorkingDirectory)/build/Process-Release.ps1
       workingDirectory: $(Pipeline.Workspace)
       displayName: Process Artifacts for Release
@@ -104,58 +104,30 @@ stages:
       runOnce:
         deploy:
           steps:
-          - powershell: |
-             try {
-                 $artifactDirectory = $env:PIPELINE_WORKSPACE
-                 Write-Host "Currect working directory $artifactDirectory"
-                 $nupkg = Get-ChildItem -Path $artifactDirectory -Filter *.nupkg -Recurse | Select-Object -First 1
+            - checkout: self
+              clean: true
 
-                 if($null -eq $nupkg) {
-                     Throw "No NuGet Package could be found in the current directory"
-                 }
+            - task: PowerShell@2
+              displayName: Process Release
+              inputs:
+                targetType: filePath
+                filePath: $(System.DefaultWorkingDirectory)/build/Process-Release.ps1
 
-                 Write-Host "Package Name $($nupkg.Name)"
-                 $nupkg.Name -match '^(.*?)\.((?:\.?[0-9]+){3,}(?:[-a-z]+)?)\.nupkg$'
+            - task: GitHubRelease@1
+              inputs:
+                action: create
+                gitHubConnection: GitHub
+                assets: $(Pipeline.Workspace)/**/*.nupkg
+                tag: 'v$(VersionName)'
+                tagSource: userSpecifiedTag
+                isPreRelease: $(IS_PREVIEW)
+                title: $(ReleaseDisplayName)
+                addChangeLog: true
 
-                 $VersionName = $Matches[2]
-                 $IsPreview = $VersionName -match '-pre$'
-                 $ReleaseDisplayName = $VersionName
-
-                 if($null -eq $env:IS_PREVIEW) {
-                     Write-Output ("##vso[task.setvariable variable=IS_PREVIEW;]$IsPreview")
-                 }
-
-                 if($true -eq $IsPreview) {
-                     $ReleaseDisplayName = "$VersionName - Preview"
-                 }
-
-                 Write-Host "Version Name" $VersionName
-                 Write-Host "Release Display Name $ReleaseDisplayName"
-                 Write-Output ("##vso[task.setvariable variable=VersionName;]$VersionName")
-                 Write-Output ("##vso[task.setvariable variable=ReleaseDisplayName;]$ReleaseDisplayName")
-             }
-             catch {
-                 Write-Error  $_
-                 exit 1
-             }
-            name: processName
-            displayName: Process Artifacts for Release
-
-          - task: GithubRelease@0
-            displayName: 'Create GitHub Release'
-            inputs:
-              githubConnection: 'GitHub'
-              title: '$(ReleaseDisplayName)'
-              tag: 'v$(VersionName)'
-              isPreRelease: $(IS_PREVIEW)
-              assets: '$(Pipeline.Workspace)/**/*.nupkg'
-              addChangeLog: true
-              isDraft: true
-
-          - task: NuGetCommand@2
-            displayName: NuGet Push
-            inputs:
-              command: push
-              packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg;!$(Pipeline.Workspace)/**/*.symbols.nupkg'
-              nuGetFeedType: external
-              publishFeedCredentials: 'NuGet'
+            - task: NuGetCommand@2
+              displayName: NuGet Push
+              inputs:
+                command: push
+                packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg;!$(Pipeline.Workspace)/**/*.symbols.nupkg'
+                nuGetFeedType: external
+                publishFeedCredentials: 'NuGet'

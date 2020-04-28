@@ -1,32 +1,22 @@
-$location = Get-Location
-$currentDirectory = $location.Path
+$searchPath = "."
 
-Write-Host "Currect working directory: $currentDirectory"
-
-$nupkg = Get-ChildItem -Path $currentDirectory -Filter *.nupkg -Recurse | Select-Object -First 1
-
-if($nupkg -eq $null)
+if ($null -ne $env:PIPELINE_WORKSPACE)
 {
-    Throw "No NuGet Package could be found in the current directory"
+    $searchPath = Join-Path -Path $env:PIPELINE_WORKSPACE -ChildPath 'NuGet'
 }
 
-Write-Host "Package Name: $($nupkg.Name)"
+Write-Host "Artifact search directory - $searchPath"
+$nupkg = Get-ChildItem -Path $searchPath -Filter *.nupkg -Recurse | Select-Object -First 1
 $nupkg.Name -match '^(.*?)\.((?:\.?[0-9]+){3,}(?:[-a-z]+)?)\.nupkg$'
 
 $VersionName = $Matches[2]
 $IsPreview = $VersionName -match '-pre$'
 $DeployToNuGet = !($VersionName -match '-ci$')
-$ReleaseDisplayName = $VersionName
-
-if($IsPreview -eq $true)
-{
-    $ReleaseDisplayName = "$VersionName - Preview"
-}
+$ReleaseDisplayName = $VersionName -replace '-pre$', ' - Preview'
 
 Write-Host "Version Name" $VersionName
 Write-Host "IsPreview $IsPreview"
 Write-Host "Deploy to NuGet: $DeployToNuGet"
-Write-Host "Release Display Name: $ReleaseDisplayName"
 
 Write-Output ("##vso[task.setvariable variable=DeployToNuGet;]$DeployToNuGet")
 Write-Output ("##vso[task.setvariable variable=VersionName;]$VersionName")
