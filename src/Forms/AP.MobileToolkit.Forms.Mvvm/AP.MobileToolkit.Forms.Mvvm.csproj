@@ -8,7 +8,7 @@
   <ItemGroup>
     <PackageReference Include="Prism.Forms" Version="7.2.0.1422" />
     <PackageReference Include="Prism.Plugin.Logging.Abstractions" Version="7.2.0.1114" />
-    <PackageReference Include="ReactiveUI" Version="11.3.8" />
+    <PackageReference Include="ReactiveUI" Version="11.4.1" />
     <PackageReference Include="Humanizer.Core" Version="2.8.2" />
   </ItemGroup>
 
