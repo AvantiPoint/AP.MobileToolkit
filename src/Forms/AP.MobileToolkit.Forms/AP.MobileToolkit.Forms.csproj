@@ -37,7 +37,7 @@
     <PackageReference Include="AP.MobileToolkit.Forms.Fonts" Version="3.0.0.1517-pre" />
     <PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.5.3.1" />
     <PackageReference Include="Xamarin.Forms" Version="4.5.0.657" />
-    <PackageReference Include="Humanizer.Core" Version="2.8.2" />
+    <PackageReference Include="Humanizer.Core" Version="2.8.25" />
   </ItemGroup>
 
   <ItemGroup>
