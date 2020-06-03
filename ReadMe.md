@@ -2,13 +2,15 @@
 
 The AvantiPoint Mobile Toolkit is built for producing Enterprise Quality applications. The Toolkit is broken into smaller chunks that are largely platform independent.
 
-[![Build Status](https://dev.azure.com/avantipoint/CrossPlatform/_apis/build/status/AvantiPoint.AP.MobileToolkit?branchName=master)](https://dev.azure.com/avantipoint/CrossPlatform/_build/latest?definitionId=55?branchName=master)
+[![Build Status](https://dev.azure.com/avantipoint/AP.MobileToolkit/_apis/build/status/AvantiPoint.AP.MobileToolkit?branchName=master&stageName=Build)](https://dev.azure.com/avantipoint/AP.MobileToolkit/_build/latest?definitionId=66&branchName=master)
 
 ## NuGet
 
 You can add the MyGet CI feed to nuget by adding it as a source in Visual Studio:
 
 `https://www.myget.org/F/apmobiletoolkit/api/v3/index.json`
+
+#### Cross Platform
 
 | Package | NuGet | MyGet |
 |-------|:-----:|:------:|
@@ -17,8 +19,15 @@ You can add the MyGet CI feed to nuget by adding it as a source in Visual Studio
 | AP.MobileToolkit.AAD | [![MobileToolkitAADShield]][MobileToolkitAADNuGet] | [![MobileToolkitAADMyGetShield]][MobileToolkitAADMyGet] |
 | AP.MobileToolkit.Http | [![MobileToolkitHttpShield]][MobileToolkitHttpNuGet] | [![MobileToolkitHttpMyGetShield]][MobileToolkitHttpMyGet] |
 | AP.MobileToolkit.Modularity | [![MobileToolkitModularityShield]][MobileToolkitModularityNuGet] | [![MobileToolkitModularityMyGetShield]][MobileToolkitModularityMyGet] |
-| AP.MobileToolkit.Resources | TBD |
-| AP.MobileToolkit.RxUI | TBD |
+| AP.MobileToolkit.Resources | [![MobileToolkitResourcesShield]][MobileToolkitResourcesNuGet] | [![MobileToolkitResourcesMyGetShield]][MobileToolkitResourcesMyGet] |
+| AP.MobileToolkit.RxUI | [![MobileToolkitRxUIShield]][MobileToolkitRxUINuGet] | [![MobileToolkitRxUIMyGetShield]][MobileToolkitRxUIMyGet] |
+
+#### Xamarin.Forms
+
+| Package | NuGet | MyGet |
+|-------|:-----:|:------:|
+| AP.MobileToolkit.Forms | [![MobileToolkitFormsShield]][MobileToolkitFormsNuGet] | [![MobileToolkitFormsMyGetShield]][MobileToolkitFormsMyGet] |
+| AP.MobileToolkit.Forms.Mvvm | [![MobileToolkitFormsMvvmShield]][MobileToolkitFormsMvvmNuGet] | [![MobileToolkitFormsMvvmMyGetShield]][MobileToolkitFormsMvvmMyGet] |
 <!--
 | AP.MobileToolkit | [![MobileToolkitShield]][MobileToolkitNuGet] | [![MobileToolkitMyGetShield]][MobileToolkitMyGet] |
 -->
@@ -50,74 +59,7 @@ Both base ViewModel's implement all of the important Prism Navigation Interfaces
 | Separator | X | X | - |
 | SwipeCardView | X | X | - |
 
-## AP.MobileToolkit.Http
 
-The Http package includes a lightweight API Client that makes integrating with a custom backend a breeze. You simply need to provide the base options for where the API Client should send it's requests to along with a callback handler to provie the current Authentication Token.
-
-```cs
-public class MyAppApiClientOptions : IApiClientOptions
-{
-    public string InstallId => AppCenter.InstallId;
-
-    public string BaseUri => ConfigurationManager.AppSettings["BackendApi"];
-}
-
-public class AuthenticationHandler : IAuthenticationHandler
-{
-    private IServiceProvider _serviceProvider { get; }
-
-    public AuthenticationHandler(IServiceProvider serviceProvicer)
-    {
-        _serviceProvider = serviceProvider;
-    }
-
-    public Task<string> GetTokenAsync()
-    {
-        var user = (IUser)_serviceProvider.GetService(typeof(IUser));
-        return Task.FromResult(user.AccessToken);
-    }
-}
-```
-
-You can certainly use the trusty old HttpClient directly, however using IApiClient provides a few benefits including:
-
-- Support for Get, Post, Put, Patch, & Delete
-- Automatic Retry for:
-  - Internal Server Error
-  - Service Timeout
-  - Service Unavailable
-  - Bad Gateway
-  - Gateway Timeout
-- Control over when to dispose the base HttpClient
-- Get helper headers that you can log from your API to track which device your user is using, which verion of the app, and which app, etc, while also being able to easily override or customize the headers you want.
-
-```cs
-public class FooService
-{
-    private IApiClient ApiClient { get; }
-
-    [AllowAnnonymous]
-    public async Task<bool> GetStatus()
-    {
-        var result = await ApiClient.GetAsync("api/status");
-        return result.IsSuccessStatusCode;
-    }
-
-    public async Task DoFoo(SomeModel model)
-    {
-        await ApiClient.PostAsync("api/doFoo", model);
-    }
-
-    public async Task<HttpResponseMessage> DoBar()
-    {
-        // Dispose HttpClient on each request with ability to reuse the ApiClient
-        using (ApiClient)
-        {
-            return await ApiClient.GetAsync("api/doBar");
-        }
-    }
-}
-```
 
 [CrossPlatAuthNuGet]: https://www.nuget.org/packages/AP.CrossPlatform.Auth
 [CrossPlatAuthShield]: https://img.shields.io/nuget/vpre/AP.CrossPlatform.Auth.svg
@@ -148,3 +90,24 @@ public class FooService
 [MobileToolkitModularityShield]: https://img.shields.io/nuget/vpre/AP.MobileToolkit.Modularity.svg
 [MobileToolkitModularityMyGet]: https://www.myget.org/feed/apmobiletoolkit/package/nuget/AP.MobileToolkit.Modularity
 [MobileToolkitModularityMyGetShield]: https://img.shields.io/myget/apmobiletoolkit/vpre/AP.MobileToolkit.Modularity.svg
+
+[MobileToolkitResourcesNuGet]: https://www.nuget.org/packages/AP.MobileToolkit.Resources
+[MobileToolkitResourcesShield]: https://img.shields.io/nuget/vpre/AP.MobileToolkit.Resources.svg
+[MobileToolkitResourcesMyGet]: https://www.myget.org/feed/apmobiletoolkit/package/nuget/AP.MobileToolkit.Resources
+[MobileToolkitResourcesMyGetShield]: https://img.shields.io/myget/apmobiletoolkit/vpre/AP.MobileToolkit.Resources.svg
+
+[MobileToolkitRxUINuGet]: https://www.nuget.org/packages/AP.MobileToolkit.RxUI
+[MobileToolkitRxUIShield]: https://img.shields.io/nuget/vpre/AP.MobileToolkit.RxUI.svg
+[MobileToolkitRxUIMyGet]: https://www.myget.org/feed/apmobiletoolkit/package/nuget/AP.MobileToolkit.RxUI
+[MobileToolkitRxUIMyGetShield]: https://img.shields.io/myget/apmobiletoolkit/vpre/AP.MobileToolkit.RxUI.svg
+
+<!-- Xamarin.Forms -->
+[MobileToolkitFormsNuGet]: https://www.nuget.org/packages/AP.MobileToolkit.Forms
+[MobileToolkitFormsShield]: https://img.shields.io/nuget/vpre/AP.MobileToolkit.Forms.svg
+[MobileToolkitFormsMyGet]: https://www.myget.org/feed/apmobiletoolkit/package/nuget/AP.MobileToolkit.Forms
+[MobileToolkitFormsMyGetShield]: https://img.shields.io/myget/apmobiletoolkit/vpre/AP.MobileToolkit.Forms.svg
+
+[MobileToolkitFormsMvvmNuGet]: https://www.nuget.org/packages/AP.MobileToolkit.Forms.Mvvm
+[MobileToolkitFormsMvvmShield]: https://img.shields.io/nuget/vpre/AP.MobileToolkit.Forms.Mvvm.svg
+[MobileToolkitFormsMvvmMyGet]: https://www.myget.org/feed/apmobiletoolkit/package/nuget/AP.MobileToolkit.Forms.Mvvm
+[MobileToolkitFormsMvvmMyGetShield]: https://img.shields.io/myget/apmobiletoolkit/vpre/AP.MobileToolkit.Forms.Mvvm.svg
