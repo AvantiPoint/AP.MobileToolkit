@@ -19,15 +19,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Views\InverseBooleanConverterPage.xaml.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Brands" Version="3.0.0.1517-pre" />
-    <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Regular" Version="3.0.0.1517-pre" />
-    <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Solid" Version="3.0.0.1517-pre" />
-    <PackageReference Include="Prism.DryIoc.Forms" Version="7.2.0.1422" />
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.657" />
+    <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Brands" Version="$(APFontsVersion)" />
+    <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Regular" Version="$(APFontsVersion)" />
+    <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Solid" Version="$(APFontsVersion)" />
+    <PackageReference Include="Prism.DryIoc.Forms" Version="$(PrismVersion)" />
   </ItemGroup>
 
   <ItemGroup>
@@ -40,12 +35,6 @@
     <ProjectReference Include="..\..\src\AP.MobileToolkit.RxUI\AP.MobileToolkit.RxUI.csproj" />
     <ProjectReference Include="..\..\src\Forms\AP.MobileToolkit.Forms.Mvvm\AP.MobileToolkit.Forms.Mvvm.csproj" />
     <ProjectReference Include="..\..\src\Forms\AP.MobileToolkit.Forms\AP.MobileToolkit.Forms.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Views\InverseBooleanConverterPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

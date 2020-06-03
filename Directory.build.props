@@ -51,4 +51,6 @@
     <None Remove=".DS_Store" />
   </ItemGroup>
 
+  <Import Project="build\Dependencies.props" />
+
 </Project>

@@ -1,0 +1,12 @@
+<Project>
+  <PropertyGroup>
+    <XamarinFormsVersion>4.6.0.800</XamarinFormsVersion>
+    <XamarinFormsMocksVersion>4.6.0.1</XamarinFormsMocksVersion>
+    <HumanizerVersion>2.8.26</HumanizerVersion>
+    <ReactiveUIVersion>11.4.1</ReactiveUIVersion>
+    <PrismVersion>7.2.0.1422</PrismVersion>
+    <APFontsVersion>3.0.0.1517-pre</APFontsVersion>
+    <XamarinEssentialsVersion>1.5.3.2</XamarinEssentialsVersion>
+    <XunitVersion>2.4.2</XunitVersion>
+  </PropertyGroup>
+</Project>

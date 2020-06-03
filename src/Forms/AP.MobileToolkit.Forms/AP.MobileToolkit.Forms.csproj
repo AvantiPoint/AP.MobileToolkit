@@ -34,17 +34,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AP.MobileToolkit.Forms.Fonts" Version="3.0.0.1517-pre" />
-    <PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.5.3.1" />
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.657" />
-    <PackageReference Include="Humanizer.Core" Version="2.8.2" />
+    <PackageReference Include="AP.MobileToolkit.Forms.Fonts" Version="$(APFontsVersion)" />
+    <PackageReference Include="Xamarin.Essentials.Interfaces" Version="$(XamarinEssentialsVersion)" />
+    <PackageReference Include="Xamarin.Forms" Version="$(XamarinFormsVersion)" />
+    <PackageReference Include="Humanizer.Core" Version="$(HumanizerVersion)" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\AP.CrossPlatform.Core\AP.CrossPlatform.Core.csproj" />
   </ItemGroup>
-
-  
 
   <Import Project="..\..\AP.MobileToolkit.Markdown\AP.MobileToolkit.Markdown.projitems" Label="Shared" />
 
