@@ -7,6 +7,6 @@
     <PrismVersion>7.2.0.1422</PrismVersion>
     <APFontsVersion>3.0.0.1517-pre</APFontsVersion>
     <XamarinEssentialsVersion>1.5.3.2</XamarinEssentialsVersion>
-    <XunitVersion>2.4.2</XunitVersion>
+    <XunitVersion>2.4.1</XunitVersion>
   </PropertyGroup>
 </Project>
