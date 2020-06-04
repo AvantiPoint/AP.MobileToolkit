@@ -4,6 +4,10 @@ The AvantiPoint Mobile Toolkit is built for producing Enterprise Quality applica
 
 [![Build Status](https://dev.azure.com/avantipoint/AP.MobileToolkit/_apis/build/status/AvantiPoint.AP.MobileToolkit?branchName=master&stageName=Build)](https://dev.azure.com/avantipoint/AP.MobileToolkit/_build/latest?definitionId=66&branchName=master)
 
+## Docs
+
+Docs for the Toolkit including [AP.MobileToolkit.Fonts](https://github.com/AvantiPoint/AP.MobileToolkit.Fonts) can be found at https://avantipoint.github.io/AP.MobileToolkit/
+
 ## NuGet
 
 You can add the MyGet CI feed to nuget by adding it as a source in Visual Studio:
@@ -28,19 +32,6 @@ You can add the MyGet CI feed to nuget by adding it as a source in Visual Studio
 |-------|:-----:|:------:|
 | AP.MobileToolkit.Forms | [![MobileToolkitFormsShield]][MobileToolkitFormsNuGet] | [![MobileToolkitFormsMyGetShield]][MobileToolkitFormsMyGet] |
 | AP.MobileToolkit.Forms.Mvvm | [![MobileToolkitFormsMvvmShield]][MobileToolkitFormsMvvmNuGet] | [![MobileToolkitFormsMvvmMyGetShield]][MobileToolkitFormsMvvmMyGet] |
-<!--
-| AP.MobileToolkit | [![MobileToolkitShield]][MobileToolkitNuGet] | [![MobileToolkitMyGetShield]][MobileToolkitMyGet] |
--->
-
-## AP.MobileToolkit
-
-The MobileToolkit package has a number of Xamarin.Forms specific helpers including, Behaviors, Controls, Effects, and Base ViewModels for Prism Applications. This includes:
-
-- ViewModelBase - which inherits from Prism's BindableBase
-- ReactiveViewModelBase - which inherits from ReactiveUI's ReactiveObject
-
-Both base ViewModel's implement all of the important Prism Navigation Interfaces. This allows you to rapidly develop application by only adding what you need while taking advantage of a Base Navigation Command / Handler method and support for IsBusy/IsNotBusy.
-
 
 [CrossPlatAuthNuGet]: https://www.nuget.org/packages/AP.CrossPlatform.Auth
 [CrossPlatAuthShield]: https://img.shields.io/nuget/vpre/AP.CrossPlatform.Auth.svg
