@@ -41,25 +41,6 @@ The MobileToolkit package has a number of Xamarin.Forms specific helpers includi
 
 Both base ViewModel's implement all of the important Prism Navigation Interfaces. This allows you to rapidly develop application by only adding what you need while taking advantage of a Base Navigation Command / Handler method and support for IsBusy/IsNotBusy.
 
-### Controls
-
-| Control | Android | iOS | UWP |
-|---------|:-------:|:---:|:---:|
-| BadgeView | X | X | X |
-| CustomRadioButton | X | X | - |
-| DatePickerCell | X | X | X |
-| GravatarImageSource | X | X | X |
-| IconImageSource | X | X | X |
-| IconSpan | X | X | X |
-| ImageEntry | X | X | - |
-| MarkdownTextView | X | X | - |
-| RadioButtonGroup | X | X| - |
-| RepeaterView | X | X | X |
-| SelectorView | X | X | X |
-| Separator | X | X | - |
-| SwipeCardView | X | X | - |
-
-
 
 [CrossPlatAuthNuGet]: https://www.nuget.org/packages/AP.CrossPlatform.Auth
 [CrossPlatAuthShield]: https://img.shields.io/nuget/vpre/AP.CrossPlatform.Auth.svg

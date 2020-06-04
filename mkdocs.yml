@@ -1,0 +1,87 @@
+# Project information
+site_name: Mobile Toolkit
+site_description: Project docs for the AP.MobileToolkit
+site_author: Dan Siegel
+site_url: http://avantipoint.com/
+
+# Repository
+repo_name: avantipoint/AP.MobileToolkit
+repo_url: https://github.com/avantipoint/AP.MobileToolkit
+edit_uri: ""
+
+# Copyright
+copyright: 'Copyright &copy; 2016 - 2020 AvantiPoint'
+
+# Configuration
+theme:
+  name: 'material'
+  custom_dir: 'theme'
+  logo: assets/logo-small.png
+  favicon: assets/favicon.ico
+  language: en
+  palette:
+    primary: white
+    accent: blue grey
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+extra:
+  social:
+    # - type: globe
+    #   link: http://avantipoint.com
+    # - type: github
+    #   link: https://github.com/avantipoint
+    # - type: twitter
+    #   link: https://twitter.com/AvantiPoint
+    # - type: linkedin
+    #   link: https://www.linkedin.com/company/avantipoint/
+
+# Extensions
+markdown_extensions:
+  - admonition:
+  - codehilite:
+      linenums: false
+      guess_lang: false
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - ApiClient: http.md
+  - Auth: auth.md
+  - Azure Active Directory: aad.md
+  - Core:
+    - About: core/index.md
+    - Collections: core/collections.md
+    - Http Helpers: core/http.md
+    - Localization: core/localization.md
+    - Validation:
+      - Getting Started: core/validations/index.md
+  - Fonts:
+    - Getting Started: fonts/index.md
+    - Font Generation: fonts/generator.md
+  - Xamarin.Forms:
+    - Toolkit: forms/index.md
+    - Behaviors:
+      - Getting Started: forms/behaviors/index.md
+    - Controls:
+      - BadgeView: forms/controls/badgeview.md
+      - DatePickerCell: forms/controls/datepickercell.md
+      - GravatarImageSource: forms/controls/gravatarimagesource.md
+      - ImageEntry: forms/controls/imageentry.md
+      - MarkdownTextView: forms/controls/markdowntextview.md
+      - MenuBar: forms/controls/menubar.md
+      - RepeaterView: forms/controls/repeaterview.md
+      - SelectorView: forms/controls/selectorview.md
+      - SwipeCardView: forms/controls/swipecardview.md
+    - Converters:
+      - What's Included: forms/converters/index.md
+    - Fonts:
+      - Getting Started: forms/fonts/index.md
+    - Menus: forms/menus/index.md
+    - Mvvm:
+      - APBaseViewModel: forms/mvvm/viewmodelbase.md
+      - APBaseDialogViewModel: forms/mvvm/dialogviewmodelbase.md
+  - Localized Resources: resources.md
+  - ReactiveUI: rxui.md
