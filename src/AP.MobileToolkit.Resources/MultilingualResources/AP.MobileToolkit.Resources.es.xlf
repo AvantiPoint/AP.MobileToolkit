@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en" target-language="es" original="AP.MOBILETOOLKIT.RESOURCES/TOOLKITRESOURCES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6916.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="AP.MOBILETOOLKIT.RESOURCES/TOOLKITRESOURCES.RESX" datatype="resx">
+        <trans-unit id="Account" translate="yes" xml:space="preserve">
+          <source>Account</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Cuenta</target>
+          <note from="MultilingualEditor" annotates="source" priority="4">Generally used for a label</note>
+        </trans-unit>
+        <trans-unit id="Add" translate="yes" xml:space="preserve">
+          <source>Add</source>
+          <target state="translated">Añadir</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a button text</note>
+        </trans-unit>
+        <trans-unit id="Address" translate="yes" xml:space="preserve">
+          <source>Address</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Dirección</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a label</note>
+        </trans-unit>
+        <trans-unit id="AlertErrorMessageTemplate" translate="yes" xml:space="preserve">
+          <source>An unexpected error '{0}' occurred. Correlation Id: {1}</source>
+          <target state="translated">Se produjo un error inesperado '{0}'. Id de correlación: {1}</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Error Message Template. Requires Error Message and Correlation Id passed in via string.Format</note>
+        </trans-unit>
+        <trans-unit id="Back" translate="yes" xml:space="preserve">
+          <source>Back</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Atrás</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for buttons</note>
+        </trans-unit>
+        <trans-unit id="Cancel" translate="yes" xml:space="preserve">
+          <source>Cancel</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Cancelar</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used to dismiss alerts</note>
+        </trans-unit>
+        <trans-unit id="City" translate="yes" xml:space="preserve">
+          <source>City</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Ciudad</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a label</note>
+        </trans-unit>
+        <trans-unit id="ComingSoon" translate="yes" xml:space="preserve">
+          <source>Coming Soon</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Próximamente</target>
+          <note from="MultilingualEditor" annotates="source" priority="4">Generally used for a title or label</note>
+        </trans-unit>
+        <trans-unit id="Dismiss" translate="yes" xml:space="preserve">
+          <source>Dismiss</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Descartar</target>
+          <note from="MultilingualEditor" annotates="source" priority="4">Generally used for a button text</note>
+        </trans-unit>
+        <trans-unit id="Email" translate="yes" xml:space="preserve">
+          <source>Email</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Correo electrónico</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a label</note>
+        </trans-unit>
+        <trans-unit id="Error" translate="yes" xml:space="preserve">
+          <source>Error</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Fehler</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a window title</note>
+        </trans-unit>
+        <trans-unit id="FirstName" translate="yes" xml:space="preserve">
+          <source>First Name</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Nombre</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a label</note>
+        </trans-unit>
+        <trans-unit id="Info" translate="yes" xml:space="preserve">
+          <source>Info</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Información</target>
+        </trans-unit>
+        <trans-unit id="LastName" translate="yes" xml:space="preserve">
+          <source>Last Name</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Apellidos</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a label</note>
+        </trans-unit>
+        <trans-unit id="Loading" translate="yes" xml:space="preserve">
+          <source>Loading...</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Se está cargando...</target>
+        </trans-unit>
+        <trans-unit id="Login" translate="yes" xml:space="preserve">
+          <source>Login</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Inicio de sesión</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">May be used for a label, title or button text</note>
+        </trans-unit>
+        <trans-unit id="Next" translate="yes" xml:space="preserve">
+          <source>Next</source>
+          <target state="new">Next</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a button text</note>
+        </trans-unit>
+        <trans-unit id="No" translate="yes" xml:space="preserve">
+          <source>No</source>
+          <target state="new">No</target>
+        </trans-unit>
+        <trans-unit id="Ok" translate="yes" xml:space="preserve">
+          <source>Ok</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Aceptar</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used to dismiss alerts</note>
+        </trans-unit>
+        <trans-unit id="Reply" translate="yes" xml:space="preserve">
+          <source>Reply</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Responder</target>
+        </trans-unit>
+        <trans-unit id="State" translate="yes" xml:space="preserve">
+          <source>State</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Estado</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a label</note>
+        </trans-unit>
+        <trans-unit id="Success" translate="yes" xml:space="preserve">
+          <source>Success</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Correcta</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a window title</note>
+        </trans-unit>
+        <trans-unit id="TapToAdd" translate="yes" xml:space="preserve">
+          <source>Tap to add</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Pulsa para agregar.</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Used for accessibility help text</note>
+        </trans-unit>
+        <trans-unit id="TapToCancel" translate="yes" xml:space="preserve">
+          <source>Tap to cancel</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Pulsar para cancelar</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Used for accessibility help text</note>
+        </trans-unit>
+        <trans-unit id="TapToDismiss" translate="yes" xml:space="preserve">
+          <source>Tap to dismiss</source>
+          <target state="new">Tap to dismiss</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Used for accessibility help text</note>
+        </trans-unit>
+        <trans-unit id="TapToGoBack" translate="yes" xml:space="preserve">
+          <source>Tap to go back</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Puntee para volver atrás</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Used for accessibility help text</note>
+        </trans-unit>
+        <trans-unit id="TapToLogin" translate="yes" xml:space="preserve">
+          <source>Tap to login</source>
+          <target state="translated">Toque para iniciar sesión</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Used for accessibility help text</note>
+        </trans-unit>
+        <trans-unit id="TryAgain" translate="yes" xml:space="preserve">
+          <source>Try Again</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Intentar de nuevo</target>
+          <note from="MultilingualEditor" annotates="source" priority="4">Generally used for a button text</note>
+        </trans-unit>
+        <trans-unit id="Warning" translate="yes" xml:space="preserve">
+          <source>Warning</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Advertencia</target>
+          <note from="MultilingualEditor" annotates="source" priority="4">Generally used for a window title</note>
+        </trans-unit>
+        <trans-unit id="Whoops" translate="yes" xml:space="preserve">
+          <source>Whoops</source>
+          <target state="new">Whoops</target>
+          <note from="MultilingualEditor" annotates="source" priority="4">Generally used for a window title</note>
+        </trans-unit>
+        <trans-unit id="Yes" translate="yes" xml:space="preserve">
+          <source>Yes</source>
+          <target state="translated">Sí</target>
+          <note from="MultilingualEditor" annotates="source" priority="4">Generally used for a button text</note>
+        </trans-unit>
+        <trans-unit id="Zip" translate="yes" xml:space="preserve">
+          <source>Zip</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Código postal</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a label</note>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

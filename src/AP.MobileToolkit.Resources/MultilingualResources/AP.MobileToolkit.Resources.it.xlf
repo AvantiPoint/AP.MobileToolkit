@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en" target-language="it" original="AP.MOBILETOOLKIT.RESOURCES/TOOLKITRESOURCES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6916.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="AP.MOBILETOOLKIT.RESOURCES/TOOLKITRESOURCES.RESX" datatype="resx">
+        <trans-unit id="Account" translate="yes" xml:space="preserve">
+          <source>Account</source>
+          <target state="new">Account</target>
+        </trans-unit>
+        <trans-unit id="Add" translate="yes" xml:space="preserve">
+          <source>Add</source>
+          <target state="new">Add</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a button text</note>
+        </trans-unit>
+        <trans-unit id="Address" translate="yes" xml:space="preserve">
+          <source>Address</source>
+          <target state="new">Address</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a label</note>
+        </trans-unit>
+        <trans-unit id="AlertErrorMessageTemplate" translate="yes" xml:space="preserve">
+          <source>An unexpected error '{0}' occurred. Correlation Id: {1}</source>
+          <target state="new">An unexpected error '{0}' occurred. Correlation Id: {1}</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Error Message Template. Requires Error Message and Correlation Id passed in via string.Format</note>
+        </trans-unit>
+        <trans-unit id="Back" translate="yes" xml:space="preserve">
+          <source>Back</source>
+          <target state="new">Back</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for buttons</note>
+        </trans-unit>
+        <trans-unit id="Cancel" translate="yes" xml:space="preserve">
+          <source>Cancel</source>
+          <target state="new">Cancel</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used to dismiss alerts</note>
+        </trans-unit>
+        <trans-unit id="City" translate="yes" xml:space="preserve">
+          <source>City</source>
+          <target state="new">City</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a label</note>
+        </trans-unit>
+        <trans-unit id="ComingSoon" translate="yes" xml:space="preserve">
+          <source>Coming Soon</source>
+          <target state="new">Coming Soon</target>
+        </trans-unit>
+        <trans-unit id="Dismiss" translate="yes" xml:space="preserve">
+          <source>Dismiss</source>
+          <target state="new">Dismiss</target>
+        </trans-unit>
+        <trans-unit id="Email" translate="yes" xml:space="preserve">
+          <source>Email</source>
+          <target state="new">Email</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a label</note>
+        </trans-unit>
+        <trans-unit id="Error" translate="yes" xml:space="preserve">
+          <source>Error</source>
+          <target state="new">Error</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a window title</note>
+        </trans-unit>
+        <trans-unit id="FirstName" translate="yes" xml:space="preserve">
+          <source>First Name</source>
+          <target state="new">First Name</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a label</note>
+        </trans-unit>
+        <trans-unit id="Info" translate="yes" xml:space="preserve">
+          <source>Info</source>
+          <target state="new">Info</target>
+        </trans-unit>
+        <trans-unit id="LastName" translate="yes" xml:space="preserve">
+          <source>Last Name</source>
+          <target state="new">Last Name</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a label</note>
+        </trans-unit>
+        <trans-unit id="Loading" translate="yes" xml:space="preserve">
+          <source>Loading...</source>
+          <target state="new">Loading...</target>
+        </trans-unit>
+        <trans-unit id="Login" translate="yes" xml:space="preserve">
+          <source>Login</source>
+          <target state="new">Login</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">May be used for a label, title or button text</note>
+        </trans-unit>
+        <trans-unit id="Next" translate="yes" xml:space="preserve">
+          <source>Next</source>
+          <target state="new">Next</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a button text</note>
+        </trans-unit>
+        <trans-unit id="No" translate="yes" xml:space="preserve">
+          <source>No</source>
+          <target state="new">No</target>
+        </trans-unit>
+        <trans-unit id="Ok" translate="yes" xml:space="preserve">
+          <source>Ok</source>
+          <target state="new">Ok</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used to dismiss alerts</note>
+        </trans-unit>
+        <trans-unit id="Reply" translate="yes" xml:space="preserve">
+          <source>Reply</source>
+          <target state="new">Reply</target>
+        </trans-unit>
+        <trans-unit id="State" translate="yes" xml:space="preserve">
+          <source>State</source>
+          <target state="new">State</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a label</note>
+        </trans-unit>
+        <trans-unit id="Success" translate="yes" xml:space="preserve">
+          <source>Success</source>
+          <target state="new">Success</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a window title</note>
+        </trans-unit>
+        <trans-unit id="TapToAdd" translate="yes" xml:space="preserve">
+          <source>Tap to add</source>
+          <target state="new">Tap to add</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Used for accessibility help text</note>
+        </trans-unit>
+        <trans-unit id="TapToCancel" translate="yes" xml:space="preserve">
+          <source>Tap to cancel</source>
+          <target state="new">Tap to cancel</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Used for accessibility help text</note>
+        </trans-unit>
+        <trans-unit id="TapToDismiss" translate="yes" xml:space="preserve">
+          <source>Tap to dismiss</source>
+          <target state="new">Tap to dismiss</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Used for accessibility help text</note>
+        </trans-unit>
+        <trans-unit id="TapToGoBack" translate="yes" xml:space="preserve">
+          <source>Tap to go back</source>
+          <target state="new">Tap to go back</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Used for accessibility help text</note>
+        </trans-unit>
+        <trans-unit id="TapToLogin" translate="yes" xml:space="preserve">
+          <source>Tap to login</source>
+          <target state="new">Tap to login</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Used for accessibility help text</note>
+        </trans-unit>
+        <trans-unit id="TryAgain" translate="yes" xml:space="preserve">
+          <source>Try Again</source>
+          <target state="new">Try Again</target>
+        </trans-unit>
+        <trans-unit id="Warning" translate="yes" xml:space="preserve">
+          <source>Warning</source>
+          <target state="new">Warning</target>
+        </trans-unit>
+        <trans-unit id="Whoops" translate="yes" xml:space="preserve">
+          <source>Whoops</source>
+          <target state="new">Whoops</target>
+        </trans-unit>
+        <trans-unit id="Yes" translate="yes" xml:space="preserve">
+          <source>Yes</source>
+          <target state="new">Yes</target>
+        </trans-unit>
+        <trans-unit id="Zip" translate="yes" xml:space="preserve">
+          <source>Zip</source>
+          <target state="new">Zip</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a label</note>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>
