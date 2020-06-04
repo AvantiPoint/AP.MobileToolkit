@@ -1,4 +1,5 @@
-﻿using Prism.Events;
+﻿using AP.CrossPlatform.i18n;
+using Prism.Events;
 using Prism.Logging;
 using Prism.Navigation;
 using Prism.Services;
@@ -13,17 +14,21 @@ namespace AP.MobileToolkit.Mvvm
                             IPageDialogService pageDialogService,
                             ILogger logger,
                             IEventAggregator eventAggregator,
-                            IDeviceService deviceService)
+                            IDeviceService deviceService,
+                            ILocalize localize)
         {
             NavigationService = navigationService;
             DialogService = dialogService;
             PageDialogService = pageDialogService;
             DeviceService = deviceService;
+            Localize = localize;
             Logger = logger;
             EventAggregator = eventAggregator;
         }
 
         public IDeviceService DeviceService { get; }
+
+        public ILocalize Localize { get; }
 
         public ILogger Logger { get; }
 

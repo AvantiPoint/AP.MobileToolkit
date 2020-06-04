@@ -5,6 +5,7 @@ using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using AP.CrossPlatform.Extensions;
+using AP.CrossPlatform.i18n;
 using AP.MobileToolkit.Extensions;
 using AP.MobileToolkit.Resources;
 using Prism.AppModel;
@@ -20,7 +21,7 @@ namespace AP.MobileToolkit.Mvvm
     /// <summary>
     /// Provides a base ViewModel Class
     /// </summary>
-    public abstract class APBaseViewModel : ReactiveObject, IInitialize, IInitializeAsync, INavigatedAware, IDestructible, IConfirmNavigation, IConfirmNavigationAsync, IApplicationLifecycleAware, IPageLifecycleAware
+    public abstract class APBaseViewModel : ReactiveObject, IAutoInitialize, IInitialize, IInitializeAsync, INavigatedAware, IDestructible, IConfirmNavigation, IConfirmNavigationAsync, IApplicationLifecycleAware, IPageLifecycleAware
     {
         protected CompositeDisposable Disposables { get; private set; }
 
@@ -36,17 +37,20 @@ namespace AP.MobileToolkit.Mvvm
 
         protected IPageDialogService PageDialogService { get; }
 
+        protected ILocalize Localize { get; }
+
         protected APBaseViewModel(BaseServices baseServices)
         {
             Disposables = new CompositeDisposable();
             NavigationService = baseServices.NavigationService;
             DeviceService = baseServices.DeviceService;
             DialogService = baseServices.DialogService;
+            Localize = baseServices.Localize;
             Logger = baseServices.Logger;
             EventAggregator = baseServices.EventAggregator;
             PageDialogService = baseServices.PageDialogService;
 
-            Title = GetType().SanitizeViewModelTypeName();
+            Title = GetTitle();
             _isNotBusyHelper = this.WhenAnyValue(x => x.IsBusy)
                 .Select(x => !x)
                 .ToProperty(this, x => x.IsNotBusy, true)
@@ -126,6 +130,18 @@ namespace AP.MobileToolkit.Mvvm
                             ToolkitResources.Error,
                             string.Format(ToolkitResources.AlertErrorMessageTemplate, ex.ToErrorMessage(), correlationId),
                             ToolkitResources.Ok);
+        }
+
+        protected virtual string GetTitle()
+        {
+            var viewmodelType = GetType();
+            var title = Localize[viewmodelType.Name];
+            if (!string.IsNullOrEmpty(title))
+            {
+                return title;
+            }
+
+            return viewmodelType.SanitizeViewModelTypeName();
         }
 
         #region IInitialize
