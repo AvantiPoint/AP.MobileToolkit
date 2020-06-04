@@ -16,7 +16,7 @@
                     Grid.Column="1"
                     VerticalOptions="Center"
                     HorizontalOptions="FillAndExpand"
-                    Format="MMMM dd, yyyy"
+                    Format="{Binding Format}"
                     DateSelected="Handle_DateSelected" />
     </Grid>
 </ViewCell>

@@ -15,6 +15,9 @@ namespace AP.MobileToolkit.Controls
         public static readonly new BindableProperty IsEnabledProperty =
             BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(DatePickerCell), true, propertyChanged: OnIsEnabledChanged);
 
+        public static readonly BindableProperty FormatProperty =
+            BindableProperty.Create(nameof(Format), typeof(string), typeof(DatePickerCell), "MMMM dd, yyyy");
+
         static void OnSelectedDateChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var date = (DateTime)newValue;
@@ -44,20 +47,26 @@ namespace AP.MobileToolkit.Controls
 
         public string Label
         {
-            get { return (string)GetValue(LabelProperty); }
-            set { SetValue(LabelProperty, value); }
+            get => (string)GetValue(LabelProperty);
+            set => SetValue(LabelProperty, value);
         }
 
         public DateTime SelectedDate
         {
-            get { return (DateTime)GetValue(SelectedDateProperty); }
-            set { SetValue(SelectedDateProperty, value); }
+            get => (DateTime)GetValue(SelectedDateProperty);
+            set => SetValue(SelectedDateProperty, value);
         }
 
         public new bool IsEnabled
         {
-            get { return (bool)GetValue(IsEnabledProperty); }
-            set { SetValue(IsEnabledProperty, value); }
+            get => (bool)GetValue(IsEnabledProperty);
+            set => SetValue(IsEnabledProperty, value);
+        }
+
+        public string Format
+        {
+            get => (string)GetValue(FormatProperty);
+            set => SetValue(FormatProperty, value);
         }
 
         void Handle_DateSelected(object sender, DateChangedEventArgs e)
