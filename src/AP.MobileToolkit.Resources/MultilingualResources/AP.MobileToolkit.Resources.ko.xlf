@@ -9,6 +9,7 @@
         <trans-unit id="Account" translate="yes" xml:space="preserve">
           <source>Account</source>
           <target state="new">Account</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a label</note>
         </trans-unit>
         <trans-unit id="Add" translate="yes" xml:space="preserve">
           <source>Add</source>
@@ -43,10 +44,12 @@
         <trans-unit id="ComingSoon" translate="yes" xml:space="preserve">
           <source>Coming Soon</source>
           <target state="new">Coming Soon</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a title or label</note>
         </trans-unit>
         <trans-unit id="Dismiss" translate="yes" xml:space="preserve">
           <source>Dismiss</source>
           <target state="new">Dismiss</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a button text</note>
         </trans-unit>
         <trans-unit id="Email" translate="yes" xml:space="preserve">
           <source>Email</source>
@@ -66,6 +69,7 @@
         <trans-unit id="Info" translate="yes" xml:space="preserve">
           <source>Info</source>
           <target state="new">Info</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a button text</note>
         </trans-unit>
         <trans-unit id="LastName" translate="yes" xml:space="preserve">
           <source>Last Name</source>
@@ -75,6 +79,7 @@
         <trans-unit id="Loading" translate="yes" xml:space="preserve">
           <source>Loading...</source>
           <target state="new">Loading...</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a label with an Activity Indicator</note>
         </trans-unit>
         <trans-unit id="Login" translate="yes" xml:space="preserve">
           <source>Login</source>
@@ -89,6 +94,7 @@
         <trans-unit id="No" translate="yes" xml:space="preserve">
           <source>No</source>
           <target state="new">No</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a button text</note>
         </trans-unit>
         <trans-unit id="Ok" translate="yes" xml:space="preserve">
           <source>Ok</source>
@@ -98,6 +104,7 @@
         <trans-unit id="Reply" translate="yes" xml:space="preserve">
           <source>Reply</source>
           <target state="new">Reply</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a button text</note>
         </trans-unit>
         <trans-unit id="State" translate="yes" xml:space="preserve">
           <source>State</source>
@@ -137,18 +144,22 @@
         <trans-unit id="TryAgain" translate="yes" xml:space="preserve">
           <source>Try Again</source>
           <target state="new">Try Again</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a button text</note>
         </trans-unit>
         <trans-unit id="Warning" translate="yes" xml:space="preserve">
           <source>Warning</source>
           <target state="new">Warning</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a window title</note>
         </trans-unit>
         <trans-unit id="Whoops" translate="yes" xml:space="preserve">
           <source>Whoops</source>
           <target state="new">Whoops</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a window title</note>
         </trans-unit>
         <trans-unit id="Yes" translate="yes" xml:space="preserve">
           <source>Yes</source>
           <target state="new">Yes</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a button text</note>
         </trans-unit>
         <trans-unit id="Zip" translate="yes" xml:space="preserve">
           <source>Zip</source>

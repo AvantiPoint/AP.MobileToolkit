@@ -12,4 +12,110 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Account" xml:space="preserve">
+    <value>Cuenta</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Añadir</value>
+    <comment>Generally used for a button text</comment>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Dirección</value>
+    <comment>Generally used for a label</comment>
+  </data>
+  <data name="AlertErrorMessageTemplate" xml:space="preserve">
+    <value>Se produjo un error inesperado '{0}'. Id de correlación: {1}</value>
+    <comment>Error Message Template. Requires Error Message and Correlation Id passed in via string.Format</comment>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Atrás</value>
+    <comment>Generally used for buttons</comment>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+    <comment>Generally used to dismiss alerts</comment>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Ciudad</value>
+    <comment>Generally used for a label</comment>
+  </data>
+  <data name="ComingSoon" xml:space="preserve">
+    <value>Próximamente</value>
+  </data>
+  <data name="Dismiss" xml:space="preserve">
+    <value>Descartar</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Correo electrónico</value>
+    <comment>Generally used for a label</comment>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Fehler</value>
+    <comment>Generally used for a window title</comment>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Nombre</value>
+    <comment>Generally used for a label</comment>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Información</value>
+    <comment>Generally used for a button text</comment>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Apellidos</value>
+    <comment>Generally used for a label</comment>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Se está cargando...</value>
+    <comment>Generally used for a label with an Activity Indicator</comment>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Inicio de sesión</value>
+    <comment>May be used for a label, title or button text</comment>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Aceptar</value>
+    <comment>Generally used to dismiss alerts</comment>
+  </data>
+  <data name="Reply" xml:space="preserve">
+    <value>Responder</value>
+    <comment>Generally used for a button text</comment>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>Estado</value>
+    <comment>Generally used for a label</comment>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Correcta</value>
+    <comment>Generally used for a window title</comment>
+  </data>
+  <data name="TapToAdd" xml:space="preserve">
+    <value>Pulsa para agregar.</value>
+    <comment>Used for accessibility help text</comment>
+  </data>
+  <data name="TapToCancel" xml:space="preserve">
+    <value>Pulsar para cancelar</value>
+    <comment>Used for accessibility help text</comment>
+  </data>
+  <data name="TapToGoBack" xml:space="preserve">
+    <value>Puntee para volver atrás</value>
+    <comment>Used for accessibility help text</comment>
+  </data>
+  <data name="TapToLogin" xml:space="preserve">
+    <value>Toque para iniciar sesión</value>
+    <comment>Used for accessibility help text</comment>
+  </data>
+  <data name="TryAgain" xml:space="preserve">
+    <value>Intentar de nuevo</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Advertencia</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Sí</value>
+  </data>
+  <data name="Zip" xml:space="preserve">
+    <value>Código postal</value>
+    <comment>Generally used for a label</comment>
+  </data>
 </root>

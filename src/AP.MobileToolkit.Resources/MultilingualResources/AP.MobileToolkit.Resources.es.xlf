@@ -69,6 +69,7 @@
         <trans-unit id="Info" translate="yes" xml:space="preserve">
           <source>Info</source>
           <target state="needs-review-translation" state-qualifier="tm-suggestion">Información</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a button text</note>
         </trans-unit>
         <trans-unit id="LastName" translate="yes" xml:space="preserve">
           <source>Last Name</source>
@@ -78,6 +79,7 @@
         <trans-unit id="Loading" translate="yes" xml:space="preserve">
           <source>Loading...</source>
           <target state="needs-review-translation" state-qualifier="tm-suggestion">Se está cargando...</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a label with an Activity Indicator</note>
         </trans-unit>
         <trans-unit id="Login" translate="yes" xml:space="preserve">
           <source>Login</source>
@@ -92,6 +94,7 @@
         <trans-unit id="No" translate="yes" xml:space="preserve">
           <source>No</source>
           <target state="new">No</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a button text</note>
         </trans-unit>
         <trans-unit id="Ok" translate="yes" xml:space="preserve">
           <source>Ok</source>
@@ -101,6 +104,7 @@
         <trans-unit id="Reply" translate="yes" xml:space="preserve">
           <source>Reply</source>
           <target state="needs-review-translation" state-qualifier="tm-suggestion">Responder</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Generally used for a button text</note>
         </trans-unit>
         <trans-unit id="State" translate="yes" xml:space="preserve">
           <source>State</source>
