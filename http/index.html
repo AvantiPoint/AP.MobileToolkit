@@ -1,0 +1,1233 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Project docs for the AP.MobileToolkit">
+      
+      
+        <link rel="canonical" href="http://avantipoint.com/http/">
+      
+      
+        <meta name="author" content="Dan Siegel">
+      
+      <link rel="shortcut icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.2.2">
+    
+    
+      
+        <title>ApiClient - Mobile Toolkit</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a2408e81.min.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a46bcfb3.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="blue-grey">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#apmobiletoolkithttp" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="http://avantipoint.com/" title="Mobile Toolkit" class="md-header-nav__button md-logo" aria-label="Mobile Toolkit">
+      <!-- Logo -->
+
+  <img src="../assets/logo-small.png" alt="logo" style="width: max-content;height: max-content;" />
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Mobile Toolkit
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              ApiClient
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/avantipoint/AP.MobileToolkit" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    avantipoint/AP.MobileToolkit
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="http://avantipoint.com/" title="Mobile Toolkit" class="md-nav__button md-logo" aria-label="Mobile Toolkit">
+      <!-- Logo -->
+
+  <img src="../assets/logo-small.png" alt="logo" style="width: max-content;height: max-content;" />
+
+    </a>
+    Mobile Toolkit
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/avantipoint/AP.MobileToolkit" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    avantipoint/AP.MobileToolkit
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        ApiClient
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="ApiClient" class="md-nav__link md-nav__link--active">
+      ApiClient
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-the-apiclient" class="md-nav__link">
+    Configuring the ApiClient
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring the ApiClient">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#additional-configurations" class="md-nav__link">
+    Additional Configurations
+  </a>
+  
+    <nav class="md-nav" aria-label="Additional Configurations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-headers" class="md-nav__link">
+    Default Headers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-message-handlers" class="md-nav__link">
+    Customizing the Message Handlers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-authentication-header" class="md-nav__link">
+    Customizing the Authentication Header
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-apiclient" class="md-nav__link">
+    Using the ApiClient
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-headers" class="md-nav__link">
+    Additional Headers
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../auth/" title="Auth" class="md-nav__link">
+      Auth
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../aad/" title="Azure Active Directory" class="md-nav__link">
+      Azure Active Directory
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Core
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Core" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Core
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../core/" title="About" class="md-nav__link">
+      About
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../core/collections/" title="Collections" class="md-nav__link">
+      Collections
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../core/http/" title="Http Helpers" class="md-nav__link">
+      Http Helpers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../core/localization/" title="Localization" class="md-nav__link">
+      Localization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5">
+    
+    <label class="md-nav__link" for="nav-5-5">
+      Validation
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Validation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Validation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../core/validations/" title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Fonts
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Fonts" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Fonts
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../fonts/" title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../fonts/generator/" title="Font Generation" class="md-nav__link">
+      Font Generation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Xamarin.Forms
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Xamarin.Forms" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Xamarin.Forms
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../forms/" title="Toolkit" class="md-nav__link">
+      Toolkit
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+    
+    <label class="md-nav__link" for="nav-7-2">
+      Behaviors
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Behaviors" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Behaviors
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../forms/behaviors/" title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3">
+    
+    <label class="md-nav__link" for="nav-7-3">
+      Controls
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Controls" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Controls
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../forms/controls/badgeview/" title="BadgeView" class="md-nav__link">
+      BadgeView
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../forms/controls/datepickercell/" title="DatePickerCell" class="md-nav__link">
+      DatePickerCell
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../forms/controls/gravatarimagesource/" title="GravatarImageSource" class="md-nav__link">
+      GravatarImageSource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../forms/controls/imageentry/" title="ImageEntry" class="md-nav__link">
+      ImageEntry
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../forms/controls/markdowntextview/" title="MarkdownTextView" class="md-nav__link">
+      MarkdownTextView
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../forms/controls/menubar/" title="MenuBar" class="md-nav__link">
+      MenuBar
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../forms/controls/repeaterview/" title="RepeaterView" class="md-nav__link">
+      RepeaterView
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../forms/controls/selectorview/" title="SelectorView" class="md-nav__link">
+      SelectorView
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../forms/controls/swipecardview/" title="SwipeCardView" class="md-nav__link">
+      SwipeCardView
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-4" type="checkbox" id="nav-7-4">
+    
+    <label class="md-nav__link" for="nav-7-4">
+      Converters
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Converters" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Converters
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../forms/converters/" title="What's Included" class="md-nav__link">
+      What's Included
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
+    
+    <label class="md-nav__link" for="nav-7-5">
+      Fonts
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Fonts" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Fonts
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../forms/fonts/" title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../forms/menus/" title="Menus" class="md-nav__link">
+      Menus
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-7" type="checkbox" id="nav-7-7">
+    
+    <label class="md-nav__link" for="nav-7-7">
+      Mvvm
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Mvvm" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Mvvm
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../forms/mvvm/viewmodelbase/" title="APBaseViewModel" class="md-nav__link">
+      APBaseViewModel
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../forms/mvvm/dialogviewmodelbase/" title="APBaseDialogViewModel" class="md-nav__link">
+      APBaseDialogViewModel
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../resources/" title="Localized Resources" class="md-nav__link">
+      Localized Resources
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../rxui/" title="ReactiveUI" class="md-nav__link">
+      ReactiveUI
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-the-apiclient" class="md-nav__link">
+    Configuring the ApiClient
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring the ApiClient">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#additional-configurations" class="md-nav__link">
+    Additional Configurations
+  </a>
+  
+    <nav class="md-nav" aria-label="Additional Configurations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-headers" class="md-nav__link">
+    Default Headers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-message-handlers" class="md-nav__link">
+    Customizing the Message Handlers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-authentication-header" class="md-nav__link">
+    Customizing the Authentication Header
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-apiclient" class="md-nav__link">
+    Using the ApiClient
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-headers" class="md-nav__link">
+    Additional Headers
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="apmobiletoolkithttp">AP.MobileToolkit.Http<a class="headerlink" href="#apmobiletoolkithttp" title="Permanent link">&para;</a></h1>
+<p>The Http package includes a lightweight API Client that makes integrating with a custom backend a breeze. You simply need to provide the base options for where the API Client should send it's requests to along with a callback handler to provie the current Authentication Token.</p>
+<p>You can certainly use the trusty old HttpClient directly, however using IApiClient provides a few benefits including:</p>
+<ul>
+<li>Support for Get, Post, Put, Patch, &amp; Delete</li>
+<li>Automatic Retry for:</li>
+<li>Internal Server Error</li>
+<li>Service Timeout</li>
+<li>Service Unavailable</li>
+<li>Bad Gateway</li>
+<li>Gateway Timeout</li>
+<li>Control over when to dispose the base HttpClient</li>
+<li>Get helper headers that you can log from your API to track which device your user is using, which verion of the app, and which app, etc, while also being able to easily override or customize the headers you want.</li>
+</ul>
+<h2 id="configuring-the-apiclient">Configuring the ApiClient<a class="headerlink" href="#configuring-the-apiclient" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="k">public</span> <span class="k">class</span> <span class="nc">MyApiClient</span> <span class="p">:</span> <span class="n">ApiClient</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="n">IPushManager</span> <span class="n">_pushManager</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">private</span> <span class="n">IUser</span> <span class="n">_user</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">override</span> <span class="n">Uri</span> <span class="n">BaseAddress</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="n">Uri</span><span class="p">(</span><span class="n">ConfigurationManager</span><span class="p">.</span><span class="n">AppSettings</span><span class="p">[</span><span class="s">&quot;BackendApi&quot;</span><span class="p">]);</span>
+
+    <span class="k">public</span> <span class="nf">MyApiClient</span><span class="p">(</span><span class="n">IUser</span> <span class="n">user</span><span class="p">,</span> <span class="n">IPushManager</span> <span class="n">pushManager</span><span class="p">,</span> <span class="n">ILogger</span> <span class="n">logger</span><span class="p">,</span> <span class="n">IAppInfo</span> <span class="n">appInfo</span><span class="p">,</span> <span class="n">IDeviceInfo</span> <span class="n">deviceInfo</span><span class="p">)</span>
+        <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">appInfo</span><span class="p">,</span> <span class="n">deviceInfo</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">_pushManager</span> <span class="p">=</span> <span class="n">pushManager</span><span class="p">;</span>
+        <span class="n">_user</span> <span class="p">=</span> <span class="n">user</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">override</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">GetTokenAsync</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">Task</span><span class="p">.</span><span class="n">FromResult</span><span class="p">(</span><span class="n">_user</span><span class="p">.</span><span class="n">AccessToken</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">override</span> <span class="kt">string</span> <span class="nf">GetInstallId</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">_pushManager</span><span class="p">.</span><span class="n">CurrentRegistrationToken</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<h3 id="additional-configurations">Additional Configurations<a class="headerlink" href="#additional-configurations" title="Permanent link">&para;</a></h3>
+<p>The ApiClient has a few additional overridable methods that can allow you to further tailor the ApiClient to your specific needs.</p>
+<h4 id="default-headers">Default Headers<a class="headerlink" href="#default-headers" title="Permanent link">&para;</a></h4>
+<p>You can configure the default headers that will be sent by overriding SetDefaultHeaders.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">SetDefaultHeaders</span><span class="p">(</span><span class="n">HttpClient</span> <span class="n">client</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="n">Accept</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">MediaTypeWithQualityHeaderValue</span><span class="p">(</span><span class="s">&quot;application/json&quot;</span><span class="p">));</span>
+    <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="n">CacheControl</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CacheControlHeaderValue</span>
+    <span class="p">{</span>
+        <span class="n">NoCache</span> <span class="p">=</span> <span class="k">true</span>
+    <span class="p">};</span>
+    <span class="kt">var</span> <span class="n">appName</span> <span class="p">=</span> <span class="n">Regex</span><span class="p">.</span><span class="n">Replace</span><span class="p">(</span><span class="n">AppInfo</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="s">@&quot;\s&quot;</span><span class="p">,</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span><span class="p">).</span><span class="n">ToASCII</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">agentHeader</span> <span class="p">=</span> <span class="n">ProductHeaderValue</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="err">$</span><span class="s">&quot;{appName}/{AppInfo.VersionString.ToASCII()}&quot;</span><span class="p">);</span>
+    <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="n">UserAgent</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">ProductInfoHeaderValue</span><span class="p">(</span><span class="n">agentHeader</span><span class="p">));</span>
+    <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;X-MobileAppVer&quot;</span><span class="p">,</span> <span class="n">AppInfo</span><span class="p">.</span><span class="n">VersionString</span><span class="p">.</span><span class="n">ToASCII</span><span class="p">());</span>
+    <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;X-DeviceModel&quot;</span><span class="p">,</span> <span class="n">DeviceInfo</span><span class="p">.</span><span class="n">Model</span><span class="p">.</span><span class="n">ToASCII</span><span class="p">());</span>
+    <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;X-DeviceManufacturer&quot;</span><span class="p">,</span> <span class="n">DeviceInfo</span><span class="p">.</span><span class="n">Manufacturer</span><span class="p">.</span><span class="n">ToASCII</span><span class="p">());</span>
+    <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;X-DeviceName&quot;</span><span class="p">,</span> <span class="n">DeviceInfo</span><span class="p">.</span><span class="n">Name</span><span class="p">.</span><span class="n">ToASCII</span><span class="p">());</span>
+    <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;X-DevicePlatform&quot;</span><span class="p">,</span> <span class="err">$</span><span class="s">&quot;{DeviceInfo.Platform}&quot;</span><span class="p">);</span>
+    <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;X-DeviceIdiom&quot;</span><span class="p">,</span> <span class="err">$</span><span class="s">&quot;{DeviceInfo.Idiom}&quot;</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">TryGetInstallId</span><span class="p">(</span><span class="k">out</span> <span class="kt">var</span> <span class="n">installId</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;X-ClientId&quot;</span><span class="p">,</span> <span class="n">installId</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<h4 id="customizing-the-message-handlers">Customizing the Message Handlers<a class="headerlink" href="#customizing-the-message-handlers" title="Permanent link">&para;</a></h4>
+<p>You can optionally provide custom a <code>HttpMessageHandler</code> for the HttpClient. Note that you should be intentional on setting the innerHandler to the one passed in otherwise authentication may not work properly.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">protected</span> <span class="k">override</span> <span class="n">HttpMessageHandler</span> <span class="nf">CreateHandler</span><span class="p">(</span><span class="n">HttpMessageHandler</span> <span class="n">innerHandler</span><span class="p">)</span> <span class="p">=&gt;</span>
+    <span class="k">new</span> <span class="nf">MyCustomHandler</span><span class="p">(</span><span class="n">innerHandler</span><span class="p">);</span>
+</code></pre></div>
+
+
+<h4 id="customizing-the-authentication-header">Customizing the Authentication Header<a class="headerlink" href="#customizing-the-authentication-header" title="Permanent link">&para;</a></h4>
+<p>There are two ways to configure the Authentication Header. If your authentication relies on using the standard Authentication Header, you can set the AuthenticationScheme in the constructor.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">public</span> <span class="k">class</span> <span class="nc">MyApiClient</span> <span class="p">:</span> <span class="n">ApiClient</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nf">MyApiClient</span><span class="p">(</span><span class="n">ILogger</span> <span class="n">logger</span><span class="p">,</span> <span class="n">IAppInfo</span> <span class="n">appInfo</span><span class="p">,</span> <span class="n">IDeviceInfo</span> <span class="n">deviceInfo</span><span class="p">)</span>
+        <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">appInfo</span><span class="p">,</span> <span class="n">deviceInfo</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">AuthenticationScheme</span> <span class="p">=</span> <span class="s">&quot;Basic&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default the ApiClient uses a Bearer Authentication Scheme.</p>
+</div>
+<p>In the event that setting the Authentication Scheme is not enough and you actually need a custom header value you should override the <code>SetAuthenticationHeader</code> method:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">SetAuthenticationHeader</span><span class="p">(</span><span class="n">HttpRequestMessage</span> <span class="n">request</span><span class="p">,</span> <span class="kt">string</span> <span class="n">token</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">request</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;X-MyAuthHeader&quot;</span><span class="p">,</span> <span class="n">token</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<h2 id="using-the-apiclient">Using the ApiClient<a class="headerlink" href="#using-the-apiclient" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="k">public</span> <span class="k">class</span> <span class="nc">FooService</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="n">IApiClient</span> <span class="n">ApiClient</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="na">    [AllowAnnonymous]</span>
+    <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="n">GetStatus</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="k">await</span> <span class="n">ApiClient</span><span class="p">.</span><span class="n">GetAsync</span><span class="p">(</span><span class="s">&quot;api/status&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">.</span><span class="n">IsSuccessStatusCode</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">DoFoo</span><span class="p">(</span><span class="n">SomeModel</span> <span class="n">model</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">await</span> <span class="n">ApiClient</span><span class="p">.</span><span class="n">PostAsync</span><span class="p">(</span><span class="s">&quot;api/doFoo&quot;</span><span class="p">,</span> <span class="n">model</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">HttpResponseMessage</span><span class="p">&gt;</span> <span class="n">DoBar</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Dispose HttpClient on each request with ability to reuse the ApiClient</span>
+        <span class="k">using</span> <span class="p">(</span><span class="n">ApiClient</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">await</span> <span class="n">ApiClient</span><span class="p">.</span><span class="n">GetAsync</span><span class="p">(</span><span class="s">&quot;api/doBar&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<h2 id="additional-headers">Additional Headers<a class="headerlink" href="#additional-headers" title="Permanent link">&para;</a></h2>
+<p>Out of the box the ApiClient utilizes IAppInfo and IDeviceInfo from Xamarin.Essentials.Interfaces. These are used in combination with some optional configurations in your ApiClient to add useful headers that can collect metadata about your users.</p>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Sample Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User-Agent</td>
+<td>AwesomeApp/2.0.4</td>
+</tr>
+<tr>
+<td>X-MobileAppVer</td>
+<td>2.0.4</td>
+</tr>
+<tr>
+<td>X-DeviceModel</td>
+<td>iPhone10,6</td>
+</tr>
+<tr>
+<td>X-DeviceManufacturer</td>
+<td>Apple</td>
+</tr>
+<tr>
+<td>X-DeviceName</td>
+<td>Dan's iPhone</td>
+</tr>
+<tr>
+<td>X-DevicePlatform</td>
+<td>iOS</td>
+</tr>
+<tr>
+<td>X-DeviceIdiom</td>
+<td>Phone</td>
+</tr>
+<tr>
+<td>X-ClientId</td>
+<td>{your install Id}</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you do not want to use IAppInfo and IDeviceInfo to add metadata, you should simply inherit from ApiClientBase to simplify your implementation.</p>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+
+<footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <!-- Copyright and theme information -->
+      <div class="md-footer-copyright">
+      
+        <div class="md-footer-copyright__highlight">
+        Copyright &copy; 2016 - 2020 AvantiPoint
+        </div>
+      
+      </div>
+
+      <!-- Social links -->
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../assets/javascripts/bundle.5f27aba8.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.27c6a5e6.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
