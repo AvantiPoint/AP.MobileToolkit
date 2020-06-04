@@ -3,6 +3,7 @@ using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
+using AP.CrossPlatform.i18n;
 using AP.MobileToolkit.Mvvm;
 using Moq;
 using Prism.Events;
@@ -34,7 +35,7 @@ namespace AP.MobileToolkit.Tests.Mocks
     public class ReactiveMockViewModel : APBaseViewModel
     {
         public ReactiveMockViewModel(ITestOutputHelper testOutputHelper)
-            : this(new BaseServices(Mock.Of<INavigationService>(), Mock.Of<IDialogService>(), Mock.Of<IPageDialogService>(), new XunitLogger(testOutputHelper), Mock.Of<IEventAggregator>(), Mock.Of<IDeviceService>()))
+            : this(new BaseServices(Mock.Of<INavigationService>(), Mock.Of<IDialogService>(), Mock.Of<IPageDialogService>(), new XunitLogger(testOutputHelper), Mock.Of<IEventAggregator>(), Mock.Of<IDeviceService>(), new ResxLocalize()))
         {
         }
 

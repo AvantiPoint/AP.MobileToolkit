@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using AP.CrossPlatform.Extensions;
+using AP.CrossPlatform.i18n;
 using AP.MobileToolkit.Mvvm;
 using AP.MobileToolkit.Resources;
 using AP.MobileToolkit.Tests.Mocks;
@@ -93,7 +92,7 @@ namespace AP.MobileToolkit.Tests.Tests.Mvvm
             var navService = new NavigationServiceMock();
             var dialogService = new PageDialogServiceMock();
             var logger = new XunitLogger(TestOutputHelper);
-            var baseServices = new BaseServices(navService, Mock.Of<IDialogService>(), dialogService, logger, Mock.Of<IEventAggregator>(), Mock.Of<IDeviceService>());
+            var baseServices = new BaseServices(navService, Mock.Of<IDialogService>(), dialogService, logger, Mock.Of<IEventAggregator>(), Mock.Of<IDeviceService>(), new ResxLocalize());
             var vm = new ReactiveMockViewModel(baseServices);
 
             // Assert.True(vm.NavigateCommand.CanExecute("good"));
@@ -108,7 +107,7 @@ namespace AP.MobileToolkit.Tests.Tests.Mvvm
             var navService = new NavigationServiceMock();
             var dialogService = new PageDialogServiceMock();
             var logger = new XunitLogger(TestOutputHelper);
-            var baseServices = new BaseServices(navService, Mock.Of<IDialogService>(), dialogService, logger, Mock.Of<IEventAggregator>(), Mock.Of<IDeviceService>());
+            var baseServices = new BaseServices(navService, Mock.Of<IDialogService>(), dialogService, logger, Mock.Of<IEventAggregator>(), Mock.Of<IDeviceService>(), new ResxLocalize());
             var vm = new ReactiveMockViewModel(baseServices);
 
             // Assert.True(vm.NavigateCommand.CanExecute("bad"));

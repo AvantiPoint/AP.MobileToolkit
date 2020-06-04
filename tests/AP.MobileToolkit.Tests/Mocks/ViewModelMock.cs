@@ -10,7 +10,7 @@ namespace AP.MobileToolkit.Tests.Mocks
     public class ViewModelMock : APBaseViewModel
     {
         public ViewModelMock()
-            : base(new BaseServices(default, default, default, default, default, default))
+            : base(new BaseServices(default, default, default, default, default, default, default))
         {
         }
 
