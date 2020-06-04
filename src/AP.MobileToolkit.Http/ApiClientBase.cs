@@ -11,11 +11,9 @@ namespace AP.MobileToolkit.Http
 {
     public abstract class ApiClientBase : IApiClient, IAuthenticationHandler
     {
-        protected IApiClientOptions Options { get; }
+        protected abstract Uri BaseAddress { get; }
 
         protected ILogger Logger { get; }
-
-        protected string InstallId { get; }
 
         private HttpClient _client;
 
@@ -32,12 +30,13 @@ namespace AP.MobileToolkit.Http
             }
         }
 
-        public ApiClientBase(IApiClientOptions options, ILogger logger)
+        protected ApiClientBase(ILogger logger)
         {
-            InstallId = options.InstallId;
-            Options = options;
             Logger = logger;
+            AuthenticationScheme = "BEARER";
         }
+
+        protected string AuthenticationScheme { get; set; }
 
         public virtual Task<HttpResponseMessage> GetAsync(string requestUri, CancellationToken cancellationToken = default)
         {
@@ -94,7 +93,7 @@ namespace AP.MobileToolkit.Http
             var handler = CreateHandler(authenticationMessageHandler);
             var client = new HttpClient(handler)
             {
-                BaseAddress = new Uri(Options.BaseUri)
+                BaseAddress = BaseAddress
             };
 
             SetDefaultHeaders(client);
@@ -103,15 +102,27 @@ namespace AP.MobileToolkit.Http
             return client;
         }
 
-        protected virtual Task<string> GetTokenAsync()
+        protected abstract Task<string> GetTokenAsync();
+
+        protected virtual string GetInstallId() => null;
+
+        protected bool TryGetInstallId(out string installId)
         {
-            Logger.Warn("You must override ApiClientBase.GetTokenAsync() to make authenticated calls.");
-            throw new NotImplementedException();
+            installId = null;
+            try
+            {
+                installId = GetInstallId();
+                return !string.IsNullOrEmpty(installId);
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         protected virtual void SetAuthenticationHeader(HttpRequestMessage request, string token)
         {
-            request.Headers.Authorization = new AuthenticationHeaderValue("BEARER", token);
+            request.Headers.Authorization = new AuthenticationHeaderValue(AuthenticationScheme, token);
         }
 
         Task<string> IAuthenticationHandler.GetTokenAsync() => GetTokenAsync();

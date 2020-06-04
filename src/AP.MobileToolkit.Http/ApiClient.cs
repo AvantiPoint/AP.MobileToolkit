@@ -1,24 +1,20 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using AP.CrossPlatform.Extensions;
 using Prism.Logging;
 using Xamarin.Essentials.Interfaces;
 
 namespace AP.MobileToolkit.Http
 {
-    public delegate Task<bool> SaveApiObject<T>(T obj);
-
-    public class ApiClient : ApiClientBase
+    public abstract class ApiClient : ApiClientBase
     {
         protected IAppInfo AppInfo { get; }
 
         protected IDeviceInfo DeviceInfo { get; }
 
-        public ApiClient(IApiClientOptions options, ILogger logger, IAppInfo appInfo, IDeviceInfo deviceInfo)
-            : base(options, logger)
+        protected ApiClient(ILogger logger, IAppInfo appInfo, IDeviceInfo deviceInfo)
+            : base(logger)
         {
             AppInfo = appInfo;
             DeviceInfo = deviceInfo;
@@ -41,16 +37,10 @@ namespace AP.MobileToolkit.Http
             client.DefaultRequestHeaders.Add("X-DevicePlatform", $"{DeviceInfo.Platform}");
             client.DefaultRequestHeaders.Add("X-DeviceIdiom", $"{DeviceInfo.Idiom}");
 
-            if (!string.IsNullOrWhiteSpace(InstallId))
+            if (TryGetInstallId(out var installId))
             {
-                client.DefaultRequestHeaders.Add("X-ClientId", InstallId);
+                client.DefaultRequestHeaders.Add("X-ClientId", installId);
             }
-        }
-
-        protected override Task<string> GetTokenAsync()
-        {
-            Logger.Warn("You must override ApiClient.GetTokenAsync() to make authenticated calls.");
-            throw new NotImplementedException();
         }
     }
 }
