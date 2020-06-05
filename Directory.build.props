@@ -7,6 +7,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Dan Siegel</Authors>
     <Company>AvantiPoint</Company>
+    <Copyright>Copyright © AvantiPoint 2020</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>avantipoint-icon.png</PackageIcon>
     <LangVersion>latest</LangVersion>
@@ -18,13 +19,10 @@
     <IsTestProject>$(MSBuildProjectName.Contains('Test'))</IsTestProject>
     <IsPackable>!$(IsTestProject)</IsPackable>
     <IsPackable Condition=" $(MSBuildProjectName.StartsWith('ToolkitDemo')) ">false</IsPackable>
-    <VersionPrefix>3.0.0</VersionPrefix>
-    <VersionPrefix Condition=" '$(BUILD_BUILDID)' != '' ">$(VersionPrefix).$(BUILD_BUILDID)</VersionPrefix>
     <IS_PREVIEW Condition=" '$(IS_PREVIEW)' == '' ">false</IS_PREVIEW>
     <IS_RELEASE Condition=" '$(IS_RELEASE)' == '' ">false</IS_RELEASE>
-    <VersionSuffix>ci</VersionSuffix>
-    <VersionSuffix Condition=" '$(IS_PREVIEW)' ">pre</VersionSuffix>
-    <VersionSuffix Condition=" '$(IS_RELEASE)' "></VersionSuffix>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -41,6 +39,7 @@
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="all">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.1.91" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(IsPackable) ">
@@ -49,6 +48,7 @@
 
   <ItemGroup>
     <None Remove=".DS_Store" />
+    <SourceRoot Include="$(MSBuildThisFileDirectory)"/>
   </ItemGroup>
 
   <Import Project="build\Dependencies.props" />
