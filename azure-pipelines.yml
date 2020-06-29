@@ -71,9 +71,9 @@ stages:
   displayName: Deploy NuGet Packages
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['system.pullrequest.isfork'], false))
   jobs:
-  - deployment: MyGet
-    displayName: MyGet.org
-    environment: MyGet
+  - deployment: SponsorConnect
+    displayName: SponsorConnect.dev
+    environment: SponsorConnect
     strategy:
       runOnce:
         deploy:
@@ -82,9 +82,9 @@ stages:
             displayName: 'NuGet push'
             inputs:
                 command: push
-                packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg'
+                packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg;$(Pipeline.Workspace)/**/*.snupkg'
                 nuGetFeedType: external
-                publishFeedCredentials: 'AvaintPoint-MyGet'
+                publishFeedCredentials: 'SponsorConnect'
 - stage: DeployRelease
   displayName: Deploy Release NuGet Packages
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['system.pullrequest.isfork'], false), or(eq(variables['IS_PREVIEW'], true), eq(variables['IS_RELEASE'], true)))
@@ -109,7 +109,9 @@ stages:
               inputs:
                 action: create
                 gitHubConnection: GitHub
-                assets: $(Pipeline.Workspace)/**/*.nupkg
+                assets: |
+                  $(Pipeline.Workspace)/**/*.nupkg
+                  $(Pipeline.Workspace)/**/*.snupkg
                 tag: 'v$(VersionName)'
                 tagSource: userSpecifiedTag
                 isPreRelease: $(IS_PREVIEW)
@@ -120,6 +122,6 @@ stages:
               displayName: NuGet Push
               inputs:
                 command: push
-                packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg;!$(Pipeline.Workspace)/**/*.symbols.nupkg'
+                packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg;$(Pipeline.Workspace)/**/*.snupkg'
                 nuGetFeedType: external
                 publishFeedCredentials: 'NuGet.org'
