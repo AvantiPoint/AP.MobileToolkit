@@ -28,14 +28,14 @@ theme:
 
 extra:
   social:
-    # - type: globe
-    #   link: http://avantipoint.com
-    # - type: github
-    #   link: https://github.com/avantipoint
-    # - type: twitter
-    #   link: https://twitter.com/AvantiPoint
-    # - type: linkedin
-    #   link: https://www.linkedin.com/company/avantipoint/
+    - icon: fontawesome/brands/html5
+      link: http://avantipoint.com
+    - icon: fontawesome/brands/github
+      link: https://github.com/avantipoint
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/AvantiPoint
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/avantipoint/
 
 # Extensions
 markdown_extensions:
