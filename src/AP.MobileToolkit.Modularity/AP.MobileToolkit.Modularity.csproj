@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Prism.Core" Version="$(PrismVersion)" />
-    <PackageReference Include="Prism.Plugin.Logging.Abstractions" Version="7.2.0.1114" />
+    <PackageReference Include="Prism.Plugin.Logging.Abstractions" Version="7.2.0.1421" />
   </ItemGroup>
 
   <ItemGroup>
