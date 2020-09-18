@@ -18,6 +18,16 @@ namespace AP.MobileToolkit.Tests.Mocks
             throw new NotImplementedException();
         }
 
+        public Task<INavigationResult> GoBackAsync(INavigationParameters parameters, bool? useModalNavigation, bool animated)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<INavigationResult> GoBackToRootAsync(INavigationParameters parameters)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<INavigationResult> NavigateAsync(Uri uri)
         {
             throw new NotImplementedException();
@@ -44,6 +54,16 @@ namespace AP.MobileToolkit.Tests.Mocks
                 return new NavigationResult { Success = true };
 
             return new NavigationResult { Success = false, Exception = new Exception(name) };
+        }
+
+        public Task<INavigationResult> NavigateAsync(string name, INavigationParameters parameters, bool? useModalNavigation, bool animated)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<INavigationResult> NavigateAsync(Uri uri, INavigationParameters parameters, bool? useModalNavigation, bool animated)
+        {
+            throw new NotImplementedException();
         }
     }
 }

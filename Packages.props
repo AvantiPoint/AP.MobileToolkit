@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <ItemGroup>
+    <!-- Prism -->
+    <PackageReference Update="Prism.Core" Version="8.0.0.1850-pre" />
+    <PackageReference Update="Prism.Forms" Version="8.0.0.1850-pre" />
+    <PackageReference Update="Prism.DryIoc.Forms" Version="8.0.0.1850-pre" />
+    <PackageReference Update="Prism.Plugin.Logging.Abstractions" Version="8.0.11-beta" />
+
+    <!-- Xamarin -->
+    <PackageReference Update="Xamarin.Forms" Version="4.8.0.1451" />
+    <PackageReference Update="Xamarin.Forms.Mocks" Version="4.7.0.1" />
+    <PackageReference Update="Xamarin.Essentials" Version="1.5.3.2" />
+    <PackageReference Update="Xamarin.Essentials.Interfaces" Version="1.5.3.2" />
+    <PackageReference Update="Xamarin.Android.Support.CustomTabs" Version="28.0.0.3" />
+    <PackageReference Update="Xamarin.Android.Support.Design" Version="28.0.0.3" />
+    <PackageReference Update="Xamarin.Android.Support.v4" Version="28.0.0.3" />
+    <PackageReference Update="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.3" />
+    <PackageReference Update="Xamarin.Android.Support.v7.CardView" Version="28.0.0.3" />
+    <PackageReference Update="Xamarin.Android.Support.v7.MediaRouter" Version="28.0.0.3" />
+
+    <!-- General Dependencies -->
+    <PackageReference Update="AP.MobileToolkit.Forms.Fonts" Version="3.1.14-beta" />
+    <PackageReference Update="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Brands" Version="3.1.14-beta" />
+    <PackageReference Update="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Regular" Version="3.1.14-beta" />
+    <PackageReference Update="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Solid" Version="3.1.14-beta" />
+    <PackageReference Update="Humanizer.Core" Version="2.8.26" />
+    <PackageReference Update="Microsoft.Identity.Client" Version="4.18.0" />
+    <PackageReference Update="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.10" />
+    <PackageReference Update="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Update="NCrontab" Version="3.3.1" />
+    <PackageReference Update="ReactiveUI" Version="11.5.35" />
+    <PackageReference Update="System.ComponentModel.Annotations" Version="4.7.0" />
+    <PackageReference Update="System.IdentityModel.Tokens.Jwt" Version="6.7.1" />
+    <PackageReference Update="System.Reactive" Version="4.4.1" />
+
+    <!-- Testing -->
+    <PackageReference Update="Microsoft.NET.Test.Sdk" Version="16.7.1" />
+    <PackageReference Update="MSTest.TestAdapter" Version="1.1.18" />
+    <PackageReference Update="MSTest.TestFramework" Version="1.1.18" />
+    <PackageReference Update="Microsoft.Extensions.DependencyInjection" Version="3.1.8" />
+    <PackageReference Update="AP.MockHttpServer" Version="1.5.0.1061" />
+    <PackageReference Update="xunit" Version="2.4.1" />
+    <PackageReference Update="xunit.runner.visualstudio" Version="2.4.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Update="Moq" Version="4.14.5" />
+  </ItemGroup>
+
+  <!-- Global -->
+  <ItemGroup>
+    <GlobalPackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.205" />
+    <GlobalPackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.0-beta-20204-02" />
+    <GlobalPackageReference Include="Nerdbank.GitVersioning" Version="3.2.31" Condition=" $(IsPackable) == 'true' " />
+  </ItemGroup>
+</Project>

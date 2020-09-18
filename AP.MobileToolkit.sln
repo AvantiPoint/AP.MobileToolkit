@@ -16,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		CodeCoverage.runsettings = CodeCoverage.runsettings
 		Directory.build.props = Directory.build.props
 		global.json = global.json
+		Packages.props = Packages.props
 		stylecop.json = stylecop.json
 	EndProjectSection
 EndProject
@@ -55,13 +56,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AP.MobileToolkit.Resources"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A257A040-9ACF-43B7-9C52-4382E9F8D65E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AP.CrossPlatform.Auth.Tests", "tests\AP.CrossPlatform.Auth.Tests\AP.CrossPlatform.Auth.Tests.csproj", "{8CFCB0CC-68C4-4A97-BE9C-676998EB7D62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AP.CrossPlatform.Auth.Tests", "tests\AP.CrossPlatform.Auth.Tests\AP.CrossPlatform.Auth.Tests.csproj", "{8CFCB0CC-68C4-4A97-BE9C-676998EB7D62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AP.CrossPlatform.Core.Tests", "tests\AP.CrossPlatform.Core.Tests\AP.CrossPlatform.Core.Tests.csproj", "{F4D8AE9E-530B-496B-A6CF-849F30931FC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AP.CrossPlatform.Core.Tests", "tests\AP.CrossPlatform.Core.Tests\AP.CrossPlatform.Core.Tests.csproj", "{F4D8AE9E-530B-496B-A6CF-849F30931FC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AP.MobileToolkit.Http.Tests", "tests\AP.MobileToolkit.Http.Tests\AP.MobileToolkit.Http.Tests.csproj", "{EB2E51A7-CD3A-4FC4-B2DA-5EBAE6EA7875}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AP.MobileToolkit.Http.Tests", "tests\AP.MobileToolkit.Http.Tests\AP.MobileToolkit.Http.Tests.csproj", "{EB2E51A7-CD3A-4FC4-B2DA-5EBAE6EA7875}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AP.MobileToolkit.Tests", "tests\AP.MobileToolkit.Tests\AP.MobileToolkit.Tests.csproj", "{E308E91C-D619-4D44-B676-751738B37FE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AP.MobileToolkit.Tests", "tests\AP.MobileToolkit.Tests\AP.MobileToolkit.Tests.csproj", "{E308E91C-D619-4D44-B676-751738B37FE5}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution

@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using AP.MobileToolkit.Effects;
+using Xamarin.Forms;
 
 namespace AP.MobileToolkit.Controls
 {

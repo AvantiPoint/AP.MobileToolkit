@@ -1,15 +1,16 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>AP.MobileToolkit</RootNamespace>
+    <Description>Provides MVVM Helpers for Prism.Forms including a base generic base ViewModel and a base Dialog Aware ViewModel.</Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Prism.Forms" Version="$(PrismVersion)" />
-    <PackageReference Include="Prism.Plugin.Logging.Abstractions" Version="7.2.0.1421" />
-    <PackageReference Include="ReactiveUI" Version="$(ReactiveUIVersion)" />
-    <PackageReference Include="Humanizer.Core" Version="$(HumanizerVersion)" />
+    <PackageReference Include="Prism.Forms" />
+    <PackageReference Include="Prism.Plugin.Logging.Abstractions" />
+    <PackageReference Include="ReactiveUI" />
+    <PackageReference Include="Humanizer.Core" />
   </ItemGroup>
 
   <ItemGroup>

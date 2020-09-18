@@ -1,10 +1,14 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras">
+<Project Sdk="MSBuild.Sdk.Extras">
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid90;MonoAndroid10.0</TargetFrameworks>
     <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">$(TargetFrameworks);uap10.0.17763</TargetFrameworks>
     <Description>Provides common tools, and extensions for developing great Xamarin Forms Applications.</Description>
     <RootNamespace>AP.MobileToolkit</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
+    <AndroidResgenClass>APToolkitResource</AndroidResgenClass>
   </PropertyGroup>
 
   <ItemGroup>
@@ -31,13 +35,14 @@
   <ItemGroup Condition=" $(TargetFramework.StartsWith('uap10.0')) ">
     <None Remove="**/Platform/UWP/**/*.cs" />
     <Compile Include="**/Platform/UWP/**/*.cs" />
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AP.MobileToolkit.Forms.Fonts" Version="$(APFontsVersion)" />
-    <PackageReference Include="Xamarin.Essentials.Interfaces" Version="$(XamarinEssentialsVersion)" />
-    <PackageReference Include="Xamarin.Forms" Version="$(XamarinFormsVersion)" />
-    <PackageReference Include="Humanizer.Core" Version="$(HumanizerVersion)" />
+    <PackageReference Include="AP.MobileToolkit.Forms.Fonts" />
+    <PackageReference Include="Xamarin.Essentials.Interfaces" />
+    <PackageReference Include="Xamarin.Forms" />
+    <PackageReference Include="Humanizer.Core" />
   </ItemGroup>
 
   <ItemGroup>

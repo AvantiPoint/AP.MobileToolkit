@@ -40,15 +40,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.164" PrivateAssets="All" />
     <AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.json" InProject="false" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.0-beta-20204-02" PrivateAssets="all">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Nerdbank.GitVersioning" Version="3.2.31" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(IsPackable) ">
@@ -59,7 +51,5 @@
     <None Remove=".DS_Store" />
     <SourceRoot Include="$(MSBuildThisFileDirectory)"/>
   </ItemGroup>
-
-  <Import Project="build\Dependencies.props" />
 
 </Project>

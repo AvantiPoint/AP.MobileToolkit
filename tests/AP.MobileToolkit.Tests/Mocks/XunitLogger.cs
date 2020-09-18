@@ -5,7 +5,7 @@ using Xunit.Abstractions;
 
 namespace AP.MobileToolkit.Tests.Mocks
 {
-    public class XunitLogger : ILoggerFacade, ILogger
+    public class XunitLogger : ILogger
     {
         private ITestOutputHelper TestOutputHelper { get; }
 
@@ -14,13 +14,6 @@ namespace AP.MobileToolkit.Tests.Mocks
         public XunitLogger(ITestOutputHelper testOutputHelper)
         {
             TestOutputHelper = testOutputHelper;
-        }
-
-        public void Log(string message, Category category, Priority priority)
-        {
-            var output = $"{category} - {priority}: {message}";
-            Logs.Add(output);
-            TestOutputHelper.WriteLine(output);
         }
 
         private void Write(object message, IDictionary<string, string> additionalInfo)

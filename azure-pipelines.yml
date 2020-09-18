@@ -31,8 +31,10 @@ stages:
     - task: NuGetCommand@2
       displayName: 'NuGet restore'
       inputs:
+        command: restore
         feedsToUse: config
         nugetConfigPath: build/NuGet.config
+        externalFeedCredentials: 'SponsorConnect-Feed'
 
     - task: MSBuild@1
       displayName: 'Build solution AP.MobileToolkit.sln'

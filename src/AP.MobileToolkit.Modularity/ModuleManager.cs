@@ -12,14 +12,18 @@ namespace AP.MobileToolkit.Modularity
         protected IModuleCatalog ModuleCatalog { get; }
 
         protected IModuleInitializer ModuleInitializer { get; }
+        public IEnumerable<IModuleInfo> Modules => ModuleCatalog.Modules;
 
         protected ModuleManager(IModuleCatalog moduleCatalog, IModuleInitializer moduleInitializer)
         {
-            ModuleCatalog = moduleCatalog;
-            ModuleInitializer = moduleInitializer;
+            ModuleCatalog = moduleCatalog ?? throw new ArgumentNullException(nameof(moduleCatalog));
+            ModuleInitializer = moduleInitializer ?? throw new ArgumentNullException(nameof(moduleInitializer));
         }
 
         public event EventHandler<LoadModuleCompletedEventArgs> LoadModuleCompleted;
+#pragma warning disable CS0067
+        public event EventHandler<ModuleDownloadProgressChangedEventArgs> ModuleDownloadProgressChanged;
+#pragma warning restore CS0067
 
         public void Run() =>
             LoadModulesWhenAvailable();

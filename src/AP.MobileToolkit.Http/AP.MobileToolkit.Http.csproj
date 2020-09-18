@@ -1,12 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>Provides Http helpers including the IApiClient for working with API's.</Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Prism.Plugin.Logging.Abstractions" Version="7.2.0.1421" />
-    <PackageReference Include="Xamarin.Essentials.Interfaces" Version="$(XamarinEssentialsVersion)" />
+    <PackageReference Include="Prism.Plugin.Logging.Abstractions" />
+    <PackageReference Include="Xamarin.Essentials.Interfaces" />
   </ItemGroup>
 
   <ItemGroup>
