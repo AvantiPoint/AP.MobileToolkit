@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>Provides Http helpers including the IApiClient for working with API's.</Description>
   </PropertyGroup>
 
   <ItemGroup>
