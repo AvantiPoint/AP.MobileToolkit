@@ -7,6 +7,10 @@
     <RootNamespace>AP.MobileToolkit</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
+    <AndroidResgenClass>APToolkitResource</AndroidResgenClass>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="**/Platform/**/*.cs" />
     <None Include="**/Platform/**/*.cs" />
