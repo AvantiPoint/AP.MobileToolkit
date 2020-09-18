@@ -1,12 +1,12 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Prism.Core" Version="$(PrismVersion)" />
-    <PackageReference Include="Prism.Plugin.Logging.Abstractions" Version="7.2.0.1421" />
+    <PackageReference Include="Prism.Core" />
+    <PackageReference Include="Prism.Plugin.Logging.Abstractions" />
   </ItemGroup>
 
   <ItemGroup>

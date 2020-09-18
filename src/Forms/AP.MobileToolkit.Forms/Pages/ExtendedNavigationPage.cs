@@ -50,9 +50,6 @@ namespace AP.MobileToolkit.Pages
         public static void SetTitleMargin(BindableObject view, Thickness value) =>
             view.SetValue(TitleMarginProperty, value);
 
-        public static readonly BindableProperty BarBackgroundProperty =
-            BindableProperty.CreateAttached("BarBackground", typeof(string), typeof(ExtendedNavigationPage), string.Empty);
-
         public static string GetBarBackground(BindableObject view) =>
             (string)view.GetValue(BarBackgroundProperty);
 

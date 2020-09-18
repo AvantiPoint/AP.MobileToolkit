@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -19,10 +19,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Brands" Version="$(APFontsVersion)" />
-    <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Regular" Version="$(APFontsVersion)" />
-    <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Solid" Version="$(APFontsVersion)" />
-    <PackageReference Include="Prism.DryIoc.Forms" Version="$(PrismVersion)" />
+    <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Brands" />
+    <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Regular" />
+    <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Solid" />
+    <PackageReference Include="Prism.DryIoc.Forms" />
   </ItemGroup>
 
   <ItemGroup>

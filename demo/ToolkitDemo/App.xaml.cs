@@ -1,5 +1,7 @@
-﻿using System;
+using System;
+using AP.CrossPlatform.i18n;
 using AP.MobileToolkit.Fonts;
+using AP.MobileToolkit.Mvvm;
 using Prism;
 using Prism.Ioc;
 using Prism.Logging;
@@ -45,7 +47,8 @@ namespace ToolkitDemo
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
 
-            containerRegistry.Register<ILogger, ConsoleLoggingService>();
+            containerRegistry.UseAggregateLogger();
+            containerRegistry.RegisterSingleton<ILocalize, ResxLocalize>();
             containerRegistry.RegisterSingleton<IMenuService, MenuService>();
             containerRegistry.Register<IClipboard, ClipboardImplementation>();
             containerRegistry.Register<ICodeSampleResolver, CodeSampleResolver>();

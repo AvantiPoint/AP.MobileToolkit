@@ -1,4 +1,4 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras">
+<Project Sdk="MSBuild.Sdk.Extras">
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid90;MonoAndroid10.0</TargetFrameworks>
@@ -31,13 +31,14 @@
   <ItemGroup Condition=" $(TargetFramework.StartsWith('uap10.0')) ">
     <None Remove="**/Platform/UWP/**/*.cs" />
     <Compile Include="**/Platform/UWP/**/*.cs" />
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AP.MobileToolkit.Forms.Fonts" Version="$(APFontsVersion)" />
-    <PackageReference Include="Xamarin.Essentials.Interfaces" Version="$(XamarinEssentialsVersion)" />
-    <PackageReference Include="Xamarin.Forms" Version="$(XamarinFormsVersion)" />
-    <PackageReference Include="Humanizer.Core" Version="$(HumanizerVersion)" />
+    <PackageReference Include="AP.MobileToolkit.Forms.Fonts" />
+    <PackageReference Include="Xamarin.Essentials.Interfaces" />
+    <PackageReference Include="Xamarin.Forms" />
+    <PackageReference Include="Humanizer.Core" />
   </ItemGroup>
 
   <ItemGroup>
