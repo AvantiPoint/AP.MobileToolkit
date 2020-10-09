@@ -867,7 +867,7 @@
 <p>The AAD package provides an easy to use wrapper for the MSAL library and works with both Azure Active Directory and Azure Active Directory B2C.</p>
 <h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <p>To start you'll need to implement some options. The fastest way is to use the IB2COptions or IAADOptions.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">public</span> <span class="k">class</span> <span class="nc">B2COptions</span> <span class="p">:</span> <span class="n">IB2COptions</span>
+<div class="csharp codehilite"><pre><span></span><code><span class="k">public</span> <span class="k">class</span> <span class="nc">B2COptions</span> <span class="p">:</span> <span class="n">IB2COptions</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="kt">string</span> <span class="n">Tenant</span> <span class="p">=&gt;</span> <span class="n">Secrets</span><span class="p">.</span><span class="n">AADTenant</span><span class="p">;</span>
     <span class="k">public</span> <span class="kt">string</span> <span class="n">ClientId</span> <span class="p">=&gt;</span> <span class="n">Secrets</span><span class="p">.</span><span class="n">AADClientId</span><span class="p">;</span>
@@ -875,9 +875,8 @@
 <span class="p">}</span>
 </code></pre></div>
 
-
 <p>Now that you've added your options you can create Authentication Service by using the <code>MsalHelper</code>:</p>
-<div class="codehilite"><pre><span></span><code><span class="kt">var</span> <span class="n">authService</span> <span class="p">=</span> <span class="n">MsalHelper</span><span class="p">.</span><span class="n">CreateB2C</span><span class="p">&lt;</span><span class="n">B2COptions</span><span class="p">&gt;();</span>
+<div class="csharp codehilite"><pre><span></span><code><span class="kt">var</span> <span class="n">authService</span> <span class="p">=</span> <span class="n">MsalHelper</span><span class="p">.</span><span class="n">CreateB2C</span><span class="p">&lt;</span><span class="n">B2COptions</span><span class="p">&gt;();</span>
 <span class="kt">var</span> <span class="n">authResult</span> <span class="p">=</span> <span class="k">await</span> <span class="n">authService</span><span class="p">.</span><span class="n">LoginAsync</span><span class="p">();</span>
 <span class="k">if</span><span class="p">(</span><span class="n">authResult</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
 <span class="p">{</span>
@@ -888,7 +887,6 @@
     <span class="c1">// Do Something Else...</span>
 <span class="p">}</span>
 </code></pre></div>
-
 
 <h2 id="why-use-the-aad-package">Why use the AAD Package<a class="headerlink" href="#why-use-the-aad-package" title="Permanent link">&para;</a></h2>
 <p>If you've looked at the MSAL Docs... they're confusing to say the least. The AAD Package greatly simplifies what you need to do to successfully use MSAL correctly. It is also built with a proper understanding of best practices to minimize authentications against the AD Tenant which can reduce your costs and improve user performance since you're reducing Http calls.</p>

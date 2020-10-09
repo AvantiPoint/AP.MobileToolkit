@@ -866,22 +866,20 @@
                 <h1 id="apmobiletoolkitrxui">AP.MobileToolkit.RxUI<a class="headerlink" href="#apmobiletoolkitrxui" title="Permanent link">&para;</a></h1>
 <h3 id="cron-jobs">Cron Jobs<a class="headerlink" href="#cron-jobs" title="Permanent link">&para;</a></h3>
 <p>The RxUI package is a lightweight helper. This provides us an <code>ObservableCron</code> that allows us to create an observable pipe based on a Cron scheduler.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">ObservableCron</span><span class="p">.</span><span class="n">Start</span><span class="p">(</span><span class="s">&quot;5 * * * *&quot;</span><span class="p">)</span>
+<div class="csharp codehilite"><pre><span></span><code><span class="n">ObservableCron</span><span class="p">.</span><span class="n">Start</span><span class="p">(</span><span class="s">&quot;5 * * * *&quot;</span><span class="p">)</span>
               <span class="p">.</span><span class="n">InvokeCommand</span><span class="p">(</span><span class="n">SomeCommand</span><span class="p">);</span>
 </code></pre></div>
 
-
 <h3 id="prism-support">Prism Support<a class="headerlink" href="#prism-support" title="Permanent link">&para;</a></h3>
 <p>Also included is a the ReactiveUISupportModule. This module utilizes the <code>ILogger</code> from <code>Prism.Plugin.Logging</code> to log exceptions handled by the RxApp.DefaultExceptionHandler.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">ConfigureModuleCatalog</span><span class="p">(</span><span class="n">IModuleCatalog</span> <span class="n">moduleCatalog</span><span class="p">)</span>
+<div class="csharp codehilite"><pre><span></span><code><span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">ConfigureModuleCatalog</span><span class="p">(</span><span class="n">IModuleCatalog</span> <span class="n">moduleCatalog</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">moduleCatalog</span><span class="p">.</span><span class="n">AddModule</span><span class="p">&lt;</span><span class="n">ReactiveUISupportModule</span><span class="p">&gt;();</span>
 <span class="p">}</span>
 </code></pre></div>
 
-
 <p>What does this do?</p>
-<div class="codehilite"><pre><span></span><code><span class="k">public</span> <span class="nf">ReactiveUISupportModule</span><span class="p">(</span><span class="n">ILogger</span> <span class="n">logger</span><span class="p">)</span>
+<div class="csharp codehilite"><pre><span></span><code><span class="k">public</span> <span class="nf">ReactiveUISupportModule</span><span class="p">(</span><span class="n">ILogger</span> <span class="n">logger</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">Logger</span> <span class="p">=</span> <span class="n">logger</span><span class="p">;</span>
     <span class="n">RxApp</span><span class="p">.</span><span class="n">DefaultExceptionHandler</span> <span class="p">=</span> <span class="k">this</span><span class="p">;</span>

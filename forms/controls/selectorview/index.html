@@ -790,7 +790,7 @@
                   <h1>SelectorView</h1>
                 
                 <p>The SelectorView is built ontop of the RepeaterView so it has a similar API with a few additions that make it great for dealing with Models that implement <code>ISelectable</code> from the AP.CrossPlatform.Core.</p>
-<div class="codehilite"><pre><span></span><code><span class="c1">// Note you should implement INotifyPropertyChanged for the properties</span>
+<div class="csharp codehilite"><pre><span></span><code><span class="c1">// Note you should implement INotifyPropertyChanged for the properties</span>
 <span class="k">public</span> <span class="k">class</span> <span class="nc">MyItem</span> <span class="p">:</span> <span class="n">ISelectable</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
@@ -798,7 +798,6 @@
     <span class="k">public</span> <span class="kt">bool</span> <span class="n">IsSelected</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 
 <p>The SelectorView can be configured to allow you to select only a Single Element or Multiple Elements.</p>
                 

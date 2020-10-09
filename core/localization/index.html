@@ -876,7 +876,7 @@
                   <h1>Localization</h1>
                 
                 <p>To really understand the power of ILocalize we'll consider for a moment the scenario that you may want to use the localized resources that are part of the Toolkit and your own resources.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">ILocalize</span> <span class="n">localize</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ResxLocalize</span><span class="p">();</span>
+<div class="csharp codehilite"><pre><span></span><code><span class="n">ILocalize</span> <span class="n">localize</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ResxLocalize</span><span class="p">();</span>
 
 <span class="c1">// Register local resources</span>
 <span class="n">localize</span><span class="p">.</span><span class="n">RegisterManager</span><span class="p">(</span><span class="n">Resources</span><span class="p">.</span><span class="n">ResourceManager</span><span class="p">);</span>
@@ -885,11 +885,9 @@
 <span class="n">localize</span><span class="p">.</span><span class="n">RegisterManager</span><span class="p">(</span><span class="n">ToolkitResources</span><span class="p">.</span><span class="n">ResourceManager</span><span class="p">);</span>
 </code></pre></div>
 
-
 <p>Now that our Resource Manager's are registered we can easily retrieve a localized value:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">Title</span> <span class="p">=</span> <span class="n">localize</span><span class="p">[</span><span class="s">&quot;ViewATitle&quot;</span><span class="p">];</span>
+<div class="csharp codehilite"><pre><span></span><code><span class="n">Title</span> <span class="p">=</span> <span class="n">localize</span><span class="p">[</span><span class="s">&quot;ViewATitle&quot;</span><span class="p">];</span>
 </code></pre></div>
-
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -901,25 +899,23 @@
 </div>
 <h2 id="localized-culture">Localized Culture<a class="headerlink" href="#localized-culture" title="Permanent link">&para;</a></h2>
 <p>By default we will use the CultureInfo from the current UI Culture. In the event that you want to override this behavior for instance if you want to make it user selectable you can set the culture and all subsequent requests will use the specified culture.</p>
-<div class="codehilite"><pre><span></span><code><span class="c1">// If you don&#39;t want to use the current UI Culture</span>
+<div class="csharp codehilite"><pre><span></span><code><span class="c1">// If you don&#39;t want to use the current UI Culture</span>
 <span class="n">localize</span><span class="p">.</span><span class="n">SetCulture</span><span class="p">(</span><span class="k">new</span> <span class="n">CultureInfo</span><span class="p">(</span><span class="s">&quot;es&quot;</span><span class="p">);</span>
 </code></pre></div>
 
-
 <h2 id="debugging">Debugging<a class="headerlink" href="#debugging" title="Permanent link">&para;</a></h2>
 <p>By default if no key is found it will return an empty string. To debug this you may want to set the Debug property when your app is initializing to instead return a debug value:</p>
-<div class="codehilite"><pre><span></span><code><span class="cp">#if DEBUG</span>
+<div class="csharp codehilite"><pre><span></span><code><span class="cp">#if DEBUG</span>
 <span class="n">ResxLocalize</span><span class="p">.</span><span class="n">Debug</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
 <span class="cp">#endif</span>
 <span class="kt">var</span> <span class="n">localize</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ResxLocalize</span><span class="p">();</span>
 <span class="kt">var</span> <span class="k">value</span> <span class="p">=</span> <span class="n">localize</span><span class="p">[</span><span class="s">&quot;NonExistentKey&quot;</span><span class="p">];</span>
 </code></pre></div>
 
-
 <p>In this example we would expect to get an output of <code>MISSING NonExistentKey</code>.</p>
 <h2 id="xaml-extensions">XAML Extensions<a class="headerlink" href="#xaml-extensions" title="Permanent link">&para;</a></h2>
 <p>If you are using a platform specific package like <code>AP.MobileToolkit.Forms</code> you can expect to find a XAML extension that makes use of ILocalize which can be used like:</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">&lt;ContentPage</span> <span class="na">xmlns:ap=</span><span class="s">&quot;http://avantipoint.com/mobiletoolkit&quot;</span><span class="nt">&gt;</span>
+<div class="xml codehilite"><pre><span></span><code><span class="nt">&lt;ContentPage</span> <span class="na">xmlns:ap=</span><span class="s">&quot;http://avantipoint.com/mobiletoolkit&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;Label</span> <span class="na">Text=</span><span class="s">&quot;{ap:Localize &#39;SomeKey&#39;}&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/ContentPage&gt;</span>
 </code></pre></div>

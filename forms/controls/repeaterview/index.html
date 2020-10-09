@@ -791,7 +791,7 @@
                 
                 <p>Why provide a RepeaterView? After all with BindableLayout in Xamarin.Forms you can now pretty much accomplish the same thing right?</p>
 <p>Technically yes you can, however the RepeaterView in the Toolkit simplifies the process by providing the ItemsSource and ItemTemplate properties as part of the layout. Additionally it provides a Header property that can be used.</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">&lt;ap:RepeaterView</span> <span class="na">ItemsSource=</span><span class="s">&quot;{Binding MyItems}&quot;</span>
+<div class="xml codehilite"><pre><span></span><code><span class="nt">&lt;ap:RepeaterView</span> <span class="na">ItemsSource=</span><span class="s">&quot;{Binding MyItems}&quot;</span>
                  <span class="na">ItemTemplate=</span><span class="s">&quot;{StaticResource MyDataTemplate}&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;ap:RepeaterView.Header&gt;</span>
     <span class="nt">&lt;Label</span> <span class="na">Text=</span><span class="s">&quot;Example Header&quot;</span> <span class="nt">/&gt;</span>

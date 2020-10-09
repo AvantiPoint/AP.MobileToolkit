@@ -790,7 +790,7 @@
                   <h1>GravatarImageSource</h1>
                 
                 <p>The GravatarImageSource is meant to be an easy to use ImageSource that you can use to easily get the Gravatar Image for any email address.</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">&lt;ContentPage&gt;</span>
+<div class="xml codehilite"><pre><span></span><code><span class="nt">&lt;ContentPage&gt;</span>
   <span class="nt">&lt;Image&gt;</span>
     <span class="nt">&lt;Image.Source&gt;</span>
       <span class="nt">&lt;ap:GravatarImageSource</span> <span class="na">Email=</span><span class="s">&quot;{Binding Email}&quot;</span>
@@ -801,13 +801,12 @@
 <span class="nt">&lt;/ContentPage&gt;</span>
 </code></pre></div>
 
-
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The GravatarImageSource defaults to a default size of 20 and default gravatar of a MysteryPerson.</p>
 </div>
 <p>There is additionally a XAML extension to make it's use even easier</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">&lt;ContentPage&gt;</span>
+<div class="xml codehilite"><pre><span></span><code><span class="nt">&lt;ContentPage&gt;</span>
   <span class="nt">&lt;Image</span> <span class="na">Source=</span><span class="s">&quot;{ap:GravatarImageSource Email={Binding Email}}&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/ContentPage&gt;</span>
 </code></pre></div>

@@ -853,14 +853,13 @@
 <p>The Font's PostTable does matter. Note that only version 2 contains the name of the Glyph. As a result any font's using other versions in the PostTable should include a mapping css file.</p>
 </div>
 <p>To add a font, create a new project. Typically this will just be a netstandard class library, but this could be a multi-targeted project. You should not have any actual code files in the project. Edit the csproj like shown below:</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">&lt;ItemGroup&gt;</span>
+<div class="xml codehilite"><pre><span></span><code><span class="nt">&lt;ItemGroup&gt;</span>
   <span class="nt">&lt;EmbeddedFont</span> <span class="na">Include=</span><span class="s">&quot;fa-regular-400.ttf&quot;</span>
                 <span class="na">Alias=</span><span class="s">&quot;far&quot;</span>
                 <span class="na">FontName=</span><span class="s">&quot;FontAwesomeRegular&quot;</span>
                 <span class="na">Version=</span><span class="s">&quot;5.13.0&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/ItemGroup&gt;</span>
 </code></pre></div>
-
 
 <p>We will add an EmbeddedFont with the path to the otf or ttf font file. Be sure to add the value for the Alias. This is what allows us to do something like <code>far fa-user</code>. Add the FontNamme. This will control the class name used for the generated Font Definition and static mapping class.</p>
 <div class="admonition warning">
