@@ -15,7 +15,7 @@
         <meta name="author" content="Dan Siegel">
       
       <link rel="shortcut icon" href="../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.0.2">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
     
     
       
@@ -23,10 +23,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.38780c08.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.bc7e593a.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.3f72e892.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab28b872.min.css">
         
           
           
@@ -75,7 +75,9 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
+      
+
+<header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
     <a href="http://avantipoint.com/" title="Mobile Toolkit" class="md-header-nav__button md-logo" aria-label="Mobile Toolkit">
       <!-- Logo -->
@@ -160,7 +162,9 @@
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="http://avantipoint.com/" title="Mobile Toolkit" class="md-nav__button md-logo" aria-label="Mobile Toolkit">
       <!-- Logo -->
@@ -972,7 +976,7 @@
 <li>Get helper headers that you can log from your API to track which device your user is using, which verion of the app, and which app, etc, while also being able to easily override or customize the headers you want.</li>
 </ul>
 <h2 id="configuring-the-apiclient">Configuring the ApiClient<a class="headerlink" href="#configuring-the-apiclient" title="Permanent link">&para;</a></h2>
-<div class="csharp codehilite"><pre><span></span><code><span class="k">public</span> <span class="k">class</span> <span class="nc">MyApiClient</span> <span class="p">:</span> <span class="n">ApiClient</span>
+<div class="codehilite"><pre><span></span><code><span class="k">public</span> <span class="k">class</span> <span class="nc">MyApiClient</span> <span class="p">:</span> <span class="n">ApiClient</span>
 <span class="p">{</span>
     <span class="k">private</span> <span class="n">IPushManager</span> <span class="n">_pushManager</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
     <span class="k">private</span> <span class="n">IUser</span> <span class="n">_user</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
@@ -1002,7 +1006,7 @@
 <p>The ApiClient has a few additional overridable methods that can allow you to further tailor the ApiClient to your specific needs.</p>
 <h4 id="default-headers">Default Headers<a class="headerlink" href="#default-headers" title="Permanent link">&para;</a></h4>
 <p>You can configure the default headers that will be sent by overriding SetDefaultHeaders.</p>
-<div class="csharp codehilite"><pre><span></span><code><span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">SetDefaultHeaders</span><span class="p">(</span><span class="n">HttpClient</span> <span class="n">client</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">SetDefaultHeaders</span><span class="p">(</span><span class="n">HttpClient</span> <span class="n">client</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="n">Accept</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">MediaTypeWithQualityHeaderValue</span><span class="p">(</span><span class="s">&quot;application/json&quot;</span><span class="p">));</span>
     <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="n">CacheControl</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CacheControlHeaderValue</span>
@@ -1028,13 +1032,13 @@
 
 <h4 id="customizing-the-message-handlers">Customizing the Message Handlers<a class="headerlink" href="#customizing-the-message-handlers" title="Permanent link">&para;</a></h4>
 <p>You can optionally provide custom a <code>HttpMessageHandler</code> for the HttpClient. Note that you should be intentional on setting the innerHandler to the one passed in otherwise authentication may not work properly.</p>
-<div class="csharp codehilite"><pre><span></span><code><span class="k">protected</span> <span class="k">override</span> <span class="n">HttpMessageHandler</span> <span class="nf">CreateHandler</span><span class="p">(</span><span class="n">HttpMessageHandler</span> <span class="n">innerHandler</span><span class="p">)</span> <span class="p">=&gt;</span>
+<div class="codehilite"><pre><span></span><code><span class="k">protected</span> <span class="k">override</span> <span class="n">HttpMessageHandler</span> <span class="nf">CreateHandler</span><span class="p">(</span><span class="n">HttpMessageHandler</span> <span class="n">innerHandler</span><span class="p">)</span> <span class="p">=&gt;</span>
     <span class="k">new</span> <span class="nf">MyCustomHandler</span><span class="p">(</span><span class="n">innerHandler</span><span class="p">);</span>
 </code></pre></div>
 
 <h4 id="customizing-the-authentication-header">Customizing the Authentication Header<a class="headerlink" href="#customizing-the-authentication-header" title="Permanent link">&para;</a></h4>
 <p>There are two ways to configure the Authentication Header. If your authentication relies on using the standard Authentication Header, you can set the AuthenticationScheme in the constructor.</p>
-<div class="csharp codehilite"><pre><span></span><code><span class="k">public</span> <span class="k">class</span> <span class="nc">MyApiClient</span> <span class="p">:</span> <span class="n">ApiClient</span>
+<div class="codehilite"><pre><span></span><code><span class="k">public</span> <span class="k">class</span> <span class="nc">MyApiClient</span> <span class="p">:</span> <span class="n">ApiClient</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="nf">MyApiClient</span><span class="p">(</span><span class="n">ILogger</span> <span class="n">logger</span><span class="p">,</span> <span class="n">IAppInfo</span> <span class="n">appInfo</span><span class="p">,</span> <span class="n">IDeviceInfo</span> <span class="n">deviceInfo</span><span class="p">)</span>
         <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">appInfo</span><span class="p">,</span> <span class="n">deviceInfo</span><span class="p">)</span>
@@ -1049,14 +1053,14 @@
 <p>By default the ApiClient uses a Bearer Authentication Scheme.</p>
 </div>
 <p>In the event that setting the Authentication Scheme is not enough and you actually need a custom header value you should override the <code>SetAuthenticationHeader</code> method:</p>
-<div class="csharp codehilite"><pre><span></span><code><span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">SetAuthenticationHeader</span><span class="p">(</span><span class="n">HttpRequestMessage</span> <span class="n">request</span><span class="p">,</span> <span class="kt">string</span> <span class="n">token</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">SetAuthenticationHeader</span><span class="p">(</span><span class="n">HttpRequestMessage</span> <span class="n">request</span><span class="p">,</span> <span class="kt">string</span> <span class="n">token</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">request</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;X-MyAuthHeader&quot;</span><span class="p">,</span> <span class="n">token</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <h2 id="using-the-apiclient">Using the ApiClient<a class="headerlink" href="#using-the-apiclient" title="Permanent link">&para;</a></h2>
-<div class="csharp codehilite"><pre><span></span><code><span class="k">public</span> <span class="k">class</span> <span class="nc">FooService</span>
+<div class="codehilite"><pre><span></span><code><span class="k">public</span> <span class="k">class</span> <span class="nc">FooService</span>
 <span class="p">{</span>
     <span class="k">private</span> <span class="n">IApiClient</span> <span class="n">ApiClient</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
 
@@ -1205,8 +1209,8 @@
       
     </div>
     
-      <script src="../assets/javascripts/vendor.77e55a48.min.js"></script>
-      <script src="../assets/javascripts/bundle.9554a270.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      <script src="../assets/javascripts/vendor.6a3d08fc.min.js"></script>
+      <script src="../assets/javascripts/bundle.71201edf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({
