@@ -4,7 +4,7 @@
   <ItemGroup>
     <!-- Prism -->
     <PackageReference Update="Prism.Core" Version="8.0.0.1909" />
-    <PackageReference Update="Prism.Forms" Version="8.0.0.1850-pre" />
+    <PackageReference Update="Prism.Forms" Version="8.0.0.1909" />
     <PackageReference Update="Prism.DryIoc.Forms" Version="8.0.0.1909" />
     <PackageReference Update="Prism.Plugin.Logging.Abstractions" Version="8.0.11-beta" />
 
