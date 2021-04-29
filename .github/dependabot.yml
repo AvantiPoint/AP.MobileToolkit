@@ -1,0 +1,32 @@
+version: 2
+updates:
+- package-ecosystem: nuget
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "13:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: Microsoft.Extensions.DependencyInjection
+    versions:
+    - ">= 5.a, < 6"
+  - dependency-name: ReactiveUI
+    versions:
+    - ">= 9.20.a, < 9.21"
+  - dependency-name: ReactiveUI
+    versions:
+    - 13.1.1
+    - 13.2.10
+    - 13.2.2
+  - dependency-name: Microsoft.Extensions.DependencyInjection
+    versions:
+    - 3.1.11
+    - 3.1.12
+    - 3.1.13
+  - dependency-name: Microsoft.NET.Test.Sdk
+    versions:
+    - 16.8.3
+    - 16.9.1
+  - dependency-name: Microsoft.NETCore.UniversalWindowsPlatform
+    versions:
+    - 6.2.11
