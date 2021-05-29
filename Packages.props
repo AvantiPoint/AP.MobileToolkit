@@ -21,10 +21,10 @@
     <PackageReference Update="Xamarin.Android.Support.v7.MediaRouter" Version="28.0.0.3" />
 
     <!-- General Dependencies -->
-    <PackageReference Update="AP.MobileToolkit.Forms.Fonts" Version="3.1.14-beta" />
-    <PackageReference Update="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Brands" Version="3.1.14-beta" />
-    <PackageReference Update="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Regular" Version="3.1.14-beta" />
-    <PackageReference Update="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Solid" Version="3.1.14-beta" />
+    <PackageReference Update="AvantiPoint.MobileToolkit.Forms.Fonts" Version="3.1.27" />
+    <PackageReference Update="AvantiPoint.MobileToolkit.Forms.Fonts.FontAwesomeFree.Brands" Version="3.1.27" />
+    <PackageReference Update="AvantiPoint.MobileToolkit.Forms.Fonts.FontAwesomeFree.Regular" Version="3.1.27" />
+    <PackageReference Update="AvantiPoint.MobileToolkit.Forms.Fonts.FontAwesomeFree.Solid" Version="3.1.27" />
     <PackageReference Update="Humanizer.Core" Version="2.8.26" />
     <PackageReference Update="Microsoft.Identity.Client" Version="4.25.0" />
     <PackageReference Update="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.10" />

@@ -39,7 +39,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AP.MobileToolkit.Forms.Fonts" />
+    <PackageReference Include="AvantiPoint.MobileToolkit.Forms.Fonts" />
     <PackageReference Include="Xamarin.Essentials.Interfaces" />
     <PackageReference Include="Xamarin.Forms" />
     <PackageReference Include="Humanizer.Core" />
