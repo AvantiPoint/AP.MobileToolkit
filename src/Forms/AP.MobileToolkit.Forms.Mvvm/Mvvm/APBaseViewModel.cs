@@ -53,7 +53,7 @@ namespace AP.MobileToolkit.Mvvm
             Title = GetTitle();
             _isNotBusyHelper = this.WhenAnyValue(x => x.IsBusy)
                 .Select(x => !x)
-                .ToProperty(this, x => x.IsNotBusy, true)
+                .ToProperty(this, nameof(IsNotBusy), true, true)
                 .DisposeWith(Disposables);
 
             NavigateCommand = ReactiveCommand.CreateFromTask<string>(
@@ -77,6 +77,7 @@ namespace AP.MobileToolkit.Mvvm
             set => this.RaiseAndSetIfChanged(ref _subtitle, value);
         }
 
+        [SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "This is a backing field though it needs to be accessible to inheriting classes.")]
         protected ObservableAsPropertyHelper<bool> _isBusyHelper;
 
         public bool IsBusy => _isBusyHelper?.Value ?? false;
