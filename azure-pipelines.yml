@@ -1,7 +1,7 @@
 trigger:
 - master
 
-name: 3.0.0.$(Build.BuildId)
+name: 4.0.$(Build.BuildId)
 
 variables:
 - name: BuildPlatform
@@ -39,6 +39,7 @@ stages:
     - task: MSBuild@1
       displayName: 'Build solution AP.MobileToolkit.sln'
       inputs:
+        solution: ci-build.slnf
         platform: '$(BuildPlatform)'
         configuration: '$(BuildConfiguration)'
         msbuildArguments: '/p:DebugType=portable /p:JavaSdkDirectory="$(JAVA_HOME)"'
@@ -87,9 +88,23 @@ stages:
                 packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg;$(Pipeline.Workspace)/**/*.snupkg'
                 nuGetFeedType: external
                 publishFeedCredentials: 'SponsorConnect'
+  - deployment: InHouse
+    displayName: In-House
+    environment: In-House
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - task: NuGetCommand@2
+              displayName: 'NuGet push'
+              inputs:
+                command: push
+                packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg;$(Pipeline.Workspace)/**/*.snupkg'
+                nuGetFeedType: external
+                publishFeedCredentials: 'InHouse'
 - stage: DeployRelease
   displayName: Deploy Release NuGet Packages
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['system.pullrequest.isfork'], false), or(eq(variables['IS_PREVIEW'], true), eq(variables['IS_RELEASE'], true)))
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['system.pullrequest.isfork'], false))
   jobs:
   - deployment: NuGet
     displayName: NuGet.org
