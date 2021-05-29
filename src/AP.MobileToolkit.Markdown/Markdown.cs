@@ -85,7 +85,7 @@ software, even if advised of the possibility of such damage.
 
 #endregion
 
-#pragma warning disable SA1204 // Disable Static Methods before non-static's
+#pragma warning disable SA1117, IDE1006, SA1204
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -1834,4 +1834,4 @@ namespace AP.MobileToolkit.Markdown
         }
     }
 }
-#pragma warning restore SA1204
+#pragma warning restore SA1117, IDE1006, SA1204
