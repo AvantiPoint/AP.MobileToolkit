@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Description>Provide base abstractions around using User Authentication and JWT's</Description>
+    <PackageId>AvantiPoint.CrossPlatform.Auth</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
