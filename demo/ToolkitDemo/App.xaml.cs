@@ -7,6 +7,8 @@ using Prism.Ioc;
 using Prism.Logging;
 using ToolkitDemo.Helpers;
 using ToolkitDemo.Services;
+using ToolkitDemo.ViewModels;
+using ToolkitDemo.Views;
 using Xamarin.Essentials.Implementation;
 using Xamarin.Essentials.Interfaces;
 using Xamarin.Forms;
@@ -15,7 +17,6 @@ using Xamarin.Forms.Xaml;
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace ToolkitDemo
 {
-    [AutoRegisterForNavigation]
     public partial class App
     {
         public App()
@@ -52,6 +53,12 @@ namespace ToolkitDemo
             containerRegistry.RegisterSingleton<IMenuService, MenuService>();
             containerRegistry.Register<IClipboard, ClipboardImplementation>();
             containerRegistry.Register<ICodeSampleResolver, CodeSampleResolver>();
+
+            containerRegistry.RegisterForNavigation<APIClientPage, APIClientPageViewModel>();
+            containerRegistry.RegisterForNavigation<HomePage>();
+            containerRegistry.RegisterForNavigation<ImageEntryPage, ImageEntryPageViewModel>();
+            containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<ShowCodePage, ShowCodePageViewModel>();
         }
     }
 }

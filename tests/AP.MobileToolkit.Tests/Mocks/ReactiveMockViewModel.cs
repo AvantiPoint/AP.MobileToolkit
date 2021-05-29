@@ -47,7 +47,7 @@ namespace AP.MobileToolkit.Tests.Mocks
                 this.WhenAnyValue(x => x.IsBusy)
                 .Select(x => !x));
             _isBusyHelper = this.WhenAnyValue(x => x.IsToggled)
-                .ToProperty(this, x => x.IsBusy, false)
+                .ToProperty(this, nameof(IsBusy), false, true)
                 .DisposeWith(Disposables);
         }
 
