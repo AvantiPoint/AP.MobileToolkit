@@ -2,7 +2,6 @@
 using System.Linq;
 using AP.CrossPlatform.Collections;
 using AP.MobileToolkit.Mvvm;
-using Prism.AppModel;
 using Prism.Commands;
 using Prism.Navigation;
 using ReactiveUI;

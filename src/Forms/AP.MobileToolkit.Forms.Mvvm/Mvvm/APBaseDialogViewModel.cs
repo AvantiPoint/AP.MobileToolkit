@@ -9,7 +9,7 @@ using ReactiveUI;
 
 namespace AP.MobileToolkit.Mvvm
 {
-    public abstract class APBaseDialogViewModel : ReactiveObject, IAutoInitialize, IDialogAware, IDestructible
+    public abstract class APBaseDialogViewModel : ReactiveObject, IDialogAware, IDestructible
     {
         protected CompositeDisposable Disposables { get; private set; }
 

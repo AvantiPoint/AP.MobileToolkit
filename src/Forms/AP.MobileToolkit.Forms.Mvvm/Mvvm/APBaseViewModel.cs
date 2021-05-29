@@ -21,7 +21,7 @@ namespace AP.MobileToolkit.Mvvm
     /// <summary>
     /// Provides a base ViewModel Class
     /// </summary>
-    public abstract class APBaseViewModel : ReactiveObject, IAutoInitialize, IInitialize, IInitializeAsync, INavigatedAware, IDestructible, IConfirmNavigation, IConfirmNavigationAsync, IApplicationLifecycleAware, IPageLifecycleAware
+    public abstract class APBaseViewModel : ReactiveObject, IInitialize, IInitializeAsync, INavigatedAware, IDestructible, IConfirmNavigation, IConfirmNavigationAsync, IApplicationLifecycleAware, IPageLifecycleAware
     {
         protected CompositeDisposable Disposables { get; private set; }
 
@@ -89,8 +89,7 @@ namespace AP.MobileToolkit.Mvvm
         public ReactiveCommand<string, Unit> NavigateCommand { get; private set; }
 
         // Not used for binding so this is not a reactive property
-        [AutoInitialize("callback")]
-        public string CallbackUrl { get; set; }
+        protected string CallbackUrl { get; set; }
 
         protected virtual async Task OnNavigateCommandExecuted(string uri)
         {
@@ -177,7 +176,15 @@ namespace AP.MobileToolkit.Mvvm
         {
         }
 
-        void INavigatedAware.OnNavigatedTo(INavigationParameters parameters) => OnNavigatedTo(parameters);
+        void INavigatedAware.OnNavigatedTo(INavigationParameters parameters)
+        {
+            if (parameters.TryGetValue<string>("callback", out var callback))
+            {
+                CallbackUrl = callback;
+            }
+
+            OnNavigatedTo(parameters);
+        }
 
         void INavigatedAware.OnNavigatedFrom(INavigationParameters parameters) => OnNavigatedFrom(parameters);
 
