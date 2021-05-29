@@ -56,12 +56,8 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" />
-    <PackageReference Include="Xamarin.Android.Support.CustomTabs" />
-    <PackageReference Include="Xamarin.Android.Support.Design" />
-    <PackageReference Include="Xamarin.Android.Support.v4" />
-    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" />
-    <PackageReference Include="Xamarin.Android.Support.v7.CardView" />
-    <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" />
+    <PackageReference Include="Xamarin.AndroidX.MediaRouter" />
+    <PackageReference Include="Xamarin.AndroidX.Palette" />
     <PackageReference Include="Prism.DryIoc.Forms" />
   </ItemGroup>
   <ItemGroup>

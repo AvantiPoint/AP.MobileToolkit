@@ -13,12 +13,8 @@
     <PackageReference Update="Xamarin.Forms.Mocks" Version="4.7.0.1" />
     <PackageReference Update="Xamarin.Essentials" Version="1.6.1" />
     <PackageReference Update="Xamarin.Essentials.Interfaces" Version="1.6.1" />
-    <PackageReference Update="Xamarin.Android.Support.CustomTabs" Version="28.0.0.3" />
-    <PackageReference Update="Xamarin.Android.Support.Design" Version="28.0.0.3" />
-    <PackageReference Update="Xamarin.Android.Support.v4" Version="28.0.0.3" />
-    <PackageReference Update="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.3" />
-    <PackageReference Update="Xamarin.Android.Support.v7.CardView" Version="28.0.0.3" />
-    <PackageReference Update="Xamarin.Android.Support.v7.MediaRouter" Version="28.0.0.3" />
+    <PackageReference Update="Xamarin.AndroidX.MediaRouter" Version="1.2.0" />
+    <PackageReference Update="Xamarin.AndroidX.Palette" Version="1.0.0.5" />
 
     <!-- General Dependencies -->
     <PackageReference Update="AvantiPoint.MobileToolkit.Forms.Fonts" Version="3.1.27" />
