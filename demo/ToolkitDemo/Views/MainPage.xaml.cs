@@ -2,7 +2,7 @@
 
 namespace ToolkitDemo.Views
 {
-    public partial class MainPage : MasterDetailPage
+    public partial class MainPage : FlyoutPage
     {
         public MainPage()
         {

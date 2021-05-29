@@ -38,9 +38,9 @@ namespace AP.MobileToolkit.Xaml
             switch (value)
             {
                 case Page page:
-                    if (page.GetType().Namespace == "Xamarin.Forms" && page.Parent is MasterDetailPage mdp && mdp.Master == page)
+                    if (page.GetType().Namespace == "Xamarin.Forms" && page.Parent is FlyoutPage mdp && mdp.Flyout == page)
                     {
-                        return mdp.Master;
+                        return mdp.Flyout;
                     }
 
                     return page;

@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Description>Provides a Prism IModule implementation to handle the ReactiveUI RxApp.DefaultExceptionHandler, and an ObservableCron to schedule Observable callbacks on a Cron.</Description>
+    <PackageId>AvantiPoint.MobileToolkit.RxUI</PackageId>
   </PropertyGroup>
 
   <ItemGroup>

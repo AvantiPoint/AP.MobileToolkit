@@ -4,6 +4,7 @@
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <RootNamespace>AP.CrossPlatform</RootNamespace>
     <Description>Provides Cross Platform support for common collections, extensions, validations, and other helpers</Description>
+    <PackageId>AvantiPoint.CrossPlatform.Core</PackageId>
   </PropertyGroup>
 
   <ItemGroup>

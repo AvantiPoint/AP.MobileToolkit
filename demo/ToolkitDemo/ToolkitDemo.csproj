@@ -19,9 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Brands" />
-    <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Regular" />
-    <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Solid" />
+    <PackageReference Include="AvantiPoint.MobileToolkit.Forms.Fonts.FontAwesomeFree.Brands" />
+    <PackageReference Include="AvantiPoint.MobileToolkit.Forms.Fonts.FontAwesomeFree.Regular" />
+    <PackageReference Include="AvantiPoint.MobileToolkit.Forms.Fonts.FontAwesomeFree.Solid" />
     <PackageReference Include="Prism.DryIoc.Forms" />
   </ItemGroup>
 

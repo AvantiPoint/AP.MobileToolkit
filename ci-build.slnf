@@ -1,0 +1,21 @@
+{
+  "solution": {
+    "path": "AP.MobileToolkit.sln",
+    "projects": [
+      "src\\AP.CrossPlatform.Auth\\AP.CrossPlatform.Auth.csproj",
+      "src\\AP.CrossPlatform.Core\\AP.CrossPlatform.Core.csproj",
+      "src\\AP.MobileToolkit.AAD\\AP.MobileToolkit.AAD.csproj",
+      "src\\AP.MobileToolkit.Http\\AP.MobileToolkit.Http.csproj",
+      "src\\AP.MobileToolkit.Markdown\\AP.MobileToolkit.Markdown.shproj",
+      "src\\AP.MobileToolkit.Modularity\\AP.MobileToolkit.Modularity.csproj",
+      "src\\AP.MobileToolkit.Resources\\AP.MobileToolkit.Resources.csproj",
+      "src\\AP.MobileToolkit.RxUI\\AP.MobileToolkit.RxUI.csproj",
+      "src\\Forms\\AP.MobileToolkit.Forms.Mvvm\\AP.MobileToolkit.Forms.Mvvm.csproj",
+      "src\\Forms\\AP.MobileToolkit.Forms\\AP.MobileToolkit.Forms.csproj",
+      "tests\\AP.CrossPlatform.Auth.Tests\\AP.CrossPlatform.Auth.Tests.csproj",
+      "tests\\AP.CrossPlatform.Core.Tests\\AP.CrossPlatform.Core.Tests.csproj",
+      "tests\\AP.MobileToolkit.Http.Tests\\AP.MobileToolkit.Http.Tests.csproj",
+      "tests\\AP.MobileToolkit.Tests\\AP.MobileToolkit.Tests.csproj"
+    ]
+  }
+}

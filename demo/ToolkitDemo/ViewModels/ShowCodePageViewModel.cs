@@ -2,7 +2,6 @@
 using System.Linq;
 using AP.CrossPlatform.Collections;
 using AP.MobileToolkit.Mvvm;
-using Prism.AppModel;
 using Prism.Commands;
 using Prism.Navigation;
 using ReactiveUI;
@@ -12,7 +11,7 @@ using Xamarin.Essentials.Interfaces;
 
 namespace ToolkitDemo.ViewModels
 {
-    public class ShowCodePageViewModel : APBaseViewModel, IAutoInitialize
+    public class ShowCodePageViewModel : APBaseViewModel
     {
         private ICodeSampleResolver CodeSampleResolver { get; }
 
@@ -30,7 +29,6 @@ namespace ToolkitDemo.ViewModels
 
         public ObservableRangeCollection<SelectableItem> FileList { get; } = new ObservableRangeCollection<SelectableItem>();
 
-        [AutoInitialize("page_name", true)]
         public string PageName
         {
             get => _pageName;
@@ -51,6 +49,13 @@ namespace ToolkitDemo.ViewModels
 
         protected override void Initialize(INavigationParameters parameters)
         {
+            if (!parameters.TryGetValue<string>("page_name", out var pageName))
+            {
+                throw new System.Exception("Parameter page_name was not passed in the navigation parameters.");
+            }
+
+            PageName = pageName;
+
             IEnumerable<string> pageFileNames = CodeSampleResolver.GetPageFilesName(PageName);
 
             int i = 0;

@@ -1,8 +1,9 @@
 <Project Sdk="MSBuild.Sdk.Extras">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid90;MonoAndroid10.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid10.0</TargetFrameworks>
     <Description>Provides a basic set of abstractions around making Azure Active Directory easy to use</Description>
+    <PackageId>AvantiPoint.MobileToolkit.AAD</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,10 +17,6 @@
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
     <PackageReference Include="Xamarin.Essentials" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" $(TargetFramework) == 'MonoAndroid90' ">
-    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" />
   </ItemGroup>
 
   <ItemGroup>

@@ -4,6 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>AP.MobileToolkit</RootNamespace>
     <Description>Provides MVVM Helpers for Prism.Forms including a base generic base ViewModel and a base Dialog Aware ViewModel.</Description>
+    <PackageId>AvantiPoint.MobileToolkit.Forms.Mvvm</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
