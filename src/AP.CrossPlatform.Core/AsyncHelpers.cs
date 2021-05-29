@@ -35,7 +35,8 @@ namespace AP.CrossPlatform
                     {
                         synch.EndMessageLoop();
                     }
-                }, null);
+                },
+                null);
             synch.BeginMessageLoop();
 
             SynchronizationContext.SetSynchronizationContext(oldContext);
@@ -69,7 +70,8 @@ namespace AP.CrossPlatform
                     {
                         synch.EndMessageLoop();
                     }
-                }, null);
+                },
+                null);
             synch.BeginMessageLoop();
             SynchronizationContext.SetSynchronizationContext(oldContext);
             return ret;
@@ -82,7 +84,7 @@ namespace AP.CrossPlatform
 
             private readonly AutoResetEvent _workItemsWaiting = new AutoResetEvent(false);
 
-            private bool done;
+            private bool _done;
 
             public Exception InnerException { get; set; }
 
@@ -102,12 +104,12 @@ namespace AP.CrossPlatform
 
             public void EndMessageLoop()
             {
-                Post(_ => done = true, null);
+                Post(_ => _done = true, null);
             }
 
             public void BeginMessageLoop()
             {
-                while (!done)
+                while (!_done)
                 {
                     Tuple<SendOrPostCallback, object> task = null;
                     lock (_items)
