@@ -21,7 +21,7 @@
     <PackageReference Update="AvantiPoint.MobileToolkit.Forms.Fonts.FontAwesomeFree.Brands" Version="3.1.27" />
     <PackageReference Update="AvantiPoint.MobileToolkit.Forms.Fonts.FontAwesomeFree.Regular" Version="3.1.27" />
     <PackageReference Update="AvantiPoint.MobileToolkit.Forms.Fonts.FontAwesomeFree.Solid" Version="3.1.27" />
-    <PackageReference Update="Humanizer.Core" Version="2.10.1" />
+    <PackageReference Update="Humanizer.Core" Version="2.11.10" />
     <PackageReference Update="Microsoft.Identity.Client" Version="4.32.0" />
     <PackageReference Update="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.12" />
     <PackageReference Update="Newtonsoft.Json" Version="13.0.1" />
