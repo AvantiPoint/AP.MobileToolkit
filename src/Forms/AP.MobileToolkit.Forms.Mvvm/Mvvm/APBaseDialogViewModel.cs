@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
@@ -37,7 +38,18 @@ namespace AP.MobileToolkit.Mvvm
         {
         }
 
-        public virtual void OnDialogOpened(IDialogParameters parameters)
+        void IDialogAware.OnDialogOpened(IDialogParameters parameters)
+        {
+            AutoInitialize(parameters);
+            OnDialogOpened(parameters);
+        }
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        protected virtual void AutoInitialize(IDialogParameters parameters)
+        {
+        }
+
+        protected virtual void OnDialogOpened(IDialogParameters parameters)
         {
         }
 
