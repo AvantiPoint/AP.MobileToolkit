@@ -54,7 +54,6 @@ namespace ToolkitDemo
             containerRegistry.Register<IClipboard, ClipboardImplementation>();
             containerRegistry.Register<ICodeSampleResolver, CodeSampleResolver>();
 
-            containerRegistry.RegisterForNavigation<APIClientPage, APIClientPageViewModel>();
             containerRegistry.RegisterForNavigation<HomePage>();
             containerRegistry.RegisterForNavigation<ImageEntryPage, ImageEntryPageViewModel>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
