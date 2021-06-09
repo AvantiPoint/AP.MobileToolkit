@@ -15,20 +15,37 @@ namespace AP.MobileToolkit.Http
         {
         }
 
+        public ClientInfoHeaderHandler(IAppInfo appInfo, IDeviceInfo deviceInfo, string installId)
+            : this(appInfo, deviceInfo, installId, new HttpClientHandler())
+        {
+        }
+
         public ClientInfoHeaderHandler(IAppInfo appInfo, IDeviceInfo deviceInfo, HttpMessageHandler innerHandler)
+            : this(appInfo, deviceInfo, string.Empty, innerHandler)
+        {
+        }
+
+        public ClientInfoHeaderHandler(IAppInfo appInfo, IDeviceInfo deviceInfo, string installId, HttpMessageHandler innerHandler)
             : base(innerHandler)
         {
+            AppInfo = appInfo;
+            DeviceInfo = deviceInfo;
+            InstallId = installId ?? string.Empty;
         }
 
         protected IAppInfo AppInfo { get; }
 
         protected IDeviceInfo DeviceInfo { get; }
 
+        protected string InstallId { get; }
+
+        protected virtual string InstallIdHeader => "X-ClientId";
+
         /// <summary>
         /// Gets the install id. Typically the device token used for Push Notifications
         /// </summary>
         /// <returns>The Device Token</returns>
-        protected virtual string GetInstallId() => string.Empty;
+        protected virtual string GetInstallId() => InstallId;
 
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
@@ -50,7 +67,7 @@ namespace AP.MobileToolkit.Http
             var installId = GetInstallId();
             if (!string.IsNullOrWhiteSpace(installId))
             {
-                request.Headers.Add("X-ClientId", installId);
+                request.Headers.Add(InstallIdHeader, installId);
             }
             return base.SendAsync(request, cancellationToken);
         }
