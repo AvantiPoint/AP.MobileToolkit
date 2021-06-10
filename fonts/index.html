@@ -16,7 +16,7 @@
         <link rel="canonical" href="http://avantipoint.com/fonts/">
       
       <link rel="icon" href="../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.6">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.7">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.875de78c.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ca7ac06f.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.f1a3b89f.min.css">
@@ -438,6 +438,26 @@
     Initializing Fonts
   </a>
   
+    <nav class="md-nav" aria-label="Initializing Fonts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xamarinforms" class="md-nav__link">
+    Xamarin.Forms
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maui" class="md-nav__link">
+    Maui
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -568,54 +588,6 @@
           Controls
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../forms/controls/badgeview/" class="md-nav__link">
-        BadgeView
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../forms/controls/datepickercell/" class="md-nav__link">
-        DatePickerCell
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../forms/controls/gravatarimagesource/" class="md-nav__link">
-        GravatarImageSource
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../forms/controls/imageentry/" class="md-nav__link">
-        ImageEntry
-      </a>
-    </li>
-  
-
           
             
   
@@ -888,6 +860,26 @@
     Initializing Fonts
   </a>
   
+    <nav class="md-nav" aria-label="Initializing Fonts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xamarinforms" class="md-nav__link">
+    Xamarin.Forms
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maui" class="md-nav__link">
+    Maui
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -916,8 +908,9 @@
 <p class="admonition-title">Note</p>
 <p>Fonts are handled in a separate <a href="https://github.com/AvantiPoint/AP.MobileToolkit.Fonts">repository</a>.</p>
 </div>
-<p>Currently Font support is targeting Xamarin.Forms and is planned for WinUI and Uno Platform.</p>
+<p>Currently Font support is targeting Xamarin.Forms and Maui. We are currently planning on adding support for WinUI and Uno Platform.</p>
 <h2 id="initializing-fonts">Initializing Fonts<a class="headerlink" href="#initializing-fonts" title="Permanent link">&para;</a></h2>
+<h3 id="xamarinforms">Xamarin.Forms<a class="headerlink" href="#xamarinforms" title="Permanent link">&para;</a></h3>
 <p>Fonts should be registered with the FontRegistry when your application is initialized. While this may be in slightly different locations depending on your app model, this should be before you navigate or otherwise create a view that may use the font.</p>
 <div class="codehilite"><pre><span></span><code><span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">App</span> <span class="p">:</span> <span class="n">Application</span>
 <span class="p">{</span>
@@ -931,10 +924,33 @@
 <span class="p">}</span>
 </code></pre></div>
 
+<h3 id="maui">Maui<a class="headerlink" href="#maui" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Startup</span> <span class="p">:</span> <span class="n">IStartup</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IAppHostBuilder</span> <span class="n">appBuilder</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">appBuilder</span>
+            <span class="p">.</span><span class="n">UseFormsCompatibility</span><span class="p">()</span>
+            <span class="p">.</span><span class="n">UseMauiApp</span><span class="p">&lt;</span><span class="n">App</span><span class="p">&gt;()</span>
+            <span class="p">.</span><span class="n">ConfigureIconFonts</span><span class="p">(</span><span class="n">b</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                <span class="n">b</span><span class="p">.</span><span class="n">AddFont</span><span class="p">(</span><span class="n">FontAwesomeRegular</span><span class="p">.</span><span class="n">Font</span><span class="p">)</span>
+                 <span class="p">.</span><span class="n">AddFont</span><span class="p">(</span><span class="n">FontAwesomeSolid</span><span class="p">.</span><span class="n">Font</span><span class="p">);</span>
+
+                <span class="c1">// OR</span>
+                <span class="n">b</span><span class="p">.</span><span class="n">AddFonts</span><span class="p">(</span><span class="n">FontAwesomeRegular</span><span class="p">.</span><span class="n">Font</span><span class="p">,</span> <span class="n">FontAwesomeSolid</span><span class="p">.</span><span class="n">Font</span><span class="p">);</span>
+            <span class="p">})</span>
+            <span class="p">.</span><span class="n">ConfigureFonts</span><span class="p">(</span><span class="n">fonts</span> <span class="p">=&gt;</span>
+            <span class="p">{</span>
+                <span class="n">fonts</span><span class="p">.</span><span class="n">AddFont</span><span class="p">(</span><span class="s">&quot;OpenSans-Regular.ttf&quot;</span><span class="p">,</span> <span class="s">&quot;OpenSansRegular&quot;</span><span class="p">);</span>
+            <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <h2 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="generator/">Font Generator</a></li>
-<li><a href="../forms/fonts/">AP.Mobile.Toolkit Fonts for Xamarin.Forms</a></li>
+<li><a href="../forms/fonts/">Using Icon Fonts</a></li>
 </ul>
                 
               
@@ -1013,10 +1029,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.34eae1b6.min.js"></script>
+      <script src="../assets/javascripts/bundle.76f349be.min.js"></script>
       
     
   </body>

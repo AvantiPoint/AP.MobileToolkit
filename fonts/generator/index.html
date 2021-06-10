@@ -16,7 +16,7 @@
         <link rel="canonical" href="http://avantipoint.com/fonts/generator/">
       
       <link rel="icon" href="../../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.6">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.7">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.875de78c.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
@@ -567,54 +567,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../forms/controls/badgeview/" class="md-nav__link">
-        BadgeView
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../forms/controls/datepickercell/" class="md-nav__link">
-        DatePickerCell
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../forms/controls/gravatarimagesource/" class="md-nav__link">
-        GravatarImageSource
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../forms/controls/imageentry/" class="md-nav__link">
-        ImageEntry
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../forms/controls/markdowntextview/" class="md-nav__link">
         MarkdownTextView
       </a>
@@ -903,19 +855,20 @@
 <p class="admonition-title">Note</p>
 <p>The Font's PostTable does matter. Note that only version 2 contains the name of the Glyph. As a result any font's using other versions in the PostTable should include a mapping css file.</p>
 </div>
-<p>To add a font, create a new project. Typically this will just be a netstandard class library, but this could be a multi-targeted project. You should not have any actual code files in the project. Edit the csproj like shown below:</p>
+<p>To add a font, create a new project. Typically this will just be a netstandard class library. You do not need any actual code files in the project. Edit the csproj like shown below:</p>
 <div class="codehilite"><pre><span></span><code><span class="nt">&lt;ItemGroup&gt;</span>
-  <span class="nt">&lt;EmbeddedFont</span> <span class="na">Include=</span><span class="s">&quot;fa-regular-400.ttf&quot;</span>
-                <span class="na">Alias=</span><span class="s">&quot;far&quot;</span>
-                <span class="na">FontName=</span><span class="s">&quot;FontAwesomeRegular&quot;</span>
-                <span class="na">Version=</span><span class="s">&quot;5.13.0&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;AdditionalFiles</span> <span class="na">Include=</span><span class="s">&quot;fa-regular-400-ttf&quot;</span> 
+                   <span class="na">Alias=</span><span class="s">&quot;far&quot;</span> 
+                   <span class="na">FontName=</span><span class="s">&quot;FontAwesomeRegular&quot;</span> 
+                   <span class="na">Version=</span><span class="s">&quot;5.13.0&quot;</span> 
+                   <span class="na">CssFile=</span><span class="s">&quot;fontawesome.min.css&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/ItemGroup&gt;</span>
 </code></pre></div>
 
-<p>We will add an EmbeddedFont with the path to the otf or ttf font file. Be sure to add the value for the Alias. This is what allows us to do something like <code>far fa-user</code>. Add the FontNamme. This will control the class name used for the generated Font Definition and static mapping class.</p>
+<p>The Generator will automatically parse both the Font file and the supplied Css or Codepoints file specified. This will generate the required attributes to enabled Font Embedding, as well as the IFont implementation, a static Mapping class that will let you reference <code>FontAwesomeRegular.User</code> instead of supplying <code>far fa-user</code>. Finally it will generate a second <code>FontAwesomeRegular</code> static class in the AP.MobileToolkit.Fonts namespace that provides information about the generated font as well as an instance of the generated IFont instance that you can use to register with the Font Registry.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The Google Material Font is not currently supported as this uses ligatures to make up an icon by spelling it out (i.e. GitHub, Microsoft). For this reason there is currently no way for the Font Generator to understand what icons/glyphs actually belong as part of the font or what the proper name of the glyph would be.</p>
+<p>Ligature based fonts are not supported without either a CSS file or Codepoints file like we use for The Google Material Font library.</p>
 </div>
 <h2 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
 <ul>
@@ -999,10 +952,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.34eae1b6.min.js"></script>
+      <script src="../../assets/javascripts/bundle.76f349be.min.js"></script>
       
     
   </body>

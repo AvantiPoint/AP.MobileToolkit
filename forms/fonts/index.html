@@ -16,7 +16,7 @@
         <link rel="canonical" href="http://avantipoint.com/forms/fonts/">
       
       <link rel="icon" href="../../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.6">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.7">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.875de78c.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#additional-resources" class="md-skip">
+        <a href="#using-the-fonts" class="md-skip">
           Skip to content
         </a>
       
@@ -531,54 +531,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../controls/badgeview/" class="md-nav__link">
-        BadgeView
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../controls/datepickercell/" class="md-nav__link">
-        DatePickerCell
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../controls/gravatarimagesource/" class="md-nav__link">
-        GravatarImageSource
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../controls/imageentry/" class="md-nav__link">
-        ImageEntry
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../controls/markdowntextview/" class="md-nav__link">
         MarkdownTextView
       </a>
@@ -713,6 +665,8 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Getting Started
@@ -728,12 +682,55 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting Started
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#extending-the-fonticon-functionality" class="md-nav__link">
+    Extending the FontIcon functionality
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapping-class" class="md-nav__link">
+    Mapping Class
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image-source" class="md-nav__link">
+    Image Source
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#legacy" class="md-nav__link">
+    Legacy
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#additional-resources" class="md-nav__link">
@@ -871,12 +868,55 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting Started
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#extending-the-fonticon-functionality" class="md-nav__link">
+    Extending the FontIcon functionality
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapping-class" class="md-nav__link">
+    Mapping Class
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image-source" class="md-nav__link">
+    Image Source
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#legacy" class="md-nav__link">
+    Legacy
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#additional-resources" class="md-nav__link">
@@ -898,9 +938,69 @@
               
                 
                 
-                  <h1>Getting Started</h1>
-                
-                <p>The Toolkit includes an <code>Icon</code> XAML Extension. This can be used by passing in a string with the font alias and glyph name. For instance you might use <code>far fa-user</code> to show the User icon from Font Awesome Regular. Alternatively you can use the Static Mapping class to strongly type the icons like <code>FontAwesomeRegular.User</code>.</p>
+                <h1 id="using-the-fonts">Using The Fonts<a class="headerlink" href="#using-the-fonts" title="Permanent link">&para;</a></h1>
+<p>You may be asking why use the MobileToolkit for your Icon Fonts? Xamarin.Forms already has a solution for Fonts right? In short, an Icon Font isn't really any different than any other font. If you provide the unicode character and the font family it will just work, and the FontImageSource will work for those fonts. The problem with this approach is that it's largely meaningless and means you're setting both a Text and Font Family property. The MobileToolkit helps you to write code that is easier to read and is ultimately self documenting by taking the unicode character out of the equation and letting you use libraries like Font Awesome the same way you've always used them on the web by just referencing the css classes like <code>fas fa-users</code>.</p>
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<p>Like the rest of the Toolkit we try to make development as easy as possible. Why have to spend extra time writing code comments or ending up with code that's meaningless unless you spend the time to lookup what the unicode character is.</p>
+<div class="codehilite"><pre><span></span><code><span class="c">&lt;!-- fas fa-users --&gt;</span>
+<span class="nt">&lt;Label</span> <span class="na">Text=</span><span class="s">&quot;\uf0c0&quot;</span>
+       <span class="na">FontFamily=</span><span class="s">&quot;fa-solid-900.ttf&quot;</span> <span class="nt">/&gt;</span>
+</code></pre></div>
+
+<p>While you could try to specify the unicode character ultimately this just is hard to read, and requires some sort of comment in order for you to come along later an know what icon just got used. This is where the MobileToolkit Fonts comes in to make things easier. After <a href="./">registering</a> your fonts, you can use them anywhere in your app similar to how you might use it on the web like <code>fas fa-users</code>.</p>
+<p>For those using older versions of the MobileToolkit you may be used to some Xaml Extensions like the following:</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">&lt;Label</span> <span class="na">Text=</span><span class="s">&quot;{ap:Icon &#39;fas fa-users&#39;}&quot;</span> <span class="nt">/&gt;</span>
+</code></pre></div>
+
+<p>While the XamlExtension isn't going anywhere, we wanted to give people a cleaner approach which we recommend that you migrate to, or start out with if you're brand new to the Toolkit. In version 4 we introduced the FontIcon class to help you like:</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">&lt;Label</span> <span class="na">ap:FontIcon.Icon=</span><span class="s">&quot;fas fa-users&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;Button</span> <span class="na">ap:FontIcon.Icon=</span><span class="s">&quot;fas fa-users&quot;</span> <span class="nt">/&gt;</span>
+</code></pre></div>
+
+<h3 id="extending-the-fonticon-functionality">Extending the FontIcon functionality<a class="headerlink" href="#extending-the-fonticon-functionality" title="Permanent link">&para;</a></h3>
+<p>There may be times where you are working with a custom control from a 3rd party vendor such as Syncfusion or Telerik where you may want to extend functionality to work with one of their controls in your app. Since the MobileToolkit cannot handle every single control we do provide a hook for you to be able to pass a delegate to enable support for these additional controls.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">App</span> <span class="p">:</span> <span class="n">Application</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nf">App</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">FontIcon</span><span class="p">.</span><span class="n">RegisterDefaultOnChangedHandler</span><span class="p">(</span><span class="n">FontIconHandler</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">void</span> <span class="nf">FontIconHandler</span><span class="p">(</span><span class="n">BindableObject</span> <span class="n">bindable</span><span class="p">,</span> <span class="kt">string</span> <span class="n">selector</span><span class="p">,</span> <span class="kt">string</span> <span class="n">glyph</span><span class="p">,</span> <span class="kt">string</span> <span class="n">fontFamily</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">switch</span><span class="p">(</span><span class="n">bindable</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">case</span> <span class="n">MyCustomControl</span> <span class="n">mcc</span><span class="p">:</span>
+                <span class="n">mcc</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">glyph</span><span class="p">;</span>
+                <span class="n">mcc</span><span class="p">.</span><span class="n">FontFamily</span> <span class="p">=</span> <span class="n">fontFamily</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="n">MyOtherCustomControl</span> <span class="n">mocc</span><span class="p">:</span>
+                <span class="n">mocc</span><span class="p">.</span><span class="n">IconImageSource</span> <span class="p">=</span> <span class="n">FontIcon</span><span class="p">.</span><span class="n">CreateIconImageSource</span><span class="p">(</span><span class="n">bindable</span><span class="p">,</span> <span class="n">selector</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="mapping-class">Mapping Class<a class="headerlink" href="#mapping-class" title="Permanent link">&para;</a></h2>
+<p>The <a href="generator.md">Font Generator</a> will additionally generate a Mapping class. If you are in XAML this is already part of the MobileToolkit namespace. Some people don't want a "magic string" that could be subject to typos. The mapping class is designed to help you with this by providing you a compiler friendly class you can reference like:</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">&lt;Label</span> <span class="na">ap:FontIcon.Icon=</span><span class="s">&quot;{x:Static ap:FontAwesomeSolid.Users}&quot;</span> <span class="nt">/&gt;</span>
+</code></pre></div>
+
+<h2 id="image-source">Image Source<a class="headerlink" href="#image-source" title="Permanent link">&para;</a></h2>
+<p>The Mobile Toolkit provides an IconImageSource to make it easy to use Icon Fonts for a whole host of scenarios such as menu bar icons. While you can use the FontIcon class create the icon the same way you would on a Label or Button, may want to just simply set the Image Source directly which you can do either with a more verbose ImageSource syntax or XAML Extension as shown here.</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">&lt;Image</span> <span class="na">Source=</span><span class="s">{ap:IconImageSource</span> <span class="err">&#39;fas</span> <span class="err">fa-users&#39;,</span> <span class="na">Color=</span><span class="s">Black,</span> <span class="na">Size=</span><span class="s">16}</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;Image&gt;</span>
+  <span class="nt">&lt;Image.Source&gt;</span>
+    <span class="nt">&lt;IconImageSource</span> <span class="na">Name=</span><span class="s">&quot;fas fa-users&quot;</span>
+                     <span class="na">Color=</span><span class="s">&quot;Black&quot;</span>
+                     <span class="na">Size=</span><span class="s">&quot;16&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/Image.Source&gt;</span>
+<span class="nt">&lt;/Image&gt;</span>
+</code></pre></div>
+
+<h2 id="legacy">Legacy<a class="headerlink" href="#legacy" title="Permanent link">&para;</a></h2>
+<p>The Toolkit includes an <code>Icon</code> XAML Extension. This can be used by passing in a string with the font alias and glyph name. For instance you might use <code>far fa-user</code> to show the User icon from Font Awesome Regular. Alternatively you can use the Static Mapping class to strongly type the icons like <code>FontAwesomeRegular.User</code>.</p>
 <div class="codehilite"><pre><span></span><code><span class="nt">&lt;ContentPage</span> <span class="na">xmlns=</span><span class="s">&quot;http://xamarin.com/schemas/2014/forms&quot;</span>
              <span class="na">xmlns:x=</span><span class="s">&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;</span>
              <span class="na">xmlns:ap=</span><span class="s">&quot;http://avantipoint.com/mobiletoolkit&quot;</span>
@@ -914,6 +1014,10 @@
 <span class="nt">&lt;/ContentPage&gt;</span>
 </code></pre></div>
 
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While this is considered legacy, the icon extension still works and we currently do not plan on removing it as this would break anyone updating.</p>
+</div>
 <h2 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../../fonts/">Getting Started</a></li>
@@ -996,10 +1100,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.34eae1b6.min.js"></script>
+      <script src="../../assets/javascripts/bundle.76f349be.min.js"></script>
       
     
   </body>
