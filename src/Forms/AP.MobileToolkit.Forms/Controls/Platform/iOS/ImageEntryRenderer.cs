@@ -1,7 +1,6 @@
 ﻿using System.Drawing;
 using AP.MobileToolkit.Controls;
 using AP.MobileToolkit.Controls.Platform.iOS;
-using AP.MobileToolkit.Effects;
 using CoreAnimation;
 using CoreGraphics;
 using UIKit;

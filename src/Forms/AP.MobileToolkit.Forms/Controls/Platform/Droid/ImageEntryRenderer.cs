@@ -8,7 +8,6 @@ using AndroidX.Core.Content;
 #endif
 using AP.MobileToolkit.Controls;
 using AP.MobileToolkit.Controls.Platform.Droid;
-using AP.MobileToolkit.Effects;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
