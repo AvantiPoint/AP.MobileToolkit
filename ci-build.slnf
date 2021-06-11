@@ -14,7 +14,6 @@
       "src\\Forms\\AP.MobileToolkit.Forms\\AP.MobileToolkit.Forms.csproj",
       "tests\\AP.CrossPlatform.Auth.Tests\\AP.CrossPlatform.Auth.Tests.csproj",
       "tests\\AP.CrossPlatform.Core.Tests\\AP.CrossPlatform.Core.Tests.csproj",
-      "tests\\AP.MobileToolkit.Http.Tests\\AP.MobileToolkit.Http.Tests.csproj",
       "tests\\AP.MobileToolkit.Tests\\AP.MobileToolkit.Tests.csproj"
     ]
   }
