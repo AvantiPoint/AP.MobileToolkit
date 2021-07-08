@@ -6,7 +6,7 @@
     <PackageReference Update="Prism.Core" Version="8.1.97" />
     <PackageReference Update="Prism.Forms" Version="8.1.97" />
     <PackageReference Update="Prism.DryIoc.Forms" Version="8.1.97" />
-    <PackageReference Update="Prism.Plugin.Logging.Abstractions" Version="8.0.11-beta" />
+    <PackageReference Update="Prism.Plugin.Logging.Abstractions" Version="8.1.16" />
 
     <!-- Xamarin -->
     <PackageReference Update="Xamarin.Forms" Version="5.0.0.2012" />
@@ -17,16 +17,16 @@
     <PackageReference Update="Xamarin.AndroidX.Palette" Version="1.0.0.7" />
 
     <!-- General Dependencies -->
-    <PackageReference Update="AvantiPoint.MobileToolkit.Forms.Fonts" Version="3.1.27" />
-    <PackageReference Update="AvantiPoint.MobileToolkit.Forms.Fonts.FontAwesomeFree.Brands" Version="3.1.27" />
-    <PackageReference Update="AvantiPoint.MobileToolkit.Forms.Fonts.FontAwesomeFree.Regular" Version="3.1.27" />
-    <PackageReference Update="AvantiPoint.MobileToolkit.Forms.Fonts.FontAwesomeFree.Solid" Version="3.1.27" />
+    <PackageReference Update="AvantiPoint.MobileToolkit.Forms.Fonts" Version="4.0.76" />
+    <PackageReference Update="AvantiPoint.MobileToolkit.Forms.Fonts.FontAwesomeFree.Brands" Version="4.0.76" />
+    <PackageReference Update="AvantiPoint.MobileToolkit.Forms.Fonts.FontAwesomeFree.Regular" Version="4.0.76" />
+    <PackageReference Update="AvantiPoint.MobileToolkit.Forms.Fonts.FontAwesomeFree.Solid" Version="4.0.76" />
     <PackageReference Update="Humanizer.Core" Version="2.11.10" />
-    <PackageReference Update="Microsoft.Identity.Client" Version="4.32.0" />
+    <PackageReference Update="Microsoft.Identity.Client" Version="4.33.0" />
     <PackageReference Update="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.12" />
     <PackageReference Update="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Update="NCrontab" Version="3.3.1" />
-    <PackageReference Update="ReactiveUI" Version="13.3.2" />
+    <PackageReference Update="ReactiveUI" Version="14.1.1" />
     <PackageReference Update="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Update="System.IdentityModel.Tokens.Jwt" Version="6.11.1" />
     <PackageReference Update="System.Reactive" Version="5.0.0" />
@@ -49,6 +49,6 @@
   <ItemGroup>
     <GlobalPackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.333" />
     <GlobalPackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.0-beta-20204-02" />
-    <GlobalPackageReference Include="Nerdbank.GitVersioning" Version="3.4.216" Condition=" $(IsPackable) == 'true' " />
+    <GlobalPackageReference Include="Nerdbank.GitVersioning" Version="3.4.220" Condition=" $(IsPackable) == 'true' " />
   </ItemGroup>
 </Project>
