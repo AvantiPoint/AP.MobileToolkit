@@ -49,6 +49,6 @@
   <ItemGroup>
     <GlobalPackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.333" />
     <GlobalPackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.0-beta-20204-02" />
-    <GlobalPackageReference Include="Nerdbank.GitVersioning" Version="3.4.220" Condition=" $(IsPackable) == 'true' " />
+    <GlobalPackageReference Include="Nerdbank.GitVersioning" Version="3.4.231" Condition=" $(IsPackable) == 'true' " />
   </ItemGroup>
 </Project>
