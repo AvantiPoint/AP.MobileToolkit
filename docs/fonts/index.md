@@ -47,6 +47,20 @@ public class Startup : IStartup
 }
 ```
 
+## Using in Prism.Modules
+In your module there is no reference to the Toolkit in C#, so the compiler is linking it out and it's not available when it comes time to parse the XAML. Therefore in your Prism.Modules you have to reference it somwehere like this:
+
+```csharp
+public MyModule()
+    {
+        _ = global::AP.MobileToolkit.Fonts.Mappings.FontAwesomeSolid.User;
+        _ = global::AP.MobileToolkit.Fonts.FontAwesomeSolid.Font;
+        _ = global::AP.MobileToolkit.Xaml.IconExtension.IconNameProperty;
+    }
+```
+    
+Of course when if would like to use Brands or Regular you have to switch (or add to) FontAwesomeSolid in the example above according to what you want to use. (For Example _ = global::AP.MobileToolkit.Fonts.FontAwesomeBrands.Font;)
+
 ## Additional Resources
 
 - [Font Generator](generator.md)
