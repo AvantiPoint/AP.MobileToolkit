@@ -500,6 +500,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#using-in-prismmodules" class="md-nav__link">
+    Using in Prism.Modules
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#additional-resources" class="md-nav__link">
     Additional Resources
   </a>
@@ -984,6 +991,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#using-in-prismmodules" class="md-nav__link">
+    Using in Prism.Modules
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#additional-resources" class="md-nav__link">
     Additional Resources
   </a>
@@ -1048,6 +1062,17 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
+<h2 id="using-in-prismmodules">Using in Prism.Modules<a class="headerlink" href="#using-in-prismmodules" title="Permanent link">&para;</a></h2>
+<p>In your module there is no reference to the Toolkit in C#, so the compiler is linking it out and it's not available when it comes time to parse the XAML. Therefore in your Prism.Modules you have to reference it somwehere like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">MyModule</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">global</span><span class="p">::</span><span class="n">AP</span><span class="p">.</span><span class="n">MobileToolkit</span><span class="p">.</span><span class="n">Fonts</span><span class="p">.</span><span class="n">Mappings</span><span class="p">.</span><span class="n">FontAwesomeSolid</span><span class="p">.</span><span class="n">User</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">global</span><span class="p">::</span><span class="n">AP</span><span class="p">.</span><span class="n">MobileToolkit</span><span class="p">.</span><span class="n">Fonts</span><span class="p">.</span><span class="n">FontAwesomeSolid</span><span class="p">.</span><span class="n">Font</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">global</span><span class="p">::</span><span class="n">AP</span><span class="p">.</span><span class="n">MobileToolkit</span><span class="p">.</span><span class="n">Xaml</span><span class="p">.</span><span class="n">IconExtension</span><span class="p">.</span><span class="n">IconNameProperty</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+
+<p>Of course when if would like to use Brands or Regular you have to switch (or add to) FontAwesomeSolid in the example above according to what you want to use. (For Example _ = global::AP.MobileToolkit.Fonts.FontAwesomeBrands.Font;)</p>
 <h2 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="generator/">Font Generator</a></li>
