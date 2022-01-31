@@ -15,7 +15,7 @@
         <link rel="canonical" href="http://avantipoint.com/fonts/">
       
       <link rel="icon" href="../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.9">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.edf004c2.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.2b4465f4.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
@@ -1013,39 +1013,39 @@
 <h2 id="initializing-fonts">Initializing Fonts<a class="headerlink" href="#initializing-fonts" title="Permanent link">&para;</a></h2>
 <h3 id="xamarinforms">Xamarin.Forms<a class="headerlink" href="#xamarinforms" title="Permanent link">&para;</a></h3>
 <p>Fonts should be registered with the FontRegistry when your application is initialized. While this may be in slightly different locations depending on your app model, this should be before you navigate or otherwise create a view that may use the font.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">App</span> <span class="p">:</span> <span class="n">Application</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="nf">App</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="n">InitializeComponent</span><span class="p">();</span>
-        <span class="n">FontRegistry</span><span class="p">.</span><span class="n">RegisterFonts</span><span class="p">(</span><span class="n">FontAwesomeBrands</span><span class="p">.</span><span class="n">Font</span><span class="p">,</span>
-                                   <span class="n">FontAwesomeRegular</span><span class="p">.</span><span class="n">Font</span><span class="p">,</span>
-                                   <span class="n">FontAwesomeSolid</span><span class="p">.</span><span class="n">Font</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">partial</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">App</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Application</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">App</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">InitializeComponent</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">FontRegistry</span><span class="p">.</span><span class="n">RegisterFonts</span><span class="p">(</span><span class="n">FontAwesomeBrands</span><span class="p">.</span><span class="n">Font</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                   </span><span class="n">FontAwesomeRegular</span><span class="p">.</span><span class="n">Font</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                   </span><span class="n">FontAwesomeSolid</span><span class="p">.</span><span class="n">Font</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 <h3 id="maui">Maui<a class="headerlink" href="#maui" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Startup</span> <span class="p">:</span> <span class="n">IStartup</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IAppHostBuilder</span> <span class="n">appBuilder</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">appBuilder</span>
-            <span class="p">.</span><span class="n">UseFormsCompatibility</span><span class="p">()</span>
-            <span class="p">.</span><span class="n">UseMauiApp</span><span class="p">&lt;</span><span class="n">App</span><span class="p">&gt;()</span>
-            <span class="p">.</span><span class="n">ConfigureIconFonts</span><span class="p">(</span><span class="n">b</span> <span class="p">=&gt;</span> <span class="p">{</span>
-                <span class="n">b</span><span class="p">.</span><span class="n">AddFont</span><span class="p">(</span><span class="n">FontAwesomeRegular</span><span class="p">.</span><span class="n">Font</span><span class="p">)</span>
-                 <span class="p">.</span><span class="n">AddFont</span><span class="p">(</span><span class="n">FontAwesomeSolid</span><span class="p">.</span><span class="n">Font</span><span class="p">);</span>
+<div class="codehilite"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Startup</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IStartup</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Configure</span><span class="p">(</span><span class="n">IAppHostBuilder</span><span class="w"> </span><span class="n">appBuilder</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">appBuilder</span><span class="w"></span>
+<span class="w">            </span><span class="p">.</span><span class="n">UseFormsCompatibility</span><span class="p">()</span><span class="w"></span>
+<span class="w">            </span><span class="p">.</span><span class="n">UseMauiApp</span><span class="p">&lt;</span><span class="n">App</span><span class="p">&gt;()</span><span class="w"></span>
+<span class="w">            </span><span class="p">.</span><span class="n">ConfigureIconFonts</span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="n">b</span><span class="p">.</span><span class="n">AddFont</span><span class="p">(</span><span class="n">FontAwesomeRegular</span><span class="p">.</span><span class="n">Font</span><span class="p">)</span><span class="w"></span>
+<span class="w">                 </span><span class="p">.</span><span class="n">AddFont</span><span class="p">(</span><span class="n">FontAwesomeSolid</span><span class="p">.</span><span class="n">Font</span><span class="p">);</span><span class="w"></span>
 
-                <span class="c1">// OR</span>
-                <span class="n">b</span><span class="p">.</span><span class="n">AddFonts</span><span class="p">(</span><span class="n">FontAwesomeRegular</span><span class="p">.</span><span class="n">Font</span><span class="p">,</span> <span class="n">FontAwesomeSolid</span><span class="p">.</span><span class="n">Font</span><span class="p">);</span>
-            <span class="p">})</span>
-            <span class="p">.</span><span class="n">ConfigureFonts</span><span class="p">(</span><span class="n">fonts</span> <span class="p">=&gt;</span>
-            <span class="p">{</span>
-                <span class="n">fonts</span><span class="p">.</span><span class="n">AddFont</span><span class="p">(</span><span class="s">&quot;OpenSans-Regular.ttf&quot;</span><span class="p">,</span> <span class="s">&quot;OpenSansRegular&quot;</span><span class="p">);</span>
-            <span class="p">});</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="w">                </span><span class="c1">// OR</span>
+<span class="w">                </span><span class="n">b</span><span class="p">.</span><span class="n">AddFonts</span><span class="p">(</span><span class="n">FontAwesomeRegular</span><span class="p">.</span><span class="n">Font</span><span class="p">,</span><span class="w"> </span><span class="n">FontAwesomeSolid</span><span class="p">.</span><span class="n">Font</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="p">})</span><span class="w"></span>
+<span class="w">            </span><span class="p">.</span><span class="n">ConfigureFonts</span><span class="p">(</span><span class="n">fonts</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="n">fonts</span><span class="p">.</span><span class="n">AddFont</span><span class="p">(</span><span class="s">&quot;OpenSans-Regular.ttf&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;OpenSansRegular&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="p">});</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 <h2 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
@@ -1123,10 +1123,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.22074ed6.min.js"}</script>
     
     
-      <script src="../assets/javascripts/bundle.e1a181d9.min.js"></script>
+      <script src="../assets/javascripts/bundle.960e086b.min.js"></script>
       
     
   </body>

@@ -15,7 +15,7 @@
         <link rel="canonical" href="http://avantipoint.com/forms/fonts/">
       
       <link rel="icon" href="../../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.9">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.edf004c2.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2b4465f4.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
@@ -1043,7 +1043,7 @@
 <p>You may be asking why use the MobileToolkit for your Icon Fonts? Xamarin.Forms already has a solution for Fonts right? In short, an Icon Font isn't really any different than any other font. If you provide the unicode character and the font family it will just work, and the FontImageSource will work for those fonts. The problem with this approach is that it's largely meaningless and means you're setting both a Text and Font Family property. The MobileToolkit helps you to write code that is easier to read and is ultimately self documenting by taking the unicode character out of the equation and letting you use libraries like Font Awesome the same way you've always used them on the web by just referencing the css classes like <code>fas fa-users</code>.</p>
 <h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <p>Like the rest of the Toolkit we try to make development as easy as possible. Why have to spend extra time writing code comments or ending up with code that's meaningless unless you spend the time to lookup what the unicode character is.</p>
-<div class="codehilite"><pre><span></span><code><span class="c">&lt;!-- fas fa-users --&gt;</span>
+<div class="codehilite"><pre><span></span><code><span class="cm">&lt;!-- fas fa-users --&gt;</span>
 <span class="nt">&lt;Label</span> <span class="na">Text=</span><span class="s">&quot;\uf0c0&quot;</span>
        <span class="na">FontFamily=</span><span class="s">&quot;fa-solid-900.ttf&quot;</span> <span class="nt">/&gt;</span>
 </code></pre></div>
@@ -1060,26 +1060,26 @@
 
 <h3 id="extending-the-fonticon-functionality">Extending the FontIcon functionality<a class="headerlink" href="#extending-the-fonticon-functionality" title="Permanent link">&para;</a></h3>
 <p>There may be times where you are working with a custom control from a 3rd party vendor such as Syncfusion or Telerik where you may want to extend functionality to work with one of their controls in your app. Since the MobileToolkit cannot handle every single control we do provide a hook for you to be able to pass a delegate to enable support for these additional controls.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">App</span> <span class="p">:</span> <span class="n">Application</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="nf">App</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="n">FontIcon</span><span class="p">.</span><span class="n">RegisterDefaultOnChangedHandler</span><span class="p">(</span><span class="n">FontIconHandler</span><span class="p">);</span>
-    <span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">partial</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">App</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Application</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">App</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">FontIcon</span><span class="p">.</span><span class="n">RegisterDefaultOnChangedHandler</span><span class="p">(</span><span class="n">FontIconHandler</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-    <span class="k">private</span> <span class="k">void</span> <span class="nf">FontIconHandler</span><span class="p">(</span><span class="n">BindableObject</span> <span class="n">bindable</span><span class="p">,</span> <span class="kt">string</span> <span class="n">selector</span><span class="p">,</span> <span class="kt">string</span> <span class="n">glyph</span><span class="p">,</span> <span class="kt">string</span> <span class="n">fontFamily</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">switch</span><span class="p">(</span><span class="n">bindable</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">case</span> <span class="n">MyCustomControl</span> <span class="n">mcc</span><span class="p">:</span>
-                <span class="n">mcc</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">glyph</span><span class="p">;</span>
-                <span class="n">mcc</span><span class="p">.</span><span class="n">FontFamily</span> <span class="p">=</span> <span class="n">fontFamily</span><span class="p">;</span>
-                <span class="k">break</span><span class="p">;</span>
-            <span class="k">case</span> <span class="n">MyOtherCustomControl</span> <span class="n">mocc</span><span class="p">:</span>
-                <span class="n">mocc</span><span class="p">.</span><span class="n">IconImageSource</span> <span class="p">=</span> <span class="n">FontIcon</span><span class="p">.</span><span class="n">CreateIconImageSource</span><span class="p">(</span><span class="n">bindable</span><span class="p">,</span> <span class="n">selector</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">FontIconHandler</span><span class="p">(</span><span class="n">BindableObject</span><span class="w"> </span><span class="n">bindable</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">selector</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">glyph</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">fontFamily</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">switch</span><span class="p">(</span><span class="n">bindable</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">MyCustomControl</span><span class="w"> </span><span class="n">mcc</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="n">mcc</span><span class="p">.</span><span class="n">Text</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">glyph</span><span class="p">;</span><span class="w"></span>
+<span class="w">                </span><span class="n">mcc</span><span class="p">.</span><span class="n">FontFamily</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">fontFamily</span><span class="p">;</span><span class="w"></span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">MyOtherCustomControl</span><span class="w"> </span><span class="n">mocc</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="n">mocc</span><span class="p">.</span><span class="n">IconImageSource</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">FontIcon</span><span class="p">.</span><span class="n">CreateIconImageSource</span><span class="p">(</span><span class="n">bindable</span><span class="p">,</span><span class="w"> </span><span class="n">selector</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 <h2 id="mapping-class">Mapping Class<a class="headerlink" href="#mapping-class" title="Permanent link">&para;</a></h2>
@@ -1194,10 +1194,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
     
     
-      <script src="../../assets/javascripts/bundle.e1a181d9.min.js"></script>
+      <script src="../../assets/javascripts/bundle.960e086b.min.js"></script>
       
     
   </body>
