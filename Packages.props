@@ -26,7 +26,7 @@
     <PackageReference Update="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.13" />
     <PackageReference Update="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Update="NCrontab" Version="3.3.1" />
-    <PackageReference Update="ReactiveUI" Version="17.1.17" />
+    <PackageReference Update="ReactiveUI" Version="17.1.50" />
     <PackageReference Update="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Update="System.IdentityModel.Tokens.Jwt" Version="6.15.1" />
     <PackageReference Update="System.Reactive" Version="5.0.0" />
