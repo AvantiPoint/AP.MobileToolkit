@@ -14,7 +14,7 @@
     <PackageReference Update="Xamarin.Essentials" Version="1.7.1" />
     <PackageReference Update="Xamarin.Essentials.Interfaces" Version="1.7.1" />
     <PackageReference Update="Xamarin.AndroidX.MediaRouter" Version="1.2.4" />
-    <PackageReference Update="Xamarin.AndroidX.Palette" Version="1.0.0.7" />
+    <PackageReference Update="Xamarin.AndroidX.Palette" Version="1.0.0.12" />
 
     <!-- General Dependencies -->
     <PackageReference Update="AvantiPoint.MobileToolkit.Forms.Fonts" Version="4.0.76" />
