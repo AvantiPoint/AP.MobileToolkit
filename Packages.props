@@ -28,7 +28,7 @@
     <PackageReference Update="NCrontab" Version="3.3.1" />
     <PackageReference Update="ReactiveUI" Version="17.1.50" />
     <PackageReference Update="System.ComponentModel.Annotations" Version="5.0.0" />
-    <PackageReference Update="System.IdentityModel.Tokens.Jwt" Version="6.15.1" />
+    <PackageReference Update="System.IdentityModel.Tokens.Jwt" Version="6.19.0" />
     <PackageReference Update="System.Reactive" Version="5.0.0" />
 
     <!-- Testing -->
